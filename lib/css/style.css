@@ -1,0 +1,1034 @@
+body {
+  background-color: #f6f7fb !important;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.btn-sm {
+  padding: 0.5rem 1.5rem !important;
+}
+
+.btn__theme {
+  color: white !important;
+  background-color: #011c26 !important;
+}
+
+.header__top {
+  background-color: #000000;
+  height: 5rem;
+  padding: 0;
+  margin: 0;
+}
+
+.header__top > .container,
+.header__top > .container > .row {
+  height: 100%;
+}
+
+.header__info {
+  float: right;
+  display: flex;
+}
+
+.header__list {
+  display: flex;
+  margin: auto;
+}
+
+.header__list a {
+  color: #999;
+}
+
+.header__list a:hover {
+  color: white;
+}
+
+.header__list li {
+  margin-right: 2rem;
+}
+
+.header__btn {
+  margin-left: 0.5rem;
+}
+
+.header__btn a,
+.header__btn a:hover {
+  color: whitesmoke;
+}
+
+.header__navbar {
+  background-color: white;
+}
+
+.info {
+  background-color: #011c26;
+  height: 300px;
+}
+
+.info > .container,
+.info > .container > .row {
+  height: 100%;
+}
+
+.info__hero {
+  text-align: center;
+}
+
+.info__title {
+  font-size: 40px;
+  color: white;
+}
+
+.info__description {
+  font-size: 1.5rem;
+  color: white;
+  margin-top: 1.5rem;
+}
+
+.info__searchbox {
+  height: 55px;
+  margin: 0 auto;
+}
+
+.info__searchbox input[type="text"] {
+  padding: 1rem;
+  color: #747b86;
+  font-size: 15px;
+  width: 100%;
+  height: 100%;
+}
+
+.info__searchbox select {
+  padding: 1rem;
+  color: #747b86;
+  font-size: 15px;
+  width: 100%;
+  height: 100%;
+}
+
+.info__searchbox input[type="submit"] {
+  padding: 1rem;
+  background-color: #000000;
+  color: white;
+  border: none;
+  height: 100%;
+  width: 100%;
+}
+
+.footer__info {
+  background-color: #011c26;
+  padding: 2rem 0;
+}
+
+.footer__info > .container {
+  height: 100%;
+  width: 100%;
+}
+
+.footer__follow {
+  color: white;
+}
+
+.footer__follow p {
+  margin-top: 1rem;
+  margin-right: 1rem;
+}
+
+.footer__follow a {
+  color: white;
+  font-size: 2rem;
+  margin-right: 0.5rem;
+}
+
+.footer__follow a:hover {
+  color: rgb(190, 190, 190);
+}
+
+.footer__title {
+  color: white;
+}
+
+.footer__list {
+  color: white;
+  padding: 0;
+}
+
+.footer__list a {
+  color: #ababab;
+}
+
+.footer__list a:hover {
+  color: white;
+}
+
+.footer__copyright {
+  background-color: #000000;
+  padding: 1.5rem 0;
+  color: #ababab;
+}
+
+.footer__copyright a {
+  color: #ffffff;
+}
+
+.footer__copyright a:hover {
+  color: #ababab;
+}
+
+.footer__privacy {
+  text-align: right;
+  display: flex;
+}
+
+.footer__privacy a {
+  color: #ababab;
+}
+
+.footer__privacy a:hover {
+  color: white;
+}
+
+.footer__privacy li {
+  margin-right: 1rem;
+}
+
+.footer__privacy li:last-child {
+  margin: 0;
+}
+
+.item__item {
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgb(108 111 115 / 10%);
+  margin-bottom: 30px;
+}
+
+.item__thumbnail {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.item__info {
+  height: auto;
+  padding: 1.5rem 1.5rem 1rem;
+}
+
+.item__info a {
+  color: rgb(44, 44, 44);
+}
+
+.item__info a:hover {
+  color: rgb(44, 44, 44);
+}
+
+.item__title {
+  margin-bottom: 1rem;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.item__user {
+  margin-bottom: 1rem;
+}
+
+.item__author {
+  margin-right: 6px;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
+
+.item__star {
+  display: flex;
+  padding: 0;
+}
+
+.item__cart {
+  color: #011c26;
+}
+
+.item__more {
+  margin-top: -1rem;
+  border-top: 1px solid #ececec;
+  padding: 1rem 2rem;
+}
+
+.item__price {
+  background-color: #e7f9f7;
+  border-radius: 1rem;
+  padding: 5px 10px;
+  text-align: center;
+}
+
+.item__category {
+  background-color: #f7e7f9;
+  border-radius: 1rem;
+  padding: 5px 10px;
+  text-align: center;
+}
+
+.login {
+  padding: 4rem 0;
+}
+
+.login__form {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgb(108 111 115 / 10%);
+}
+
+.login__form p {
+  color: #555555;
+}
+
+.login__title {
+  text-align: center;
+  padding: 3rem 4rem 1rem;
+  border-bottom: 1px solid #ececec;
+}
+
+.login__body {
+  padding: 2rem 4rem;
+}
+
+.login__group {
+  margin-bottom: 1rem;
+}
+
+.login__assist {
+  display: flex;
+  justify-content: space-between;
+}
+
+.login__assist a {
+  color: black;
+}
+
+.profile-settings {
+  padding: 4rem 0;
+}
+
+.profile-settings__title {
+  padding: 1rem 1.5rem;
+  font-size: 23px;
+  border-bottom: 1px solid #ececec;
+  background-color: #fff;
+}
+
+.profile-settings__body {
+  padding: 1rem 1.5rem;
+  background-color: #fff;
+}
+
+.profile-settings__group {
+  margin-bottom: 1rem;
+}
+
+.profile-settings__group p {
+  margin-bottom: 0.5rem;
+}
+
+.profile-settings__avatar {
+  border-radius: 50%;
+  height: 80px;
+  width: 80px;
+}
+
+.profile-settings__submit {
+  padding: 1rem 1.5rem;
+  text-align: center;
+}
+
+.page-item > .active {
+  background-color: red;
+}
+.jplist-panel {
+  display: block !important;
+}
+.pull-right {
+  float: right;
+}
+.pull-left{
+  float: left;
+}
+.filter-area {
+  position: relative;
+  -webkit-box-shadow: 0 2px 4px rgb(108 111 115 / 10%);
+  box-shadow: 0 2px 4px rgb(108 111 115 / 10%);
+}
+.filter-bar .filter--select {
+  width: 217px;
+  margin: 0 23.93px;
+}
+.filter-bar .filter__option{
+  display: inline-block;
+  vertical-align: middle;
+  padding: 29px 0;
+}
+.select-wrap {
+  position: relative;
+}
+.select-wrap select {
+  height: 45px;
+  border: 1px solid #ececec;
+  padding: 0 40px 0 020px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+.select-wrap span {
+  font-size: 10px;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  right: 18px;
+}
+.products {
+  background: #eff1f5;
+}
+.section--padding2 {
+  padding: 70px 0 120px;
+}
+.product--sidebar .sidebar-card .card-title{
+  padding: 30px 30px 28px;
+  display: block;
+  margin-bottom: 0;
+  font-size: 12px;
+  line-height: 20px;
+  color: #555;
+  border-bottom: 1px solid #ececec;
+}
+.product--sidebar .sidebar-card .collapsible-content{
+  padding: 0 30px;
+}
+.sidebar-card{
+  background: #fff;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 2px 4px rgb(108 111 115 / 10%);
+  box-shadow: 0 2px 4px rgb(108 111 115 / 10%);
+  margin-bottom: 30px;
+}
+.product--sidebar .sidebar-card .card-content{
+  padding: 20px 0;
+}
+.product--sidebar .card--category ul li a{
+  display: block;
+  line-height: 40px;
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+  color: #555;
+}
+
+
+
+/* CSS OF CHECKOUT PAGE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.hrClass1{
+  margin: 40px 0;
+}
+.hrClass2{
+  margin: 40px 0;
+}
+.buttonBack h6{
+  margin: 0;
+  padding: 0px;
+}  
+.buttonBack{
+  padding: 10px!important;
+}
+.buttonConfirm h6{
+  margin: 0;
+  padding: 0;
+}
+.buttonConfirm{
+  line-height: 50px;
+  min-width: 170px;
+  margin: auto;
+  position: absolute;
+  right: 10px;
+  padding: 10px!important;
+} 
+.form-check-input{
+  border: 4px solid black;
+}
+.orderedItem a{
+  color: black;
+}
+.itemPrice{
+  position: absolute;
+  right: 10px;
+}
+.cart_order{
+  margin-bottom: 50px;
+}
+#mycart{
+  height: 250px;
+  width: 100%;
+}
+#path ul{
+  float: left;
+   display: flex;
+  color: whitesmoke;
+  margin-top: 50px;    
+}
+#path a{
+  color:white;
+  background-color: transparent;
+  text-decoration: none;
+  font-size: 30px;
+}
+#path .after :after {
+  content: '/';
+  color: #fff;
+  margin-left: 30px;     
+}
+#namepage p{
+  font-size: 50px;
+  color: whitesmoke;
+  float: left;
+  display: flex;
+  margin-left: 50px;
+}
+
+.orderedAndMethod{
+  background-color: #f0f1f5;
+  
+}
+.sectionCartOrdered{
+  background-color: #f0f1f5;
+}
+.sectionEmpty{
+  height: 50px;
+  background-color: #f0f1f5;
+}
+.section-breadcrumb{
+  background-color: #011C26;
+  
+}
+
+
+/* CSS OF CART PAGE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+
+.cart-subtotalspecial{
+  text-align: end;
+  padding: 50px;
+  padding-right: 30px !important ;
+}
+.cart-subtotal p span{
+  margin: 40px;
+}
+.cart-subtotal p{
+  margin-right: 10px;
+  font-size: 20px;
+}
+.cart-subtotal {
+  text-align: end;
+  border: 1px solid rgb(226, 224, 224);
+  padding: 20px; 
+  border-top: 0px!important ;  
+}
+.coupon-block input{
+  width: 50%;
+  margin-bottom: 50px;
+  display: inline-block
+}
+.coupon-block button{     
+  height: 40px;
+  width: 170px; 
+}
+.thanhtoan{
+  padding: 0!important;
+}
+
+/* end thanh toán*/
+
+.item_action{
+  text-align: center;
+}
+.item_price1{
+  margin-left: 20px;
+}
+.item_price p{
+margin: auto;
+}
+.item_price {
+  border-radius: 1rem;
+  background-color:#E7F9F7;
+  text-align: center;
+} 
+.product_description img{
+  margin-right: 20px ;
+}
+.short_desc a{
+  color: black!important;
+}
+.product_description{
+  display: flex;
+  margin: 10px;
+  vertical-align: center;
+}
+.product__additional_info{
+  text-align: center;  
+}
+.item_action a{
+  color: red;
+}   
+.v_middle{
+ margin: auto; 
+}
+.special h4{
+  padding:20px
+}
+.totalInfo{
+ border-bottom: 1px solid rgb(226, 224, 224);
+ text-align: center;
+}
+.information{
+  display: flex;
+  padding: 0!important;
+  border: 1px solid rgb(226, 224, 224); 
+  border-top: 0px!important;
+}
+#mycart{
+  height: 250px;
+  width: 100%;
+}
+#path ul{
+  float: left;
+  display: flex;
+  color: whitesmoke;
+  margin-top: 50px;
+  
+}
+#path a{
+  color:white;
+  background-color: transparent;
+  text-decoration: none;
+  font-size: 30px;
+}
+
+#path .after :after {
+  content: '/';
+  color: #fff;
+  margin-left: 30px;
+  
+}
+#namepage p{
+  font-size: 50px;
+  color: whitesmoke;
+  float: left;
+  display: flex;
+  margin-left: 50px;
+}
+#body{
+  background-color: #f0f1f5;
+}
+.container1{
+  border-radius: 1%;
+  background-color: #fff!important;
+}   
+.sect3{
+  background-color: #f0f1f5;
+}
+.sect2{
+  height: 50px;
+  background-color: #f0f1f5;
+}
+.sect1{
+  background-color: #011C26;
+}
+
+.breadcrumb a{
+  color: white;
+}
+#breadcrumb{
+  width: 100%;
+  background-color: #011c26;
+  height: auto;
+  padding-bottom: 1rem;
+  font-size: 20px;
+}
+#breadcrumb .nd{
+  color: white;
+}
+main{
+  background-color: #f0f1f5;
+}
+#anhsanpham{
+  border-radius: 2%;
+}
+.card1 .card-body .nutnhan{
+  background-color: #011c26;
+}
+.card1 .card-footer {
+  background-color: white;
+}
+.card1 .card-footer .bi{
+  border: none;
+  color: #011c26;
+  background-color: white;
+}
+.card1 .card-body{
+  text-align: center;
+}
+.cardright .card-header{
+  background-color: #011c26;
+  color: white;
+  text-align: center;
+  font-size: 30px;
+}.cardright .card-body {
+  margin-top: 10px;
+  text-align: left;
+}
+.cardright hr{
+  width: 95%;
+}
+.cardright .card2body{
+  text-align: left;
+}
+.cardright .card2body .form2check{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.cardright .rightfooter .btn{
+  width: 360px;
+  background-color: #011c26;
+}
+.cardright .rightfooter i{
+  color: white;
+}
+.cardright .rightfooter{
+  text-align: center;
+}
+.card-creat .card-body {
+  text-align: left;
+  color: #011c26 ;
+}
+.card-creat{
+  height: 113px;
+}
+.card-creat .card-body b{
+  margin-top: 30px;
+}
+.cardcontent .nav{
+  height: 50px;
+  width: 100%;
+}
+.cardcontent li a{
+  color: black;
+  line-height: 50px;
+  padding: 0px 28px;
+}
+.cardcontent li {
+  text-align: center;
+  width: 145px;
+  border-right: gray 1px solid;
+}
+.cardcontent .gioithieusp {
+  text-align: left;
+  padding-bottom: 40px;
+}
+.cardcontent .gioithieusp h4{
+  margin-top: 30px;
+} 
+.cardcontent .noidungsp{
+  margin-top: 20px;
+}
+.author .card-header{
+ font-size: 33px;
+}
+.author .card-body img{
+  width: 100px;
+}
+.author .card-body{
+  text-align: center;
+}
+.author .card-body i{
+  margin-left: 10px;
+}
+.author .card-body .member{
+  margin-top: 20px;
+}
+.author .card-footer{
+  text-align: center;
+  color: white;
+  background-color: white;
+}
+.author .card-footer button {
+  background-color: #011c26;
+}
+.author .card-footer i{
+  color: white;
+}
+.danhgia .card-body{
+  text-align: left;
+}
+.danhgia .card-body .yeuthich{
+  margin-top: 30px;
+  border-bottom : #f0f1f5 solid 1px;
+}
+.danhgia .card-body .conso{
+  float: right;
+}
+.infitem .card-header{
+  font-size: 33px;
+}
+.infitem .card-body{
+  padding-bottom: 40px;
+}
+.infitem .card-body .inf{
+  margin-top: 30px;
+}
+.infitem .card-body i{
+  position: absolute;
+  left: 138px;
+}
+.moreitem .row{
+  text-align: center;
+}
+.abcd{
+  background-color: #f6f7fb;
+}
+.moreitem{
+  padding-bottom: 50px;
+}
+.cardfooter .card-body .nutnhan{
+  background-color: #011c26;
+}
+.cardfooter .card-footer {
+  background-color: white;
+}
+.cardfooter .card-footer .bi{
+  border: none;
+  color: #011c26;
+  background-color: white;
+}
+.cardfooter .card-body{
+  text-align: left;
+}
+.cardfooter .card-footer{
+  text-align: left;
+  font-size: 20px;
+}
+.cardfooter .card-footer .biok{
+  margin-left: 20px;
+}
+.cardfooter .card-footer .bistar{
+  margin-left: 20px;
+}
+.cardfooter .card-footer .bibuy{
+  margin-left: 20px;
+  position: absolute;
+  right: 8px ;
+}
+.sanphamthem{
+  margin-bottom: 30px;
+}
+
+.scdangki{
+  padding-bottom: 64px;
+}
+.carddangki{
+  width: 100%;
+  margin-top: 64px;
+}
+.carddangki .card-header{
+  text-align: center;
+  background-color: white;
+}
+.carddangki .card-header h2{
+  margin-top: 20px;
+}
+.carddangki .card-header{
+  padding: 50px 20px;
+}
+.carddangki .card-body label{
+  margin-top: 30px;
+  margin-left: 30px;
+}
+.carddangki .card-body input{
+  margin-top: 15px;
+  width: 80%;
+  margin-left: 30px;
+}
+.carddangki .card-body .chonlua{
+  margin-top: 15px;
+  width: 80%;
+  margin-left: 30px;
+}
+.carddangki .card-body .submit{
+  margin-top: 50px;
+  width: 80%;
+  margin-left: 30px;
+  background-color: #011c27;
+  color: white;
+}
+.carddangki .card-body .chuyendn{
+  margin-top: 15px;
+  margin-left: 30px;
+  padding-bottom: 30px;
+}
+.cardforgot .headerforgot{
+  padding-top: 60px;
+  padding-right: 50px;
+  padding-left: 50px;
+  padding-bottom: 25px;
+  background-color: white;
+}
+.cardforgot{
+  margin: 60px 0px;
+}
+
+.cardforgot .emailforgot {
+  margin-left: 50px;
+  margin-top: 30px;
+}
+.cardforgot .textforgot{
+  margin-left: 50px;
+  margin-top: 20px;
+  width: 80%;
+}
+.cardforgot .submitforgot{
+  margin-left: 50px;
+  margin-top: 25px;
+  width: 300px;
+}
+.cardforgot .submitforgot button{
+  background-color: #011c27;
+  color: white;
+}
+.cardforgot .bodyforgot{
+  margin-bottom: 60px;
+}
+/* profile */
+.sectionprofile{
+  padding: 70px 0px;
+}
+.cardprofile .imgnouser{
+  width: 100px;
+  height: 100px;
+  margin: 20px 0px;
+}
+.cardprofile .bodyprofile .gtuser{
+  margin-top: 10px;
+}
+.cardprofile .bodyprofile{
+  text-align: center;
+  padding-bottom: 100px;
+}
+.cardtotalitem .bodytotalitem{
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 50px;
+  background-color: #ff6a6c;
+  color: white;
+  border-radius: 2%;
+}.cardtotalitem .bodytotalitem .itemnum{    
+  font-size: 34px;
+  margin-top: 10px;
+}
+.cardtotalsale .bodytotalsale{
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 50px;
+  background-color: #0674ed;
+  color: white;
+  border-radius: 2%;
+}
+.cardtotalsale .bodytotalsale .salenum{
+  font-size: 34px;
+  margin-top: 10px;
+}
+.cardtotalrating .bodytotalrating{
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 50px;
+  background-color: #4e4e96;
+  color: white;
+  border-radius: 2%;
+}
+.cardtotalrating .bodytotalrating .ratingnum{
+  font-size: 34px;
+  margin-top: 10px;
+}
+.cardurl .headerurl {
+  padding: 30px 30px;
+  font-size: 22px;
+  background-color: white;
+}
+.cardurl .bodyurl{
+  padding-bottom: 50px;
+}
+.cardurl .bodyurl .linkurl{
+  margin-left: 14px;
+  margin-top: 20px;
+  width: 80%  ;
+}
+.cardurl .bodyurl .copyurl{
+  margin-left: 14px;
+}
+.cardurl .bodyurl .btnurl{
+  width: 150px;
+  height: 40px;
+  background-color: #011c27;
+}
+.cardsociallink .headersociallink {
+  padding: 30px 30px;
+  font-size: 22px;
+  background-color: white;
+}
+.cardsociallink .bodysociallink .iconprofile{
+  margin-left: 14px;
+}
+.cardsociallink .bodysociallink{
+ padding-top: 30px;
+ padding-bottom: 30px;
+}
+.cardsociallink .bodysociallink .biinstagram{
+  margin-left: 15px;
+} 
+.cardsociallink .bodysociallink .bitwitter{
+  margin-left: 15px;
+}
+.cardfollow .bodycardfollow .followinfo{
+  margin-left: 14px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: black;
+}
+.rowimgprofile .imgprofile{
+  margin-top: 50px;
+}
+.cardservice .bodycardservice{
+  padding: 44px 30px;
+}
+.cardservice .bodycardservice .servicehead{
+  font-size: 30px;
+}
+.cardservice .bodycardservice .servicestatus{
+  margin-top: 30px;
+  padding-bottom: 31px;   
+}
+.carditemprofile .headercarditemprofile{
+  font-size: 24px;
+  padding: 20px 30px;
+  background-color: white;
+}
+.carditemprofile .bodycarditemprofile{
+  text-align: center;
+  color: #54667A;
+  padding-top: 53px;
+  padding-bottom: 53px;
+}
+
+.followinfo a {
+  color: rgb(44, 44, 44);
+}

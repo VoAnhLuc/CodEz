@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?php echo $title; ?></title>
+    <link rel="stylesheet" href="./lib/css/reset.css">
+    <link rel="stylesheet" href="./lib/css/style.css">
+    <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+        integrity="sha384-tKLJeE1ALTUwtXlaGjJYM3sejfssWdAaWR2s97axw4xkiAdMzQjtOjgcyw0Y50KU" crossorigin="anonymous">
+    <link rel="stylesheet" href="./lib/css/responsive.css">
+    <link rel="stylesheet" href="./lib/css/common.css">
+</head>
+
+<body>
+
+    <?php include './common/header.php'; ?>
+
+    <main>
+            <?php include './common/breadcrumb.php'; ?>
+
+            <section class="profile-settings">
+                <div class="container">
+                    <div class="row">
+                        <form method="post">
+                            <div class="d-lg-flex">
+                                <div class="col-lg-6 p-2">
+                                    <div class="profile-settings__title">Profile Information</div>
+                                    <div class="profile-settings__body">
+                                        <div class="profile-settings__group">
+                                            <p>Name <span class="color--red">*</span></p>
+                                            <input type="text" class="form-control" placeholder="CodEz.Shop.." name="fullname" required>
+                                        </div>
+                                        <div class="profile-settings__group">
+                                            <p>Username <span class="color--red">*</span></p>
+                                            <input type="text" class="form-control" placeholder="nothegoodman.." name="username" required>
+                                        </div>
+                                        <div class="profile-settings__group">
+                                            <p>Email Address <span class="color--red">*</span></p>
+                                            <input type="text" class="form-control" placeholder="support@codez.shop" name="email" required>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6 profile-settings__group">
+                                                <p>Password</p>
+                                                <input type="password" class="form-control" placeholder="support@codez.shop" name="email" required>
+                                            </div>
+                                            <div class="col-md-6 profile-settings__group">
+                                                <p>Confirm Password</p>
+                                                <input type="password" class="form-control" placeholder="support@codez.shop" name="email" required>
+                                            </div>
+                                        </div>
+                                        <div class="profile-settings__group">
+                                            <p>Birthday</p>
+                                            <input type="date" class="form-control" name="birthday">
+                                        </div>
+                                        <div class="profile-settings__group">
+                                            <p>Website</p>
+                                            <input type="text" class="form-control" placeholder="https://codez.shop" name="website">
+                                        </div>
+                                        <div class="profile-settings__group">
+                                            <p>Profile Heading</p>
+                                            <input type="text" class="form-control" placeholder="Software Engineer" name="profile-heading">
+                                        </div>
+                                        <div class="profile-settings__group">
+                                            <p>About</p>
+                                            <textarea class="form-control" placeholder="about.." name="about" rows="4"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 p-2">
+                                    <div class="profile-settings__title">Profile Image & Cover Image</div>
+                                    <div class="profile-settings__body">
+                                        <div class="row">
+                                            <div class="col-md-6 profile-settings__group">
+                                                <p>Profile Image</p>
+                                                <p class="color--gray">JPG, GIF or PNG - 100x100 px</p>
+                                            </div>
+                                            <div class="col-md-6 profile-settings__group m-auto">
+                                                <input type="file" class="form-control mb-2" name="profile-image">
+                                            </div>
+                                            <div class="col-12 text-center">
+                                                <img src="/images/user-1.png" class="profile-settings__avatar">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6 profile-settings__group">
+                                                <p>Cover Image</p>
+                                                <p class="color--gray">JPG, GIF or PNG - 750x370 px</p>
+                                            </div>
+                                            <div class="col-md-6 profile-settings__group m-auto">
+                                                <input type="file" class="form-control mb-2" name="profile-image">
+                                            </div>
+                                            <div class="col-12 text-center">
+                                                <img src="/images/items/item-4.jpg" class="item__thumbnail">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="profile-settings__title mt-3">Social Profiles</div>
+                                    <div class="profile-settings__body">
+                                        <div class="row profile-settings__group">
+                                            <div class="col-auto m-auto">
+                                                <i class="bi bi-facebook size--2rem color--facebook"></i>
+                                            </div>
+                                            <div class="col-10 m-auto">
+                                                <input type="text" class="form-control" placeholder="https://facebook.com/vanhoai.308" name="facebook">
+                                            </div>
+                                        </div>
+                                        <div class="row profile-settings__group">
+                                            <div class="col-auto m-auto">
+                                                <i class="bi bi-instagram size--2rem color--instagram"></i>
+                                            </div>
+                                            <div class="col-10 m-auto">
+                                                <input type="text" class="form-control" placeholder="https://instagram.com/vanhoai.308" name="instagram">
+                                            </div>
+                                        </div>
+                                        <div class="row profile-settings__group pb-2">
+                                            <div class="col-auto m-auto">
+                                                <i class="bi bi-twitter size--2rem color--blue"></i>
+                                            </div>
+                                            <div class="col-10 m-auto">
+                                                <input type="text" class="form-control" placeholder="https://twitter.com/vanhoai.308" name="twitter">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="profile-settings__submit">
+                                <input type="submit" value="Cập nhật" name="submit" class="btn btn-sm btn__theme">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+    </main>
+
+    <?php include './common/footer.php'; ?>
+
+</body>
+
+</html>

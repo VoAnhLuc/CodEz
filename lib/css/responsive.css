@@ -1,0 +1,6 @@
+@media screen and (max-width: 767px) {
+  .info {
+    background-image: url("/images/background_info.png");
+    height: 600px;
+  }
+}

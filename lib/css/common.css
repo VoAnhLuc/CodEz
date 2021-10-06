@@ -1,0 +1,23 @@
+.color--red {
+    color: #F05050;
+}
+
+.color--blue {
+    color: #23B7E5;
+}
+
+.color--gray {
+    color: #898f96;
+}
+
+.color--facebook {
+    color: #395799;
+}
+
+.color--instagram {
+    color: #E85257;
+}
+
+.size--2rem {
+    font-size: 2rem;
+}
