@@ -40,6 +40,8 @@
 
         public function create()
         {
+            $error = '';
+
             if (isset($_POST['submit']))
             {
                 $category_id = intval($_POST['category']);
@@ -48,8 +50,8 @@
                 $content = htmlspecialchars($_POST['content']);
                 $description = htmlspecialchars($_POST['description']);
                 $price = intval($_POST['price']);
-                $thumb = ''; // handle later
-                $code = ''; // handle later
+                $thumb = 'x'; // handle later
+                $code = 'x'; // handle later
                 $isSupport = boolval($_POST['isSupport']);
 
                 // add to array to pass to model
@@ -65,19 +67,30 @@
                     'isSupport' => $isSupport
                 ];
 
-                // call model to insert to database
-                $product_id = $this->productModel->addProduct($product); // this method return boolean, use this to check if insert ok or not
-                if ($product_id)
+                // check the input value
+                if (!isAnyEmptyValue($product))
                 {
-                    // if add success, redirect to detail product
-                    header('Location: index.php?controller=product&action=detail&id=' . $product_id. '');
+                    // call model to insert to database
+                    $product_id = $this->productModel->addProduct($product); // this method return boolean, use this to check if insert ok or not
+                    if ($product_id)
+                    {
+                        // if add success, redirect to detail product
+                        header('Location: ' . ROUTES['product_detail'] . '&id=' . $product_id. '');
+                    }
+                    else
+                    {
+                        return $this->view('404');
+                    }
                 }
-
-                return $this->view('404');
+                else
+                {
+                    $error = ERRORS['input_empty'];
+                }
             }
 
             $data = [
-                'title' => 'Đăng bán sản phẩm'
+                'title' => 'Đăng bán sản phẩm',
+                'error' => $error
             ];
 
             return $this->view('product.create', $data);
