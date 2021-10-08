@@ -4,8 +4,7 @@
             'fileName' => 'homecontroller.php',
             'className' => 'HomeController',
             'action' => [
-                'index',
-                'show'
+                'index'
             ]
         ],
 
@@ -14,7 +13,8 @@
             'className' => 'ProductController',
             'action' => [
                 'index',
-                'detail'
+                'detail',
+                'create'
             ]
         ],
 

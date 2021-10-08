@@ -33,7 +33,7 @@
                                 <div class="card cardprofile">
                                     <div class="card-body bodyprofile">
                                         <img src="./images/no-user.png" alt="" class="imgnouser"><br>
-                                        <b><php echo $user['fullname']; ?></b>
+                                        <b><?php echo $user['fullname']; ?></b>
                                         <div class="gtuser"><i>Member since September 2021</i></div>
                                     </div>   
                                 </div>

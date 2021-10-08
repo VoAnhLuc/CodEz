@@ -16,4 +16,24 @@
             $this->db->closeConnection($result);
             return $product;
         }
+
+        public function addProduct($product)
+        {
+            $this->db->createConnection();
+            $result = $this->db->executeNonQuery("INSERT INTO `products` VALUES (
+                    null,
+                    '" . $product['category_id'] . "',
+                    '" . $product['user_id'] . "',
+                    '" . $product['title'] . "',
+                    '" . $product['content'] . "',
+                    '" . $product['description'] . "',
+                    '" . $product['price'] . "',
+                    '" . $product['thumb'] . "',
+                    '" . $product['code'] . "',
+                    '" . time() . "',
+                    '" . time() . "'
+                )", true);
+            $this->db->closeConnection();
+            return $result;
+        }
     }

@@ -2,6 +2,7 @@
     class PaymentController extends BaseController
     {
         private $paymentModel;
+        
         public function __construct()
         {
             $this->loadModel('paymentmodel');

@@ -1,10 +1,12 @@
 <?php
+    session_start();
+
     require_once './controllers/basecontroller.php';
     require_once './core/controllers.php';
     require_once './core/database.php';
 
     $controller = (isset($_GET['controller']) ? strtolower($_GET['controller']) : 'home');
-    $action = (isset($_GET['action']) ? $_GET['action'] : 'index');
+    $action = (isset($_GET['action']) ? strtolower($_GET['action']) : 'index');
 
     if (array_key_exists($controller, CONTROLLERS))
     {
@@ -15,7 +17,7 @@
         require './controllers/'.$fileName;
         
         $objController = new $className;
-
+        
         if (in_array($action, $classAction))
         {
             $objController->$action();

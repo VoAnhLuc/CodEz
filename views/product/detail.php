@@ -32,7 +32,7 @@
                         <div class="col-lg-8 col-md-12 col-sm-12 mt-3">
                             <div class="card card1">
                                 <div class="card-img">
-                                    <img id="anhsanpham" src="https://codesjungle.com/public/storage/items/1621798175252.jpg" alt="" width="100%">  
+                                    <img id="anhsanpham" src="<?php echo $product['thumb']; ?>" alt="" width="100%">  
                                 </div>
                                 <div class="card-body">
                                     <button class="btn btn-primary nutnhan"><i class="bi bi-heart"></i> Add To Favorites</button>
@@ -56,33 +56,11 @@
                         </div>
                         <div class="col-lg-4 col-md-12 col-sm-12 mt-3">
                             <div class="card cardright">
-                                <div class="card-header">
-                                    <i>Prices : <?php echo $product['price'] ?></i>
-                                </div>
-                                <div class="card-body" >
-                                    <i class="bi bi-check-circle"> Quality checked - Buy Code, Scripts, Themes, Plugins and More</i><br>
-                                    <i class="bi bi-check-circle"> Future updates</i><br>
-                                    <i class="bi bi-check-circle"> 6 months support from cyte</i>
-                                </div>
-                                <hr>
-                                <div class="card-body card2body">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                        <label class="form-check-label" for="flexRadioDefault1">Regular License</label>
-                                    </div>
-                                    <div class="form-check  form2check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                        <label class="form-check-label" for="flexRadioDefault2">Extended License</label>
-                                    </div>
+                                <div class="alert alert-success">
+                                    <i>Prices : <?php echo $product['price'] ?> VND</i>
                                 </div>
                                 <div class="card-footer rightfooter" >
                                     <button class="btn btn-primary btn"><i class="bi bi-cart-check-fill"> Buy Now</i></button>
-                                </div>
-                            </div>
-                            <div class="card mt-3 card-creat">
-                                <div class="card-body">
-                                    <i class="bi bi-tools"> This item was featured on :</i><br>
-                                    <b>Codez - Buy Code, Scripts, Themes, Plugins and More.</b>
                                 </div>
                             </div>
                             <div class="card author mt-4">
@@ -106,10 +84,7 @@
                             </div>
                             <div class="card danhgia mt-3">
                                 <div class="card-body">
-                                    <div class="yeuthich"><i class="bi bi-cart2"> Total Sales </i><i class="conso">5</i></div>
-                                    <div class="yeuthich"><i class="bi bi-heart"> Favourites </i><i class="conso">4</i>  </div>
-                                    <div class="yeuthich"><i class="bi bi-heart"> Comments</i><i class="conso">3</i></div>
-                                    <div class="yeuthich">
+                                    <div class="yeuthich text-center">
                                         <i class="bi bi-star-fill"></i>
                                         <i class="bi bi-star-fill"></i>
                                         <i class="bi bi-star-fill"></i>
@@ -117,6 +92,9 @@
                                         <i class="bi bi-star"></i>
                                         <i> ( 5 Ratings ) </i>
                                     </div>
+                                    <div class="yeuthich"><i class="bi bi-cart2"> Total Sales </i><i class="conso">5</i></div>
+                                    <div class="yeuthich"><i class="bi bi-heart"> Favourites </i><i class="conso">4</i>  </div>
+                                    <div class="yeuthich"><i class="bi bi-heart"> Comments</i><i class="conso">3</i></div>
                                 </div>
                             </div>
                             <div class="card infitem mt-3">
@@ -124,12 +102,9 @@
                                     <i>Item Infomation</i>
                                 </div>
                                 <div class="card-body">
-                                    <div class="inf"><b>Released :</b><i> 1 October 2021</i></div>
-                                    <div class="inf"><b>Updated :</b><i> 1 September 2021</i></div>
-                                    <div class="inf"><b>Categort :</b><i> Android</i></div>
-                                    <div class="inf"><b>Item Type :</b><i> Mobiel Apps</i></div>
-                                    <div class="inf"><b>Package :</b><i> .apk, .dex, .so, .dat, .db, .java, .xml, La</i></div>
-                                    <div class="inf"><b>Includes :</b><i> PNG, Layered PSD, JavaScript JS, CSS, PHP, HTML</i></div>                      
+                                    <div class="inf"><b>Released:</b> <?php echo $product['released']; ?></div>
+                                    <div class="inf"><b>Updated:</b> <?php echo $product['released']; ?></div>
+                                    <div class="inf"><b>Category:</b> <?php echo $category ?></div>                 
                                 </div>
                             </div>
                         </div>

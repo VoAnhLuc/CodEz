@@ -31,6 +31,8 @@
 
         public function login()
         {
+            // hello
+
             $data = [
                 'title' => 'Login'
             ];
