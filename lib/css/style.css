@@ -1032,3 +1032,32 @@ main{
 .followinfo a {
   color: rgb(44, 44, 44);
 }
+
+.create-product__form {
+  margin: 4rem 0;
+}
+
+.create-product__title {
+  padding: 1rem 2rem;
+  font-weight: 600;
+  font-size: 25px;
+  border-bottom: 1px solid #ececec;
+}
+
+.create-product__body {
+  padding: 1rem 2rem;
+}
+
+.create-product__body label {
+  margin-bottom: .5rem;
+}
+
+.create-product__item {
+  margin-bottom: 2rem;
+}
+
+.create-product__list {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgb(108 111 115 / 10%);
+  margin-bottom: 2rem;
+}
