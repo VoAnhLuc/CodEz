@@ -1,15 +1,13 @@
 <?php
+    require_once 'config.php';
+
     class Database
     {
-        private const HOST = "localhost";
-        private const DB = "codezshop";
-        private const USER = "root";
-        private const PASSWORD = "";
         private $link;
 
         public function createConnection() 
         {
-            $this->link = mysqli_connect(self::HOST, self::USER, self::PASSWORD, self::DB);
+            $this->link = mysqli_connect(HOST, USER, PASSWORD, DB);
             if (!$this->link) {
                 die("ERROR: Could not connect. " . mysqli_connect_error());
             }

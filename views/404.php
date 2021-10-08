@@ -7,6 +7,6 @@
     <title>Page Not Found</title>
 </head>
 <body>
-    <h1>You have just jumped into the 404 page.</h1>
+    <h1><?php echo ERRORS['page_not_found'] ?></h1>
 </body>
 </html>
