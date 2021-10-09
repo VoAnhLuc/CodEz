@@ -45,6 +45,7 @@
             $data = [
                 'title' => 'Register'
             ];
+            echo "dhàgdsjfa";
 
             return $this->view('user.register', $data);
         }
