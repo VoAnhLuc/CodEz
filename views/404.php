@@ -7,6 +7,6 @@
     <title>Page Not Found</title>
 </head>
 <body>
-    <h1><?php echo ERRORS['page_not_found'] ?></h1>
+    <h1><?php echo MESSAGES['page_not_found'] ?></h1>
 </body>
 </html>

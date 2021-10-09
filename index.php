@@ -5,7 +5,7 @@
     require_once './core/controllers.php';
     require_once './core/database.php';
     require_once './core/functions.php';
-    require_once './core/errors.php';
+    require_once './core/messages.php';
     require_once './core/routes.php';
 
     $controller = (isset($_GET['controller']) ? strtolower($_GET['controller']) : 'home');

@@ -84,7 +84,7 @@
                 }
                 else
                 {
-                    $error = ERRORS['input_empty'];
+                    $error = MESSAGES['input_empty'];
                 }
             }
 
