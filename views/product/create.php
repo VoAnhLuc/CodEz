@@ -27,7 +27,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 m-auto">
-                        <form method="post" action="<?php echo ROUTES['product_create']; ?>" class="create-product__form">
+                        <form method="post" action="<?php echo ROUTES['product_create']; ?>" enctype="multipart/form-data" class="create-product__form">
 
                             <?php echo (!empty($error) ? '<div class="create-product__list create-product__title create-product__item color--red">' . $error . '</div>' : ""); ?>
 

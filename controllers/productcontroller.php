@@ -30,7 +30,7 @@
 
             $data = [
                 'id' => $id,
-                'title' => 'Title của sản phẩm',
+                'title' => $product['title'],
                 'category' => 'Category nak',
                 'product' => $product
             ];
@@ -50,9 +50,21 @@
                 $content = htmlspecialchars($_POST['content']);
                 $description = htmlspecialchars($_POST['description']);
                 $price = intval($_POST['price']);
-                $thumb = 'x'; // handle later
-                $code = 'x'; // handle later
-                $isSupport = boolval($_POST['isSupport']);
+                $isSupport = isset($_POST['isSupport']);
+
+                // call method to upload file
+                $thumb = '';
+                $thumb_message = '';
+                $code = '';
+                $code_message = '';
+                if (!Func::uploadFile('images.products', 'thumb', $thumb, $thumb_message, true))
+                {
+                    $error = empty($error) ? $thumb_message : $error;
+                }
+                if (!Func::uploadFile('files.products', 'code', $code))
+                {
+                    $error = empty($error) ? $code_message : $error;
+                }
 
                 // add to array to pass to model
                 $product = [
@@ -68,7 +80,7 @@
                 ];
 
                 // check the input value
-                if (!isAnyEmptyValue($product))
+                if (!Func::isAnyEmptyValue($product))
                 {
                     // call model to insert to database
                     $product_id = $this->productModel->addProduct($product); // this method return boolean, use this to check if insert ok or not
@@ -84,7 +96,7 @@
                 }
                 else
                 {
-                    $error = MESSAGES['input_empty'];
+                    $error = empty($error) ? MESSAGES['input_empty'] : $error;
                 }
             }
 

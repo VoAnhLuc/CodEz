@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $product['title']; ?></title>
+    <title><?php echo $title ?></title>
     <link rel="stylesheet" href="./lib/css/reset.css">
     <link rel="stylesheet" href="./lib/css/style.css">
     <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css">
@@ -32,7 +32,7 @@
                         <div class="col-lg-8 col-md-12 col-sm-12 mt-3">
                             <div class="card card1">
                                 <div class="card-img">
-                                    <img id="anhsanpham" src="<?php echo $product['thumb']; ?>" alt="" width="100%">  
+                                    <img id="anhsanpham" src="<?php echo $product['thumb'] ?>" alt="" width="100%">  
                                 </div>
                                 <div class="card-body">
                                     <button class="btn btn-primary nutnhan"><i class="bi bi-heart"></i> Add To Favorites</button>
@@ -102,9 +102,9 @@
                                     <i>Item Infomation</i>
                                 </div>
                                 <div class="card-body">
-                                    <div class="inf"><b>Released:</b> <?php echo $product['released']; ?></div>
-                                    <div class="inf"><b>Updated:</b> <?php echo $product['released']; ?></div>
-                                    <div class="inf"><b>Category:</b> <?php echo $category ?></div>                 
+                                    <div class="inf"><b>Category:</b> <?php echo $category ?></div>        
+                                    <div class="inf"><b>Released:</b> <?php echo date('d/m/Y', $product['released']) ?></div>
+                                    <div class="inf"><b>Updated:</b> <?php echo date('d/m/Y', $product['released']) ?></div>          
                                 </div>
                             </div>
                         </div>

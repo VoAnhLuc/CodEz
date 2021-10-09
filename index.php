@@ -4,7 +4,7 @@
     require_once './controllers/basecontroller.php';
     require_once './core/controllers.php';
     require_once './core/database.php';
-    require_once './core/functions.php';
+    require_once './core/func.php';
     require_once './core/messages.php';
     require_once './core/routes.php';
 
