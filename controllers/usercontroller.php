@@ -45,8 +45,39 @@
             $data = [
                 'title' => 'Register'
             ];
-            echo "dhàgdsjfa";
-            /* chao` hung` */
+            if(isset($_POST['submit']))
+            {
+                $username = $_POST['username'];
+                $password = md5(md5($_POST['password']));
+                $fullname = $_POST['yourname'];
+                $email = $_POST['email'];
+                $confirmpassword = md5(md5($_POST['confirmpassword']));
+                $usertype = $_POST['usertype'];
+                $user = $this->userModel->getUserByEmailOrUsername($email, $username);
+                if(!empty($user))
+                {
+                    echo '<h1>Your email has used</h1>';
+                }
+                else
+                {
+                    if($password!==$confirmpassword)
+                    {
+                        echo '<h1>Password and Confirm Password have to the same</h1>';
+                    }
+                    else
+                    {
+                       $issuccess = $this->userModel->addUser($username,$password,$fullname,$email);
+                       if($issuccess)
+                       {
+                         return $this->view('user.registersuccess',$data);
+                       }
+                       else
+                       {
+                           return $this->view('user.register',$data);
+                       }
+                    }
+                }
+            }
 
             return $this->view('user.register', $data);
         }
