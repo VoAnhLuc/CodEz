@@ -46,6 +46,7 @@
                 'title' => 'Register'
             ];
             echo "dhàgdsjfa";
+            /* chao` hung` */
 
             return $this->view('user.register', $data);
         }
