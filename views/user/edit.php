@@ -25,48 +25,48 @@
             <section class="profile-settings">
                 <div class="container">
                     <div class="row">
-                        <form method="post">
+                        <form  method="post" action="index.php?controller=user&action=edit&id=2">
                             <div class="d-lg-flex">
                                 <div class="col-lg-6 p-2">
                                     <div class="profile-settings__title">Profile Information</div>
                                     <div class="profile-settings__body">
                                         <div class="profile-settings__group">
                                             <p>Name <span class="color--red">*</span></p>
-                                            <input type="text" class="form-control" placeholder="CodEz.Shop.." name="fullname" required>
+                                            <input type="text" class="form-control" value="<?php echo $user['fullname'] ?>" name="fullname" >
                                         </div>
                                         <div class="profile-settings__group">
                                             <p>Username <span class="color--red">*</span></p>
-                                            <input type="text" class="form-control" placeholder="nothegoodman.." name="username" required>
+                                            <input type="text" class="form-control" value="<?php echo $user['username'] ?>" name="username" >
                                         </div>
                                         <div class="profile-settings__group">
                                             <p>Email Address <span class="color--red">*</span></p>
-                                            <input type="text" class="form-control" placeholder="support@codez.shop" name="email" required>
+                                            <input type="text" class="form-control" value="<?php echo $user['email'] ?>" name="email" >
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6 profile-settings__group">
                                                 <p>Password</p>
-                                                <input type="password" class="form-control" placeholder="support@codez.shop" name="email" required>
+                                                <input type="password" class="form-control" value="<?php echo $user['password'] ?>" name="password" >
                                             </div>
                                             <div class="col-md-6 profile-settings__group">
                                                 <p>Confirm Password</p>
-                                                <input type="password" class="form-control" placeholder="support@codez.shop" name="email" required>
+                                                <input type="password" class="form-control" value="<?php echo $user['password'] ?>" name="repassword" >
                                             </div>
                                         </div>
                                         <div class="profile-settings__group">
                                             <p>Birthday</p>
-                                            <input type="date" class="form-control" name="birthday">
+                                            <input class="form-control textbox-n" value="<?php echo $user['dob'] ?>" name="birthday" type="text" onfocus="(this.type='date')" id="date">
                                         </div>
                                         <div class="profile-settings__group">
                                             <p>Website</p>
-                                            <input type="text" class="form-control" placeholder="https://codez.shop" name="website">
+                                            <input type="text" class="form-control" value="<?php echo $user['website'] ?>" name="website">
                                         </div>
                                         <div class="profile-settings__group">
                                             <p>Profile Heading</p>
-                                            <input type="text" class="form-control" placeholder="Software Engineer" name="profile-heading">
+                                            <input type="text" class="form-control" value="<?php echo $user['heading'] ?>" name="profile-heading">
                                         </div>
                                         <div class="profile-settings__group">
                                             <p>About</p>
-                                            <textarea class="form-control" placeholder="about.." name="about" rows="4"></textarea>
+                                            <textarea class="form-control" name="about" rows="4"><?php echo $user['about'] ?></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -107,7 +107,7 @@
                                                 <i class="bi bi-facebook size--2rem color--facebook"></i>
                                             </div>
                                             <div class="col-10 m-auto">
-                                                <input type="text" class="form-control" placeholder="https://facebook.com/vanhoai.308" name="facebook">
+                                                <input type="text" class="form-control" value="<?php echo $user['facebook'] ?>" name="facebook">
                                             </div>
                                         </div>
                                         <div class="row profile-settings__group">
@@ -115,7 +115,7 @@
                                                 <i class="bi bi-instagram size--2rem color--instagram"></i>
                                             </div>
                                             <div class="col-10 m-auto">
-                                                <input type="text" class="form-control" placeholder="https://instagram.com/vanhoai.308" name="instagram">
+                                                <input type="text" class="form-control" value="<?php echo $user['instagram'] ?>" name="instagram">
                                             </div>
                                         </div>
                                         <div class="row profile-settings__group pb-2">
@@ -123,7 +123,7 @@
                                                 <i class="bi bi-twitter size--2rem color--blue"></i>
                                             </div>
                                             <div class="col-10 m-auto">
-                                                <input type="text" class="form-control" placeholder="https://twitter.com/vanhoai.308" name="twitter">
+                                                <input type="text" class="form-control" value="<?php echo $user['twitter'] ?>" name="twitter">
                                             </div>
                                         </div>
                                     </div>
@@ -131,7 +131,7 @@
                             </div>
 
                             <div class="profile-settings__submit">
-                                <input type="submit" value="Cập nhật" name="submit" class="btn btn-sm btn__theme">
+                                <input type="submit" value="Cập nhật" name="submitchangeuser" class="btn btn-sm btn__theme">
                             </div>
                         </form>
                     </div>
