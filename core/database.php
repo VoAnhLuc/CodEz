@@ -18,10 +18,15 @@
             return mysqli_query($this->link, $query);
         }
 
-        public function executeNonQuery($query, $isInsert = false)
+        public function executeNonQuery($query)
         {
             $result = mysqli_query($this->link, $query);
-            return ($isInsert ? mysqli_insert_id($this->link) : $result);
+            return $result != false;
+        }
+
+        public function getInsertId()
+        {
+            return mysqli_insert_id($this->link);
         }
 
         public function closeConnection($result = null)
