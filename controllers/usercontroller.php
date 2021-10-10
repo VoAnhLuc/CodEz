@@ -45,6 +45,7 @@
             $data = [
                 'title' => 'Register'
             ];
+            $errors = '';
             if(isset($_POST['submit']))
             {
                 $username = $_POST['username'];
@@ -54,31 +55,50 @@
                 $confirmpassword = md5(md5($_POST['confirmpassword']));
                 $usertype = $_POST['usertype'];
                 $user = $this->userModel->getUserByEmailOrUsername($email, $username);
-                if(!empty($user))
+                $input = [
+                    'username' => $username,
+                    'password' => $password,
+                    'fullname' => $fullname,
+                    'email' => $email,
+                    'confirmpassword' => $confirmpassword,
+                    'usertype' => $usertype,
+                ];
+                if(!Func::isAnyEmptyValue($input))
                 {
-                    echo '<h1>Your email has used</h1>';
-                }
-                else
-                {
-                    if($password!==$confirmpassword)
+                    if(!empty($user))
                     {
-                        echo '<h1>Password and Confirm Password have to the same</h1>';
+                        $errors = empty($errors) ? 'Your Email or Your Username has used' : $errors;
+                       
                     }
                     else
                     {
-                       $issuccess = $this->userModel->addUser($username,$password,$fullname,$email);
-                       if($issuccess)
-                       {
-                         return $this->view('user.registersuccess',$data);
-                       }
-                       else
-                       {
-                           return $this->view('user.register',$data);
-                       }
+                        if($password!==$confirmpassword)
+                        {
+                            $errors = empty($errors) ? 'Password and Confirm Password have to the same' : $errors;
+                        }
+                        else
+                        {
+                            $issuccess = $this->userModel->addUser($username,$password,$fullname,$email);
+                            if($issuccess)
+                            {
+                                return $this->view('user.registersuccess',$data);
+                            }
+                            else
+                            {
+                                return $this->view('user.register',$data);
+                            }
+                        }
                     }
                 }
+                else
+                {
+                    $errors = empty($errors) ? MESSAGES['input_empty'] : $errors;
+                    
+                }
+                
             }
-
+            $data['errors'] = $errors;
+           
             return $this->view('user.register', $data);
         }
 

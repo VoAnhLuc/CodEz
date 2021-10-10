@@ -24,6 +24,7 @@
             
             <?php
                 include './common/breadcrumb.php';
+                /* require_once(ROUTES['']) */
             ?>
             
             <section class="scdangki">
@@ -33,50 +34,51 @@
                             <div class="card carddangki">
                                 <div class="card-header">
                                     <h2>Create Your Account</h1><br>
-                                    <i>Please fill the following fields with appropriate information to register a new Marketplace account.</i>
+                                    <i>Please fill the following fields with appropriate information to register a new Marketplace account.</i><br/>
+                                   <?php echo (!empty($errors) ? '<i style="color:red;">' .$errors. '</i>' : $errors ); ?>
                                 </div>
                                 <div class="card-body">
                                         <div class="row">
-                                            <form action="" class="col-lg-12 col-md-12 col-sm-12 ">
+                                            <form method="post" action="" class="col-lg-12 col-md-12 col-sm-12 ">
                                                 <div class="row dangki">
                                                     <div class="col-lg-6 col-md-6 col-sm-6">
-                                                        <label for="">Your Name</label>
-                                                        <input class="form-control" type="text" placeholder="Enter your name" required>
+                                                        <label for="yourname">Your Name</label>
+                                                        <input name="yourname" class="form-control" type="text" placeholder="Enter your name" >
                                                     </div>
                                                     <div class="col-lg-6 col-md-6 col-sm-6 ">
-                                                        <label for="">Username</label>
-                                                        <input class="form-control" type="text" placeholder="Enter your username" required>
+                                                        <label for="username">Username</label>
+                                                        <input name="username" class="form-control" type="text" placeholder="Enter your username" >
                                                     </div>
                                                 </div>
                                                 <div class="row dangki">
                                                     <div class="col-lg-6 col-md-6 col-sm-6">
-                                                        <label for="">E-mail Address</label>
-                                                        <input class="form-control" type="text" placeholder="Enter your e-mail address" required>
+                                                        <label for="email">E-mail Address</label>
+                                                        <input name="email" class="form-control" type="text" placeholder="Enter your e-mail address">
                                                     </div>
                                                     <div class="col-lg-6 col-md-6 col-sm-6 ">
-                                                        <label for="">Password</label>
-                                                        <input class="form-control" type="password" placeholder="Enter your Password" required>
+                                                        <label for="password">Password</label>
+                                                        <input name="password" class="form-control" type="password" placeholder="Enter your Password" >
                                                     </div>
                                                 </div>
                                                 <div class="row dangki">
                                                     <div class="col-lg-6 col-md-6 col-sm-6">
-                                                        <label for="">Confirm Password</label>
-                                                        <input class="form-control" type="password" placeholder="Enter confirm password" required>
+                                                        <label for="confirmpassword">Confirm Password</label>
+                                                        <input name="confirmpassword" class="form-control" type="password" placeholder="Enter confirm password" >
                                                     </div>
                                                     <div class="col-lg-6 col-md-6 col-sm-6 ">
                                                         <label for="">User Type *</label>
-                                                        <select class="form-control chonlua" required>
+                                                        <select name="usertype" class="form-control chonlua" >
                                                             <option value=""></option>
                                                             <option value="Customer">Customer</option>
                                                             <option value="Vendor">Vendor</option>
                                                         </select>
                                                     </div>
                                                     <div class="col-lg-6 col-md-6 col-sm-6">                                              
-                                                    <button class="form-control submit" type="submit">Register</button>
+                                                    <button name="submit" class="form-control submit" type="submit">Register</button>
                                                     </div>
                                                     <div class="col-lg-6 col-md-6 col-sm-6 chuyendn">
                                                         <i>Already have an account?</i>
-                                                        <a href="">Login</a>
+                                                        <a href="<?php echo ROUTES['user_login'] ?>">Login</a>
                                                     </div>
                                                 </div>
                                             </form>
