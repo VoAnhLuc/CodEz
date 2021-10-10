@@ -60,7 +60,7 @@
 
             $_SESSION['user_id'] = 1; // change later.
 
-            $outputName = str_replace('.', '/', $dir) . $_SESSION['user_id'] . '_' . time() . $upload_file_type[$_FILES[$inputName]['type']];
+            $outputName = str_replace('.', '/', $dir) . '/' . $_SESSION['user_id'] . '_' . time() . $upload_file_type[$_FILES[$inputName]['type']];
 
             move_uploaded_file($_FILES[$inputName]['tmp_name'], $outputName);
 
