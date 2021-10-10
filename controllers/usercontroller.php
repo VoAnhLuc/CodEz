@@ -51,7 +51,7 @@
         {
             $id = (isset($_GET['id']) ? intval($_GET['id']) : 0);
             $user = $this->userModel->getUserById($id);
-   
+
             if ($user == null)
             {
                 return $this->view('404');
@@ -73,7 +73,19 @@
                 $facebook = $_POST['facebook'];
                 $instagram = $_POST['instagram'];
                 $twitter = $_POST['twitter'];
-                
+
+
+                $error = '';
+                $thumb = '';
+                $thumb_message = '';
+                if (!Func::uploadFile('images.users.avatars', 'profile-image', $thumb, $thumb_message, true))
+                {
+                    $error = empty($error) ? $thumb_message : $error;
+                }
+
+
+
+
                 $userchange = [
                     
                     'id' => $id,
@@ -89,7 +101,8 @@
                     'about' => $about,
                     'facebook' => $facebook,
                     'instagram' => $instagram,
-                    'twitter' => $twitter
+                    'twitter' => $twitter,
+                    'thumb' => $thumb
                     
                 ];  
                 
@@ -100,6 +113,7 @@
                         
                         $this->userModel->updateUser($userchange);
                         header('Location: index.php?controller=user&id='.$id.'');
+                       
                     }                
                 }
                 else{
