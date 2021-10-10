@@ -1,6 +1,4 @@
 <?php
-    /* CoasdasddEz 2021 */
-
     session_start();
 
     require_once './controllers/basecontroller.php';
