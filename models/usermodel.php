@@ -32,7 +32,8 @@
                                     `facebook` = '".$userchange['facebook']."', 
                                     `instagram` = '".$userchange['instagram']."', 
                                     `twitter` = '".$userchange['twitter']."', 
-                                    `thumb` = '".$userchange['thumb']."'
+                                    `avatar` = '".$userchange['avatar']."',
+                                    `cover` = '".$userchange['cover']."'
                                     where `id`  ='".$userchange['id']."' ");
             
             $this->db->closeConnection();

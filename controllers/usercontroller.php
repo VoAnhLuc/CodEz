@@ -76,14 +76,28 @@
 
 
                 $error = '';
-                $thumb = '';
-                $thumb_message = '';
-                if (!Func::uploadFile('images.users.avatars', 'profile-image', $thumb, $thumb_message, true))
+                $avatar = '';
+                $avatar_message = '';
+                if (!Func::uploadFile('images.users.avatars','profile-image-avatar', $avatar, $avatar_message, true))
                 {
-                    $error = empty($error) ? $thumb_message : $error;
+                    $error = empty($error) ? $avatar_message : $error;
+
                 }
 
+                if(empty($avatar)){
+                    $avatar = $user['avatar'];
+                }
 
+                $errorcover = '';
+                $cover = '';
+                $cover_message = '';
+                if (!Func::uploadFile('images.users.covers',  'profile-image-cover', $cover, $cover_message, true))
+                {
+                    $error = empty($errorcover) ? $cover_message : $errorcover;
+                }
+                if(empty($cover)){
+                    $cover = $user['cover'];
+                }
 
 
                 $userchange = [
@@ -102,11 +116,12 @@
                     'facebook' => $facebook,
                     'instagram' => $instagram,
                     'twitter' => $twitter,
-                    'thumb' => $thumb
+                    'avatar' => $avatar,
+                    'cover' => $cover
                     
                 ];  
                 
-                if(!empty($fullname) && !empty($username) &&  !empty($email) &&  !empty($password) &&  !empty($repassword) &&  !empty($birthday) &&  !empty($website) &&  !empty($profileheading) &&  !empty($about) &&  !empty($facebook) &&  !empty($instagram)  &&  !empty($twitter)
+                if(!empty($fullname) && !empty($username) &&  !empty($email) &&  !empty($password) &&  !empty($repassword) &&  !empty($birthday) &&  !empty($website) &&  !empty($profileheading) &&  !empty($about) &&  !empty($facebook) &&  !empty($instagram)  &&  !empty($twitter) 
                 ){
                     
                     if($password == $repassword)  {
@@ -114,7 +129,11 @@
                         $this->userModel->updateUser($userchange);
                         header('Location: index.php?controller=user&id='.$id.'');
                        
-                    }                
+                    }     
+
+                    else{
+                        echo "<script type='text/javascript'>alert('Vui lòng nhập password giống repassword !');</script>";
+                    }           
                 }
                 else{
                     echo "<script type='text/javascript'>alert('Vui lòng không để trống một trường nào !');</script>";

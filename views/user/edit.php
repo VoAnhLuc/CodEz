@@ -25,7 +25,7 @@
             <section class="profile-settings">
                 <div class="container">
                     <div class="row">
-                        <form  method="post" action="index.php?controller=user&action=edit&id=2" enctype="multipart/form-data">
+                        <form  method="post" action="index.php?controller=user&action=edit&id=<?php echo $user['id'] ?>" enctype="multipart/form-data">
                             <div class="d-lg-flex">
                                 <div class="col-lg-6 p-2">
                                     <div class="profile-settings__title">Profile Information</div>
@@ -80,10 +80,10 @@
                                                 <p class="color--gray">JPG, GIF or PNG - 100x100 px</p>
                                             </div>
                                             <div class="col-md-6 profile-settings__group m-auto">
-                                                <input type="file" class="form-control mb-2" name="profile-image" id="profile-image">
+                                                <input type="file" class="form-control mb-2" name="profile-image-avatar" id="profileimageavatar" <?php echo $user['avatar'] ?>>
                                             </div>
                                             <div class="col-12 text-center">
-                                                <img src="<?php echo $user['thumb'] ?>" class="profile-settings__avatar">
+                                                <img src="<?php echo $user['avatar'] ?>" class="profile-settings__avatar">
                                             </div>
                                         </div>  
                                         <div class="row">
@@ -92,10 +92,10 @@
                                                 <p class="color--gray">JPG, GIF or PNG - 750x370 px</p>
                                             </div>
                                             <div class="col-md-6 profile-settings__group m-auto">
-                                                <input type="file" name="thumb" id="thumb" class="form-control mb-2" >
+                                                <input type="file" name="profile-image-cover" id="profile-image-cover" class="form-control mb-2" >
                                             </div>
                                             <div class="col-12 text-center">
-                                                <img src="/images/items/item-4.jpg" class="item__thumbnail">
+                                                <img src="<?php echo $user['cover'] ?>" class="item__thumbnail">
                                             </div>
                                         </div>
                                     </div>
