@@ -79,8 +79,6 @@
                     'isSupport' => $isSupport
                 ];
 
-                var_dump($product);
-
                 // check the input value
                 if (!Func::isAnyEmptyValue($product))
                 {
