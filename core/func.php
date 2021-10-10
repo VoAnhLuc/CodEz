@@ -10,7 +10,7 @@
         {
             foreach($arr as $value)
             {
-                if (empty($value))
+                if (empty($value) && gettype($value) != 'boolean')
                 {
                     return true;
                 }

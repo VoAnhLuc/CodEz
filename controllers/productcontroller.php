@@ -61,7 +61,7 @@
                 {
                     $error = empty($error) ? $thumb_message : $error;
                 }
-                if (!Func::uploadFile('files.products', 'code', $code))
+                if (!Func::uploadFile('files.products', 'code', $code, $code_message))
                 {
                     $error = empty($error) ? $code_message : $error;
                 }
@@ -78,6 +78,8 @@
                     'code' => $code,
                     'isSupport' => $isSupport
                 ];
+
+                var_dump($product);
 
                 // check the input value
                 if (!Func::isAnyEmptyValue($product))
