@@ -46,14 +46,17 @@
                 'title' => 'Register'
             ];
             $errors = '';
+            $errorEmail = '';
+            $errorName= '';
+            $errorPassword= '';
             if(isset($_POST['submit']))
             {
-                $username = $_POST['username'];
-                $password = md5(md5($_POST['password']));
-                $fullname = $_POST['yourname'];
-                $email = $_POST['email'];
-                $confirmpassword = md5(md5($_POST['confirmpassword']));
-                $usertype = $_POST['usertype'];
+                $username = $this->userModel->test_input($_POST['username']);
+                $password = $this->userModel->test_input(($_POST['password']));
+                $fullname = $this->userModel->test_input($_POST['yourname']);
+                $email = $this->userModel->test_input($_POST['email']);
+                $confirmpassword = $this->userModel->test_input(($_POST['confirmpassword']));
+                $usertype = $this->userModel->test_input($_POST['usertype']);
                 $user = $this->userModel->getUserByEmailOrUsername($email, $username);
                 $input = [
                     'username' => $username,
@@ -64,41 +67,64 @@
                     'usertype' => $usertype,
                 ];
                 if(!Func::isAnyEmptyValue($input))
-                {
-                    if(!empty($user))
+                {   
+                    $email = filter_var($email,FILTER_SANITIZE_EMAIL);
+                    if(filter_var($email,FILTER_VALIDATE_EMAIL))
                     {
-                        $errors = empty($errors) ? 'Your Email or Your Username has used' : $errors;
-                       
-                    }
-                    else
-                    {
-                        if($password!==$confirmpassword)
+                        if(preg_match("/^[a-zA-Z0-9]{1,30}$/",$username))
                         {
-                            $errors = empty($errors) ? 'Password and Confirm Password have to the same' : $errors;
-                        }
-                        else
-                        {
-                            $issuccess = $this->userModel->addUser($username,$password,$fullname,$email);
-                            if($issuccess)
+                            if(!empty($user))
                             {
-                                return $this->view('user.registersuccess',$data);
+                                $errors = empty($errors) ? MESSAGES['email_username_used'] : $errors;
                             }
                             else
                             {
-                                return $this->view('user.register',$data);
+                                if(preg_match("/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/",$password))
+                                {
+                                    $password = md5(md5($password));
+                                    $confirmpassword = md5(md5($confirmpassword));
+                                    if($password!==$confirmpassword)
+                                    {
+                                        $errors = empty($errors) ? MESSAGES['password_confirmpassword_notsame'] : $errors;
+                                    }
+                                    else
+                                    {
+                                        $issuccess = $this->userModel->addUser($username,$password,$fullname,$email);
+                                        if($issuccess)
+                                        {
+                                            return $this->view('user.registersuccess',$data);
+                                        }
+                                        else
+                                        {
+                                            return $this->view('user.register',$data);
+                                        }
+                                    } 
+                                }
+                                else
+                                {
+                                    $errorPassword = empty($errorPassword) ? MESSAGES['passwordtype_error'] : $errorPassword;
+                                } 
                             }
                         }
+                        else
+                        {
+                            $errorName = empty($errorName) ? MESSAGES['nametype_error'] : $errorName;
+                        }
+                    }
+                    else
+                    {
+                        $errorEmail = empty($errorEmail) ? MESSAGES['emailtype_error'] : $errorEmail;
                     }
                 }
                 else
                 {
                     $errors = empty($errors) ? MESSAGES['input_empty'] : $errors;
-                    
                 }
-                
             }
             $data['errors'] = $errors;
-           
+            $data['errorEmail'] = $errorEmail;
+            $data['errorName'] = $errorName;
+            $data['errorPassword'] = $errorPassword;
             return $this->view('user.register', $data);
         }
 

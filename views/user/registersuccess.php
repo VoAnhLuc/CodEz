@@ -10,7 +10,7 @@
 <body>
     <div class="box alert alert-success">
         <h2> You have successfully registered </h2><br/>
-        <h3> Please, <a href="index.php?controller=user&action=login">Click here to Log In </a>  
+        <h3> Please, <a href="<?php echo ROUTES['user_login'] ?>">Click here to Log In </a>  
     </div>
 </body>
 </html>

@@ -19,9 +19,11 @@
         public function addUser($username, $password, $fullname, $email)
         {
             $this->db->createConnection();
-            $result = $this->db->executeQuery("INSERT INTO `users` VALUES (NULL, '$username', '$password', '$fullname',
-                                                                            '$email', NULL, NULL, NULL, NULL
-                                                                            , NULL, NULL, NULL, NULL, NULL)");
+            $result = $this->db->executeQuery("INSERT INTO `users` (`username`, `password`, `fullname`, `email`, `dob`, `avatar`,
+                                                                    `cover`, `website`, `heading`, `about`, `facebook`, `instagram`,
+                                                                     `twitter`)
+                                                VALUES ('$username', '$password', '$fullname','$email', NULL, NULL, NULL, NULL, NULL,
+                                                        NULL, NULL, NULL, NULL)");
              $this->db->closeConnection(null);
             return $result;
         }
@@ -32,5 +34,12 @@
             $user = mysqli_fetch_assoc($result);
             $this->db->closeConnection($result);
             return $user;
+        }
+        public function test_input($data)
+        {
+            $data = trim($data);
+            $data = stripslashes($data);
+            $data = htmlspecialchars($data);
+            return $data;
         }
     }
