@@ -30,6 +30,7 @@
                     '" . $product['price'] . "',
                     '" . $product['thumb'] . "',
                     '" . $product['code'] . "',
+                    '" . $product['is_support'] . "',
                     '" . time() . "',
                     '" . time() . "'
                 )", true);

@@ -39,11 +39,11 @@
                                     <div class="create-product__item">
                                         <label for="title">Tên sản phẩm <i class="color--red">*</i></label>
                                         <input type="text" name="title" id="title" class="form-control"
-                                            value="<?php echo !empty($product) ? $product['title'] : '' ?>" required>
+                                            value="<?php echo $product['title'] ?>" required>
                                     </div>
                                     <div class="create-product__item">
                                         <label for="content">Nội dung <i class="color--red">*</i></label>
-                                        <textarea rows="5" name="content" id="content" class="form-control" required><?php echo !empty($product) ? $product['content'] : '' ?></textarea>
+                                        <textarea rows="5" name="content" id="content" class="form-control" required><?php echo $product['content'] ?></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -55,7 +55,7 @@
                                     <div class="create-product__item">
                                         <label for="category">Thể loại <i class="color--red">*</i></label>
                                         <select class="form-control" name="category"
-                                            value="<?php echo !empty($product) ? $product['category'] : '' ?>">
+                                            value="<?php echo $product['category'] ?>">
                                             <option value="1">C#</option>
                                             <option value="2">PHP</option>
                                             <option value="3">JAVA</option>
@@ -64,12 +64,12 @@
                                     </div>
                                     <div class="create-product__item">
                                         <label for="description">Mô tả ngắn <i class="color--red">*</i></label>
-                                        <textarea rows="3" name="description" id="description" class="form-control" required><?php echo !empty($product) ? $product['description'] : '' ?></textarea>
+                                        <textarea rows="3" name="description" id="description" class="form-control" required><?php echo $product['description'] ?></textarea>
                                     </div>
                                     <div class="create-product__item">
                                         <label for="price">Giá sản phẩm <i class="color--red">*</i></label>
                                         <input type="number" name="price" id="price" class="form-control"
-                                            value="<?php echo !empty($product) ? $product['price'] : '' ?>"
+                                            value="<?php echo $product['price'] ?>"
                                             required>
                                     </div>
                                     <div class="create-product__item">
@@ -81,8 +81,8 @@
                                         <input type="file" name="code" id="code" class="form-control" required>
                                     </div>
                                     <div class="create-product__item">
-                                        <input type="checkbox" name="isSupport" id="isSupport">
-                                        <label for="isSupport">Hỗ trợ cập nhật bản mới nhất sau khi mua</label>
+                                        <input type="checkbox" name="is_support" id="is_support" <?php echo ($product['is_support'] ? 'checked' : '') ?>>
+                                        <label for="is_support">Hỗ trợ cập nhật bản mới nhất sau khi mua</label>
                                     </div>
                                 </div>
                             </div>
