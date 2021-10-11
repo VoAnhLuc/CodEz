@@ -63,7 +63,7 @@
                 $data['product']['content'] = htmlspecialchars($_POST['content']);
                 $data['product']['description'] = htmlspecialchars($_POST['description']);
                 $data['product']['price'] = intval($_POST['price']);
-                $data['product']['is_support'] = isset($_POST['isSupport']);
+                $data['product']['is_support'] = isset($_POST['is_support']);
 
                 // call method to upload file
                 if (!Func::uploadFile('images.products', 'thumb', $data['product']['thumb'], $message, true))
