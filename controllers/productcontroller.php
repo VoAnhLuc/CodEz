@@ -40,70 +40,63 @@
 
         public function create()
         {
-            $error = '';
+            $data = [
+                'title' => 'Đăng bán sản phẩm',
+                'error' => '',
+                'product' => [
+                    'category_id' => 1,
+                    'user_id' => 1,
+                    'title' => '',
+                    'content' => '',
+                    'description' => '',
+                    'price' => 0,
+                    'thumb' => '',
+                    'code' => '',
+                    'is_support' => false
+                ]
+            ];
 
             if (isset($_POST['submit']))
             {
-                $category_id = intval($_POST['category']);
-                $user_id = 1; // handle later
-                $title = htmlspecialchars($_POST['title']);
-                $content = htmlspecialchars($_POST['content']);
-                $description = htmlspecialchars($_POST['description']);
-                $price = intval($_POST['price']);
-                $isSupport = isset($_POST['isSupport']);
+                $data['product']['category'] = intval($_POST['category']);
+                $data['product']['title'] = htmlspecialchars($_POST['title']);
+                $data['product']['content'] = htmlspecialchars($_POST['content']);
+                $data['product']['description'] = htmlspecialchars($_POST['description']);
+                $data['product']['price'] = intval($_POST['price']);
+                $data['product']['is_support'] = isset($_POST['isSupport']);
 
                 // call method to upload file
-                $thumb = '';
-                $thumb_message = '';
-                $code = '';
-                $code_message = '';
-                if (!Func::uploadFile('images.products', 'thumb', $thumb, $thumb_message, true))
+                if (!Func::uploadFile('images.products', 'thumb', $data['product']['thumb'], $message, true))
                 {
-                    $error = empty($error) ? $thumb_message : $error;
-                }
-                if (!Func::uploadFile('files.products', 'code', $code, $code_message))
-                {
-                    $error = empty($error) ? $code_message : $error;
+                    $data['error'] = $message;
+                    return $this->view('product.create', $data);
                 }
 
-                // add to array to pass to model
-                $product = [
-                    'category_id' => $category_id,
-                    'user_id' => $user_id,
-                    'title' => $title,
-                    'content' => $content,
-                    'description' => $description,
-                    'price' => $price,
-                    'thumb' => $thumb,
-                    'code' => $code,
-                    'isSupport' => $isSupport
-                ];
+                if (!Func::uploadFile('files.products', 'code', $data['product']['code'], $message))
+                {
+                    $data['error'] = $message;
+                    Func::removeFile($data['product']['thumb']);
+                    return $this->view('product.create', $data);
+                }
 
                 // check the input value
-                if (!Func::isAnyEmptyValue($product))
+                if (Func::isAnyEmptyValue($data['product']))
                 {
-                    // call model to insert to database
-                    $product_id = $this->productModel->addProduct($product); // this method return boolean, use this to check if insert ok or not
-                    if ($product_id)
-                    {
-                        // if add success, redirect to detail product
-                        header('Location: ' . ROUTES['product_detail'] . '&id=' . $product_id. '');
-                    }
-                    else
-                    {
-                        return $this->view('404');
-                    }
+                    Func::removeFile($data['product']['thumb']);
+                    Func::removeFile($data['product']['code']);
+                    $data['error'] = MESSAGES['input_empty'];
+                    return $this->view('product.create', $data);
                 }
-                else
-                {
-                    $error = empty($error) ? MESSAGES['input_empty'] : $error;
-                }
-            }
 
-            $data = [
-                'title' => 'Đăng bán sản phẩm',
-                'error' => $error
-            ];
+                // call model to insert to database
+                $product_id = $this->productModel->addProduct($data['product']);
+                if (!$product_id)
+                {
+                    return $this->view('404');
+                }
+                
+                header('Location: ' . ROUTES['product_detail'] . '&id=' . $product_id. '');
+            }
 
             return $this->view('product.create', $data);
         }
