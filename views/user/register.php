@@ -42,34 +42,34 @@
                                                 <div class="row dangki">
                                                     <div class="col-lg-6 col-md-6 col-sm-6">
                                                         <label for="yourname">Your Name</label>
-                                                        <input name="yourname" class="form-control" type="text" placeholder="Enter your name" >
+                                                        <input name="yourname" class="form-control" type="text" placeholder="Enter your name" required >
                                                     </div>
                                                     <div class="col-lg-6 col-md-6 col-sm-6 ">
                                                         <label for="username">Username</label>
-                                                        <input name="username" class="form-control" type="text" placeholder="Enter your username" >
+                                                        <input name="username" class="form-control" type="text" placeholder="Enter your username" required >
                                                         <?php echo (!empty($errorName) ? '<label style="color:red;"> *' .$errorName. '</label>' : $errorName); ?>
                                                     </div>
                                                 </div>
                                                 <div class="row dangki">
                                                     <div class="col-lg-6 col-md-6 col-sm-6">
                                                         <label for="email">E-mail Address</label>
-                                                        <input name="email" class="form-control" type="email" placeholder="Enter your e-mail address">
+                                                        <input name="email" class="form-control" type="email" placeholder="Enter your e-mail address" required >
                                                         <?php echo (!empty($errorEmail) ? '<label style="color:red;"> *' .$errorEmail. '</label>' : $errorEmail); ?>
                                                     </div>
                                                     <div class="col-lg-6 col-md-6 col-sm-6 ">
                                                         <label for="password">Password</label>
-                                                        <input name="password" class="form-control" type="password" placeholder="Enter your Password" >
+                                                        <input name="password" class="form-control" type="password" placeholder="Enter your Password" required >
                                                         <?php echo (!empty($errorPassword) ? '<label style="color:red;"> *' .$errorPassword. '</label>' : $errorPassword); ?>
                                                     </div>
                                                 </div>
                                                 <div class="row dangki">
                                                     <div class="col-lg-6 col-md-6 col-sm-6">
                                                         <label for="confirmpassword">Confirm Password</label>
-                                                        <input name="confirmpassword" class="form-control" type="password" placeholder="Enter confirm password" >
+                                                        <input name="confirmpassword" class="form-control" type="password" placeholder="Enter confirm password" required >
                                                     </div>
                                                     <div class="col-lg-6 col-md-6 col-sm-6 ">
                                                         <label for="">User Type *</label>
-                                                        <select name="usertype" class="form-control chonlua" >
+                                                        <select name="usertype" class="form-control chonlua" required >
                                                             <option value=""></option>
                                                             <option value="Customer">Customer</option>
                                                             <option value="Vendor">Vendor</option>
