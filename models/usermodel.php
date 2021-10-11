@@ -31,5 +31,6 @@
             $result = $this->db->executeQuery("SELECT * FROM `users` WHERE `email` =' $email' OR `username` = '$username' ");
             $user = mysqli_fetch_assoc($result);
             $this->db->closeConnection($result);
+            return $user;
         }
     }
