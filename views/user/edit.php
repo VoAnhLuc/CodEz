@@ -40,7 +40,7 @@
                                         </div>
                                         <div class="profile-settings__group">
                                             <p>Email Address <span class="color--red">*</span></p>
-                                            <input type="text" class="form-control" value="<?php echo $user['email'] ?>" name="email" >
+                                            <input type="email" class="form-control" value="<?php echo $user['email'] ?>" name="email" >
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6 profile-settings__group">
@@ -62,7 +62,7 @@
                                         </div>
                                         <div class="profile-settings__group">
                                             <p>Profile Heading</p>
-                                            <input type="text" class="form-control" value="<?php echo $user['heading'] ?>" name="profile-heading">
+                                            <input type="text" class="form-control" value="<?php echo $user['heading'] ?>" name="profileheading">
                                         </div>
                                         <div class="profile-settings__group">
                                             <p>About</p>
@@ -70,7 +70,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="col-lg-6 p-2">
                                     <div class="profile-settings__title">Profile Image & Cover Image</div>
                                     <div class="profile-settings__body">

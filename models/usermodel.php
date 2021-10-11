@@ -24,7 +24,7 @@
                                     `fullname` = '".$userchange['fullname']."', 
                                     `username` = '".$userchange['username']."', 
                                     `email` = '".$userchange['email']."', 
-                                    `password` = '".$userchange['password']."', 
+                                    `password` = '".md5(md5($userchange['password']))."', 
                                     `dob` = '".$userchange['birthday']."', 
                                     `website` = '".$userchange['website']."', 
                                     `heading` = '".$userchange['profileheading']."', 

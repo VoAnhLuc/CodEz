@@ -57,23 +57,20 @@
                 return $this->view('404');
             }
                
-            if(isset($_POST['submitchangeuser'])){
-                
-                $id = $_GET['id'];
-                
-                $fullname = $_POST['fullname'];
-                $username = $_POST['username'];
-                $email = $_POST['email'];
-                $password = $_POST['password'];
-                $repassword = $_POST['repassword'];
+            if(isset($_POST['submitchangeuser']))
+            {      
+                $fullname = htmlspecialchars($_POST['fullname']);
+                $username = htmlspecialchars($_POST['username']);
+                $email = htmlspecialchars($_POST['email']);
+                $password = htmlspecialchars($_POST['password']);
+                $repassword = htmlspecialchars($_POST['repassword']);
                 $birthday = $_POST['birthday'];
-                $website = $_POST['website'];
-                $profileheading = $_POST['profile-heading'];
-                $about = $_POST['about'];
-                $facebook = $_POST['facebook'];
-                $instagram = $_POST['instagram'];
-                $twitter = $_POST['twitter'];
-
+                $website = htmlspecialchars($_POST['website']);
+                $profileheading = htmlspecialchars($_POST['profileheading']);
+                $about = htmlspecialchars($_POST['about']);
+                $facebook = htmlspecialchars($_POST['facebook']);
+                $instagram = htmlspecialchars($_POST['instagram']);
+                $twitter = htmlspecialchars($_POST['twitter']);
 
                 $error = '';
                 $avatar = '';
@@ -81,7 +78,6 @@
                 if (!Func::uploadFile('images.users.avatars','profile-image-avatar', $avatar, $avatar_message, true))
                 {
                     $error = empty($error) ? $avatar_message : $error;
-
                 }
 
                 if(empty($avatar)){
@@ -99,11 +95,8 @@
                     $cover = $user['cover'];
                 }
 
-
                 $userchange = [
-                    
                     'id' => $id,
-                    
                     'fullname' => $fullname,
                     'username' => $username,
                     'email' => $email,
@@ -118,28 +111,22 @@
                     'twitter' => $twitter,
                     'avatar' => $avatar,
                     'cover' => $cover
-                    
                 ];  
                 
-                if(!empty($fullname) && !empty($username) &&  !empty($email) &&  !empty($password) &&  !empty($repassword) &&  !empty($birthday) &&  !empty($website) &&  !empty($profileheading) &&  !empty($about) &&  !empty($facebook) &&  !empty($instagram)  &&  !empty($twitter) 
+                if(!empty($fullname) && !empty($username) &&  !empty($email) &&  !empty($password) &&  !empty($repassword) &&  !empty($birthday)  &&  !empty($profileheading) 
                 ){
-                    
-                    if($password == $repassword)  {
-                        
+                    if($password == $repassword)  {  
                         $this->userModel->updateUser($userchange);
-                        header('Location: index.php?controller=user&id='.$id.'');
-                       
+                        header('Location: index.php?controller=user&id='.$id.'');       
                     }     
-
                     else{
-                        echo "<script type='text/javascript'>alert('Vui lòng nhập password giống repassword !');</script>";
+                        header('Location: index.php?controller=user&action=edit&id='.$id.'');
                     }           
                 }
                 else{
-                    echo "<script type='text/javascript'>alert('Vui lòng không để trống một trường nào !');</script>";
+                    header('Location: index.php?controller=user&action=edit&id='.$id.'');
                 }
             }
-            
             $data = [
                 'id' => $id,
                 'title' => 'Edit Profile',
