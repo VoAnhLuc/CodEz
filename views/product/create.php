@@ -99,6 +99,7 @@
     </main>
 
     <?php include './common/footer.php'; ?>
+    <script>CKEDITOR.replace('content');</script>
 
 </body>
 

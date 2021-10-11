@@ -49,7 +49,7 @@
                             <div class="card cardcontent mt-4">    
                                 <div class="card-body gioithieusp mt-4">
                                     <h2><?php echo $product['title'] ?></h2>
-                                    <?php echo $product['content'] ?>
+                                    <?php echo htmlspecialchars_decode($product['content']) ?>
                                 </div>
 
                             </div>                
