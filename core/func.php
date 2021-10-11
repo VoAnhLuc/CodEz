@@ -10,7 +10,7 @@
         {
             foreach($arr as $value)
             {
-                if (empty($value))
+                if (empty($value) && gettype($value) != 'boolean')
                 {
                     return true;
                 }
@@ -18,7 +18,14 @@
             return false;
         }
 
-        /* Upload file */
+        /* 
+            This method use for upload file.
+            $dir: direction to put the file in.
+            $inputName: the name of input file in form html (view).
+            $outputName: direction + name of the file after upload.
+            $message: message of upload file, include error and success.
+            $isImageUpload: boolean, just a param to specify upload image or file.
+        */
         private const UPLOAD_FILE_TYPES = [
             "image" => [
                 "image/jpeg" => ".jpg",
@@ -66,5 +73,37 @@
 
             $message = MESSAGES['upload_file_success'];
             return true;
+        }
+
+        /*
+            This method use for remove file in the location provided. 
+        */
+        public static function removeFile($location)
+        {
+            if (!empty($location))
+            {
+                return unlink($location);
+            }
+            return false;
+        }
+
+        /*
+            This method use for check a value in range
+            Return true if in range.
+            The other cases return false.
+        */
+        public static function isInRange($value, $start, $end = 2147483647)
+        {
+            switch (gettype($value))
+            {
+                case 'string':
+                    return strlen($value) >= $start && strlen($value) <= $end;
+                case 'integer':
+                    return $value >= $start && $value <= $end;
+                case 'double':
+                    return $value >= $start && $value <= $end;
+                default:
+                    return false;
+            }
         }
     }
