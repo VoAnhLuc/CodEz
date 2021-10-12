@@ -43,9 +43,9 @@
         public function register()
         {
             $data = [
-                'title' => 'Register'
+                'title' => 'Register',
+                'errors' => '',
             ];
-
             if(isset($_POST['submit']))
             {
                 $username = Func::getInput($_POST['username']);
@@ -78,7 +78,7 @@
                 }
                 
                 // kiểm tra yêu cầu về tên
-                if(!preg_match("/^[a-zA-Z0-9]{1,30}$/",$username))
+                if(!Func::checkUserName($username))
                 { 
                     $data['errors'] = MESSAGES['nametype_error'];
                     return $this->view('user.register', $data);
@@ -92,7 +92,7 @@
                 }
 
                 // kiểm tra các yêu cầu về mật khẩu
-                if(!preg_match("/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/",$password))
+                if(!Func::checkPassword($password))
                 {
                     $data['errors'] = MESSAGES['passwordtype_error'];
                     return $this->view('user.register', $data);
