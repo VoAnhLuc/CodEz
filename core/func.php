@@ -87,17 +87,25 @@
         public static function checkPassword($password)
         {
             if(preg_match("/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/",$password))
+            {
                 return true;
+            }
             else
+            {
                 return false;
+            }
         }
 
         public static function checkUserName($username)
         {
             if(preg_match("/^[a-zA-Z0-9]{1,30}$/",$username))
+            {
                 return true;
-            else 
+            }
+            else
+            {
                 return false;
+            }
         }
         /*
             This method use for remove file in the location provided. 
