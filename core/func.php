@@ -67,4 +67,13 @@
             $message = MESSAGES['upload_file_success'];
             return true;
         }
+
+        // Test Input
+        public static function getInput($data)
+        {
+            $data = trim($data);
+            $data = stripslashes($data);
+            $data = htmlspecialchars($data);
+            return $data;
+        }
     }

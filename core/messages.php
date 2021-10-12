@@ -6,11 +6,11 @@
 
         /* form */
         'input_empty' => 'Vui lòng điền đầy đủ các thông tin bắt buộc!',
-        'email_username_used' => 'Your Email or Your Username has used',
-        'password_confirmpassword_notsame' => 'Password and Confirm Password have to the same',
-        'emailtype_error' => 'Type of your email is not valid',
-        'nametype_error' => 'Only lower/upper letters and numbers allowed (example: Duchung0908)',
-        'passwordtype_error' => 'Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character',
+        'username_used' => 'Username của bạn dã được sử dụng',
+        'password_confirmpassword_notsame' => 'Mật khẩu và Xác nhận mật khẩu phải khớp với nhau',
+        'emailtype_error' => 'Email của bạn không hợp lệ',
+        'nametype_error' => 'Tên chỉ được dùng chữ hoa/thường hoặc số và không có khoảng trắng (ví dụ: Duchung0908)',
+        'passwordtype_error' => 'Mật khẩu tối thiểu 8 ký tự, ít nhất 1 chữ hoa, 1 chữ thường, 1 số và 1 ký tự đặc biệt',
 
         /* upload file */
         'upload_file_error' => 'Có lỗi xảy ra! Upload file thất bại',
