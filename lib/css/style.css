@@ -727,10 +727,8 @@ main{
   line-height: 50px;
   padding: 0px 28px;
 }
-.cardcontent li {
-  text-align: center;
-  width: 145px;
-  border-right: gray 1px solid;
+.card-body ul {
+  list-style: circle;
 }
 .cardcontent .gioithieusp {
   text-align: left;
