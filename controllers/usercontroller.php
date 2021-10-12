@@ -60,8 +60,6 @@
             if(isset($_POST['submitchangeuser']))
             {      
                 $fullname = htmlspecialchars($_POST['fullname']);
-                $username = htmlspecialchars($_POST['username']);
-                $email = htmlspecialchars($_POST['email']);
                 $password = htmlspecialchars($_POST['password']);
                 $repassword = htmlspecialchars($_POST['repassword']);
                 $birthday = $_POST['birthday'];
@@ -98,8 +96,6 @@
                 $userchange = [
                     'id' => $id,
                     'fullname' => $fullname,
-                    'username' => $username,
-                    'email' => $email,
                     'password' => $password,
                     'repassword' => $repassword,
                     'birthday' => $birthday,
@@ -113,18 +109,18 @@
                     'cover' => $cover
                 ];  
                 
-                if(!empty($fullname) && !empty($username) &&  !empty($email) &&  !empty($password) &&  !empty($repassword) &&  !empty($birthday)  &&  !empty($profileheading) 
+                if(!empty($fullname) && !empty($password) &&  !empty($repassword) &&  !empty($birthday)  &&  !empty($profileheading) 
                 ){
                     if($password == $repassword)  {  
                         $this->userModel->updateUser($userchange);
                         header('Location: index.php?controller=user&id='.$id.'');       
                     }     
                     else{
-                        header('Location: index.php?controller=user&action=edit&id='.$id.'');
+                        ROUTES['user_edit']; 
                     }           
                 }
                 else{
-                    header('Location: index.php?controller=user&action=edit&id='.$id.'');
+                    ROUTES['user_edit'];
                 }
             }
             $data = [

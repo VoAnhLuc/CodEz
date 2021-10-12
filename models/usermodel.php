@@ -22,8 +22,6 @@
 
             $result = $this->db->executeNonQuery(" UPDATE `users` set 
                                     `fullname` = '".$userchange['fullname']."', 
-                                    `username` = '".$userchange['username']."', 
-                                    `email` = '".$userchange['email']."', 
                                     `password` = '".md5(md5($userchange['password']))."', 
                                     `dob` = '".$userchange['birthday']."', 
                                     `website` = '".$userchange['website']."', 

@@ -25,7 +25,7 @@
             <section class="profile-settings">
                 <div class="container">
                     <div class="row">
-                        <form  method="post" action="index.php?controller=user&action=edit&id=<?php echo $user['id'] ?>" enctype="multipart/form-data">
+                        <form  method="post" action="<?php echo ROUTES['user_edit'].'&id='.$id; ?>" enctype="multipart/form-data">
                             <div class="d-lg-flex">
                                 <div class="col-lg-6 p-2">
                                     <div class="profile-settings__title">Profile Information</div>
@@ -36,11 +36,11 @@
                                         </div>
                                         <div class="profile-settings__group">
                                             <p>Username <span class="color--red">*</span></p>
-                                            <input type="text" class="form-control" value="<?php echo $user['username'] ?>" name="username" >
+                                            <input type="text" class="form-control" value="<?php echo $user['username'] ?>" name="username" disabled>
                                         </div>
                                         <div class="profile-settings__group">
                                             <p>Email Address <span class="color--red">*</span></p>
-                                            <input type="email" class="form-control" value="<?php echo $user['email'] ?>" name="email" >
+                                            <input type="email" class="form-control" value="<?php echo $user['email'] ?>" name="email" disabled >
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6 profile-settings__group">
