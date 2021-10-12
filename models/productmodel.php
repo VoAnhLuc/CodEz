@@ -20,7 +20,7 @@
         public function addProduct($product)
         {
             $this->db->createConnection();
-            $result = $this->db->executeNonQuery("INSERT INTO `products` VALUES (
+            $this->db->executeNonQuery("INSERT INTO `products` VALUES (
                     null,
                     '" . $product['category_id'] . "',
                     '" . $product['user_id'] . "',
@@ -30,10 +30,12 @@
                     '" . $product['price'] . "',
                     '" . $product['thumb'] . "',
                     '" . $product['code'] . "',
+                    '" . $product['is_support'] . "',
                     '" . time() . "',
                     '" . time() . "'
                 )", true);
+            $product_id = $this->db->getInsertId();
             $this->db->closeConnection();
-            return $result;
+            return $product_id;
         }
     }
