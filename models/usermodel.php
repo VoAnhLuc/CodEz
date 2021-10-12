@@ -37,5 +37,25 @@
             $this->db->closeConnection();
             return $result;
         }
+
+        public function updateUserNoPass($userchange){
+            $this->db->createConnection();
+
+            $result = $this->db->executeNonQuery(" UPDATE `users` set 
+                                    `fullname` = '".$userchange['fullname']."', 
+                                    `dob` = '".$userchange['birthday']."', 
+                                    `website` = '".$userchange['website']."', 
+                                    `heading` = '".$userchange['profileheading']."', 
+                                    `about` = '".$userchange['about']."', 
+                                    `facebook` = '".$userchange['facebook']."', 
+                                    `instagram` = '".$userchange['instagram']."', 
+                                    `twitter` = '".$userchange['twitter']."', 
+                                    `avatar` = '".$userchange['avatar']."',
+                                    `cover` = '".$userchange['cover']."'
+                                    where `id`  ='".$userchange['id']."' ");
+            
+            $this->db->closeConnection();
+            return $result;
+        }
     }
 ?>
