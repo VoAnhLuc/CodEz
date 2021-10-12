@@ -113,14 +113,14 @@
                 ){
                     if($password == $repassword)  {  
                         $this->userModel->updateUser($userchange);
-                        header('Location: index.php?controller=user&id='.$id.'');       
+                        header('Location: ' . ROUTES['user'] . '&id=' .$id. ''); 
                     }     
                     else{
-                        ROUTES['user_edit']; 
+                        header('Location: ' . ROUTES['user'] . '&action=edit' . '&id=' .$id. ''); 
                     }           
                 }
                 else{
-                    ROUTES['user_edit'];
+                    header('Location: ' . ROUTES['user'] . '&action=edit' . '&id=' .$id. ''); 
                 }
             }
             $data = [
