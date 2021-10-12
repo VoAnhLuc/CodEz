@@ -6,7 +6,7 @@
 
         /* form */
         'input_empty' => 'Vui lòng điền đầy đủ các thông tin bắt buộc!',
-        'username_used' => 'Username của bạn dã được sử dụng',
+        'username_used' => 'Username của bạn đã được sử dụng',
         'password_confirmpassword_notsame' => 'Mật khẩu và Xác nhận mật khẩu phải khớp với nhau',
         'emailtype_error' => 'Email của bạn không hợp lệ',
         'nametype_error' => 'Tên chỉ được dùng chữ hoa/thường hoặc số và không có khoảng trắng (ví dụ: Duchung0908)',
