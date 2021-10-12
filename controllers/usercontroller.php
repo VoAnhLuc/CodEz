@@ -112,8 +112,14 @@
                 if(!empty($fullname) && !empty($password) &&  !empty($repassword) &&  !empty($birthday)  &&  !empty($profileheading) 
                 ){
                     if($password == $repassword)  {  
-                        $this->userModel->updateUser($userchange);      
-                        header('Location: ' . ROUTES['user'] . '&id=' .$id. ''); 
+                        if(Func::isValidMd5($password) && Func::isValidMd5($password)){
+                            $this->userModel->updateUserNoPass($userchange);      
+                            header('Location: ' . ROUTES['user'] . '&id=' .$id. ''); 
+                        }
+                        else{
+                            $this->userModel->updateUser($userchange);      
+                            header('Location: ' . ROUTES['user'] . '&id=' .$id. ''); 
+                        }
                     }     
                     else{ 
                         header('Location: ' . ROUTES['user'] . '&action=edit' . '&id=' .$id. ''); 
