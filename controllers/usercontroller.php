@@ -122,11 +122,11 @@
                         }
                     }     
                     else{ 
-                        header('Location: ' . ROUTES['user'] . '&action=edit' . '&id=' .$id. ''); 
+                        header('Location: ' . ROUTES['user_edit']  . '&id=' .$id. ''); 
                     }           
                 }
                 else{
-                    header('Location: ' . ROUTES['user'] . '&action=edit' . '&id=' .$id. ''); 
+                    header('Location: ' . ROUTES['user_edit']  . '&id=' .$id. ''); 
                 }
             }
             $data = [
