@@ -31,13 +31,17 @@
 
         public function login()
         {
-            // hello
-
-            $data = [
-                'title' => 'Login'
-            ];
-
-            return $this->view('user.login', $data);
+            $data = ['title' => 'Login'];
+            $result = $this->userModel->getLogin();
+            
+            if($result == 'login')
+            {
+                return $this->view('home.index', $data = ['CodeZ.Shop - Coding is hard? Just buy it.']);
+            }
+            else
+            {
+                return $this->view('user.login', $data);
+            }
         }
 
         public function register()
