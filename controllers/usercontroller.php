@@ -40,7 +40,7 @@
             }
             else
             {
-                return $this->view('user.login', $data);
+                return $this->view('user.Login', $data);
             }
         }
 
