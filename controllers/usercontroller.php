@@ -30,13 +30,23 @@
         }
 
         public function login()
-        {
+        {            
             $data = ['title' => 'Login'];
-            $result = $this->userModel->getLogin();
-            
-            if($result == 'login')
+
+            if(isset($_POST['submit']))
             {
-                return $this->view('home.index', $data = ['CodeZ.Shop - Coding is hard? Just buy it.']);
+                $username = Func::getInput($_POST['username']);
+                $password = Func::getInput(($_POST['password']));
+                
+                $result = $this->userModel->getLogin($username, $password);
+                if($result == 'login')
+                {
+                    return $this->view('home.index', $data = ['CodeZ.Shop - Coding is hard? Just buy it.']);
+                }
+                else
+                {
+                    return $this->view('user.Login', $data);
+                }
             }
             else
             {

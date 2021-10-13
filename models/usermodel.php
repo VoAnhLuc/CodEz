@@ -17,17 +17,13 @@
             return $user;
         }
 
-        public function getLogin()
+        public function getLogin($username, $password)
         {
-            if(isset($_REQUEST['username']) && isset($_REQUEST['password']))
-            {
-                $username = $_REQUEST['username'];
-                $password = $_REQUEST['password'];
-
                 $this->db->createConnection();
-                $result = $this->db->executeQuery("SELECT * FROM `users` WHERE `username` = '$username' AND 'password' = '$password'");
-
-                if($result != null)
+                $result = $this->db->executeQuery("SELECT * FROM `users` WHERE `username` = '$username' AND `password` = '$password'");
+                $user = mysqli_fetch_assoc($result);
+                $this->db->closeConnection($result);
+                if(!empty($user))
                 {
                     return 'login';
                 }
@@ -35,7 +31,6 @@
                 {
                     return 'invalid user';
                 }
-            }
         }    
         public function updateUser($userchange){
             $this->db->createConnection();

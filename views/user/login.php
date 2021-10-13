@@ -46,7 +46,7 @@
                                     <label for="remember" class="label_text">Remember Me</label>
                                 </div>
                                 <div class="login__group">
-                                    <button type="submit" name="submit2" class="btn btn-sm btn__theme">Đăng nhập</button>
+                                    <button type="submit" name="submit" class="btn btn-sm btn__theme">Đăng nhập</button>
                                 </div>
                                 <div class="login__assist">
                                     <p><a href="./forgot.php">Forgot Your Password?</a></p>
