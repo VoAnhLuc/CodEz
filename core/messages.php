@@ -11,6 +11,7 @@
         'emailtype_error' => 'Email của bạn không hợp lệ',
         'nametype_error' => 'Tên chỉ được dùng chữ hoa/thường hoặc số và không có khoảng trắng (ví dụ: Duchung0908)',
         'passwordtype_error' => 'Mật khẩu tối thiểu 8 ký tự, ít nhất 1 chữ hoa, 1 chữ thường, 1 số và 1 ký tự đặc biệt',
+        'category_not_found' => 'Không tìm thấy category!',
 
         /* upload file */
         'upload_file_error' => 'Có lỗi xảy ra! Upload file thất bại',

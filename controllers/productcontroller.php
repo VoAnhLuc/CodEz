@@ -2,10 +2,14 @@
     class ProductController extends BaseController
     {
         private $productModel;
+        private $categoryModel;
         public function __construct()
         {
             $this->loadModel('productmodel');
             $this->productModel = new ProductModel;
+
+            $this->loadModel('categoryModel');
+            $this->categoryModel = new CategoryModel;
         }
 
         public function index()
@@ -40,12 +44,15 @@
 
         public function create()
         {
+            $categories = $this->categoryModel->getAllCategories();
+
             $data = [
                 'title' => 'Đăng bán sản phẩm',
                 'error' => '',
                 'is_create' => true,
+                'categories' => $categories,
                 'product' => [
-                    'category_id' => 1,
+                    'category_id' => 0,
                     'user_id' => 1,
                     'title' => '',
                     'content' => '',
@@ -66,6 +73,19 @@
                 $data['product']['price'] = intval($_POST['price']);
                 $data['product']['is_support'] = isset($_POST['is_support']);
 
+
+                if (Func::isAnyEmptyValue($data['product']))
+                {
+                    $data['error'] = MESSAGES['input_empty'];
+                    return $this->view('product.create', $data);
+                }
+
+                if (!in_array($data['product']['category_id'], array_column($categories, 'id')))
+                {
+                    $data['error'] = MESSAGES['category_not_found'];
+                    return $this->view('product.create', $data);
+                }
+
                 if (!Func::uploadFile('images.products', 'thumb', $data['product']['thumb'], $message, true))
                 {
                     $data['error'] = $message;
@@ -79,17 +99,11 @@
                     return $this->view('product.create', $data);
                 }
 
-                if (Func::isAnyEmptyValue($data['product']))
-                {
-                    Func::removeFile($data['product']['thumb']);
-                    Func::removeFile($data['product']['code']);
-                    $data['error'] = MESSAGES['input_empty'];
-                    return $this->view('product.create', $data);
-                }
-
                 $product_id = $this->productModel->addProduct($data['product']);
                 if (!$product_id)
                 {
+                    Func::removeFile($data['product']['thumb']);
+                    Func::removeFile($data['product']['code']);
                     return $this->view('404');
                 }
                 
@@ -112,10 +126,13 @@
                 return $this->view('404');
             }
 
+            $categories = $this->categoryModel->getAllCategories();
+
             $data = [
                 'title' => 'Chỉnh sửa sản phẩm',
                 'error' => '',
                 'is_create' => false,
+                'categories' => $categories,
                 'product' => $product
             ];
 
@@ -128,15 +145,21 @@
                 $data['product']['price'] = intval($_POST['price']);
                 $data['product']['is_support'] = isset($_POST['is_support']);
 
-                if (!Func::uploadFile('images.products', 'thumb', $data['product']['thumb'], $message, true))
-
-                if (!Func::uploadFile('files.products', 'code', $data['product']['code'], $message));
-
                 if (Func::isAnyEmptyValue($data['product']))
                 {
                     $data['error'] = MESSAGES['input_empty'];
                     return $this->view('product.create', $data);
                 }
+                
+                if (!in_array($data['product']['category_id'], array_column($categories, 'id')))
+                {
+                    $data['error'] = MESSAGES['category_not_found'];
+                    return $this->view('product.create', $data);
+                }
+
+                if (!Func::uploadFile('images.products', 'thumb', $data['product']['thumb'], $message, true))
+
+                if (!Func::uploadFile('files.products', 'code', $data['product']['code'], $message));
 
                 if (!$this->productModel->updateProduct($data['product']))
                 {

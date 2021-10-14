@@ -56,10 +56,12 @@
                                         <label for="category_id">Thể loại <i class="color--red">*</i></label>
                                         <select class="form-control" name="category_id">
                                             <option value="<?php echo $product['category_id'] ?>">Chọn Category</option>
-                                            <option value="1">C#</option>
-                                            <option value="2">PHP</option>
-                                            <option value="3">JAVA</option>
-                                            <option value="4">JAVASCRIPT</option>
+                                            <?php
+                                                foreach($categories as $category)
+                                                {
+                                                    echo '<option value="' . $category['id'] . '">' . $category['name'] . '</option>';
+                                                }
+                                            ?>
                                         </select>
                                     </div>
                                     <div class="create-product__item">

@@ -49,6 +49,7 @@
                                                 INNER JOIN `categories` ON `products`.`category_id` = `categories`.`id`
                                                 ORDER BY $orderby
                                                 LIMIT $limit");
+                                                
             $products = array();
             while ($product = mysqli_fetch_assoc($result))
             {
@@ -56,6 +57,7 @@
             }
 
             $this->db->closeConnection($result);
+
             return $products;
         }
 
