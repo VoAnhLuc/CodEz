@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CodeZ.Shop - Coding is hard? Just buy it.</title>
+    <title><?php echo $title ?></title>
     <link rel="stylesheet" href="./lib/css/reset.css">
     <link rel="stylesheet" href="./lib/css/style.css">
     <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css">
@@ -61,20 +61,21 @@
                     </div>
 
                     <?php
-                        for($i=1;$i<9;$i++) {
+                        foreach ($newest_products as $item)
+                        {
                             echo '
                                 <div class="col-lg-3 col-md-4 col-sm-6">
                                     <div class="item__item">
                                         <div class="item__thumb">
-                                            <a href="index.php?controller=product&action=detail"><img src="./images/items/item-' . $i . '.jpg" class="item__thumbnail"></a>
+                                            <a href="' . ROUTES['product_detail'] . '&id=' . $item['id'] . '"><img src="' . $item['thumb'] . '" class="item__thumbnail"></a>
                                         </div>
                                         <div class="item__info">
                                             <div class="item__title">
-                                                <a href="index.php?controller=product&action=detail">Full Source Code Forum PHP...</a>
+                                                <a href="' . ROUTES['product_detail'] . '&id=' . $item['id'] . '">' . substr($item['title'], 0, 29) . '</a>
                                             </div>
                                             <div class="item__user">
-                                                    <img src="./images/user-1.png" class="item__author">
-                                                    <a href="">NoNotMe</a>
+                                                    <img src="' . $item['avatar'] . '" class="item__author">
+                                                    <a href="' . ROUTES['user'] . '&id=' . $item['user_id'] . '">' . $item['fullname'] . '</a>
                                             </div>
                                             <div class="d-flex justify-content-between">
                                                 <ul class="item__star">
@@ -89,8 +90,8 @@
                                         </div>
                                         
                                         <div class="item__more d-flex justify-content-between">
-                                            <div class="item__price">120 USD</div>
-                                            <div class="item__category"><i class="bi bi-bookmarks"></i> PHP</div>
+                                            <div class="item__price">' . $item['price'] . ' VND</div>
+                                            <div class="item__category"><i class="bi bi-bookmarks"></i> ' . $item['name'] . '</div>
                                         </div>
                                     </div>
                                 </div>
@@ -99,7 +100,7 @@
                     ?>
 
                     <div class="col-12 text-center mb-3">
-                        <div class="btn btn-sm btn__theme p-2"><a style="color: white" href="index.php?controller=product">View More Newest Items</a></div>
+                        <div class="btn btn-sm btn__theme p-2"><a style="color: white" href="<?php echo ROUTES['product'] ?>">View More Newest Items</a></div>
                     </div>
                 </div>
             </div>
@@ -113,20 +114,21 @@
                     </div>
 
                     <?php
-                        for($i=1;$i<9;$i++) {
+                        foreach ($popular_products as $item)
+                        {
                             echo '
                                 <div class="col-lg-3 col-md-4 col-sm-6">
                                     <div class="item__item">
                                         <div class="item__thumb">
-                                            <a href="index.php?controller=product&action=detail"><img src="./images/items/item-' . $i . '.jpg" class="item__thumbnail"></a>
+                                            <a href="' . ROUTES['product_detail'] . '&id=' . $item['id'] . '"><img src="' . $item['thumb'] . '" class="item__thumbnail"></a>
                                         </div>
                                         <div class="item__info">
                                             <div class="item__title">
-                                                <a href="index.php?controller=product&action=detail">Full Source Code Forum PHP...</a>
+                                                <a href="' . ROUTES['product_detail'] . '&id=' . $item['id'] . '">' . substr($item['title'], 0, 29) . '</a>
                                             </div>
                                             <div class="item__user">
-                                                    <img src="./images/user-1.png" class="item__author">
-                                                    <a href="">NoNotMe</a>
+                                                    <img src="' . $item['avatar'] . '" class="item__author">
+                                                    <a href="' . ROUTES['user'] . '&id=' . $item['user_id'] . '">' . $item['fullname'] . '</a>
                                             </div>
                                             <div class="d-flex justify-content-between">
                                                 <ul class="item__star">
@@ -141,8 +143,8 @@
                                         </div>
                                         
                                         <div class="item__more d-flex justify-content-between">
-                                            <div class="item__price">120 USD</div>
-                                            <div class="item__category"><i class="bi bi-bookmarks"></i> PHP</div>
+                                            <div class="item__price">' . $item['price'] . ' VND</div>
+                                            <div class="item__category"><i class="bi bi-bookmarks"></i> ' . $item['name'] . '</div>
                                         </div>
                                     </div>
                                 </div>
@@ -151,7 +153,7 @@
                     ?>
 
                     <div class="col-12 text-center mb-3">
-                        <div class="btn btn-sm btn__theme p-2"><a style="color: white" href="index.php?controller=product">View More Popular Items</a></div>
+                        <div class="btn btn-sm btn__theme p-2"><a style="color: white" href="<?php echo ROUTES['product'] ?>">View More Popular Items</a></div>
                     </div>
                 </div>
             </div>
