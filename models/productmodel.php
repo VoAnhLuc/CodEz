@@ -32,7 +32,8 @@
                     '" . $product['code'] . "',
                     '" . $product['is_support'] . "',
                     '" . time() . "',
-                    '" . time() . "'
+                    '" . time() . "',
+                    '0'
                 )", true);
             $product_id = $this->db->getInsertId();
             $this->db->closeConnection();
@@ -56,5 +57,24 @@
 
             $this->db->closeConnection($result);
             return $products;
+        }
+
+        public function updateProduct($product)
+        {
+            $this->db->createConnection();
+            $result = $this->db->executeNonQuery("UPDATE `products` SET
+                                                        `category_id` = '" . $product['category_id'] . "',
+                                                        `title` = '" . $product['title'] . "',
+                                                        `content` = '" . $product['content'] . "',
+                                                        `description` = '" . $product['description'] . "',
+                                                        `price` = '" . $product['price'] . "',
+                                                        `thumb` = '" . $product['thumb'] . "',
+                                                        `code` = '" . $product['code'] . "',
+                                                        `is_support` = '" . $product['is_support'] . "',
+                                                        `updated` = '" . time() . "'
+                                                WHERE `id` = '" . $product['id'] . "'
+                                            ");
+            $this->db->closeConnection();
+            return $result;
         }
     }

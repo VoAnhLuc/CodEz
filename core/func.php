@@ -10,10 +10,7 @@
         {
             foreach($arr as $value)
             {
-                if (empty($value) && gettype($value) != 'boolean')
-                {
-                    return true;
-                }
+                return empty($value) && gettype($value) == 'string';
             }
             return false;
         }
@@ -64,6 +61,10 @@
                 return false;
             }
 
+            if (!empty($outputName))
+            {
+                self::removeFile($outputName);
+            }
 
             $_SESSION['user_id'] = 1; // change later.
 
