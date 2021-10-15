@@ -8,43 +8,24 @@
             $this->db = new Database();
         }
  
-        public function getCartByUser($iduser)
+        public function getAllCartsByUserId($user_id)
         {
             $this->db->createConnection();
-            $result = $this->db->executeQuery("SELECT * FROM `carts` WHERE `user_id` = '$iduser'");
+
+            $result = $this->db->executeQuery("SELECT `carts`.*, `products`.`thumb`, `products`.`price`, `products`.`title`
+                                                FROM `carts`
+                                                INNER JOIN `products` ON `carts`.`product_id` = `products`.`id`
+                                                WHERE `carts`.`user_id` = '$user_id' AND `carts`.`paid_time` < `carts`.`add_time`
+                                                ORDER BY `carts`.`id` DESC
+                                                ");
 
             $carts = array();
-
             while($cart = mysqli_fetch_assoc($result)){
-                array_push($carts,$cart);
+                array_push($carts, $cart);
             }
 
             $this->db->closeConnection($result);
+
             return $carts;
-        }
-        
-        public function getUser()
-        {
-            $this->db->createConnection();
-            $resultuser = $this->db->executeQuery("SELECT * FROM `users`");
-            $user = mysqli_fetch_assoc($resultuser);
-            $this->db->closeConnection($resultuser);
-            return $user;
-        }
-
-        public function getProductByCart($orderby = '`id` DESC')
-        {
-            $this->db->createConnection();
-            $resultproduct = $this->db->executeQuery("SELECT `products`.* FROM `products`
-                                                        INNER JOIN `carts` ON `products`.`id` = `carts`.`product_id`
-                                                        ORDER BY $orderby");
-
-            $products = array();
-
-            while($product = mysqli_fetch_assoc($resultproduct)){   
-                array_push($products, $product);
-            }
-            $this->db->closeConnection($resultproduct);
-            return $products;
         }
     }
