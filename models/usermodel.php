@@ -60,8 +60,8 @@
         public function addUser($username, $password, $fullname, $email)
         {
             $this->db->createConnection();
-            $result = $this->db->executeQuery("INSERT INTO `users` (`username`, `password`, `fullname`, `email`)
-                                                VALUES ('$username', '$password', '$fullname','$email')");
+            $result = $this->db->executeQuery("INSERT INTO `users` (`role_id`, `username`, `password`, `fullname`, `email`, `join_time`)
+                                                            VALUES ('1', '$username', '$password', '$fullname','$email', '" . time() . "')");
              $this->db->closeConnection(null);
             return $result;
         }
