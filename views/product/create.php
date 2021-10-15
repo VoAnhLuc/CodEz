@@ -27,7 +27,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 m-auto">
-                        <form method="post" action="<?php echo ROUTES['product_create']; ?>" enctype="multipart/form-data" class="create-product__form">
+                        <form method="post" action="<?php echo $is_create ? ROUTES['product_create'] : ROUTES['product_edit'] . '&id=' . $product['id'] ?>" enctype="multipart/form-data" class="create-product__form">
 
                             <?php echo (!empty($error) ? '<div class="create-product__list create-product__title create-product__item color--red">' . $error . '</div>' : ""); ?>
 
@@ -53,13 +53,15 @@
                                 </div>
                                 <div class="create-product__body">
                                     <div class="create-product__item">
-                                        <label for="category">Thể loại <i class="color--red">*</i></label>
-                                        <select class="form-control" name="category"
-                                            value="<?php echo $product['category'] ?>">
-                                            <option value="1">C#</option>
-                                            <option value="2">PHP</option>
-                                            <option value="3">JAVA</option>
-                                            <option value="4">JAVASCRIPT</option>
+                                        <label for="category_id">Thể loại <i class="color--red">*</i></label>
+                                        <select class="form-control" name="category_id">
+                                            <option value="<?php echo $product['category_id'] ?>">Chọn Category</option>
+                                            <?php
+                                                foreach($categories as $category)
+                                                {
+                                                    echo '<option value="' . $category['id'] . '">' . $category['name'] . '</option>';
+                                                }
+                                            ?>
                                         </select>
                                     </div>
                                     <div class="create-product__item">
@@ -74,11 +76,13 @@
                                     </div>
                                     <div class="create-product__item">
                                         <label for="thumb">Ảnh bìa <i class="color--red">*</i></label>
-                                        <input type="file" name="thumb" id="thumb" class="form-control" required>
+                                        <input type="file" name="thumb" id="thumb" class="form-control" <?php echo $is_create ? 'required' : '' ?>>
+                                        <?php echo !$is_create ? '<img class="item__thumbnail" src="' . $product['thumb'] . '">' : '' ?>
                                     </div>
                                     <div class="create-product__item">
                                         <label for="code">File zip code <i class="color--red">*</i></label>
-                                        <input type="file" name="code" id="code" class="form-control" required>
+                                        <input type="file" name="code" id="code" class="form-control" <?php echo $is_create ? 'required' : '' ?>>
+                                        <?php echo !$is_create ? '<a href="' . $product['code'] . '">Tải file zip code</a>' : '' ?>
                                     </div>
                                     <div class="create-product__item">
                                         <input type="checkbox" name="is_support" id="is_support" <?php echo ($product['is_support'] ? 'checked' : '') ?>>
@@ -88,7 +92,7 @@
                             </div>
 
                             <div class="text-center">
-                                <button name="submit" class="btn btn-sm btn__theme">Đăng bài</button>
+                                <button name="submit" class="btn btn-sm btn__theme"><?php echo $is_create ? "Đăng bài" : "Sửa bài" ?></button>
                             </div>
                         </form>
                     </div>

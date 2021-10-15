@@ -8,6 +8,7 @@
         public function createConnection() 
         {
             $this->link = mysqli_connect(HOST, USER, PASSWORD, DB);
+            $this->link->set_charset("utf8");
             if (!$this->link) {
                 die("ERROR: Could not connect. " . mysqli_connect_error());
             }
