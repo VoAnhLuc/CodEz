@@ -32,11 +32,15 @@
                 return $this->view('404');
             }
 
+            $this->productModel->increaseProductView($id);
+
+            $related_products = $this->productModel->getAllProducts("RAND()", 3, "`products`.`category_id` = '" . $product['category_id'] . "'");
+
             $data = [
                 'id' => $id,
                 'title' => $product['title'],
-                'category' => 'Category nak',
-                'product' => $product
+                'product' => $product,
+                'related_products' => $related_products
             ];
             
             return $this->view('product.detail', $data);

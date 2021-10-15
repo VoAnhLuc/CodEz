@@ -791,10 +791,6 @@ main{
 .infitem .card-body .inf{
   margin-top: 30px;
 }
-.infitem .card-body i{
-  position: absolute;
-  left: 138px;
-}
 .moreitem .row{
   text-align: center;
 }
