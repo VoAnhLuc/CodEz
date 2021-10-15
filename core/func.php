@@ -10,10 +10,7 @@
         {
             foreach($arr as $value)
             {
-                if (empty($value) && gettype($value) != 'boolean')
-                {
-                    return true;
-                }
+                return empty($value) && gettype($value) == 'string';
             }
             return false;
         }
@@ -26,7 +23,7 @@
             $message: message of upload file, include error and success.
             $isImageUpload: boolean, just a param to specify upload image or file.
         */
-        private const UPLOAD_FILE_TYPES = [
+        const UPLOAD_FILE_TYPES = [
             "image" => [
                 "image/jpeg" => ".jpg",
                 "image/png" => ".png"
@@ -40,7 +37,7 @@
                 "application/x-rar-compressed" => ".rar"
             ]
         ];
-        private const UPLOAD_FILE_MAX_SIZE = 25000000; // 25mb
+        const UPLOAD_FILE_MAX_SIZE = 25000000; // 25mb
         
         public static function uploadFile($dir, $inputName, &$outputName = '', &$message = '', $isImageUpload = false)
         {
@@ -64,6 +61,10 @@
                 return false;
             }
 
+            if (!empty($outputName))
+            {
+                self::removeFile($outputName);
+            }
 
             $_SESSION['user_id'] = 1; // change later.
 
@@ -141,5 +142,11 @@
 
         public static function isValidMd5($md5 =''){
             return preg_match('/^[a-f0-9]{32}$/', $md5);
+        }
+
+        public static function getURL(){
+            return  (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ?
+                    "https" : "http") . "://" . $_SERVER['HTTP_HOST'] . 
+                    $_SERVER['REQUEST_URI'];
         }
     }

@@ -57,6 +57,7 @@
             $this->db->closeConnection();
             return $result;
         }
+
         public function addUser($username, $password, $fullname, $email)
         {
             $this->db->createConnection();
@@ -65,6 +66,7 @@
              $this->db->closeConnection(null);
             return $result;
         }
+        
         public function getUserByUsername($username)
         {
             $this->db->createConnection();
