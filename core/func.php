@@ -185,4 +185,21 @@
                     "https" : "http") . "://" . $_SERVER['HTTP_HOST'] . 
                     $_SERVER['REQUEST_URI'];
         }
+
+        public static function getShortPrice($price)
+        {
+            if ($price >= 1000000000)
+            {
+                return $price/1000000000 . 'T';
+            }
+            if ($price >= 1000000)
+            {
+                return $price/1000000 . 'TR';
+            }
+            if ($price >= 1000)
+            {
+                return $price/1000 . 'K';
+            }
+            return $price;
+        }
     }
