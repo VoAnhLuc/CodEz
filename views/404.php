@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $title ?></title>
+    <title>Page Not Found | CodEz</title>
     <link rel="stylesheet" href="./lib/css/reset.css">
     <link rel="stylesheet" href="./lib/css/style.css">
     <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css">
@@ -19,12 +19,16 @@
     
     <?php include './common/header.php'; ?>
 
-    <div class="container">
-        <div class="alert alert-danger mt-3">
-            <h1>Page Not Found</h1>
-            <p>The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.</p>
-        </div>
-    </div>
+    <main>
+        <section class="error__404">
+            <div class="container">
+                <div class="alert alert-danger mt-3">
+                    <h1>Page Not Found</h1>
+                    <p>The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.</p>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <?php include './common/footer.php'; ?>
 

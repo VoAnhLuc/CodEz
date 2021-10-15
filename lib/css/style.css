@@ -1067,3 +1067,8 @@ main{
   box-shadow: 0 2px 4px rgb(108 111 115 / 10%);
   margin-bottom: 2rem;
 }
+
+.error__404
+{
+  height: 50vh;
+}
