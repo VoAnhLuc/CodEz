@@ -14,7 +14,8 @@
             'action' => [
                 'index',
                 'detail',
-                'create'
+                'create',
+                'edit'
             ]
         ],
 

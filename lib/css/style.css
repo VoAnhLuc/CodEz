@@ -736,6 +736,12 @@ main{
 .card-body ul {
   list-style: circle;
 }
+.card-body a {
+  color: #011C26;
+}
+.card-body a:hover {
+  color: #01724f;
+}
 .cardcontent .gioithieusp {
   text-align: left;
   padding-bottom: 40px;
@@ -790,10 +796,6 @@ main{
 }
 .infitem .card-body .inf{
   margin-top: 30px;
-}
-.infitem .card-body i{
-  position: absolute;
-  left: 138px;
 }
 .moreitem .row{
   text-align: center;
@@ -1064,4 +1066,9 @@ main{
   background-color: #fff;
   box-shadow: 0 2px 4px rgb(108 111 115 / 10%);
   margin-bottom: 2rem;
+}
+
+.error__404
+{
+  height: 50vh;
 }

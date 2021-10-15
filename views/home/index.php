@@ -37,11 +37,12 @@
                             </div>
                             <div class="col-md-4">
                                 <select>
-                                    <option>PHP</option>
-                                    <option>HTML/CSS</option>
-                                    <option>Javascript</option>
-                                    <option>Java</option>
-                                    <option>Python</option>
+                                    <?php
+                                        foreach ($categories as $category)
+                                        {
+                                            echo '<option value="' . $category['id'] . '">' . $category['name'] . '</option>';
+                                        }
+                                    ?>
                                 </select>
                             </div>
                             <div class="col-md-2">
