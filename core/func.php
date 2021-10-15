@@ -10,12 +10,31 @@
         {
             $db = new Database;
             $db->createConnection();
+
+            /* Initialize Roles */
             $result = $db->executeQuery("SELECT `id` FROM `roles`");
             if (!mysqli_num_rows($result))
             {
                 $db->executeNonQuery("INSERT INTO `roles` (`name`) VALUES ('user'), ('admin')");
             }
-            $db->closeConnection();
+
+            /* Initialize Categories */
+            $result = $db->executeQuery("SELECT `id` FROM `categories`");
+            if (!mysqli_num_rows($result))
+            {
+                $db->executeNonQuery("INSERT INTO `categories` (`name`, `description`) VALUES
+                                                    ('HTML/Css', 'About HTML5 and Css...'),
+                                                    ('Javascript', 'About Javascript, Jquery, ReactJS...'),
+                                                    ('C#/.NET', 'About C# .NET, ASP.NET, F#, ML.NET...'),
+                                                    ('Java', 'About Java, Jsp, Servlet, Spring...'),
+                                                    ('C/C++', 'About C, C++...'),
+                                                    ('Python', 'About Python...'),
+                                                    ('PHP & MYSQL', 'About PHP, Lavarel Framework...'),
+                                                    ('The Others', 'The others languages...')
+                                                    ");
+            }
+
+            $db->closeConnection($result);
         }
 
         /*  
