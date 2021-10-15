@@ -130,10 +130,14 @@
                                                 <div class="col-lg-4 col-md-12 col-sm-12 sanphamthem">
                                                     <div class="card cardfooter">
                                                         <div class="card-img">
-                                                            <img id="anhsanpham" src="' . $item['thumb'] . '" alt="" width="100%">  
+                                                            <a href="' . ROUTES['product_detail'] . '&id=' . $product['id'] . '">
+                                                                <img id="anhsanpham" src="' . $item['thumb'] . '" alt="" width="100%">
+                                                            </a>
                                                         </div>
                                                         <div class="card-body">
-                                                            <b>' . $item['title'] . '</b><br>
+                                                            <a href="' . ROUTES['product_detail'] . '&id=' . $product['id'] . '">
+                                                                <b>' . $item['title'] . '</b>
+                                                            </a><br>
                                                             <i class="bi bi-journals"> ' . $product['name'] . '</i>
                                                         </div>
                                                         <div class="card-footer">
