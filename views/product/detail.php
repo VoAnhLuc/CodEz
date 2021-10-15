@@ -25,93 +25,95 @@
             <?php
                 include './common/breadcrumb.php';
             ?>
-            
+            <form action="<?php echo ROUTES['payment_add'].'&id='.$product['id'] ?>" method="post" >
             <section>
                 <div class="container">
                     <div class="row mt-4">
-                        <div class="col-lg-8 col-md-12 col-sm-12 mt-3">
-                            <div class="card card1">
-                                <div class="card-img">
-                                    <img id="anhsanpham" src="<?php echo $product['thumb'] ?>" alt="" width="100%">  
-                                </div>
-                                <div class="card-body">
-                                    <button class="btn btn-primary nutnhan"><i class="bi bi-heart"></i> Add To Favorites</button>
-                                </div>
-                                <div class="card-footer">
-                                    <button type="button" class="bi bi-share"> Share With :</button>
-                                    <button type="button" class="bi bi-facebook"> Facebook</button>
-                                    <button type="button" class="bi bi-instagram"> Instagram</button>
-                                    <button type="button" class="bi bi-linkedin"> Linkedin</button>
-                                    <button type="button" class="bi bi-reddit" > Reddit</button>
-                                    <button type="button" class="bi bi-twitter"> Twitter</button>
-                                </div>
-                            </div>  
-                            <div class="card cardcontent mt-4">    
-                                <div class="card-body gioithieusp mt-4">
-                                    <h2><?php echo $product['title'] ?></h2>
-                                    <?php echo htmlspecialchars_decode($product['content']) ?>
-                                </div>
+                            <div class="col-lg-8 col-md-12 col-sm-12 mt-3">
+                                <div class="card card1">
+                                    <div class="card-img">
+                                        <img id="anhsanpham" src="<?php echo $product['thumb'] ?>" alt="" width="100%">  
+                                    </div>
+                                    <div class="card-body">
+                                        <button class="btn btn-primary nutnhan"><i class="bi bi-heart"></i> Add To Favorites</button>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button type="button" class="bi bi-share"> Share With :</button>
+                                        <button type="button" class="bi bi-facebook"> Facebook</button>
+                                        <button type="button" class="bi bi-instagram"> Instagram</button>
+                                        <button type="button" class="bi bi-linkedin"> Linkedin</button>
+                                        <button type="button" class="bi bi-reddit" > Reddit</button>
+                                        <button type="button" class="bi bi-twitter"> Twitter</button>
+                                    </div>
+                                </div>  
+                                <div class="card cardcontent mt-4">    
+                                    <div class="card-body gioithieusp mt-4">
+                                        <h2><?php echo $product['title'] ?></h2>
+                                        <?php echo htmlspecialchars_decode($product['content']) ?>
+                                    </div>
 
-                            </div>                
-                        </div>
-                        <div class="col-lg-4 col-md-12 col-sm-12 mt-3">
-                            <div class="card cardright">
-                                <div class="alert alert-success">
-                                    <i>Prices : <?php echo $product['price'] ?> VND</i>
-                                </div>
-                                <div class="card-footer rightfooter" >
-                                    <button class="btn btn-primary btn"><i class="bi bi-cart-check-fill"> Buy Now</i></button>
-                                </div>
+                                </div>                
                             </div>
-                            <div class="card author mt-4">
-                                <div class="card-header">
-                                    <i>Author Information</i>
-                                </div>
-                                <div class="card-body">
-                                    <img src="./images/logo.png" alt=""><br>
-                                    <div class="member"><i>Member Since 2021</i><br></div>
-                                    <div class="member">
-                                        <i class="bi bi-person-circle"> Hoàng </i>
-                                        <i class="bi bi-person-circle"> Hoài </i>
-                                        <i class="bi bi-person-circle"> Lực </i>
-                                        <i class="bi bi-person-circle"> Hùng </i>
-                                        <i class="bi bi-person-circle"> Thắng </i>
+                        
+                            <div class="col-lg-4 col-md-12 col-sm-12 mt-3">
+                                <div class="card cardright">
+                                    <div class="alert alert-success">
+                                        <i>Prices : <?php echo $product['price'] ?> VND</i>
+                                    </div>
+                                    <div class="card-footer rightfooter" >
+                                        <button class="btn btn-primary btn" name="addproducttocart" id="addproducttocart"><i class="bi bi-cart-check-fill"> Add To Cart</i></button>
                                     </div>
                                 </div>
-                                <div class="card-footer">
-                                    <button class="btn btn-primary"><i class="bi bi-binoculars-fill"> View Profile</i></button>
-                                </div>
-                            </div>
-                            <div class="card danhgia mt-3">
-                                <div class="card-body">
-                                    <div class="yeuthich text-center">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star"></i>
-                                        <i> ( 5 Ratings ) </i>
+                                <div class="card author mt-4">
+                                    <div class="card-header">
+                                        <i>Author Information</i>
                                     </div>
-                                    <div class="yeuthich"><i class="bi bi-cart2"> Total Sales </i><i class="conso">5</i></div>
-                                    <div class="yeuthich"><i class="bi bi-heart"> Favourites </i><i class="conso">4</i>  </div>
-                                    <div class="yeuthich"><i class="bi bi-heart"> Comments</i><i class="conso">3</i></div>
+                                    <div class="card-body">
+                                        <img src="./images/logo.png" alt=""><br>
+                                        <div class="member"><i>Member Since 2021</i><br></div>
+                                        <div class="member">
+                                            <i class="bi bi-person-circle"> Hoàng </i>
+                                            <i class="bi bi-person-circle"> Hoài </i>
+                                            <i class="bi bi-person-circle"> Lực </i>
+                                            <i class="bi bi-person-circle"> Hùng </i>
+                                            <i class="bi bi-person-circle"> Thắng </i>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button class="btn btn-primary"><i class="bi bi-binoculars-fill"> View Profile</i></button>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="card infitem mt-3">
-                                <div class="card-header">
-                                    <i>Item Infomation</i>
+                                <div class="card danhgia mt-3">
+                                    <div class="card-body">
+                                        <div class="yeuthich text-center">
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star"></i>
+                                            <i> ( 5 Ratings ) </i>
+                                        </div>
+                                        <div class="yeuthich"><i class="bi bi-cart2"> Total Sales </i><i class="conso">5</i></div>
+                                        <div class="yeuthich"><i class="bi bi-heart"> Favourites </i><i class="conso">4</i>  </div>
+                                        <div class="yeuthich"><i class="bi bi-heart"> Comments</i><i class="conso">3</i></div>
+                                    </div>
                                 </div>
-                                <div class="card-body">
-                                    <div class="inf"><b>Category:</b> <?php echo $category ?></div>        
-                                    <div class="inf"><b>Released:</b> <?php echo date('d/m/Y', $product['released']) ?></div>
-                                    <div class="inf"><b>Updated:</b> <?php echo date('d/m/Y', $product['released']) ?></div>          
+                                <div class="card infitem mt-3">
+                                    <div class="card-header">
+                                        <i>Item Infomation</i>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="inf"><b>Category:</b> <?php echo $category ?></div>        
+                                        <div class="inf"><b>Released:</b> <?php echo date('d/m/Y', $product['released']) ?></div>
+                                        <div class="inf"><b>Updated:</b> <?php echo date('d/m/Y', $product['released']) ?></div>          
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
-            <section class="breadcrumb-area" >
+                </section>
+            </form>
+                <section class="breadcrumb-area" >
                 <!-- phan2 -->
                 <div class="container-fluid mt-4">
                     <div class="row">

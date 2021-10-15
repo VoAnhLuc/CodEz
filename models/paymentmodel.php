@@ -28,4 +28,13 @@
 
             return $carts;
         }
+        
+        public function ProductInCart($user_id, $product_id){
+            $this->db->createConnection();
+
+            $result = $this->db->executeNonQuery("INSERT INTO `carts` (`user_id`, `product_id`, `add_time`)
+                                                        VALUES ('$user_id', '$product_id', '".time()."')");
+            $this->db->closeConnection();
+            return $result;                              
+        }
     }

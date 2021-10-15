@@ -61,10 +61,10 @@
                                     <div class="col-md-4 col-sm-2"></div>
                                 </div>
                                 <div class="col-md-4 col-sm-1 v_middle">
-                                        <div class="item_action">
-                                            <a href="#" >
+                                        <div class="item_action">     
+                                            <button>
                                             <p class="bi bi-trash"></p>
-                                            </a>
+                                            </button>
                                         </div>
                                 </div>
                             </div>
@@ -91,7 +91,7 @@
                 <div class="col-lg-6 col-md-6 col-sm-0"></div>
                 <div class="col-lg-6 col-md-6 col-sm-12 thanhtoan">
                     <div class="cart-subtotal">
-                        <p><span>Cart Subtotal:</span>1999 INR</p>
+                        <p><span>Cart Subtotal:</span><?php echo $total_money ?></p>
                    </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-0"></div>

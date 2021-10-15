@@ -44,4 +44,38 @@
             
             return $this->view('payment.checkout', $data);
         }
+
+        public function add(){
+       
+            $_SESSION['user_id'] = 1;
+
+            $carts = $this->paymentModel->getAllCartsByUserId($_SESSION['user_id']);
+
+            $arrayid = [];
+
+            foreach ($carts as $value) {
+                array_push($arrayid , $value['product_id']);
+            }
+
+            $idproduct = (isset($_GET['id']) ? intval($_GET['id']) : 0);
+
+            if (isset($_POST['addproducttocart'])) {
+                if (!in_array($idproduct, $arrayid)) {
+                    $this->paymentModel->ProductInCart( $_SESSION['user_id'], $idproduct);
+                    header('Location: ' . ROUTES['payment_cart'] . '');       
+                }
+                else{
+                    header('Location: ' . ROUTES['payment_cart'] . '');    
+                }
+            }
+            else{
+                header('Location: ' . ROUTES['payment_cart'] . ''); 
+            }
+
+            $data = [
+                
+            ];
+            
+            return $this->view('payment.cart', $data);
+        }
     }
