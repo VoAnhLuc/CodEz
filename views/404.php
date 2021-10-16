@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Not Found | CodEz</title>
+    <title>Trang Không Tồn Tại | CodEz</title>
     <link rel="stylesheet" href="./lib/css/reset.css">
     <link rel="stylesheet" href="./lib/css/style.css">
     <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css">
@@ -23,8 +23,8 @@
         <section class="error__404">
             <div class="container">
                 <div class="alert alert-danger mt-3">
-                    <h1>Page Not Found</h1>
-                    <p>The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.</p>
+                    <h1>Trang Không Tồn Tại</h1>
+                    <p>Trang bạn đang truy cập có thể đã bị xóa, bị thay đổi hoặc bạn không đủ quyền để truy cập.</p>
                 </div>
             </div>
         </section>
