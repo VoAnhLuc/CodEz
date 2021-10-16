@@ -37,7 +37,8 @@
                 'index',
                 'cart',
                 'checkout',
-                'add'
+                'add',
+                'delete'
             ]
         ]
     ];

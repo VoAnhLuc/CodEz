@@ -29,12 +29,27 @@
             return $carts;
         }
         
-        public function ProductInCart($user_id, $product_id){
+        public function addProductInCart($user_id, $product_id){
             $this->db->createConnection();
 
             $result = $this->db->executeNonQuery("INSERT INTO `carts` (`user_id`, `product_id`, `add_time`)
                                                         VALUES ('$user_id', '$product_id', '".time()."')");
             $this->db->closeConnection();
             return $result;                              
+        }
+
+        public function removeProductCart($id){
+            $this->db->createConnection();
+            $result = $this->db->executeNonQuery("DELETE FROM `carts` where `id` = '$id' ");
+            $this->db->closeConnection();
+            return $result;     
+        }
+
+        public function getCartById($id){
+            $this->db->createConnection();
+            $result = $this->db->executeQuery("SELECT * FROM `carts` WHERE `id` = '$id'");
+            $cart = mysqli_fetch_assoc($result);
+            $this->db->closeConnection($result);
+            return $cart;
         }
     }

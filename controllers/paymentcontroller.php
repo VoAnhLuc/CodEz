@@ -61,7 +61,7 @@
 
             if (isset($_POST['addproducttocart'])) {
                 if (!in_array($idproduct, $arrayid)) {
-                    $this->paymentModel->ProductInCart( $_SESSION['user_id'], $idproduct);
+                    $this->paymentModel->addProductInCart( $_SESSION['user_id'], $idproduct);
                     header('Location: ' . ROUTES['payment_cart'] . '');       
                 }
                 else{
@@ -77,5 +77,22 @@
             ];
             
             return $this->view('payment.cart', $data);
+        }
+
+        public function delete(){
+
+            $_SESSION['user_id'] = 1;
+
+            $id = (isset($_GET['id']) ? intval($_GET['id']) : 0);
+
+            $cart = $this->paymentModel->getCartById($id);
+
+            if ($cart == null || $cart['user_id'] != $_SESSION['user_id']) {
+               return $this->view('404') ;
+            }
+
+            $this->paymentModel->removeProductCart($id);
+            header('Location: ' . ROUTES['payment_cart'] . '');       
+                
         }
     }

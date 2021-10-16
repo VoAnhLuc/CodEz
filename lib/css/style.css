@@ -674,6 +674,9 @@ main{
 }
 #anhsanpham{
   border-radius: 2%;
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
 }
 .card1 .card-body .nutnhan{
   background-color: #011c26;

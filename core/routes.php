@@ -15,6 +15,7 @@
         'payment_cart' => 'index.php?controller=payment&action=cart',
         'payment_checkout' => 'index.php?controller=payment&action=checkout',
         'payment_add' => 'index.php?controller=payment&action=add',
+        'payment_delete' => 'index.php?controller=payment&action=delete',
 
         /* Product */
         'product' => 'index.php?controller=product',
