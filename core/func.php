@@ -112,7 +112,6 @@
             return true;
         }
 
-        // Test Input
         public static function getInput($data)
         {
             $data = trim($data);
@@ -121,7 +120,7 @@
             return $data;
         }
         
-        public static function checkPassword($password)
+        public static function isValidPassword($password)
         {
             if(preg_match("/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/",$password))
             {
@@ -133,7 +132,7 @@
             }
         }
 
-        public static function checkUserName($username)
+        public static function isValidUserName($username)
         {
             if(preg_match("/^[a-zA-Z0-9]{1,30}$/",$username))
             {
@@ -144,6 +143,7 @@
                 return false;
             }
         }
+
         /*
             This method use for remove file in the location provided. 
         */
@@ -201,5 +201,16 @@
                 return $price/1000 . 'K';
             }
             return $price;
+        }
+
+        /*
+            This function use for copy file from dictionary to other dictionary
+        */
+        public static function copyFileFromTo($from, $to, $user_id, $is_image = true)
+        {
+            $fileType = $is_image ? self::UPLOAD_FILE_TYPES['image'] : self::UPLOAD_FILE_TYPES['file'];
+            $fileName = str_replace('.', '/', $to) . '/' . $user_id . '_' . time() . $fileType[mime_content_type($from)];
+            copy($from, $fileName);
+            return $fileName;
         }
     }

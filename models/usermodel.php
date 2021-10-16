@@ -61,10 +61,11 @@
         public function addUser($username, $password, $fullname, $email)
         {
             $this->db->createConnection();
-            $result = $this->db->executeQuery("INSERT INTO `users` (`role_id`, `username`, `password`, `fullname`, `email`, `join_time`)
+            $this->db->executeNonQuery("INSERT INTO `users` (`role_id`, `username`, `password`, `fullname`, `email`, `join_time`)
                                                             VALUES ('1', '$username', '$password', '$fullname','$email', '" . time() . "')");
-             $this->db->closeConnection(null);
-            return $result;
+            $user_id = $this->db->getInsertId();
+            $this->db->closeConnection();
+            return $user_id;
         }
         
         public function getUserByUsername($username)
@@ -75,6 +76,11 @@
             $this->db->closeConnection($result);
             return $user;
         }
+
+        public function updateUserByStringQuery($user_id, $query)
+        {
+            $this->db->createConnection();
+            $this->db->executeNonQuery("UPDATE `users` SET $query WHERE `id` = '$user_id'");
+            $this->db->closeConnection();
+        }
     }
-    
-?>
