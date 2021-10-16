@@ -116,7 +116,7 @@
                     return $this->view('user.register',$data);
                 }
             } 
-            return $this->view('user.register', $data);
+            return $this->view('user.registersuccess', $data);
         }
 
         public function edit()

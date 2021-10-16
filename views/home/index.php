@@ -58,7 +58,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 mt-3 mb-2">
-                        <h2><i class="bi bi-file-earmark-plus-fill color--blue"></i> Newest Items</h2>
+                        <h2><i class="bi bi-file-earmark-plus-fill color--blue"></i> Sản phẩm mới nhất</h2>
                     </div>
 
                     <?php
@@ -101,7 +101,7 @@
                     ?>
 
                     <div class="col-12 text-center mb-3 <?php echo count($newest_products) > 8 ? '' : 'd-none' ?>">
-                        <div class="btn btn-sm btn__theme p-2"><a style="color: white" href="<?php echo ROUTES['product'] ?>">View More Newest Items</a></div>
+                        <div class="btn btn-sm btn__theme p-2"><a style="color: white" href="<?php echo ROUTES['product'] ?>">Xem thêm sản phẩm mới</a></div>
                     </div>
                 </div>
             </div>
@@ -111,7 +111,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 mt-3 mb-2">
-                        <h2><i class="bi bi-lightning-fill color--red"></i> Popular Items</h2>
+                        <h2><i class="bi bi-lightning-fill color--red"></i> Sản phẩm phổ biến</h2>
                     </div>
 
                     <?php
@@ -154,7 +154,7 @@
                     ?>
 
                     <div class="col-12 text-center mb-3 <?php echo count($newest_products) > 8 ? '' : 'd-none' ?>">
-                        <div class="btn btn-sm btn__theme p-2"><a style="color: white" href="<?php echo ROUTES['product'] ?>">View More Popular Items</a></div>
+                        <div class="btn btn-sm btn__theme p-2"><a style="color: white" href="<?php echo ROUTES['product'] ?>">Xem thêm sản phẩm phổ biến</a></div>
                     </div>
                 </div>
             </div>

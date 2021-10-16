@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trang Không Tồn Tại | CodEz</title>
+    <title><?php echo MESSAGES['error_404'] ?> | CodEz</title>
     <link rel="stylesheet" href="./lib/css/reset.css">
     <link rel="stylesheet" href="./lib/css/style.css">
     <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css">
@@ -23,8 +23,8 @@
         <section class="error__404">
             <div class="container">
                 <div class="alert alert-danger mt-3">
-                    <h1>Trang Không Tồn Tại</h1>
-                    <p>Trang bạn đang truy cập có thể đã bị xóa, bị thay đổi hoặc bạn không đủ quyền để truy cập.</p>
+                    <h1><?php echo MESSAGES['error_404'] ?></h1>
+                    <p><?php echo MESSAGES['error_404_message'] ?></p>
                 </div>
             </div>
         </section>

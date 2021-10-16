@@ -271,11 +271,11 @@ a {
   text-align: center;
 }
 
-.item__info a, .item__category a {
+.item__info a, .item__category a, .login__assist a {
   color: #011c26;
 }
 
-.item__info a:hover, .item__category a:hover {
+.item__info a:hover, .item__category a:hover, .login__assist a:hover {
   color: #0a6e55;
 }
 

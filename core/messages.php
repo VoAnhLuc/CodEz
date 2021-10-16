@@ -2,7 +2,8 @@
     const MESSAGES = [
 
         /* 404 */
-        'page_not_found' => 'Đã có lỗi xảy ra! Trang bạn vừa truy cập không tìm thấy.',
+        'error_404' => 'Trang Không Tồn Tại',
+        'error_404_message' => 'Trang bạn đang truy cập có thể đã bị xóa, bị thay đổi hoặc bạn không đủ quyền để truy cập.',
 
         /* form */
         'input_empty' => 'Vui lòng điền đầy đủ các thông tin bắt buộc!',
