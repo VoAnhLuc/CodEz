@@ -9,6 +9,8 @@
     require_once './core/messages.php';
     require_once './core/routes.php';
 
+    Func::initDatabase();
+
     $controller = (isset($_GET['controller']) ? strtolower($_GET['controller']) : 'home');
     $action = (isset($_GET['action']) ? strtolower($_GET['action']) : 'index');
 

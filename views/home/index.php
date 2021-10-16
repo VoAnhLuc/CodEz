@@ -58,7 +58,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 mt-3 mb-2">
-                        <h2><i class="bi bi-file-earmark-plus-fill color--blue"></i> Newest Items</h2>
+                        <h2><i class="bi bi-file-earmark-plus-fill color--blue"></i> Sản phẩm mới nhất</h2>
                     </div>
 
                     <?php
@@ -74,10 +74,6 @@
                                             <div class="item__title">
                                                 <a href="' . ROUTES['product_detail'] . '&id=' . $item['id'] . '">' . substr($item['title'], 0, 29) . '</a>
                                             </div>
-                                            <div class="item__user">
-                                                    <img src="' . $item['avatar'] . '" class="item__author">
-                                                    <a href="' . ROUTES['user'] . '&id=' . $item['user_id'] . '">' . $item['fullname'] . '</a>
-                                            </div>
                                             <div class="d-flex justify-content-between">
                                                 <ul class="item__star">
                                                     <li><i class="bi bi-star-fill"></i></li>
@@ -86,13 +82,17 @@
                                                     <li><i class="bi bi-star-fill"></i></li>
                                                     <li><i class="bi bi-star"></i></li>
                                                 </ul>
-                                                <span class="item__cart"><i class="bi bi-cart2"></i> 5</span>
+                                                <span class="item__cart"><i class="bi bi-bag-check"></i> 5</span>
                                             </div>
                                         </div>
                                         
                                         <div class="item__more d-flex justify-content-between">
-                                            <div class="item__price">' . $item['price'] . ' VND</div>
-                                            <div class="item__category"><i class="bi bi-bookmarks"></i> ' . $item['name'] . '</div>
+                                            <div class="item__price">' . Func::getShortPrice($item['price']) . '</div>
+                                            <div class="item__category">
+                                                <a href="' . ROUTES['product'] . '&category=' . $item['category_id'] . '">
+                                                    <i class="bi bi-bookmarks"></i> ' . $item['name'] . '
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -100,8 +100,8 @@
                         }
                     ?>
 
-                    <div class="col-12 text-center mb-3">
-                        <div class="btn btn-sm btn__theme p-2"><a style="color: white" href="<?php echo ROUTES['product'] ?>">View More Newest Items</a></div>
+                    <div class="col-12 text-center mb-3 <?php echo count($newest_products) > 8 ? '' : 'd-none' ?>">
+                        <div class="btn btn-sm btn__theme p-2"><a style="color: white" href="<?php echo ROUTES['product'] ?>">Xem thêm sản phẩm mới</a></div>
                     </div>
                 </div>
             </div>
@@ -111,7 +111,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 mt-3 mb-2">
-                        <h2><i class="bi bi-lightning-fill color--red"></i> Popular Items</h2>
+                        <h2><i class="bi bi-lightning-fill color--red"></i> Sản phẩm phổ biến</h2>
                     </div>
 
                     <?php
@@ -127,10 +127,6 @@
                                             <div class="item__title">
                                                 <a href="' . ROUTES['product_detail'] . '&id=' . $item['id'] . '">' . substr($item['title'], 0, 29) . '</a>
                                             </div>
-                                            <div class="item__user">
-                                                    <img src="' . $item['avatar'] . '" class="item__author">
-                                                    <a href="' . ROUTES['user'] . '&id=' . $item['user_id'] . '">' . $item['fullname'] . '</a>
-                                            </div>
                                             <div class="d-flex justify-content-between">
                                                 <ul class="item__star">
                                                     <li><i class="bi bi-star-fill"></i></li>
@@ -139,13 +135,17 @@
                                                     <li><i class="bi bi-star-fill"></i></li>
                                                     <li><i class="bi bi-star"></i></li>
                                                 </ul>
-                                                <span class="item__cart"><i class="bi bi-cart2"></i> 5</span>
+                                                <span class="item__cart"><i class="bi bi-bag-check"></i> 5</span>
                                             </div>
                                         </div>
                                         
                                         <div class="item__more d-flex justify-content-between">
-                                            <div class="item__price">' . $item['price'] . ' VND</div>
-                                            <div class="item__category"><i class="bi bi-bookmarks"></i> ' . $item['name'] . '</div>
+                                            <div class="item__price">' . Func::getShortPrice($item['price']) . '</div>
+                                            <div class="item__category">
+                                                <a href="' . ROUTES['product'] . '&category=' . $item['category_id'] . '">
+                                                    <i class="bi bi-bookmarks"></i> ' . $item['name'] . '
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -153,8 +153,8 @@
                         }
                     ?>
 
-                    <div class="col-12 text-center mb-3">
-                        <div class="btn btn-sm btn__theme p-2"><a style="color: white" href="<?php echo ROUTES['product'] ?>">View More Popular Items</a></div>
+                    <div class="col-12 text-center mb-3 <?php echo count($newest_products) > 8 ? '' : 'd-none' ?>">
+                        <div class="btn btn-sm btn__theme p-2"><a style="color: white" href="<?php echo ROUTES['product'] ?>">Xem thêm sản phẩm phổ biến</a></div>
                     </div>
                 </div>
             </div>

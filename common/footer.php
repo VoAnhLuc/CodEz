@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-3 footer__follow">
-                    <h5><b>Follow</b> us</h5>
+                    <h5><b>Theo dõi</b> bọn tớ</h5>
                     <p>
                         <a href=""><i class="bi bi-facebook"></i></a>
                         <a href=""><i class="bi bi-instagram"></i></a>

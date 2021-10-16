@@ -13,13 +13,13 @@
                             <li><a href="">Start Selling</a></li>
                             <li><a href="">Contact</a></li>
                             <li><a href="">Help</a></li>
-                            <li><a href="index.php?controller=payment"><i class="bi bi-cart2"></i></a></li>
+                            <li><a href="<?php echo ROUTES['payment_cart'] ?>"><i class="bi bi-cart2"></i></a></li>
                         </ul>
                         <span class="d-none d-sm-block header__btn btn btn-secondary">
-                            <a href="index.php?controller=user&action=register">Register</a>
+                            <a href="<?php echo ROUTES['user_register'] ?>">Đăng ký</a>
                         </span>
                         <span class="header__btn btn btn-secondary">
-                            <a href="index.php?controller=user&action=login">Sign In</a>
+                            <a href="<?php echo ROUTES['user_login'] ?>">Đăng nhập</a>
                         </span>
                     </div>
                 </div>
@@ -38,7 +38,7 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href=".">Home</a>
+                                <a class="nav-link active" aria-current="page" href=".">Trang chủ</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">PHP</a>
@@ -59,9 +59,9 @@
                                 <a class="nav-link" href="#">Python</a>
                             </li>
                         </ul>
-                        <form class="d-flex">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-sm btn__theme" type="submit">Search</button>
+                        <form class="d-flex ">
+                            <input class="form-control me-2" type="text" placeholder="Nhập từ khóa" aria-label="Search">
+                            <button class="btn btn-sm btn__theme" type="submit">Tìm</button>
                         </form>
                     </div>
                 </nav>

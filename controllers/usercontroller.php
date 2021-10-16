@@ -76,7 +76,7 @@
                 }
                 
                 // kiểm tra yêu cầu về tên
-                if(!Func::checkUserName($username))
+                if(!Func::isValidUserName($username))
                 { 
                     $data['errors'] = MESSAGES['nametype_error'];
                     return $this->view('user.register', $data);
@@ -90,7 +90,7 @@
                 }
 
                 // kiểm tra các yêu cầu về mật khẩu
-                if(!Func::checkPassword($password))
+                if(!Func::isValidPassword($password))
                 {
                     $data['errors'] = MESSAGES['passwordtype_error'];
                     return $this->view('user.register', $data);
@@ -106,9 +106,13 @@
                 }
 
                 // Thêm vào database
-                $issuccess = $this->userModel->addUser($username,$password,$fullname,$email);
-                if($issuccess)
+                $user_id = $this->userModel->addUser($username, $password, $fullname, $email);
+                if($user_id)
                 {
+                    // copy default avatar and cover to user
+                    $avatar = Func::copyFileFromTo('images/defaults/avatar.png', 'images.users.avatars', $user_id);
+                    $cover = Func::copyFileFromTo('images/defaults/cover.jpg', 'images.users.covers', $user_id);
+                    $this->userModel->updateUserByStringQuery($user_id, "`avatar` = '$avatar', `cover` = '$cover'");
                     return $this->view('user.registersuccess',$data);
                 }
                 else
@@ -121,10 +125,13 @@
 
         public function edit()
         {
+            $_SESSION['user_id'] = 1; // change later
+
             $id = (isset($_GET['id']) ? intval($_GET['id']) : 0);
+
             $user = $this->userModel->getUserById($id);
 
-            if ($user == null)
+            if ($user == null || $id != $_SESSION['user_id'])
             {
                 return $this->view('404');
             }
@@ -142,28 +149,11 @@
                 $instagram = htmlspecialchars($_POST['instagram']);
                 $twitter = htmlspecialchars($_POST['twitter']);
 
-                $error = '';
-                $avatar = '';
-                $avatar_message = '';
-                if (!Func::uploadFile('images.users.avatars','profile-image-avatar', $avatar, $avatar_message, true))
-                {
-                    $error = empty($error) ? $avatar_message : $error;
-                }
+                $avatar = $user['avatar'];
+                Func::uploadFile('images.users.avatars','profile-image-avatar', $avatar, $avatar_message, true);
 
-                if(empty($avatar)){
-                    $avatar = $user['avatar'];
-                }
-
-                $errorcover = '';
-                $cover = '';
-                $cover_message = '';
-                if (!Func::uploadFile('images.users.covers',  'profile-image-cover', $cover, $cover_message, true))
-                {
-                    $error = empty($errorcover) ? $cover_message : $errorcover;
-                }
-                if(empty($cover)){
-                    $cover = $user['cover'];
-                }
+                $cover = $user['cover'];
+                Func::uploadFile('images.users.covers',  'profile-image-cover', $cover, $cover_message, true);
 
                 $userchange = [
                     'id' => $id,
@@ -179,35 +169,30 @@
                     'twitter' => $twitter,
                     'avatar' => $avatar,
                     'cover' => $cover
-                ];  
+                ]; 
                 
-                if(!empty($fullname) && !empty($password) &&  !empty($repassword) &&  !empty($birthday)  &&  !empty($profileheading) 
-                ){
-                    if($password == $repassword)  {  
-                        if(Func::isValidMd5($password) && Func::isValidMd5($password)){
-                            $this->userModel->updateUserNoPass($userchange);      
-                            header('Location: ' . ROUTES['user'] . '&id=' .$id. ''); 
-                        }
-                        else{
-                            $this->userModel->updateUser($userchange);      
-                            header('Location: ' . ROUTES['user'] . '&id=' .$id. ''); 
-                        }
-                    }     
-                    else{ 
-                        header('Location: ' . ROUTES['user_edit']  . '&id=' .$id. ''); 
-                    }           
+                if (Func::isAnyEmptyValue([$fullname, $password, $repassword]) || $password !== $repassword)
+                {
+                    header('Location: ' . ROUTES['user'] . '&id=' .$id. ''); 
                 }
-                else{
-                    header('Location: ' . ROUTES['user_edit']  . '&id=' .$id. ''); 
+                
+                if (Func::isValidMd5($password))
+                {
+                    $this->userModel->updateUserNoPass($userchange);      
+                    header('Location: ' . ROUTES['user'] . '&id=' .$id. ''); 
                 }
+
+                $this->userModel->updateUser($userchange);      
+                header('Location: ' . ROUTES['user'] . '&id=' .$id. ''); 
             }
+
             $data = [
                 'id' => $id,
                 'title' => 'Edit Profile',
                 'user' => $user
             ];
+
             return $this->view('user.edit', $data);
-    
         }
     }
 ?>
