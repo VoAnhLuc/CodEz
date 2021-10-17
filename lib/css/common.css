@@ -21,3 +21,11 @@
 .size--2rem {
     font-size: 2rem;
 }
+
+.color--green {
+    color: #01724f;
+}
+
+.color--star {
+    color: #ffd900
+}
