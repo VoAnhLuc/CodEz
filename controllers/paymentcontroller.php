@@ -47,4 +47,13 @@
             
             return $this->view('payment.checkout', $data);
         }
+
+        public function history()
+        {
+            $data = [
+                'title' => 'Lịch sử mua hàng'
+            ];
+
+            return $this->view('payment.history', $data);
+        }
     }
