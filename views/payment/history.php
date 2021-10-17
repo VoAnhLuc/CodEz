@@ -33,69 +33,39 @@
                                 Lịch Sử Mua Hàng
                             </div>
                             <div class="content__body">
-                                <div class="content__item d-flex">
-                                    <div class="col-6 m-auto">
-                                        <i class="bi bi-award color--green"></i>
-                                        <a href="">MySQL Insert Multiple Rows</a>
-                                    </div>
-                                    <div class="col-3 d-none d-lg-block m-auto color--instagram">
-                                        <i class="bi bi-cash"></i> 123.000.000
-                                    </div>
-                                    <div class="col-auto m-auto color--star">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-half"></i>
-                                        <i class="bi bi-star"></i>
-                                    </div>
-                                    <div class="col-1 m-auto item__download">
-                                        <a href="">
-                                            <i class="bi bi-cloud-arrow-down"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="content__item d-flex">
-                                    <div class="col-6 m-auto">
-                                        <i class="bi bi-award color--green"></i>
-                                        <a href="">MySQL Insert Multiple Rows</a>
-                                    </div>
-                                    <div class="col-3 d-none d-lg-block m-auto color--instagram">
-                                        <i class="bi bi-cash"></i> 123.000.000
-                                    </div>
-                                    <div class="col-auto m-auto color--star">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-half"></i>
-                                        <i class="bi bi-star"></i>
-                                    </div>
-                                    <div class="col-1 m-auto item__download">
-                                        <a href="">
-                                            <i class="bi bi-cloud-arrow-down"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="content__item d-flex">
-                                    <div class="col-6 m-auto">
-                                        <i class="bi bi-award color--green"></i>
-                                        <a href="">MySQL Insert Multiple Rows</a>
-                                    </div>
-                                    <div class="col-3 d-none d-lg-block m-auto color--instagram">
-                                        <i class="bi bi-cash"></i> 123.000.000
-                                    </div>
-                                    <div class="col-auto m-auto color--star">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-half"></i>
-                                        <i class="bi bi-star"></i>
-                                    </div>
-                                    <div class="col-1 m-auto item__download">
-                                        <a href="">
-                                            <i class="bi bi-cloud-arrow-down"></i>
-                                        </a>
-                                    </div>
-                                </div>
+                                <?php
+                                    for($i = 1; $i <= 5; $i++)
+                                    {
+                                        $defaultRank = rand(1, 5);
+                                        echo '<div class="content__item d-flex">
+                                                <div class="col-6 m-auto">
+                                                    <i class="bi bi-award color--green"></i>
+                                                    <a href="">MySQL Insert Multiple Rows</a>
+                                                </div>
+                                                <div class="col-3 d-none d-lg-block m-auto color--instagram">
+                                                    <i class="bi bi-cash"></i> 123.000.000
+                                                </div>
+                                                <div class="col-auto d-flex color--star cursor--pointer">';
+                                              
+                                        echo '<span id="star-' . $i . '" onmouseout="resetStarColor(\'star-' . $i . '\', ' . $defaultRank . ')">';
+                                        for($j = 1; $j <= 5; $j++)
+                                        {
+                                            echo '<span id="star-' . $i . '-' . $j . '" onmouseover="changeStarColor(\'star-' . $i . '\', ' . $j . ')">
+                                                    <i class="bi bi-star' . ($j <= $defaultRank ? '-fill' : '') . '"></i>
+                                                    </span>';
+                                        }
+                                        echo '</span>';
+
+                                        echo '</div>
+                                                    <div class="col-1 m-auto item__download">
+                                                        <a href="">
+                                                            <i class="bi bi-cloud-arrow-down"></i>
+                                                        </a>
+                                                    </div>';
+                                        echo '</div>';
+                                    }
+                                ?>
+                                
                                 <nav class="mt-5 d-flex justify-content-center" aria-label="...">
                                     <ul class="pagination">
                                       <li class="page-item disabled">
