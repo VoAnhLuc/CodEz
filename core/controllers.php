@@ -37,7 +37,8 @@
                 'index',
                 'cart',
                 'checkout',
-                'history'
+                'history',
+                'rating'
             ]
         ]
     ];

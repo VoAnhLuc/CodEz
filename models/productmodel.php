@@ -72,7 +72,7 @@
                                                         `is_support` = '" . $product['is_support'] . "',
                                                         `updated` = '" . time() . "'
                                                     WHERE `id` = '" . $product['id'] . "'
-                                            ");
+                                                ");
             $this->db->closeConnection();
             return $result;
         }

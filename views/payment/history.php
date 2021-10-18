@@ -34,31 +34,31 @@
                             </div>
                             <div class="content__body">
                                 <?php
-                                    for($i = 1; $i <= 5; $i++)
+                                    $total_price = 0;
+                                    foreach ($carts as $item)
                                     {
-                                        $defaultRank = rand(1, 5);
+                                        $total_price += $item['price'];
+
                                         echo '<div class="content__item d-flex">
                                                 <div class="col-6 m-auto">
                                                     <i class="bi bi-award color--green"></i>
-                                                    <a href="">MySQL Insert Multiple Rows</a>
+                                                    <a href="' . ROUTES['product_detail'] . '&id=' . $item['product_id'] . '">' . $item['title'] . '</a>
                                                 </div>
                                                 <div class="col-3 d-none d-lg-block m-auto color--instagram">
-                                                    <i class="bi bi-cash"></i> 123.000.000
+                                                    <i class="bi bi-cash"></i> ' . $item['price'] . '
                                                 </div>
-                                                <div class="col-auto d-flex color--star cursor--pointer">';
+                                                <div class="col-auto color--star m-auto cursor--pointer">';
                                               
-                                        echo '<span id="star-' . $i . '" onmouseout="resetStarColor(\'star-' . $i . '\', ' . $defaultRank . ')">';
-                                        for($j = 1; $j <= 5; $j++)
+                                        for($i = 1; $i <= 5; $i++)
                                         {
-                                            echo '<span id="star-' . $i . '-' . $j . '" onmouseover="changeStarColor(\'star-' . $i . '\', ' . $j . ')">
-                                                    <i class="bi bi-star' . ($j <= $defaultRank ? '-fill' : '') . '"></i>
-                                                    </span>';
+                                            echo '<a href="' . ROUTES['payment_rating'] . '&id=' . $item['id'] . '&rating=' . $i . '">
+                                                    <i class="bi bi-star' . ($i <= $item['rate'] ? '-fill' : '') . '"></i>
+                                                    </a>';
                                         }
-                                        echo '</span>';
-
+                                        
                                         echo '</div>
                                                     <div class="col-1 m-auto item__download">
-                                                        <a href="">
+                                                        <a href="' . $item['link_code'] . '">
                                                             <i class="bi bi-cloud-arrow-down"></i>
                                                         </a>
                                                     </div>';
@@ -94,8 +94,8 @@
                             </div>
                             <div class="content__body">
                                 <div class="content__item">
-                                    <p><i class="bi bi-piggy-bank color--instagram"></i> Tổng tiền đã tiêu: <b class="color--instagram">434.563.000 VNĐ</b></p>
-                                    <p><i class="bi bi-file-earmark-code color--green"></i> Tổng sản phẩm đã mua: <b class="color--green">12 sản phẩm</b></p>
+                                    <p><i class="bi bi-piggy-bank color--instagram"></i> Tổng tiền đã tiêu: <b class="color--instagram"><?php echo $total_price ?> VNĐ</b></p>
+                                    <p><i class="bi bi-file-earmark-code color--green"></i> Tổng sản phẩm đã mua: <b class="color--green"><?php echo count($carts) ?> sản phẩm</b></p>
                                 </div>
                             </div>
                         </div>

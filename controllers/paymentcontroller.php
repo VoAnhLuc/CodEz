@@ -50,10 +50,33 @@
 
         public function history()
         {
+            $_SESSION['user_id'] = 1; // change later
+
+            $carts = $this->paymentModel->getAllPaidCartsByUserId($_SESSION['user_id']);
+
             $data = [
-                'title' => 'Lịch sử mua hàng'
+                'title' => 'Lịch sử mua hàng',
+                'carts' => $carts
             ];
 
             return $this->view('payment.history', $data);
+        }
+
+        public function rating()
+        {
+            $_SESSION['user_id'] = 1; // change later
+
+            $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
+            $rating = isset($_GET['rating']) ? intval($_GET['rating']) : 0;
+
+            $cart = $this->paymentModel->getCartById($id);
+
+            if ($cart == null || $cart['user_id'] != $_SESSION['user_id'] || !Func::isInRange($rating, 1, 5))
+            {
+                return $this->view('404');
+            }
+
+            $this->paymentModel->updateRatingStarByCartId($id, $rating);
+            header('Location: ' . ROUTES['payment_history'] . '');
         }
     }

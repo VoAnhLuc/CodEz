@@ -27,7 +27,15 @@
 }
 
 .color--star {
-    color: #ffd900
+    color: #ffd900;
+}
+
+.color--star a {
+    color: #ffd900;
+}
+
+.color--star a:hover {
+    color: #ffc400;
 }
 
 .cursor--pointer {cursor: pointer;}
