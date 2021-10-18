@@ -37,4 +37,19 @@
             }
             mysqli_close($this->link);
         }
+        
+        public function getArrayResult($result)
+        {
+            $items = array();
+            while ($item = mysqli_fetch_assoc($result))
+            {
+                array_push($items, $item);
+            }
+            return $items;
+        }
+
+        public function getSingleResult($result)
+        {
+            return (mysqli_fetch_assoc($result));
+        }
     }
