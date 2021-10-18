@@ -36,6 +36,7 @@
 
 .color--star a:hover {
     color: #ffc400;
+    font-size: 20px;
 }
 
 .cursor--pointer {cursor: pointer;}
