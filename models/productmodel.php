@@ -53,7 +53,6 @@
                                                 WHERE $where
                                                 ORDER BY $orderby
                                                 LIMIT $limit");
-                                                
             $products = $this->db->getArrayResult($result);
             $this->db->closeConnection($result);
             return $products;
@@ -72,8 +71,8 @@
                                                         `code` = '" . $product['code'] . "',
                                                         `is_support` = '" . $product['is_support'] . "',
                                                         `updated` = '" . time() . "'
-                                                WHERE `id` = '" . $product['id'] . "'
-                                            ");
+                                                    WHERE `id` = '" . $product['id'] . "'
+                                                ");
             $this->db->closeConnection();
             return $result;
         }

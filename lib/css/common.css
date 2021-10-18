@@ -21,3 +21,24 @@
 .size--2rem {
     font-size: 2rem;
 }
+
+.color--green {
+    color: #01724f;
+}
+
+.color--star {
+    color: #ffd900;
+}
+
+.color--star a {
+    color: #ffd900;
+}
+
+.color--star a:hover {
+    color: #ffc400;
+    font-size: 20px;
+}
+
+.cursor--pointer {
+    cursor: pointer;
+}
