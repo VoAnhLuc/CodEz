@@ -37,7 +37,7 @@
                                             '" . time() . "',
                                             '" . time() . "',
                                             '0'
-                                        )", true);
+                                        )");
             $product_id = $this->db->getInsertId();
             $this->db->closeConnection();
             return $product_id;
@@ -46,7 +46,8 @@
         public function getAllProducts($orderby = "`id` DESC", $limit = 8, $where = "`products`.`id` != 0")
         {
             $this->db->createConnection();
-            $result = $this->db->executeQuery("SELECT `products`.*, `users`.`fullname`, `users`.`avatar`, `categories`.`name` FROM `products`
+            $result = $this->db->executeQuery("SELECT `products`.*, `users`.`fullname`, `users`.`avatar`, `categories`.`name`
+                                                FROM `products`
                                                 INNER JOIN `users` ON `products`.`user_id` = `users`.`id`
                                                 INNER JOIN `categories` ON `products`.`category_id` = `categories`.`id`
                                                 WHERE $where

@@ -37,7 +37,7 @@
             }
             mysqli_close($this->link);
         }
-
+        
         public function getArrayResult($result)
         {
             $items = array();
