@@ -36,6 +36,11 @@
 
         public function displayPager($currentURL)
         {
+            if ($this->getTotalPages() == 1)
+            {
+                return;
+            }
+
             $pager =  "<nav aria-label='Page navigation'>";
             $pager .= "<ul class='pagination justify-content-end'>";
             $pager .= "<li class='page-item'><a href='$currentURL&page=" . max($this->getCurrentPage() - 1, 1) . "' class='page-link' aria-label='Previous'><span aria-hidden='true'>&laquo;</span></a></li>";
