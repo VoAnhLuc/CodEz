@@ -85,7 +85,7 @@
 
             $id = (isset($_GET['id']) ? intval($_GET['id']) : 0);
 
-            $cart = $this->paymentModel->getCartById($id);
+            $cart = $this->paymentModel->getCartByIdLuc($id);
 
             if ($cart == null || $cart['user_id'] != $_SESSION['user_id']) {
                return $this->view('404') ;
