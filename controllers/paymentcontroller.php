@@ -61,7 +61,7 @@
 
             if (isset($_POST['addproducttocart'])) {
                 if (!in_array($idproduct, $arrayid)) {
-                    $this->paymentModel->addProductIntoCart( $_SESSION['user_id'], $idproduct);
+                    $this->paymentModel->addProductIntoCart($idproduct);
                     header('Location: ' . ROUTES['payment_cart'] . '');       
                 }
                 else{
