@@ -34,11 +34,8 @@
                             </div>
                             <div class="content__body">
                                 <?php
-                                    $total_price = 0;
                                     foreach ($carts as $item)
                                     {
-                                        $total_price += $item['price'];
-
                                         echo '<div class="content__item d-flex">
                                                 <div class="col-6 m-auto">
                                                     <i class="bi bi-award color--green"></i>
@@ -66,23 +63,7 @@
                                     }
                                 ?>
                                 
-                                <nav class="mt-5 d-flex justify-content-center" aria-label="...">
-                                    <ul class="pagination">
-                                      <li class="page-item disabled">
-                                        <span class="page-link">Previous</span>
-                                      </li>
-                                      <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                      <li class="page-item active">
-                                        <span class="page-link">
-                                          2
-                                        </span>
-                                      </li>
-                                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                      <li class="page-item">
-                                        <a class="page-link" href="#">Next</a>
-                                      </li>
-                                    </ul>
-                                  </nav>
+                                <?php echo $pageInfo->displayPager(ROUTES['payment_history']) ?>
                             </div>
                         </div>
                     </div>
@@ -94,8 +75,8 @@
                             </div>
                             <div class="content__body">
                                 <div class="content__item">
-                                    <p><i class="bi bi-piggy-bank color--instagram"></i> Tổng tiền đã tiêu: <b class="color--instagram"><?php echo $total_price ?> VNĐ</b></p>
-                                    <p><i class="bi bi-file-earmark-code color--green"></i> Tổng sản phẩm đã mua: <b class="color--green"><?php echo count($carts) ?> sản phẩm</b></p>
+                                    <p><i class="bi bi-piggy-bank color--instagram"></i> Tổng tiền đã tiêu: <b class="color--instagram"><?php echo $totalPrices ?> VNĐ</b></p>
+                                    <p><i class="bi bi-file-earmark-code color--green"></i> Tổng sản phẩm đã mua: <b class="color--green"><?php echo $pageInfo->getTotalItems() ?> sản phẩm</b></p>
                                 </div>
                             </div>
                         </div>

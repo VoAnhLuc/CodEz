@@ -50,6 +50,11 @@
 
         public function getSingleResult($result)
         {
-            return (mysqli_fetch_assoc($result));
+            return mysqli_fetch_assoc($result);
+        }
+
+        public function getNumRows($result)
+        {
+            return mysqli_num_rows($result);
         }
     }
