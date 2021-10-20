@@ -51,4 +51,27 @@
             $this->db->executeNonQuery("UPDATE `carts` SET `rate` = '$rating' WHERE `id` = '$id'");
             $this->db->closeConnection();
         }
+
+        public function getAllPricesPaid()
+        {
+            $_SESSION['user_id'] = 1; // change later
+            $user_id = $_SESSION['user_id'];
+
+            /*
+                If it had value, just return it.
+                We dont want to query every page change time.
+            */
+            if (isset($_SESSION['totalPrices']))
+            {
+                return $_SESSION['totalPrices'];
+            }
+
+            $this->db->createConnection();
+            $result = $this->db->executeQuery("SELECT SUM(`price`) AS 'sum' FROM `carts` WHERE `user_id` = '1' AND `paid_time` >= `add_time`;");
+            $total_price = $this->db->getSingleResult($result);
+            $this->db->closeConnection($result);
+
+            $_SESSION['totalPrices'] = $total_price;
+            return $total_price;
+        }
     }

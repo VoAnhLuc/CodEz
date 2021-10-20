@@ -53,6 +53,7 @@
             $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 
             $pageResult = $this->paymentModel->getAllPaidCarts($page);
+            $totalPrices = $this->paymentModel->getAllPricesPaid();
 
             if (!Func::isInRange($page, 1, $pageResult->getTotalPages()))
             {
@@ -62,6 +63,7 @@
             $data = [
                 'title' => 'Lịch sử mua hàng',
                 'carts' => $pageResult->getItems(),
+                'totalPrices' => $totalPrices['sum'],
                 'pageInfo' => $pageResult
             ];
 
