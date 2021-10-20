@@ -124,7 +124,7 @@
             $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
             $rating = isset($_GET['rating']) ? intval($_GET['rating']) : 0;
 
-            $cart = $this->paymentModel->getCartById($id);
+            $cart = $this->paymentModel->getCartPaidById($id);
 
             if ($cart == null || $cart['user_id'] != $_SESSION['user_id'] || !Func::isInRange($rating, 1, 5))
             {
