@@ -75,6 +75,13 @@
             $this->db->closeConnection($result);
             return $user;
         }
+
+        public function getProductByProductname($productname)
+        {
+            $this->db->createConnection();
+            $result = $this->db->executeQuery("SELECT * FROM `products` WHERE `title` = '$productname'
+                                                ");
+        }
     }
     
 ?>

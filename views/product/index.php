@@ -28,10 +28,10 @@
                         <div class="filter-bar filter--bar2 jplist-panel">
                             <div class="pull-left">
                                 <div class="filter__option">
-                                    <form class="d-flex">
-                                        <input class="form-control me-2" type="text" placeholder="Press something..."
+                 <!-- hhh    -->    <form class="d-flex">
+                                        <input name="productname" class="form-control me-2" type="text" placeholder="Press something..."
                                             aria-label="Search">
-                                        <button class="btn btn-sm btn__theme" type="submit">Find</button>
+                                        <button name="productsubmit" class="btn btn-sm btn__theme" type="submit">Find</button>
                                     </form>
                                 </div>
                             </div>
@@ -107,7 +107,7 @@
                     <div class="col-lg-10 d-flex flex-wrap">
                         <div class="row">
                             <?php
-                                for($i=1;$i<9;$i++) {
+                                for($i=1;$i<10;$i++) {
                                     echo '
                                         <div class="col-md-4 col-sm-6">
                                             <div class="item__item">
