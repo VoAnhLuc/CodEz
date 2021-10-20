@@ -45,6 +45,7 @@
             }
             $pager .= "<li class='page-item'><a href='$currentURL&page=" . min($this->getCurrentPage() + 1, $this->getTotalPages()) . "' class='page-link' aria-label='Previous'><span aria-hidden='true'>&raquo;</span></a></li>";
             $pager .= "</ul>";
+            $pager .= "</nav>";
     
             return $pager;
         }
