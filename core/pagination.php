@@ -36,7 +36,7 @@
 
         public function displayPager($currentURL)
         {
-            if ($this->getTotalPages() == 1)
+            if ($this->getTotalPages() < 2)
             {
                 return;
             }
