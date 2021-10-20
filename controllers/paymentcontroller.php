@@ -50,13 +50,19 @@
 
         public function history()
         {
-            $_SESSION['user_id'] = 1; // change later
+            $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 
-            $carts = $this->paymentModel->getAllPaidCartsByUserId($_SESSION['user_id']);
+            $pageResult = $this->paymentModel->getAllPaidCarts($page);
+
+            if (!Func::isInRange($page, 1, $pageResult->getTotalPages()))
+            {
+                return $this->view('404');
+            }
 
             $data = [
                 'title' => 'Lịch sử mua hàng',
-                'carts' => $carts
+                'carts' => $pageResult->getItems(),
+                'pageInfo' => $pageResult
             ];
 
             return $this->view('payment.history', $data);

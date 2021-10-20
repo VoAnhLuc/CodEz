@@ -8,6 +8,7 @@
     require_once './core/func.php';
     require_once './core/messages.php';
     require_once './core/routes.php';
+    require_once './core/pagination.php';
 
     Func::initDatabase();
 
