@@ -17,12 +17,6 @@
             $data = [
                 'title' => 'Tìm kiếm sản phẩm'
             ];
-            
-            if(isset($_POST['productsubmit']))
-            {
-                $productname = Func::getInput($_POST['productname']);
-                $product = '';
-            }
             return $this->view('product.index', $data);
         }
 
