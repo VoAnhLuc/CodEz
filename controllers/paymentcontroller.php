@@ -47,4 +47,44 @@
             
             return $this->view('payment.checkout', $data);
         }
+
+        public function history()
+        {
+            $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
+
+            $pageResult = $this->paymentModel->getAllPaidCarts($page);
+            $totalPrices = $this->paymentModel->getAllPricesPaid();
+
+            if (!Func::isInRange($page, 1, $pageResult->getTotalPages()))
+            {
+                return $this->view('404');
+            }
+
+            $data = [
+                'title' => 'Lịch sử mua hàng',
+                'carts' => $pageResult->getItems(),
+                'totalPrices' => $totalPrices,
+                'pageInfo' => $pageResult
+            ];
+
+            return $this->view('payment.history', $data);
+        }
+
+        public function rating()
+        {
+            $_SESSION['user_id'] = 1; // change later
+
+            $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
+            $rating = isset($_GET['rating']) ? intval($_GET['rating']) : 0;
+
+            $cart = $this->paymentModel->getCartById($id);
+
+            if ($cart == null || $cart['user_id'] != $_SESSION['user_id'] || !Func::isInRange($rating, 1, 5))
+            {
+                return $this->view('404');
+            }
+
+            $this->paymentModel->updateRatingStarByCartId($id, $rating);
+            header('Location: ' . ROUTES['payment_history'] . '');
+        }
     }

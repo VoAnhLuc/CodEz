@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-3 footer__follow">
-                    <h5><b>Follow</b> us</h5>
+                    <h5><b>Theo dõi</b> bọn tớ</h5>
                     <p>
                         <a href=""><i class="bi bi-facebook"></i></a>
                         <a href=""><i class="bi bi-instagram"></i></a>
@@ -63,3 +63,4 @@
     integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
     crossorigin="anonymous"></script>
 <script type="text/javascript" src="lib/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="lib/js/ratingstar.js"></script>

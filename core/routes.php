@@ -14,6 +14,8 @@
         'payment' => 'index.php?controller=payment',
         'payment_cart' => 'index.php?controller=payment&action=cart',
         'payment_checkout' => 'index.php?controller=payment&action=checkout',
+        'payment_history' => 'index.php?controller=payment&action=history',
+        'payment_rating' => 'index.php?controller=payment&action=rating',
 
         /* Product */
         'product' => 'index.php?controller=product',

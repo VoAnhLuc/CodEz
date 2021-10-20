@@ -28,32 +28,32 @@
                         <form  method="post" action="<?php echo ROUTES['user_edit'].'&id='.$id; ?>" enctype="multipart/form-data">
                             <div class="d-lg-flex">
                                 <div class="col-lg-6 p-2">
-                                    <div class="profile-settings__title">Profile Information</div>
+                                    <div class="profile-settings__title">Thông tin cá nhân</div>
                                     <div class="profile-settings__body">
                                         <div class="profile-settings__group">
-                                            <p>Name <span class="color--red">*</span></p>
+                                            <p>Họ và Tên <span class="color--red">*</span></p>
                                             <input type="text" class="form-control" value="<?php echo $user['fullname'] ?>" name="fullname" >
                                         </div>
                                         <div class="profile-settings__group">
-                                            <p>Username <span class="color--red">*</span></p>
+                                            <p>Tên đăng nhập <span class="color--red">*</span></p>
                                             <input type="text" class="form-control" value="<?php echo $user['username'] ?>" name="username" disabled>
                                         </div>
                                         <div class="profile-settings__group">
-                                            <p>Email Address <span class="color--red">*</span></p>
+                                            <p>Địa chỉ Email <span class="color--red">*</span></p>
                                             <input type="email" class="form-control" value="<?php echo $user['email'] ?>" name="email" disabled >
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6 profile-settings__group">
-                                                <p>Password</p>
+                                                <p>Mật khẩu</p>
                                                 <input type="password" class="form-control" value="<?php echo $user['password'] ?>" name="password" >
                                             </div>
                                             <div class="col-md-6 profile-settings__group">
-                                                <p>Confirm Password</p>
+                                                <p>Xác thực mật khẩu</p>
                                                 <input type="password" class="form-control" value="<?php echo $user['password'] ?>" name="repassword" >
                                             </div>
                                         </div>
                                         <div class="profile-settings__group">
-                                            <p>Birthday</p>
+                                            <p>Sinh nhật</p>
                                             <input class="form-control textbox-n" value="<?php echo $user['dob'] ?>" name="birthday" type="text" onfocus="(this.type='date')" id="date">
                                         </div>
                                         <div class="profile-settings__group">
@@ -61,21 +61,21 @@
                                             <input type="text" class="form-control" value="<?php echo $user['website'] ?>" name="website">
                                         </div>
                                         <div class="profile-settings__group">
-                                            <p>Profile Heading</p>
+                                            <p>Tiêu đề trang cá nhân</p>
                                             <input type="text" class="form-control" value="<?php echo $user['heading'] ?>" name="profileheading">
                                         </div>
                                         <div class="profile-settings__group">
-                                            <p>About</p>
+                                            <p>Giới thiệu</p>
                                             <textarea class="form-control" name="about" rows="4"><?php echo $user['about'] ?></textarea>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 p-2">
-                                    <div class="profile-settings__title">Profile Image & Cover Image</div>
+                                    <div class="profile-settings__title">Ảnh đại diện & Ảnh bìa</div>
                                     <div class="profile-settings__body">
                                         <div class="row">
                                             <div class="col-md-6 profile-settings__group">
-                                                <p>Profile Image</p>
+                                                <p>Ảnh đại diện</p>
                                                 <p class="color--gray">JPG, GIF or PNG - 100x100 px</p>
                                             </div>
                                             <div class="col-md-6 profile-settings__group m-auto">
@@ -87,7 +87,7 @@
                                         </div>  
                                         <div class="row">
                                             <div class="col-md-6 profile-settings__group">
-                                                <p>Cover Image</p>
+                                                <p>Ảnh bìa</p>
                                                 <p class="color--gray">JPG, GIF or PNG - 750x370 px</p>
                                             </div>
                                             <div class="col-md-6 profile-settings__group m-auto">
@@ -99,7 +99,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="profile-settings__title mt-3">Social Profiles</div>
+                                    <div class="profile-settings__title mt-3">Tài khoản mạng xã hội</div>
                                     <div class="profile-settings__body">
                                         <div class="row profile-settings__group">
                                             <div class="col-auto m-auto">

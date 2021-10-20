@@ -36,7 +36,9 @@
             'action' => [
                 'index',
                 'cart',
-                'checkout'
+                'checkout',
+                'history',
+                'rating'
             ]
         ]
     ];

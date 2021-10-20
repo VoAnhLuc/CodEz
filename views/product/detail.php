@@ -16,7 +16,7 @@
     <meta property="og:title" content="<?php echo $product['title'] ?>"/>
     <meta property="og:image" content="<?php echo $product['thumb'] ?>"/>
     <meta property="og:description" content="<?php echo $product['description'] ?>"/>
-    <meta property="og:url" content="<?php echo Func::getURL() ?>" />
+    <meta property="og:url" content="<?php echo Func::getCurrentURL() ?>" />
 </head>
 
 <body>
@@ -41,16 +41,16 @@
                                 <div class="card-footer">
                                     <button type="button" class="bi bi-share"> Share With :</button>
                                     <a class="bi bi-facebook me-2"
-                                        href="https://www.facebook.com/sharer/sharer.php?u=<?php echo Func::getURL() ?>"
+                                        href="https://www.facebook.com/sharer/sharer.php?u=<?php echo Func::getCurrentURL() ?>"
                                         target="_blank"> Facebook</a>
                                     <a class="bi bi-linkedin me-2"
-                                        href="https://www.linkedin.com/sharing/share-offsite/?url=<?php echo Func::getURL() ?>"
+                                        href="https://www.linkedin.com/sharing/share-offsite/?url=<?php echo Func::getCurrentURL() ?>"
                                         target="_blank"> Linkedin</a>
                                     <a class="bi bi-reddit me-2"
-                                        href="http://www.reddit.com/submit?url=<?php echo Func::getURL() ?>"
+                                        href="http://www.reddit.com/submit?url=<?php echo Func::getCurrentURL() ?>"
                                         target="_blank"> Reddit</a>
                                     <a class="bi bi-twitter"
-                                        href="https://twitter.com/intent/tweet?url=<?php echo Func::getURL() ?>"
+                                        href="https://twitter.com/intent/tweet?url=<?php echo Func::getCurrentURL() ?>"
                                         target="_blank"> Twitter</a>
                                 </div>
                             </div>  
