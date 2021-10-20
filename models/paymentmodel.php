@@ -8,8 +8,11 @@
             $this->db = new Database();
         }
  
-        public function getAllCartsByUserId($user_id)
+        public function getAllCarts()
         {
+            $_SESSION['user_id'] = 1; // change later
+            $user_id = $_SESSION['user_id'];
+
             $this->db->createConnection();
 
             $result = $this->db->executeQuery("SELECT `carts`.*, `products`.`thumb`, `products`.`price`, `products`.`title`
@@ -19,38 +22,11 @@
                                                 ORDER BY `carts`.`id` DESC
                                                 ");
 
-            $carts = array();
-            while($cart = mysqli_fetch_assoc($result)){
-                array_push($carts, $cart);
-            }
+            $carts = $this->db->getArrayResult($result);
 
             $this->db->closeConnection($result);
 
             return $carts;
-        }
-        
-        public function addProductInCart($user_id, $product_id){
-            $this->db->createConnection();
-
-            $result = $this->db->executeNonQuery("INSERT INTO `carts` (`user_id`, `product_id`, `add_time`)
-                                                        VALUES ('$user_id', '$product_id', '".time()."')");
-            $this->db->closeConnection();
-            return $result;                              
-        }
-
-        public function removeProductCart($id){
-            $this->db->createConnection();
-            $result = $this->db->executeNonQuery("DELETE FROM `carts` where `id` = '$id' ");
-            $this->db->closeConnection();
-            return $result;     
-        }
-
-        public function getCartByIdLuc($id){
-            $this->db->createConnection();
-            $result = $this->db->executeQuery("SELECT * FROM `carts` WHERE `id` = '$id'");
-            $cart = mysqli_fetch_assoc($result);
-            $this->db->closeConnection($result);
-            return $cart;
         }
 
         public function getAllPaidCarts($page = 1)
@@ -81,22 +57,6 @@
             return $pageResult;
         }
 
-        public function getCartById($id)
-        {
-            $this->db->createConnection();
-            $result = $this->db->executeQuery("SELECT `user_id` FROM `carts` WHERE `id` = '$id' AND `paid_time` >= `add_time`");
-            $cart = $this->db->getSingleResult($result);       
-            $this->db->closeConnection($result);
-            return $cart;
-        }
-
-        public function updateRatingStarByCartId($id, $rating)
-        {
-            $this->db->createConnection();
-            $this->db->executeNonQuery("UPDATE `carts` SET `rate` = '$rating' WHERE `id` = '$id'");
-            $this->db->closeConnection();
-        }
-
         public function getAllPricesPaid()
         {
             $_SESSION['user_id'] = 1; // change later
@@ -118,5 +78,42 @@
 
             $_SESSION['totalPrices'] = $total_price['sum'];
             return $_SESSION['totalPrices'];
+        }
+
+        public function getCartById($id)
+        {
+            $this->db->createConnection();
+            $result = $this->db->executeQuery("SELECT `user_id` FROM `carts` WHERE `id` = '$id' AND `paid_time` >= `add_time`");
+            $cart = $this->db->getSingleResult($result);       
+            $this->db->closeConnection($result);
+            return $cart;
+        }
+        
+        public function addProductIntoCart($product_id)
+        {
+            $_SESSION['user_id'] = 1; // change later
+            $user_id = $_SESSION['user_id'];
+
+            $this->db->createConnection();
+
+            $result = $this->db->executeNonQuery("INSERT INTO `carts` (`user_id`, `product_id`, `add_time`)
+                                                        VALUES ('$user_id', '$product_id', '" . time() . "')");
+            $this->db->closeConnection();
+
+            return $result;                              
+        }
+
+        public function removeProductFromCart($id){
+            $this->db->createConnection();
+            $result = $this->db->executeNonQuery("DELETE FROM `carts` where `id` = '$id' ");
+            $this->db->closeConnection();
+            return $result;     
+        }
+
+        public function updateRatingStarByCartId($id, $rating)
+        {
+            $this->db->createConnection();
+            $this->db->executeNonQuery("UPDATE `carts` SET `rate` = '$rating' WHERE `id` = '$id'");
+            $this->db->closeConnection();
         }
     }
