@@ -63,7 +63,7 @@
             $data = [
                 'title' => 'Lịch sử mua hàng',
                 'carts' => $pageResult->getItems(),
-                'totalPrices' => $totalPrices['sum'],
+                'totalPrices' => $totalPrices,
                 'pageInfo' => $pageResult
             ];
 

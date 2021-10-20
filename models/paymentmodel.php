@@ -71,7 +71,7 @@
             $total_price = $this->db->getSingleResult($result);
             $this->db->closeConnection($result);
 
-            $_SESSION['totalPrices'] = $total_price;
-            return $total_price;
+            $_SESSION['totalPrices'] = $total_price['sum'];
+            return $_SESSION['totalPrices'];
         }
     }
