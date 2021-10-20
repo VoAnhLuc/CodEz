@@ -213,8 +213,4 @@
             copy($from, $fileName);
             return $fileName;
         }
-
-        public static function displayPager($totalPages, $url)
-        {
-        }
     }
