@@ -16,7 +16,9 @@
 
         public function cart()
         {
-            $carts = $this->paymentModel->getAllCarts();
+            $_SESSION['user_id'] = 1;
+
+            $carts = $this->paymentModel->getAllCarts($_SESSION['user_id']);
 
             $data = [
                 'title' => 'Giỏ hàng',
@@ -44,7 +46,10 @@
         }
 
         public function add(){
-            $carts = $this->paymentModel->getAllCarts();
+       
+            $_SESSION['user_id'] = 1;
+
+            $carts = $this->paymentModel->getAllCarts($_SESSION['user_id']);
 
             $arrayid = [];
 
@@ -54,11 +59,9 @@
 
             $idproduct = (isset($_GET['id']) ? intval($_GET['id']) : 0);
 
-            if (isset($_POST['addproducttocart']))
-            {
-                if (!in_array($idproduct, $arrayid))
-                {
-                    $this->paymentModel->addProductIntoCart($idproduct);
+            if (isset($_POST['addproducttocart'])) {
+                if (!in_array($idproduct, $arrayid)) {
+                    $this->paymentModel->addProductIntoCart( $_SESSION['user_id'], $idproduct);
                     header('Location: ' . ROUTES['payment_cart'] . '');       
                 }
                 else{
@@ -77,14 +80,14 @@
         }
 
         public function delete(){
+
             $_SESSION['user_id'] = 1;
 
             $id = (isset($_GET['id']) ? intval($_GET['id']) : 0);
 
-            $cart = $this->paymentModel->getCartByIdLuc($id);
+            $cart = $this->paymentModel->getCartById($id);
 
-            if ($cart == null || $cart['user_id'] != $_SESSION['user_id'])
-            {
+            if ($cart == null || $cart['user_id'] != $_SESSION['user_id']) {
                return $this->view('404') ;
             }
 
