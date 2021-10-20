@@ -11,17 +11,9 @@
         public function getAllCategories()
         {
             $this->db->createConnection();
-
             $result = $this->db->executeQuery("SELECT * FROM `categories`");
-
-            $categories = array();
-            while ($category = mysqli_fetch_assoc($result))
-            {
-                array_push($categories, $category);
-            }
-
+            $categories = $this->db->getArrayResult($result);
             $this->db->closeConnection($result);
-
             return $categories;
         }
     }

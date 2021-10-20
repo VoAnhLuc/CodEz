@@ -149,7 +149,7 @@
         */
         public static function removeFile($location)
         {
-            if (!empty($location))
+            if (file_exists($location))
             {
                 return unlink($location);
             }
