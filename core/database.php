@@ -8,6 +8,7 @@
         public function createConnection() 
         {
             $this->link = mysqli_connect(HOST, USER, PASSWORD, DB);
+            $this->link->set_charset("utf8");
             if (!$this->link) {
                 die("ERROR: Could not connect. " . mysqli_connect_error());
             }
@@ -35,5 +36,25 @@
                 mysqli_free_result($result);
             }
             mysqli_close($this->link);
+        }
+        
+        public function getArrayResult($result)
+        {
+            $items = array();
+            while ($item = mysqli_fetch_assoc($result))
+            {
+                array_push($items, $item);
+            }
+            return $items;
+        }
+
+        public function getSingleResult($result)
+        {
+            return mysqli_fetch_assoc($result);
+        }
+
+        public function getNumRows($result)
+        {
+            return mysqli_num_rows($result);
         }
     }

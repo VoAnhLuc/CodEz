@@ -2,7 +2,8 @@
     const MESSAGES = [
 
         /* 404 */
-        'page_not_found' => 'Đã có lỗi xảy ra! Trang bạn vừa truy cập không tìm thấy.',
+        'error_404' => 'Trang Không Tồn Tại',
+        'error_404_message' => 'Trang bạn đang truy cập có thể đã bị xóa, bị thay đổi hoặc bạn không đủ quyền để truy cập.',
 
         /* form */
         'input_empty' => 'Vui lòng điền đầy đủ các thông tin bắt buộc!',
@@ -11,6 +12,7 @@
         'emailtype_error' => 'Email của bạn không hợp lệ',
         'nametype_error' => 'Tên chỉ được dùng chữ hoa/thường hoặc số và không có khoảng trắng (ví dụ: Duchung0908)',
         'passwordtype_error' => 'Mật khẩu tối thiểu 8 ký tự, ít nhất 1 chữ hoa, 1 chữ thường, 1 số và 1 ký tự đặc biệt',
+        'category_not_found' => 'Không tìm thấy category!',
 
         /* upload file */
         'upload_file_error' => 'Có lỗi xảy ra! Upload file thất bại',

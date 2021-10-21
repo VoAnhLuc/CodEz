@@ -29,28 +29,28 @@
                     <div class="col-lg-6 m-auto">
                         <form method="post" class="login__form">
                             <div class="login__title">
-                                <h3>Welcome Back</h3>
-                                <p>You can sign in with your username.</p>
+                                <h3>Chào mừng quay trở lại!</h3>
+                                <p>Bạn có thể đăng nhập bằng Tên tài khoản của mình.</p>
                             </div>
                             <div class="login__body">
                                 <div class="login__group">
-                                    <label for="username" class="mb-2">E-Mail Address / Username</label>
-                                    <input id="username" type="text" class="form-control " name="username" placeholder="Enter your username" required autocomplete="username">
+                                    <label for="username" class="mb-2">Tên tài khoản</label>
+                                    <input id="username" type="text" class="form-control " name="username" placeholder="Nhập tên tài khoản" required autocomplete="username">
                                 </div>
                                 <div class="login__group">
-                                    <label for="password" class="mb-2">Password</label>
-                                    <input id="password" type="text" class="form-control " name="password" placeholder="Enter your username" required autocomplete="password">
+                                    <label for="password" class="mb-2">Mật khẩu</label>
+                                    <input id="password" type="text" class="form-control " name="password" placeholder="Nhập mật khẩu" required autocomplete="password">
                                 </div>
                                 <div class="login__group">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember">
-                                    <label for="remember" class="label_text">Remember Me</label>
+                                    <label for="remember" class="label_text">Nhớ đăng nhập</label>
                                 </div>
                                 <div class="login__group">
                                     <button type="submit" name="submit" class="btn btn-sm btn__theme">Đăng nhập</button>
                                 </div>
                                 <div class="login__assist">
-                                    <p><a href="./forgot.php">Forgot Your Password?</a></p>
-                                    <p>Don't have an <a href="./register.php">account</a>?</p>
+                                    <p><a href="./forgot.php">Quên mật khẩu?</a></p>
+                                    <p>Chưa có <a href="<?php echo ROUTES['user_register'] ?>">tài khoản</a>?</p>
                                 </div>
                             </div>
                         </form>

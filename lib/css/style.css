@@ -216,14 +216,6 @@ a {
   padding: 1.5rem 1.5rem 1rem;
 }
 
-.item__info a {
-  color: rgb(44, 44, 44);
-}
-
-.item__info a:hover {
-  color: rgb(44, 44, 44);
-}
-
 .item__title {
   margin-bottom: 1rem;
   font-size: 18px;
@@ -238,6 +230,8 @@ a {
 
 .item__user {
   margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
 }
 
 .item__author {
@@ -250,10 +244,11 @@ a {
 .item__star {
   display: flex;
   padding: 0;
+  color: #ffd900;
 }
 
 .item__cart {
-  color: #011c26;
+  color: #159c7a;
 }
 
 .item__more {
@@ -274,6 +269,14 @@ a {
   border-radius: 1rem;
   padding: 5px 10px;
   text-align: center;
+}
+
+.item__info a, .item__category a, .login__assist a {
+  color: #011c26;
+}
+
+.item__info a:hover, .item__category a:hover, .login__assist a:hover {
+  color: #0a6e55;
 }
 
 .login {
@@ -652,9 +655,10 @@ margin: auto;
   background-color: #011C26;
 }
 
-.breadcrumb a{
+.breadcrumb a, .breadcrumb a:hover{
   color: white;
 }
+
 #breadcrumb{
   width: 100%;
   background-color: #011c26;
@@ -736,6 +740,12 @@ main{
 .card-body ul {
   list-style: circle;
 }
+.card-body a {
+  color: #011C26;
+}
+.card-body a:hover {
+  color: #01724f;
+}
 .cardcontent .gioithieusp {
   text-align: left;
   padding-bottom: 40px;
@@ -790,10 +800,6 @@ main{
 }
 .infitem .card-body .inf{
   margin-top: 30px;
-}
-.infitem .card-body i{
-  position: absolute;
-  left: 138px;
 }
 .moreitem .row{
   text-align: center;
@@ -1037,31 +1043,58 @@ main{
   color: rgb(44, 44, 44);
 }
 
-.create-product__form {
+.content__form {
   margin: 4rem 0;
 }
 
-.create-product__title {
+.content__title {
   padding: 1rem 2rem;
   font-weight: 600;
   font-size: 25px;
   border-bottom: 1px solid #ececec;
 }
 
-.create-product__body {
+.content__body {
   padding: 1rem 2rem;
 }
 
-.create-product__body label {
+.content__body label {
   margin-bottom: .5rem;
 }
 
-.create-product__item {
+.content__item {
   margin-bottom: 2rem;
 }
 
-.create-product__list {
+.content__item a {
+  color: #011c26;
+}
+
+.content__item a:hover {
+  color: #01724f;
+}
+
+.content__list {
   background-color: #fff;
   box-shadow: 0 2px 4px rgb(108 111 115 / 10%);
   margin-bottom: 2rem;
+}
+
+.item__download {
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.item__download a {
+  color: #01724f;
+}
+
+.item__download a:hover {
+  color: red;
+}
+
+.error__404
+{
+  height: 50vh;
 }

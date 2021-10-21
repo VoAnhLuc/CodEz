@@ -32,8 +32,8 @@
                         <div class="col-lg-6 col-md-12 col-sm-12 d-flex m-auto">
                             <div class="card carddangki">
                                 <div class="card-header">
-                                    <h2>Create Your Account</h1><br>
-                                    <i>Please fill the following fields with appropriate information to register a new Marketplace account.</i><br/>
+                                    <h2>Tạo Tài Khoản</h1><br>
+                                    <i>Vui lòng điền đầy đủ thông tin để thực hiện đăng ký tài khoản.</i><br/>
                                    <?php
                                         echo (!empty($errors) ? '<i style="color:red;"> *' .$errors. '</i>' : $errors);   
                                     ?>
@@ -42,36 +42,36 @@
                                         <div class="row">
                                             <form method="post" action="" class="col-lg-12 col-md-12 col-sm-12 ">
                                                 <div class="row dangki">
-                                                    <div class="col-lg-6 col-md-6 col-sm-6">
-                                                        <label for="yourname">Your Name</label>
-                                                        <input name="yourname" class="form-control" type="text" placeholder="Enter your name" required >
-                                                    </div>
                                                     <div class="col-lg-6 col-md-6 col-sm-6 ">
-                                                        <label for="username">Username</label>
-                                                        <input name="username" class="form-control" type="text" placeholder="Enter your username" required >
+                                                        <label for="username">Tên tài khoản</label>
+                                                        <input name="username" class="form-control" type="text" placeholder="Nhập tên tài khoản" required >
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                                        <label for="yourname">Họ và Tên</label>
+                                                        <input name="yourname" class="form-control" type="text" placeholder="Nhập họ và tên" required >
+                                                    </div>
+                                                </div>
+                                                <div class="row dangki">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 ">
+                                                        <label for="password">Mật khẩu</label>
+                                                        <input name="password" class="form-control" type="password" placeholder="Nhập mật khẩu" required >
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                                        <label for="email">Địa chỉ Email</label>
+                                                        <input name="email" class="form-control" type="email" placeholder="Nhập địa chỉ Email" required >
                                                     </div>
                                                 </div>
                                                 <div class="row dangki">
                                                     <div class="col-lg-6 col-md-6 col-sm-6">
-                                                        <label for="email">E-mail Address</label>
-                                                        <input name="email" class="form-control" type="email" placeholder="Enter your e-mail address" required >
+                                                        <label for="confirmpassword">Xác nhận mật khẩu</label>
+                                                        <input name="confirmpassword" class="form-control" type="password" placeholder="Nhập xác nhận mật khẩu" required >
                                                     </div>
-                                                    <div class="col-lg-6 col-md-6 col-sm-6 ">
-                                                        <label for="password">Password</label>
-                                                        <input name="password" class="form-control" type="password" placeholder="Enter your Password" required >
-                                                    </div>
-                                                </div>
-                                                <div class="row dangki">
-                                                    <div class="col-lg-6 col-md-6 col-sm-6">
-                                                        <label for="confirmpassword">Confirm Password</label>
-                                                        <input name="confirmpassword" class="form-control" type="password" placeholder="Enter confirm password" required >
-                                                    </div>
-                                                    <div class="col-lg-6 col-md-6 col-sm-6">                                              
-                                                    <button name="submit" class="form-control submit" type="submit">Register</button>
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 text-center">                                              
+                                                        <button name="submit" class="form-control submit" type="submit">Đăng ký</button>
+                                                        <i>Đã có tài khoản?</i>
+                                                        <a href="<?php echo ROUTES['user_login'] ?>">Đăng nhập</a>
                                                     </div>
                                                     <div class="col-lg-6 col-md-6 col-sm-6 chuyendn">
-                                                        <i>Already have an account?</i>
-                                                        <a href="<?php echo ROUTES['user_login'] ?>">Login</a>
                                                     </div>
                                                 </div>
                                             </form>

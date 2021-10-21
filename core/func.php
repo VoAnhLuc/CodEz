@@ -1,6 +1,42 @@
 <?php
     class Func
     {
+        /*
+            This method user for initialize `roles` data.
+            Everytime access the web, server will call to database to check if any data exist in `roles` table.
+            If there are not having yet, server will insert automatically.
+        */
+        public static function initDatabase()
+        {
+            $db = new Database;
+            $db->createConnection();
+
+            /* Initialize Roles */
+            $result = $db->executeQuery("SELECT `id` FROM `roles`");
+            if (!mysqli_num_rows($result))
+            {
+                $db->executeNonQuery("INSERT INTO `roles` (`name`) VALUES ('user'), ('admin')");
+            }
+
+            /* Initialize Categories */
+            $result = $db->executeQuery("SELECT `id` FROM `categories`");
+            if (!mysqli_num_rows($result))
+            {
+                $db->executeNonQuery("INSERT INTO `categories` (`name`, `description`) VALUES
+                                                    ('HTML/Css', 'About HTML5 and Css...'),
+                                                    ('Javascript', 'About Javascript, Jquery, ReactJS...'),
+                                                    ('C#/.NET', 'About C# .NET, ASP.NET, F#, ML.NET...'),
+                                                    ('Java', 'About Java, Jsp, Servlet, Spring...'),
+                                                    ('C/C++', 'About C, C++...'),
+                                                    ('Python', 'About Python...'),
+                                                    ('PHP & MYSQL', 'About PHP, Lavarel Framework...'),
+                                                    ('The Others', 'The others languages...')
+                                                    ");
+            }
+
+            $db->closeConnection($result);
+        }
+
         /*  
             This method use for check an array value. 
             If any value in array is empty, return true.
@@ -10,10 +46,7 @@
         {
             foreach($arr as $value)
             {
-                if (empty($value) && gettype($value) != 'boolean')
-                {
-                    return true;
-                }
+                return empty($value) && gettype($value) == 'string';
             }
             return false;
         }
@@ -26,7 +59,7 @@
             $message: message of upload file, include error and success.
             $isImageUpload: boolean, just a param to specify upload image or file.
         */
-        private const UPLOAD_FILE_TYPES = [
+        const UPLOAD_FILE_TYPES = [
             "image" => [
                 "image/jpeg" => ".jpg",
                 "image/png" => ".png"
@@ -40,7 +73,7 @@
                 "application/x-rar-compressed" => ".rar"
             ]
         ];
-        private const UPLOAD_FILE_MAX_SIZE = 25000000; // 25mb
+        const UPLOAD_FILE_MAX_SIZE = 25000000; // 25mb
         
         public static function uploadFile($dir, $inputName, &$outputName = '', &$message = '', $isImageUpload = false)
         {
@@ -64,6 +97,10 @@
                 return false;
             }
 
+            if (!empty($outputName))
+            {
+                self::removeFile($outputName);
+            }
 
             $_SESSION['user_id'] = 1; // change later.
 
@@ -75,7 +112,6 @@
             return true;
         }
 
-        // Test Input
         public static function getInput($data)
         {
             $data = trim($data);
@@ -84,7 +120,7 @@
             return $data;
         }
         
-        public static function checkPassword($password)
+        public static function isValidPassword($password)
         {
             if(preg_match("/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/",$password))
             {
@@ -96,7 +132,7 @@
             }
         }
 
-        public static function checkUserName($username)
+        public static function isValidUserName($username)
         {
             if(preg_match("/^[a-zA-Z0-9]{1,30}$/",$username))
             {
@@ -107,12 +143,13 @@
                 return false;
             }
         }
+
         /*
             This method use for remove file in the location provided. 
         */
         public static function removeFile($location)
         {
-            if (!empty($location))
+            if (file_exists($location))
             {
                 return unlink($location);
             }
@@ -141,5 +178,39 @@
 
         public static function isValidMd5($md5 =''){
             return preg_match('/^[a-f0-9]{32}$/', $md5);
+        }
+
+        public static function getCurrentURL(){
+            return  (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ?
+                    "https" : "http") . "://" . $_SERVER['HTTP_HOST'] . 
+                    $_SERVER['REQUEST_URI'];
+        }
+
+        public static function getShortPrice($price)
+        {
+            if ($price >= 1000000000)
+            {
+                return $price/1000000000 . 'T';
+            }
+            if ($price >= 1000000)
+            {
+                return $price/1000000 . 'TR';
+            }
+            if ($price >= 1000)
+            {
+                return $price/1000 . 'K';
+            }
+            return $price;
+        }
+
+        /*
+            This function use for copy file from dictionary to other dictionary
+        */
+        public static function copyFileFromTo($from, $to, $user_id, $is_image = true)
+        {
+            $fileType = $is_image ? self::UPLOAD_FILE_TYPES['image'] : self::UPLOAD_FILE_TYPES['file'];
+            $fileName = str_replace('.', '/', $to) . '/' . $user_id . '_' . time() . $fileType[mime_content_type($from)];
+            copy($from, $fileName);
+            return $fileName;
         }
     }
