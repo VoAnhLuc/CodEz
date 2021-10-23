@@ -18,7 +18,7 @@
         {
             $_SESSION['user_id'] = 1;
 
-            $carts = $this->paymentModel->getAllCarts($_SESSION['user_id']);
+            $carts = $this->paymentModel->getAllCarts();
 
             $data = [
                 'title' => 'Giỏ hàng',
@@ -49,19 +49,13 @@
        
             $_SESSION['user_id'] = 1;
 
-            $carts = $this->paymentModel->getAllCarts($_SESSION['user_id']);
+            $id_product = (isset($_GET['id']) ? intval($_GET['id']) : 0);
 
-            $arrayid = [];
-
-            foreach ($carts as $value) {
-                array_push($arrayid , $value['product_id']);
-            }
-
-            $idproduct = (isset($_GET['id']) ? intval($_GET['id']) : 0);
+            $product_have = $this->paymentModel->getCartByProductId($id_product);
 
             if (isset($_POST['addproducttocart'])) {
-                if (!in_array($idproduct, $arrayid)) {
-                    $this->paymentModel->addProductIntoCart($idproduct);
+                if(empty($product_have)) {
+                    $this->paymentModel->addProductIntoCart($id_product);
                     header('Location: ' . ROUTES['payment_cart'] . '');       
                 }
                 else{
@@ -73,6 +67,7 @@
             }
 
             $data = [
+                'title' => 'Giỏ Hàng'
                 
             ];
             

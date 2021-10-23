@@ -28,9 +28,9 @@
         <section class="sect3">
         <div class="container container1">
             <div class="row totalInfo">
-                <div class="col-md-3 d-none d-md-block special"><h4>Product Items</h4></div>
-                <div class="col-md-5 d-none d-md-block special"><h4>Price</h4></div>
-                <div class="col-md-4 d-none d-md-block special"><h4>Remove</h4></div>
+                <div class="col-md-3 d-none d-md-block special"><h4>Sản Phẩm</h4></div>
+                <div class="col-md-5 d-none d-md-block special"><h4>Đơn Giá</h4></div>
+                <div class="col-md-4 d-none d-md-block special"><h4>Xóa</h4></div>
             </div>
             <?php
                     $total_money = 0;
@@ -41,7 +41,7 @@
                                 <div class="col-md-12 col-sm-12 information">
                                     <div class=" col-md-3 col-sm-6 v_middle">
                                         <div class="product_description">
-                                            <a href="index.php?controller=product">
+                                            <a href="' . ROUTES['product_detail'] . '&id=' . $item['product_id'] . '">
                                                 <img src="' . $item['thumb'] . '" alt="Image" class="cart-thumb" style="width : 100px ; height : 100px;">
                                             </a>
                                             <div class="short_desc">
@@ -55,7 +55,7 @@
                                         <div class="col-md-4 col-sm-4"></div>
                                         <div class="item_price1 col-md-4 col-sm-4">
                                             <div class="item_price">
-                                                <p>' . $item['price'] . ' VND</p>  
+                                                <p>' . Func::getShortPrice($item['price']) . ' VND</p>  
                                             </div>
                                         </div>
                                         <div class="col-md-4 col-sm-2"></div>
@@ -91,13 +91,13 @@
                 <div class="col-lg-6 col-md-6 col-sm-0"></div>
                 <div class="col-lg-6 col-md-6 col-sm-12 thanhtoan">
                     <div class="cart-subtotal">
-                        <p><span>Cart Subtotal:</span><?php echo $total_money ?></p>
+                        <p><span>Cart Subtotal:</span><?php echo Func::getShortPrice($total_money) ?></p>
                    </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-0"></div>
                 <div class="col-lg-6 col-md-6 col-sm-12 thanhtoan">
                     <div class="cart-subtotal">
-                        <p><span>Total:</span><?php echo $total_money ?></p>
+                        <p><span>Total:</span><?php echo  Func::getShortPrice($total_money)  ?></p>
                    </div>
                    <div class="cart-subtotalspecial">
                     <button type="submit" class="btn btn-success"><a style="color:white"  href="index.php?controller=payment&action=checkout">Proceed To Checkout</a></button>

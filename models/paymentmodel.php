@@ -89,6 +89,15 @@
             return $cart;
         }
 
+        public function getCartByProductId($product_id)
+        {
+            $this->db->createConnection();
+            $result = $this->db->executeQuery("SELECT * FROM `carts` WHERE `product_id` = '$product_id' AND `paid_time` < `add_time`");
+            $cart = $this->db->getSingleResult($result);       
+            $this->db->closeConnection($result);
+            return $cart;
+        }
+
         public function getCartPaidById($id)
         {
             $this->db->createConnection();
