@@ -83,7 +83,7 @@
                                 </div>    
                                 
                                 <div>
-                                    <button type="submit" class="btn btn-primary">Apply Coupon</button>
+                                    <button type="submit" class="btn btn-primary">Áp Dụng Giảm Giá</button>
                                 </div>
                             </div>
                         </div>
@@ -91,16 +91,16 @@
                 <div class="col-lg-6 col-md-6 col-sm-0"></div>
                 <div class="col-lg-6 col-md-6 col-sm-12 thanhtoan">
                     <div class="cart-subtotal">
-                        <p><span>Cart Subtotal:</span><?php echo Func::getShortPrice($total_money) ?></p>
+                        <p><span>Tổng phụ giỏ hàng:</span><?php echo Func::getShortPrice($total_money) ?></p>
                    </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-0"></div>
                 <div class="col-lg-6 col-md-6 col-sm-12 thanhtoan">
                     <div class="cart-subtotal">
-                        <p><span>Total:</span><?php echo  Func::getShortPrice($total_money)  ?></p>
+                        <p><span>Tổng Tiền:</span><?php echo  Func::getShortPrice($total_money)  ?></p>
                    </div>
                    <div class="cart-subtotalspecial">
-                    <button type="submit" class="btn btn-success"><a style="color:white"  href="index.php?controller=payment&action=checkout">Proceed To Checkout</a></button>
+                    <button type="submit" class="btn btn-success"><a style="color:white"  href="index.php?controller=payment&action=checkout">Tiến Hành Thanh Toán</a></button>
                    </div>
                 </div>
             </div>
