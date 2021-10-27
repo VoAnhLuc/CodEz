@@ -32,21 +32,51 @@
         public function login()
         {            
             $data = ['title' => 'Login'];
-
+            $username = $password = "";
+            $usernameErr = $passwordErr = "";
             if(isset($_POST['submit']))
             {
-                $username = Func::getInput($_POST['username']);
-                $password = Func::getInput(($_POST['password']));
-                
-                $result = $this->userModel->getLogin($username, $password);
-                if($result == 'login')
+                if(empty(trim($_POST["username"])))
                 {
-                    return $this->view('home.index', $data = ['CodeZ.Shop - Coding is hard? Just buy it.']);
+                    $usernameErr = "Hãy nhập tên đăng nhập.";
+                }
+                else
+                {
+                    $username = Func::getInput($_POST['username']);
+                }
+
+                if(empty(trim($_POST["password"])))
+                {
+                    $passwordErr = "Hãy nhập mật khẩu.";
+                }
+                else
+                {
+                    $password = md5(Func::getInput($_POST['password']));
+                }
+                
+                if(empty($usernameErr) && empty($passwordErr))
+                {
+                    $result = $this->userModel->getLogin($username, $password);
+                    if($result != null)
+                    {
+                        session_start();
+                        
+                        $_SESSION["loggedin"] = true;
+                        $_SESSION["id"] = $result['id'];
+                        $_SESSION["username"] = $username;
+
+                        header("location: home/index.php");
+                    }
+                    else
+                    {
+                        return $this->view('user.Login', $data);
+                    }
                 }
                 else
                 {
                     return $this->view('user.Login', $data);
                 }
+                
             }
             else
             {

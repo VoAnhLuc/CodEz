@@ -25,11 +25,11 @@
                 $this->db->closeConnection($result);
                 if(!empty($user))
                 {
-                    return 'login';
+                    return $user;
                 }
                 else
                 {
-                    return 'invalid user';
+                    return null;
                 }
         }    
         public function updateUser($userchange){

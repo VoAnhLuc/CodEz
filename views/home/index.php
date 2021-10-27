@@ -1,3 +1,12 @@
+<?php
+    session_start();
+
+    if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true)
+    {
+        header("location: views/home/login.php"); // chưa redirect tới login.php được.
+        exit;
+    }
+?>
 <!DOCTYPE html>
 <html lang="vi">
 
