@@ -28,7 +28,7 @@
                         <div class="filter-bar filter--bar2 jplist-panel">
                             <div class="pull-left">
                                 <div class="filter__option">
-                 <!-- hhh    -->    <form class="d-flex">
+                 <!-- hhh    -->    <form class="d-flex" method="post">
                                         <input name="productname" class="form-control me-2" type="text" placeholder="Press something..."
                                             aria-label="Search">
                                         <button name="productsubmit" class="btn btn-sm btn__theme" type="submit">Find</button>
@@ -107,20 +107,21 @@
                     <div class="col-lg-10 d-flex flex-wrap">
                         <div class="row">
                             <?php
-                                for($i=1;$i<10;$i++) {
+                            var_dump($productsearch[0]);
+                                foreach($productsearch as $key => $value){
                                     echo '
                                         <div class="col-md-4 col-sm-6">
                                             <div class="item__item">
                                                 <div class="item__thumb">
-                                                    <a href="index.php?controller=product&action=detail"><img src="./images/items/item-' . $i . '.jpg" class="item__thumbnail"></a>
+                                                    <a href="'.ROUTES['product_detail'].'&id='.$value['id'].'"><img src="'.$value['thumb'].'" class="item__thumbnail"></a>
                                                 </div>
                                                 <div class="item__info">
                                                     <div class="item__title">
-                                                        <a href="detail.php">Full Source Code Forum PHP...</a>
+                                                        <a href="">'.$value['title'].'</a>
                                                     </div>
                                                     <div class="item__user">
-                                                            <img src="./images/user-1.png" class="item__author">
-                                                            <a href="">NoNotMe</a>
+                                                            <img src="'.$value['avatar'].'" class="item__author">
+                                                            <a href="">'.$value['fullname'].'</a>
                                                     </div>
                                                     <div class="d-flex justify-content-between">
                                                         <ul class="item__star">
@@ -135,8 +136,8 @@
                                                 </div>
                                                 
                                                 <div class="item__more d-flex justify-content-between">
-                                                    <div class="item__price">120 USD</div>
-                                                    <div class="item__category"><i class="bi bi-bookmarks"></i> PHP</div>
+                                                    <div class="item__price">'.Func::getShortPrice($value['price']).'</div>
+                                                    <div class="item__category"><i class="bi bi-bookmarks"></i>'.$value['name'].'</div>
                                                 </div>
                                             </div>
                                         </div>

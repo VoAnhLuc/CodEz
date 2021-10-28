@@ -83,4 +83,17 @@
             $this->db->executeNonQuery("UPDATE `products` SET `views` = `views` + 1 WHERE `id` = '$product_id'");
             $this->db->closeConnection();
         }
+
+        public function getProductByProductname($productname)
+        {
+            $this->db->createConnection();
+            $result = $this->db->executeQuery("SELECT `products`.*, `users`.`fullname`, `users`.`avatar`, `categories`.`name`
+                                                FROM `products`
+                                               INNER JOIN `users` ON `products`.`user_id` = `users`.`id`
+                                               INNER JOIN `categories` ON `products`.`category_id` = `categories`.`id`    
+                                                WHERE `title` like '%$productname%'");
+            $product = $this->db->getArrayResult($result);
+            $this->db->closeConnection($result);
+            return $product;
+        }
     }

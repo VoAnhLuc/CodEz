@@ -15,9 +15,25 @@
         public function index()
         {
             $data = [
-                'title' => 'Tìm kiếm sản phẩm'
+                'title' => 'Tìm kiếm sản phẩm',
+                 'productsearch' => array(), 
             ];
-            return $this->view('product.index', $data);
+            if(isset($_POST['productsubmit']))
+            {
+                $productname = Func::getInput($_POST['productname']);
+                $product = $this->productModel->getProductByProductname($productname);
+               /*  echo $product ? 'true' : 'false'; */
+                if(empty($product))
+                {
+                    $message = MESSAGES['empty_product'];
+                    $data['productsearch'] = $message;  
+                    return $this->view('product.index', $data);     
+                }
+                $data['productsearch'] = $product;
+               /*  return $this->view('product.index', $data); */
+            }
+
+             return $this->view('product.index', $data);
         }
 
         public function detail()

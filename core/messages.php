@@ -19,5 +19,8 @@
         'file_type_error' => 'Định dạng file không đúng! (.zip/.rar)',
         'image_type_error' => 'Định dạng hình ảnh không đúng! (.jpg/.jpeg/.png)',
         'file_size_exceed' => 'Dung lượng file quá lớn!',
-        'upload_file_success' => 'Upload file thành công!'
+        'upload_file_success' => 'Upload file thành công!',
+
+        /* product */
+        'empty_product' => 'Không tìm thấy sản phẩm yêu cầu',
     ];
