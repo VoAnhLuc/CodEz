@@ -46,7 +46,10 @@
         {
             foreach($arr as $value)
             {
-                return empty($value) && gettype($value) == 'string';
+                if (empty($value) && gettype($value) == 'string')
+                {
+                    return true;
+                }
             }
             return false;
         }
@@ -216,6 +219,11 @@
 
         public static function isValidWebsite($url)
         {
-            return filter_var($url, FILTER_VALIDATE_URL) === FALSE;
+            return filter_var($url, FILTER_VALIDATE_URL) !== FALSE;
+        }
+
+        public static function isContain($key, $value)
+        {
+            return strpos($value, $key) !== FALSE;
         }
     }

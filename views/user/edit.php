@@ -48,7 +48,7 @@
                                         </div>
                                         <div class="profile-settings__group">
                                             <p>Sinh nhật</p>
-                                            <input class="form-control textbox-n" value="<?php echo $user['dob'] ?>" name="birthday" type="text" onfocus="(this.type='date')" id="date">
+                                            <input class="form-control textbox-n" value="<?php echo $user['dob'] ?>" name="birthday" type="text" onfocus="(this.type='date')" id="date" max="<?php echo date('Y-m-d'); ?>">
                                         </div>
                                         <div class="profile-settings__group">
                                             <p>Website</p>
