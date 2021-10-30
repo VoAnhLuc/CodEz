@@ -213,4 +213,9 @@
             copy($from, $fileName);
             return $fileName;
         }
+
+        public static function isValidWebsite($url)
+        {
+            return filter_var($url, FILTER_VALIDATE_URL) === FALSE;
+        }
     }

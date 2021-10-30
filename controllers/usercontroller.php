@@ -170,6 +170,11 @@
                     'avatar' => $avatar,
                     'cover' => $cover
                 ]; 
+
+                if (!Func::isValidWebsite($website) || !Func::isValidWebsite($facebook) || !Func::isValidWebsite($instagram) || !Func::isValidWebsite($twitter))
+                {
+                    header('Location: ' . ROUTES['user'] . '&id=' .$id. ''); 
+                }
                 
                 if (Func::isAnyEmptyValue([$fullname, $password, $repassword]) || $password !== $repassword)
                 {
