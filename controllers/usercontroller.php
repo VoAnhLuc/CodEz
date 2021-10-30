@@ -51,7 +51,8 @@
                 }
                 else
                 {
-                    $password = md5(Func::getInput($_POST['password']));
+                    $password = Func::getInput($_POST['password']);
+                    $password = md5(md5($password));
                 }
                 
                 if(empty($usernameErr) && empty($passwordErr))
@@ -61,11 +62,12 @@
                     {
                         session_start();
                         
+                        $_SESSION["login"] = $result;
                         $_SESSION["loggedin"] = true;
                         $_SESSION["id"] = $result['id'];
                         $_SESSION["username"] = $username;
 
-                        header("location: home/index.php");
+                        header('location: ' . ROUTES['home']);
                     }
                     else
                     {

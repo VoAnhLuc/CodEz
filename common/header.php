@@ -15,11 +15,16 @@
                             <li><a href="">Help</a></li>
                             <li><a href="<?php echo ROUTES['payment_cart'] ?>"><i class="bi bi-cart2"></i></a></li>
                         </ul>
-                        <span class="d-none d-sm-block header__btn btn btn-secondary">
-                            <a href="<?php echo ROUTES['user_register'] ?>">Đăng ký</a>
-                        </span>
+                        <?php
+                            if(!isset($_SESSION["login"]))
+                            {
+                                echo '<span class="d-none d-sm-block header__btn btn btn-secondary">
+                                        <a href="' .ROUTES['user_register'] .'">Đăng ký</a>
+                                    </span>';
+                            }
+                        ?>                        
                         <span class="header__btn btn btn-secondary">
-                            <a href="<?php echo ROUTES['user_login'] ?>">Đăng nhập</a>
+                            <a href="<?php echo ROUTES['user_login'] ?>"><?php echo (isset($_SESSION["login"]) ? 'Hello! ' . $_SESSION["login"]['username'] : "Đăng nhập");?></a>
                         </span>
                     </div>
                 </div>
