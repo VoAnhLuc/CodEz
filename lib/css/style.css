@@ -271,11 +271,15 @@ a {
   text-align: center;
 }
 
-.item__info a, .item__category a, .login__assist a {
+.item__info a,
+.item__category a,
+.login__assist a {
   color: #011c26;
 }
 
-.item__info a:hover, .item__category a:hover, .login__assist a:hover {
+.item__info a:hover,
+.item__category a:hover,
+.login__assist a:hover {
   color: #0a6e55;
 }
 
@@ -359,7 +363,7 @@ a {
 .pull-right {
   float: right;
 }
-.pull-left{
+.pull-left {
   float: left;
 }
 .filter-area {
@@ -371,7 +375,7 @@ a {
   width: 217px;
   margin: 0 23.93px;
 }
-.filter-bar .filter__option{
+.filter-bar .filter__option {
   display: inline-block;
   vertical-align: middle;
   padding: 29px 0;
@@ -404,7 +408,7 @@ a {
 .section--padding2 {
   padding: 70px 0 120px;
 }
-.product--sidebar .sidebar-card .card-title{
+.product--sidebar .sidebar-card .card-title {
   padding: 30px 30px 28px;
   display: block;
   margin-bottom: 0;
@@ -413,10 +417,10 @@ a {
   color: #555;
   border-bottom: 1px solid #ececec;
 }
-.product--sidebar .sidebar-card .collapsible-content{
+.product--sidebar .sidebar-card .collapsible-content {
   padding: 0 30px;
 }
-.sidebar-card{
+.sidebar-card {
   background: #fff;
   -webkit-border-radius: 4px;
   border-radius: 4px;
@@ -424,10 +428,10 @@ a {
   box-shadow: 0 2px 4px rgb(108 111 115 / 10%);
   margin-bottom: 30px;
 }
-.product--sidebar .sidebar-card .card-content{
+.product--sidebar .sidebar-card .card-content {
   padding: 20px 0;
 }
-.product--sidebar .card--category ul li a{
+.product--sidebar .card--category ul li a {
   display: block;
   line-height: 40px;
   -webkit-transition: 0.3s ease;
@@ -436,69 +440,67 @@ a {
   color: #555;
 }
 
-
-
 /* CSS OF CHECKOUT PAGE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-.hrClass1{
+.hrClass1 {
   margin: 40px 0;
 }
-.hrClass2{
+.hrClass2 {
   margin: 40px 0;
 }
-.buttonBack h6{
+.buttonBack h6 {
   margin: 0;
   padding: 0px;
-}  
-.buttonBack{
-  padding: 10px!important;
 }
-.buttonConfirm h6{
+.buttonBack {
+  padding: 10px !important;
+}
+.buttonConfirm h6 {
   margin: 0;
   padding: 0;
 }
-.buttonConfirm{
+.buttonConfirm {
   line-height: 50px;
   min-width: 170px;
   margin: auto;
   position: absolute;
   right: 10px;
-  padding: 10px!important;
-} 
-.form-check-input{
+  padding: 10px !important;
+}
+.form-check-input {
   border: 4px solid black;
 }
-.orderedItem a{
+.orderedItem a {
   color: black;
 }
-.itemPrice{
+.itemPrice {
   position: absolute;
   right: 10px;
 }
-.cart_order{
+.cart_order {
   margin-bottom: 50px;
 }
-#mycart{
+#mycart {
   height: 250px;
   width: 100%;
 }
-#path ul{
+#path ul {
   float: left;
-   display: flex;
+  display: flex;
   color: whitesmoke;
-  margin-top: 50px;    
+  margin-top: 50px;
 }
-#path a{
-  color:white;
+#path a {
+  color: white;
   background-color: transparent;
   text-decoration: none;
   font-size: 30px;
 }
 #path .after :after {
-  content: '/';
+  content: "/";
   color: #fff;
-  margin-left: 30px;     
+  margin-left: 30px;
 }
-#namepage p{
+#namepage p {
   font-size: 50px;
   color: whitesmoke;
   float: left;
@@ -506,233 +508,229 @@ a {
   margin-left: 50px;
 }
 
-.orderedAndMethod{
-  background-color: #f0f1f5;
-  
-}
-.sectionCartOrdered{
+.orderedAndMethod {
   background-color: #f0f1f5;
 }
-.sectionEmpty{
+.sectionCartOrdered {
+  background-color: #f0f1f5;
+}
+.sectionEmpty {
   height: 50px;
   background-color: #f0f1f5;
 }
-.section-breadcrumb{
-  background-color: #011C26;
-  
+.section-breadcrumb {
+  background-color: #011c26;
 }
-
 
 /* CSS OF CART PAGE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
-
-.cart-subtotalspecial{
+.cart-subtotalspecial {
   text-align: end;
   padding: 50px;
   padding-right: 30px !important ;
 }
-.cart-subtotal p span{
+.cart-subtotal p span {
   margin: 40px;
 }
-.cart-subtotal p{
+.cart-subtotal p {
   margin-right: 10px;
   font-size: 20px;
 }
 .cart-subtotal {
   text-align: end;
   border: 1px solid rgb(226, 224, 224);
-  padding: 20px; 
-  border-top: 0px!important ;  
+  padding: 20px;
+  border-top: 0px !important ;
 }
-.coupon-block input{
+.coupon-block input {
   width: 50%;
   margin-bottom: 50px;
-  display: inline-block
+  display: inline-block;
 }
-.coupon-block button{     
+.coupon-block button {
   height: 40px;
-  width: 170px; 
+  width: 170px;
 }
-.thanhtoan{
-  padding: 0!important;
+.thanhtoan {
+  padding: 0 !important;
 }
 
 /* end thanh toán*/
 
-.item_action{
+.item_action {
   text-align: center;
 }
-.item_price1{
+.item_price1 {
   margin-left: 20px;
 }
-.item_price p{
-margin: auto;
+.item_price p {
+  margin: auto;
 }
 .item_price {
   border-radius: 1rem;
-  background-color:#E7F9F7;
+  background-color: #e7f9f7;
   text-align: center;
-} 
-.product_description img{
-  margin-right: 20px ;
 }
-.short_desc a{
-  color: black!important;
+.product_description img {
+  margin-right: 20px;
 }
-.product_description{
+.short_desc a {
+  color: black !important;
+}
+.product_description {
   display: flex;
   margin: 10px;
   vertical-align: center;
 }
-.product__additional_info{
-  text-align: center;  
+.product__additional_info {
+  text-align: center;
 }
-.item_action a{
+.item_action a {
   color: red;
-}   
-.v_middle{
- margin: auto; 
 }
-.special h4{
-  padding:20px
+.v_middle {
+  margin: auto;
 }
-.totalInfo{
- border-bottom: 1px solid rgb(226, 224, 224);
- text-align: center;
+.special h4 {
+  padding: 20px;
 }
-.information{
+.totalInfo {
+  border-bottom: 1px solid rgb(226, 224, 224);
+  text-align: center;
+}
+.information {
   display: flex;
-  padding: 0!important;
-  border: 1px solid rgb(226, 224, 224); 
-  border-top: 0px!important;
+  padding: 0 !important;
+  border: 1px solid rgb(226, 224, 224);
+  border-top: 0px !important;
 }
-#mycart{
+#mycart {
   height: 250px;
   width: 100%;
 }
-#path ul{
+#path ul {
   float: left;
   display: flex;
   color: whitesmoke;
   margin-top: 50px;
-  
 }
-#path a{
-  color:white;
+#path a {
+  color: white;
   background-color: transparent;
   text-decoration: none;
   font-size: 30px;
 }
 
 #path .after :after {
-  content: '/';
+  content: "/";
   color: #fff;
   margin-left: 30px;
-  
 }
-#namepage p{
+#namepage p {
   font-size: 50px;
   color: whitesmoke;
   float: left;
   display: flex;
   margin-left: 50px;
 }
-#body{
+#body {
   background-color: #f0f1f5;
 }
-.container1{
+.container1 {
   border-radius: 1%;
-  background-color: #fff!important;
-}   
-.sect3{
+  background-color: #fff !important;
+}
+.sect3 {
   background-color: #f0f1f5;
 }
-.sect2{
+.sect2 {
   height: 50px;
   background-color: #f0f1f5;
 }
-.sect1{
-  background-color: #011C26;
+.sect1 {
+  background-color: #011c26;
 }
 
-.breadcrumb a, .breadcrumb a:hover{
+.breadcrumb a,
+.breadcrumb a:hover {
   color: white;
 }
 
-#breadcrumb{
+#breadcrumb {
   width: 100%;
   background-color: #011c26;
   height: auto;
   padding-bottom: 1rem;
   font-size: 20px;
 }
-#breadcrumb .nd{
+#breadcrumb .nd {
   color: white;
 }
-main{
+main {
   background-color: #f0f1f5;
 }
-#anhsanpham{
+#anhsanpham {
   border-radius: 2%;
 }
-.card1 .card-body .nutnhan{
+.card1 .card-body .nutnhan {
   background-color: #011c26;
 }
 .card1 .card-footer {
   background-color: white;
 }
-.card1 .card-footer .bi{
+.card1 .card-footer .bi {
   border: none;
   color: #011c26;
   background-color: white;
 }
-.card1 .card-body{
+.card1 .card-body {
   text-align: center;
 }
-.cardright .card-header{
+.cardright .card-header {
   background-color: #011c26;
   color: white;
   text-align: center;
   font-size: 30px;
-}.cardright .card-body {
+}
+.cardright .card-body {
   margin-top: 10px;
   text-align: left;
 }
-.cardright hr{
+.cardright hr {
   width: 95%;
 }
-.cardright .card2body{
+.cardright .card2body {
   text-align: left;
 }
-.cardright .card2body .form2check{
+.cardright .card2body .form2check {
   margin-top: 20px;
   margin-bottom: 20px;
 }
-.cardright .rightfooter .btn{
+.cardright .rightfooter .btn {
   width: 360px;
   background-color: #011c26;
 }
-.cardright .rightfooter i{
+.cardright .rightfooter i {
   color: white;
 }
-.cardright .rightfooter{
+.cardright .rightfooter {
   text-align: center;
 }
 .card-creat .card-body {
   text-align: left;
-  color: #011c26 ;
+  color: #011c26;
 }
-.card-creat{
+.card-creat {
   height: 113px;
 }
-.card-creat .card-body b{
+.card-creat .card-body b {
   margin-top: 30px;
 }
-.cardcontent .nav{
+.cardcontent .nav {
   height: 50px;
   width: 100%;
 }
-.cardcontent li a{
+.cardcontent li a {
   color: black;
   line-height: 50px;
   padding: 0px 28px;
@@ -741,7 +739,7 @@ main{
   list-style: circle;
 }
 .card-body a {
-  color: #011C26;
+  color: #011c26;
 }
 .card-body a:hover {
   color: #01724f;
@@ -750,28 +748,28 @@ main{
   text-align: left;
   padding-bottom: 40px;
 }
-.cardcontent .gioithieusp h4{
+.cardcontent .gioithieusp h4 {
   margin-top: 30px;
-} 
-.cardcontent .noidungsp{
+}
+.cardcontent .noidungsp {
   margin-top: 20px;
 }
-.author .card-header{
- font-size: 33px;
+.author .card-header {
+  font-size: 33px;
 }
-.author .card-body img{
+.author .card-body img {
   width: 100px;
 }
-.author .card-body{
+.author .card-body {
   text-align: center;
 }
-.author .card-body i{
+.author .card-body i {
   margin-left: 10px;
 }
-.author .card-body .member{
+.author .card-body .member {
   margin-top: 20px;
 }
-.author .card-footer{
+.author .card-footer {
   text-align: center;
   color: white;
   background-color: white;
@@ -779,121 +777,121 @@ main{
 .author .card-footer button {
   background-color: #011c26;
 }
-.author .card-footer i{
+.author .card-footer i {
   color: white;
 }
-.danhgia .card-body{
+.danhgia .card-body {
   text-align: left;
 }
-.danhgia .card-body .yeuthich{
+.danhgia .card-body .yeuthich {
   margin-top: 30px;
-  border-bottom : #f0f1f5 solid 1px;
+  border-bottom: #f0f1f5 solid 1px;
 }
-.danhgia .card-body .conso{
+.danhgia .card-body .conso {
   float: right;
 }
-.infitem .card-header{
+.infitem .card-header {
   font-size: 33px;
 }
-.infitem .card-body{
+.infitem .card-body {
   padding-bottom: 40px;
 }
-.infitem .card-body .inf{
+.infitem .card-body .inf {
   margin-top: 30px;
 }
-.moreitem .row{
+.moreitem .row {
   text-align: center;
 }
-.abcd{
+.abcd {
   background-color: #f6f7fb;
 }
-.moreitem{
+.moreitem {
   padding-bottom: 50px;
 }
-.cardfooter .card-body .nutnhan{
+.cardfooter .card-body .nutnhan {
   background-color: #011c26;
 }
 .cardfooter .card-footer {
   background-color: white;
 }
-.cardfooter .card-footer .bi{
+.cardfooter .card-footer .bi {
   border: none;
   color: #011c26;
   background-color: white;
 }
-.cardfooter .card-body{
+.cardfooter .card-body {
   text-align: left;
 }
-.cardfooter .card-footer{
+.cardfooter .card-footer {
   text-align: left;
   font-size: 20px;
 }
-.cardfooter .card-footer .biok{
+.cardfooter .card-footer .biok {
   margin-left: 20px;
 }
-.cardfooter .card-footer .bistar{
+.cardfooter .card-footer .bistar {
   margin-left: 20px;
 }
-.cardfooter .card-footer .bibuy{
+.cardfooter .card-footer .bibuy {
   margin-left: 20px;
   position: absolute;
-  right: 8px ;
+  right: 8px;
 }
-.sanphamthem{
+.sanphamthem {
   margin-bottom: 30px;
 }
 
-.scdangki{
+.scdangki {
   padding-bottom: 64px;
 }
-.carddangki{
+.carddangki {
   width: 100%;
   margin-top: 64px;
 }
-.carddangki .card-header{
+.carddangki .card-header {
   text-align: center;
   background-color: white;
 }
-.carddangki .card-header h2{
+.carddangki .card-header h2 {
   margin-top: 20px;
 }
-.carddangki .card-header{
+.carddangki .card-header {
   padding: 50px 20px;
 }
-.carddangki .card-body label{
+.carddangki .card-body label {
   margin-top: 30px;
   margin-left: 30px;
 }
-.carddangki .card-body input{
+.carddangki .card-body input {
   margin-top: 15px;
   width: 80%;
   margin-left: 30px;
 }
-.carddangki .card-body .chonlua{
+.carddangki .card-body .chonlua {
   margin-top: 15px;
   width: 80%;
   margin-left: 30px;
 }
-.carddangki .card-body .submit{
+.carddangki .card-body .submit {
   margin-top: 50px;
   width: 80%;
   margin-left: 30px;
   background-color: #011c27;
   color: white;
 }
-.carddangki .card-body .chuyendn{
+.carddangki .card-body .chuyendn {
   margin-top: 15px;
   margin-left: 30px;
   padding-bottom: 30px;
 }
-.cardforgot .headerforgot{
+.cardforgot .headerforgot {
   padding-top: 60px;
   padding-right: 50px;
   padding-left: 50px;
   padding-bottom: 25px;
   background-color: white;
 }
-.cardforgot{
+.cardforgot {
   margin: 60px 0px;
 }
 
@@ -901,51 +899,52 @@ main{
   margin-left: 50px;
   margin-top: 30px;
 }
-.cardforgot .textforgot{
+.cardforgot .textforgot {
   margin-left: 50px;
   margin-top: 20px;
   width: 80%;
 }
-.cardforgot .submitforgot{
+.cardforgot .submitforgot {
   margin-left: 50px;
   margin-top: 25px;
   width: 300px;
 }
-.cardforgot .submitforgot button{
+.cardforgot .submitforgot button {
   background-color: #011c27;
   color: white;
 }
-.cardforgot .bodyforgot{
+.cardforgot .bodyforgot {
   margin-bottom: 60px;
 }
 /* profile */
-.sectionprofile{
+.sectionprofile {
   padding: 70px 0px;
 }
-.cardprofile .imgnouser{
+.cardprofile .imgnouser {
   width: 100px;
   height: 100px;
   margin: 20px 0px;
 }
-.cardprofile .bodyprofile .gtuser{
+.cardprofile .bodyprofile .gtuser {
   margin-top: 10px;
 }
-.cardprofile .bodyprofile{
+.cardprofile .bodyprofile {
   text-align: center;
   padding-bottom: 100px;
 }
-.cardtotalitem .bodytotalitem{
+.cardtotalitem .bodytotalitem {
   text-align: center;
   padding-top: 20px;
   padding-bottom: 50px;
   background-color: #ff6a6c;
   color: white;
   border-radius: 2%;
-}.cardtotalitem .bodytotalitem .itemnum{    
+}
+.cardtotalitem .bodytotalitem .itemnum {
   font-size: 34px;
   margin-top: 10px;
 }
-.cardtotalsale .bodytotalsale{
+.cardtotalsale .bodytotalsale {
   text-align: center;
   padding-top: 20px;
   padding-bottom: 50px;
@@ -953,11 +952,11 @@ main{
   color: white;
   border-radius: 2%;
 }
-.cardtotalsale .bodytotalsale .salenum{
+.cardtotalsale .bodytotalsale .salenum {
   font-size: 34px;
   margin-top: 10px;
 }
-.cardtotalrating .bodytotalrating{
+.cardtotalrating .bodytotalrating {
   text-align: center;
   padding-top: 20px;
   padding-bottom: 50px;
@@ -965,7 +964,7 @@ main{
   color: white;
   border-radius: 2%;
 }
-.cardtotalrating .bodytotalrating .ratingnum{
+.cardtotalrating .bodytotalrating .ratingnum {
   font-size: 34px;
   margin-top: 10px;
 }
@@ -974,18 +973,18 @@ main{
   font-size: 22px;
   background-color: white;
 }
-.cardurl .bodyurl{
+.cardurl .bodyurl {
   padding-bottom: 50px;
 }
-.cardurl .bodyurl .linkurl{
+.cardurl .bodyurl .linkurl {
   margin-left: 14px;
   margin-top: 20px;
-  width: 80%  ;
+  width: 80%;
 }
-.cardurl .bodyurl .copyurl{
+.cardurl .bodyurl .copyurl {
   margin-left: 14px;
 }
-.cardurl .bodyurl .btnurl{
+.cardurl .bodyurl .btnurl {
   width: 150px;
   height: 40px;
   background-color: #011c27;
@@ -995,46 +994,46 @@ main{
   font-size: 22px;
   background-color: white;
 }
-.cardsociallink .bodysociallink .iconprofile{
+.cardsociallink .bodysociallink .iconprofile {
   margin-left: 14px;
 }
-.cardsociallink .bodysociallink{
- padding-top: 30px;
- padding-bottom: 30px;
+.cardsociallink .bodysociallink {
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
-.cardsociallink .bodysociallink .biinstagram{
-  margin-left: 15px;
-} 
-.cardsociallink .bodysociallink .bitwitter{
+.cardsociallink .bodysociallink .biinstagram {
   margin-left: 15px;
 }
-.cardfollow .bodycardfollow .followinfo{
+.cardsociallink .bodysociallink .bitwitter {
+  margin-left: 15px;
+}
+.cardfollow .bodycardfollow .followinfo {
   margin-left: 14px;
   padding-top: 10px;
   padding-bottom: 10px;
   color: black;
 }
-.rowimgprofile .imgprofile{
+.rowimgprofile .imgprofile {
   margin-top: 50px;
 }
-.cardservice .bodycardservice{
+.cardservice .bodycardservice {
   padding: 44px 30px;
 }
-.cardservice .bodycardservice .servicehead{
+.cardservice .bodycardservice .servicehead {
   font-size: 30px;
 }
-.cardservice .bodycardservice .servicestatus{
+.cardservice .bodycardservice .servicestatus {
   margin-top: 30px;
-  padding-bottom: 31px;   
+  padding-bottom: 31px;
 }
-.carditemprofile .headercarditemprofile{
+.carditemprofile .headercarditemprofile {
   font-size: 24px;
   padding: 20px 30px;
   background-color: white;
 }
-.carditemprofile .bodycarditemprofile{
+.carditemprofile .bodycarditemprofile {
   text-align: center;
-  color: #54667A;
+  color: #54667a;
   padding-top: 53px;
   padding-bottom: 53px;
 }
@@ -1059,7 +1058,7 @@ main{
 }
 
 .content__body label {
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
 
 .content__item {
@@ -1094,7 +1093,85 @@ main{
   color: red;
 }
 
-.error__404
-{
+.error__404 {
   height: 50vh;
+}
+
+.panel {
+  padding: 3rem 0;
+}
+
+.left-panel {
+  background-color: #011c26;
+  color: #fff;
+}
+
+.left-panel__item {
+  padding: 1rem 3rem;
+  font-size: 18px;
+}
+
+.left-panel__item a,
+.left-panel__item a:hover {
+  color: #fff;
+}
+
+.left-panel__item:hover {
+  background-color: #104b4d;
+}
+
+.left-panel__info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffe7e7;
+}
+
+.left-panel__user {
+  padding: 2rem 3rem;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.left-panel__user a,
+.left-panel__user a:hover {
+  color: #f00b0b;
+}
+
+.left-panel__avatar {
+  margin-right: 6px;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+.right-panel {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #e7f9f7;
+}
+
+.right-panel__search {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  height: 114px;
+  padding: 1rem 2rem;
+}
+
+.my-search-box {
+  border-bottom: 1px solid #b4b4b4;
+}
+.my-search-box__input {
+  flex: 1;
+  outline: none;
+  border: none;
+  width: 100%;
+  font-size: 18px;
+  color: #0a6e55;
+  background-color: #e7f9f7;
+}
+.my-search-box__input::placeholder {
+  color: #159c7a;
+  font-size: 16px;
 }

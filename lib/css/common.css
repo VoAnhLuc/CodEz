@@ -42,3 +42,9 @@
 .cursor--pointer {
     cursor: pointer;
 }
+
+.btn__search {
+    color: #fff;
+    background-color: #01724f;
+    border-color: #01724f;
+}
