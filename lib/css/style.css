@@ -1116,7 +1116,7 @@ main {
   color: #fff;
 }
 
-.left-panel__item:hover {
+.left-panel__item:hover, .left-panel__item--active {
   background-color: #104b4d;
 }
 
