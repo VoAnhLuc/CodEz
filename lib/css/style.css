@@ -1151,6 +1151,7 @@ main {
 
 .right-panel__search {
   display: flex;
+  flex-wrap: wrap;
   justify-content: end;
   align-items: center;
   height: 114px;
@@ -1207,10 +1208,10 @@ main {
 .right-panel__item {
   display: flex;
   flex-wrap: wrap;
+  padding: 0 1rem;
 }
 
 .right-panel__pager {
   display: flex;
-  justify-content: end;
-  padding: 0 1rem;
+  justify-content: center;
 }
