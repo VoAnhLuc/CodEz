@@ -77,13 +77,6 @@
                 $data['product']['price'] = intval($_POST['price']);
                 $data['product']['is_support'] = isset($_POST['is_support']);
 
-
-                if (Func::isAnyEmptyValue($data['product']))
-                {
-                    $data['error'] = MESSAGES['input_empty'];
-                    return $this->view('product.create', $data);
-                }
-
                 if (!in_array($data['product']['category_id'], array_column($categories, 'id')))
                 {
                     $data['error'] = MESSAGES['category_not_found'];
@@ -102,6 +95,12 @@
                     Func::removeFile($data['product']['thumb']);
                     return $this->view('product.create', $data);
                 }
+                
+                if (Func::isAnyEmptyValue($data['product']))
+                {
+                    $data['error'] = MESSAGES['input_empty'];
+                    return $this->view('product.create', $data);
+                }
 
                 $product_id = $this->productModel->addProduct($data['product']);
                 if (!$product_id)
@@ -111,7 +110,7 @@
                     return $this->view('404');
                 }
                 
-                header('Location: ' . ROUTES['product_detail'] . '&id=' . $product_id. '');
+                return header('Location: ' . ROUTES['product_detail'] . '&id=' . $product_id. '');
             }
 
             return $this->view('product.create', $data);

@@ -6,13 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $title; ?></title>
-    <link rel="stylesheet" href="./lib/css/reset.css">
-    <link rel="stylesheet" href="./lib/css/style.css">
-    <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
-        integrity="sha384-tKLJeE1ALTUwtXlaGjJYM3sejfssWdAaWR2s97axw4xkiAdMzQjtOjgcyw0Y50KU" crossorigin="anonymous">
-    <link rel="stylesheet" href="./lib/css/responsive.css">
-    <link rel="stylesheet" href="./lib/css/common.css">
+    <?php include './common/css.php'; ?>
 </head>
 
 <body>
@@ -43,27 +37,27 @@
                                             <form method="post" action="" class="col-lg-12 col-md-12 col-sm-12 ">
                                                 <div class="row dangki">
                                                     <div class="col-lg-6 col-md-6 col-sm-6 ">
-                                                        <label for="username">Tên tài khoản</label>
+                                                        <label for="username">Tên tài khoản <span class="color--red">*</span></label>
                                                         <input name="username" class="form-control" type="text" placeholder="Nhập tên tài khoản" required >
                                                     </div>
                                                     <div class="col-lg-6 col-md-6 col-sm-6">
-                                                        <label for="yourname">Họ và Tên</label>
+                                                        <label for="yourname">Họ và Tên <span class="color--red">*</span></label>
                                                         <input name="yourname" class="form-control" type="text" placeholder="Nhập họ và tên" required >
                                                     </div>
                                                 </div>
                                                 <div class="row dangki">
                                                     <div class="col-lg-6 col-md-6 col-sm-6 ">
-                                                        <label for="password">Mật khẩu</label>
+                                                        <label for="password">Mật khẩu <span class="color--red">*</span></label>
                                                         <input name="password" class="form-control" type="password" placeholder="Nhập mật khẩu" required >
                                                     </div>
                                                     <div class="col-lg-6 col-md-6 col-sm-6">
-                                                        <label for="email">Địa chỉ Email</label>
+                                                        <label for="email">Địa chỉ Email <span class="color--red">*</span></label>
                                                         <input name="email" class="form-control" type="email" placeholder="Nhập địa chỉ Email" required >
                                                     </div>
                                                 </div>
                                                 <div class="row dangki">
                                                     <div class="col-lg-6 col-md-6 col-sm-6">
-                                                        <label for="confirmpassword">Xác nhận mật khẩu</label>
+                                                        <label for="confirmpassword">Xác nhận mật khẩu <span class="color--red">*</span></label>
                                                         <input name="confirmpassword" class="form-control" type="password" placeholder="Nhập xác nhận mật khẩu" required >
                                                     </div>
                                                     <div class="col-lg-6 col-md-6 col-sm-6 text-center">                                              

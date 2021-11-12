@@ -204,12 +204,12 @@
                 $password = htmlspecialchars($_POST['password']);
                 $repassword = htmlspecialchars($_POST['repassword']);
                 $birthday = $_POST['birthday'];
-                $website = htmlspecialchars($_POST['website']);
+                $website = $_POST['website'];
                 $profileheading = htmlspecialchars($_POST['profileheading']);
                 $about = htmlspecialchars($_POST['about']);
-                $facebook = htmlspecialchars($_POST['facebook']);
-                $instagram = htmlspecialchars($_POST['instagram']);
-                $twitter = htmlspecialchars($_POST['twitter']);
+                $facebook = $_POST['facebook'];
+                $instagram = $_POST['instagram'];
+                $twitter = $_POST['twitter'];
 
                 $avatar = $user['avatar'];
                 Func::uploadFile('images.users.avatars','profile-image-avatar', $avatar, $avatar_message, true);
@@ -217,35 +217,55 @@
                 $cover = $user['cover'];
                 Func::uploadFile('images.users.covers',  'profile-image-cover', $cover, $cover_message, true);
 
-                $userchange = [
+                if (!Func::isAnyEmptyValue([$website]) && !Func::isValidWebsite($website))
+                {
+                    return header('Location: ' . ROUTES['user'] . '&id=' .$id. ''); 
+                }
+
+                if (!Func::isAnyEmptyValue([$facebook]) && !Func::isContain('facebook.com', $facebook))
+                {
+                    return header('Location: ' . ROUTES['user'] . '&id=' .$id. ''); 
+                }
+
+                if (!Func::isAnyEmptyValue([$instagram]) && !Func::isContain('instagram.com', $instagram))
+                {
+                    return header('Location: ' . ROUTES['user'] . '&id=' .$id. ''); 
+                }
+
+                if (!Func::isAnyEmptyValue([$twitter]) && !Func::isContain('twitter.com', $twitter))
+                {
+                    return header('Location: ' . ROUTES['user'] . '&id=' .$id. ''); 
+                }
+                
+                if (Func::isAnyEmptyValue([$fullname, $password, $repassword]) || $password !== $repassword)
+                {
+                    return header('Location: ' . ROUTES['user'] . '&id=' .$id. ''); 
+                }
+
+                $user_changed = [
                     'id' => $id,
                     'fullname' => $fullname,
                     'password' => $password,
                     'repassword' => $repassword,
                     'birthday' => $birthday,
-                    'website' => $website,
+                    'website' => htmlspecialchars($website),
                     'profileheading' => $profileheading,
                     'about' => $about,
-                    'facebook' => $facebook,
-                    'instagram' => $instagram,
-                    'twitter' => $twitter,
+                    'facebook' => htmlspecialchars($facebook),
+                    'instagram' => htmlspecialchars($instagram),
+                    'twitter' => htmlspecialchars($twitter),
                     'avatar' => $avatar,
                     'cover' => $cover
                 ]; 
                 
-                if (Func::isAnyEmptyValue([$fullname, $password, $repassword]) || $password !== $repassword)
-                {
-                    header('Location: ' . ROUTES['user'] . '&id=' .$id. ''); 
-                }
-                
                 if (Func::isValidMd5($password))
                 {
-                    $this->userModel->updateUserNoPass($userchange);      
-                    header('Location: ' . ROUTES['user'] . '&id=' .$id. ''); 
+                    $this->userModel->updateUserNoPass($user_changed);      
+                    return header('Location: ' . ROUTES['user'] . '&id=' .$id. ''); 
                 }
 
-                $this->userModel->updateUser($userchange);      
-                header('Location: ' . ROUTES['user'] . '&id=' .$id. ''); 
+                $this->userModel->updateUser($user_changed);      
+                return header('Location: ' . ROUTES['user'] . '&id=' .$id. '');
             }
 
             $data = [

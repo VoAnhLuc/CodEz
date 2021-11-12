@@ -6,13 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $user['fullname']; ?></title>
-    <link rel="stylesheet" href="./lib/css/reset.css">
-    <link rel="stylesheet" href="./lib/css/style.css">
-    <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
-        integrity="sha384-tKLJeE1ALTUwtXlaGjJYM3sejfssWdAaWR2s97axw4xkiAdMzQjtOjgcyw0Y50KU" crossorigin="anonymous">
-    <link rel="stylesheet" href="./lib/css/responsive.css">
-    <link rel="stylesheet" href="./lib/css/common.css">
+    <?php include './common/css.php'; ?>
 </head>
 
 <body>
