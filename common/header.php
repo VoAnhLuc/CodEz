@@ -10,22 +10,28 @@
                 <div class="col-lg-9 col-md-9 col-6 m-auto">
                     <div class="header__info">
                         <ul class="d-none d-lg-flex header__list">
-                            <li><a href="">Start Selling</a></li>
-                            <li><a href="">Contact</a></li>
-                            <li><a href="">Help</a></li>
+                            <li><a href="#">Start Selling</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Help</a></li>
                             <li><a href="<?php echo ROUTES['payment_cart'] ?>"><i class="bi bi-cart2"></i></a></li>
                         </ul>
                         <?php
-                            if(!isset($_SESSION["login"]))
+                            if (!isset($_SESSION['is_logged']) || !$_SESSION['is_logged'])
                             {
-                                echo '<span class="d-none d-sm-block header__btn btn btn-secondary">
+                                echo '
+                                    <span class="d-none d-sm-block header__btn btn btn-secondary">
                                         <a href="' .ROUTES['user_register'] .'">Đăng ký</a>
-                                    </span>';
+                                    </span>                
+                                    <span class="header__btn btn btn-secondary">
+                                        <a href="' . ROUTES['user_login'] . '">Đăng nhập</a>
+                                    </span>
+                                ';
                             }
-                        ?>                        
-                        <span class="header__btn btn btn-secondary">
-                            <a href="<?php echo ROUTES['user_login'] ?>"><?php echo (isset($_SESSION["login"]) ? 'Hello! ' . $_SESSION["login"]['username'] : "Đăng nhập");?></a>
-                        </span>
+                            else
+                            {
+                                echo '<a href="' . ROUTES['user'] . '"><span class="text--bold color--white">' . $_SESSION['fullname'] . '</span></a>';
+                            }
+                        ?>
                     </div>
                 </div>
             </div>

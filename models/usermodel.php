@@ -17,21 +17,16 @@
             return $user;
         }
 
-        public function getLogin($username, $password)
+        public function getUserByUsernameAndPassword($username, $password)
         {
-                $this->db->createConnection();
-                $result = $this->db->executeQuery("SELECT * FROM `users` WHERE `username` = '$username' AND `password` = '$password'");
-                $user = $this->db->getSingleResult($result);
-                $this->db->closeConnection($result);
-                if(!empty($user))
-                {
-                    return $user;
-                }
-                else
-                {
-                    return null;
-                }
+            $this->db->createConnection();
+            $result = $this->db->executeQuery("SELECT * FROM `users` WHERE `username` = '$username'
+                                                        AND `password` = '" . md5(md5($password)) . "'");
+            $user = $this->db->getSingleResult($result);
+            $this->db->closeConnection($result);
+            return $user;
         }    
+
         public function updateUser($userchange){
             $this->db->createConnection();
 

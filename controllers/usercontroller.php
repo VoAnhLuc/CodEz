@@ -11,7 +11,7 @@
 
         public function index()
         {
-            $id = (isset($_GET['id']) ? intval($_GET['id']) : 0);
+            $id = (isset($_GET['id']) ? intval($_GET['id']) : (isset($_SESSION['is_logged']) ? $_SESSION['user_id'] : 0));
 
             $user = $this->userModel->getUserById($id);
 
@@ -38,66 +38,46 @@
 
             if (!isset($_POST['submit']))
             {
-                return $this->view('user.Login', $data);
+                return $this->view('user.login', $data);
             }
 
             $username = htmlspecialchars($_POST['username']);
             $password = htmlspecialchars($_POST['password']);
-            $remember = htmlspecialchars($_POST['remember']); // handle later.
+            $remember = isset($_POST['remember']) ? true : false; // handle later.
 
             if (Func::isAnyEmptyValue([$username, $password, $remember]))
             {
                 $data['error_message'] = MESSAGES['input_empty'];
-                return $this->view('user.Login', $data);
+                return $this->view('user.login', $data);
             }
 
-            if(isset($_POST['submit']))
+            if(!Func::isValidUserName($username))
+            { 
+                $data['error_message'] = MESSAGES['nametype_error'];
+                return $this->view('user.login', $data);
+            }
+
+            if(!Func::isValidPassword($password))
             {
-                if(empty($_POST["username"]))
-                {
-                    $usernameError = "Hãy nhập tên đăng nhập.";
-                }
-                else
-                {
-                    $username = Func::getInput($_POST['username']);
-                }
-
-                if(empty($_POST["password"]))
-                {
-                    $passwordError = "Hãy nhập mật khẩu.";
-                }
-                else
-                {
-                    $password = Func::getInput($_POST['password']);
-                    $password = md5(md5($password));
-                }
-                
-                if(empty($usernameError) && empty($passwordError))
-                {
-                    $result = $this->userModel->getLogin($username, $password);
-                    if($result != null)
-                    {                        
-                        $_SESSION["login"] = $result;
-                        $_SESSION["loggedin"] = true;
-                        $_SESSION["id"] = $result['id'];
-                        $_SESSION["username"] = $username;
-
-                        header('location: ' . ROUTES['home']);
-                    }
-                    else
-                    {
-                        return $this->view('user.Login', $data);
-                    }
-                }
-                else
-                {
-                    return $this->view('user.Login', $data);
-                }
-                
+                $data['error_message'] = MESSAGES['passwordtype_error'];
+                return $this->view('user.login', $data);
             }
-            else
+
+            $user = $this->userModel->getUserByUsernameAndPassword($username, $password);
+
+            if ($user == null)
             {
+                $data['error_message'] = MESSAGES['login_failed'];
+                return $this->view('user.login', $data);
             }
+
+            $_SESSION["user"] = $user;
+            $_SESSION["is_logged"] = true;
+            $_SESSION["user_id"] = $user['id'];
+            $_SESSION["username"] = $user['username'];
+            $_SESSION["fullname"] = $user['fullname'];
+
+            return header('Location: ' . ROUTES['home']);
         }
 
         public function register()
