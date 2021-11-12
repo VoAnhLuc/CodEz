@@ -9,6 +9,7 @@
         'user_edit' => 'index.php?controller=user&action=edit',
         'user_login' => 'index.php?controller=user&action=login',
         'user_register' => 'index.php?controller=user&action=register',
+        'user_logout' => 'index.php?controller=user&action=logout',
 
         /* Payment */
         'payment' => 'index.php?controller=payment',

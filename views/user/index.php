@@ -31,16 +31,6 @@
                                         <div class="gtuser"><i>Member since September 2021</i></div>
                                     </div>   
                                 </div>
-                                <div class="card cardurl mt-4">
-                                    <div class="card-header headerurl">
-                                        <i class="headerurltext">Affiliate Referral Url</i>
-                                    </div>
-                                    <div class="card-body bodyurl">
-                                        <div class="linkurl"><input type="text" class="form-control" placeholder="https://codez.shop/" readonly></div>
-                                        <div class="copyurl"><button class="btn btn-primary btnurl">Copy Url</button></div>
-                                        
-                                    </div>
-                                </div> 
 
                                 <div class="card cardsociallink mt-4">
                                     <div class="card-header headersociallink">
@@ -54,35 +44,6 @@
                                         </div>                                                            
                                     </div>
                                 </div> 
-                                
-                                <div class="card cardfollow mt-4">
-                                    <div class="card-body bodycardfollow">
-                                       <div class="followinfo">
-                                            <a href="">
-                                                <i class="bi bi-house"></i>
-                                                <i>Profile</i>
-                                            </a>          
-                                       </div>          
-                                       <div class="followinfo">
-                                           <a href="">
-                                                <i class="bi bi-star"></i>
-                                                <i>Customer Riviews</i>
-                                           </a>           
-                                       </div>    
-                                       <div class="followinfo">
-                                           <a href="">
-                                                <i class="bi bi-people"></i>
-                                                <i>Follower (0)</i>
-                                           </a>                                           
-                                       </div>                                           
-                                       <div class="followinfo">
-                                           <a href="">
-                                                <i class="bi bi-people"></i>
-                                                <i>Followings (0)</i>
-                                           </a>                                     
-                                       </div>                                                   
-                                    </div>
-                                </div>         
                             </div>     
                             <div class="col-lg-8 col-md-12 col-sm-12 mt-4">
                                     <div class="row">

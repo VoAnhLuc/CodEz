@@ -29,7 +29,12 @@
                             }
                             else
                             {
-                                echo '<a href="' . ROUTES['user'] . '"><span class="text--bold color--white">' . $_SESSION['fullname'] . '</span></a>';
+                                echo '
+                                    <a href="' . ROUTES['user'] . '">
+                                        <span class="text--bold color--white me-3">' . $_SESSION['fullname'] . '</span>
+                                    </a>
+                                    <a href="' . ROUTES['user_logout'] . '"><i class="bi bi-box-arrow-right color--green"></i></a>    
+                                ';
                             }
                         ?>
                     </div>

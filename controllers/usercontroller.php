@@ -76,6 +76,7 @@
             $_SESSION["user_id"] = $user['id'];
             $_SESSION["username"] = $user['username'];
             $_SESSION["fullname"] = $user['fullname'];
+            $_SESSION["is_vendor"] = $user['is_vendor'];
 
             return header('Location: ' . ROUTES['home']);
         }
@@ -167,13 +168,14 @@
 
         public function edit()
         {
-            $_SESSION['user_id'] = 1; // change later
+            if (!Func::isLogged())
+            {
+                return $this->view('404');
+            }
 
-            $id = (isset($_GET['id']) ? intval($_GET['id']) : 0);
+            $user = $this->userModel->getUserById($_SESSION['user_id']);
 
-            $user = $this->userModel->getUserById($id);
-
-            if ($user == null || $id != $_SESSION['user_id'])
+            if ($user == null)
             {
                 return $this->view('404');
             }
@@ -199,31 +201,31 @@
 
                 if (!Func::isAnyEmptyValue([$website]) && !Func::isValidWebsite($website))
                 {
-                    return header('Location: ' . ROUTES['user'] . '&id=' .$id. ''); 
+                    return header('Location: ' . ROUTES['user']); 
                 }
 
                 if (!Func::isAnyEmptyValue([$facebook]) && !Func::isContain('facebook.com', $facebook))
                 {
-                    return header('Location: ' . ROUTES['user'] . '&id=' .$id. ''); 
+                    return header('Location: ' . ROUTES['user']); 
                 }
 
                 if (!Func::isAnyEmptyValue([$instagram]) && !Func::isContain('instagram.com', $instagram))
                 {
-                    return header('Location: ' . ROUTES['user'] . '&id=' .$id. ''); 
+                    return header('Location: ' . ROUTES['user']); 
                 }
 
                 if (!Func::isAnyEmptyValue([$twitter]) && !Func::isContain('twitter.com', $twitter))
                 {
-                    return header('Location: ' . ROUTES['user'] . '&id=' .$id. ''); 
+                    return header('Location: ' . ROUTES['user']); 
                 }
                 
                 if (Func::isAnyEmptyValue([$fullname, $password, $repassword]) || $password !== $repassword)
                 {
-                    return header('Location: ' . ROUTES['user'] . '&id=' .$id. ''); 
+                    return header('Location: ' . ROUTES['user']); 
                 }
 
                 $user_changed = [
-                    'id' => $id,
+                    'id' => $_SESSION['user_id'],
                     'fullname' => $fullname,
                     'password' => $password,
                     'repassword' => $repassword,
@@ -241,20 +243,25 @@
                 if (Func::isValidMd5($password))
                 {
                     $this->userModel->updateUserNoPass($user_changed);      
-                    return header('Location: ' . ROUTES['user'] . '&id=' .$id. ''); 
+                    return header('Location: ' . ROUTES['user']); 
                 }
 
                 $this->userModel->updateUser($user_changed);      
-                return header('Location: ' . ROUTES['user'] . '&id=' .$id. '');
+                return header('Location: ' . ROUTES['user']);
             }
 
             $data = [
-                'id' => $id,
                 'title' => 'Edit Profile',
                 'user' => $user
             ];
 
             return $this->view('user.edit', $data);
+        }
+
+        public function logout()
+        {
+            session_destroy();
+            return header('Location: ' . ROUTES['home']);
         }
     }
 ?>

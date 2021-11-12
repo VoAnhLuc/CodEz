@@ -193,17 +193,17 @@
         {
             if ($price >= 1000000000)
             {
-                return $price/1000000000 . 'T';
+                return ceil($price/1000000000) . ' T';
             }
             if ($price >= 1000000)
             {
-                return $price/1000000 . 'TR';
+                return ceil($price/1000000) . ' TR';
             }
             if ($price >= 1000)
             {
-                return $price/1000 . 'K';
+                return ceil($price/1000) . ' K';
             }
-            return $price;
+            return $price . ' Đồng';
         }
 
         /*
@@ -225,5 +225,15 @@
         public static function isContain($key, $value)
         {
             return strpos($value, $key) !== FALSE;
+        }
+
+        public static function isLogged()
+        {
+            return isset($_SESSION['is_logged']) && $_SESSION['is_logged'];
+        }
+
+        public static function isCurrentUserVendor()
+        {
+            return isset($_SESSION['is_logged']) && $_SESSION['is_vendor'];
         }
     }

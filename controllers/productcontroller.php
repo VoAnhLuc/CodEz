@@ -48,6 +48,11 @@
 
         public function create()
         {
+            if (!Func::isLogged() || !Func::isCurrentUserVendor())
+            {
+                return $this->view('404');
+            }
+
             $categories = $this->categoryModel->getAllCategories();
 
             $data = [
@@ -57,7 +62,7 @@
                 'categories' => $categories,
                 'product' => [
                     'category_id' => 0,
-                    'user_id' => 1,
+                    'user_id' => $_SESSION['user_id'],
                     'title' => '',
                     'content' => '',
                     'description' => '',
@@ -118,7 +123,10 @@
 
         public function edit()
         {
-            $_SESSION['user_id'] = 1; // change later
+            if (!Func::isLogged() || !Func::isCurrentUserVendor())
+            {
+                return $this->view('404');
+            }
 
             $product_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
@@ -169,7 +177,7 @@
                     return $this->view('404');
                 }
                 
-                header('Location: ' . ROUTES['product_detail'] . '&id=' . $product_id. '');
+                return header('Location: ' . ROUTES['product_detail'] . '&id=' . $product_id. '');
             }
 
             return $this->view('product.create', $data);
