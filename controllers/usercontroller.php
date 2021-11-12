@@ -31,9 +31,26 @@
 
         public function login()
         {            
-            $data = ['title' => 'Login'];
-            $username = $password = "";
-            $usernameError = $passwordError = "";
+            $data = [
+                'title' => 'Login',
+                'error_message' => ''
+            ];
+
+            if (!isset($_POST['submit']))
+            {
+                return $this->view('user.Login', $data);
+            }
+
+            $username = htmlspecialchars($_POST['username']);
+            $password = htmlspecialchars($_POST['password']);
+            $remember = htmlspecialchars($_POST['remember']); // handle later.
+
+            if (Func::isAnyEmptyValue([$username, $password, $remember]))
+            {
+                $data['error_message'] = MESSAGES['input_empty'];
+                return $this->view('user.Login', $data);
+            }
+
             if(isset($_POST['submit']))
             {
                 if(empty($_POST["username"]))
@@ -80,7 +97,6 @@
             }
             else
             {
-                return $this->view('user.Login', $data);
             }
         }
 
