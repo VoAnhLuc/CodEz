@@ -42,3 +42,11 @@
 .cursor--pointer {
     cursor: pointer;
 }
+
+.color--white {
+    color: #fff;
+}
+
+.text--bold {
+    font-weight: 600;
+}

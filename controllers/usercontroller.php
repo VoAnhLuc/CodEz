@@ -11,7 +11,7 @@
 
         public function index()
         {
-            $id = (isset($_GET['id']) ? intval($_GET['id']) : 0);
+            $id = (isset($_GET['id']) ? intval($_GET['id']) : (isset($_SESSION['is_logged']) ? $_SESSION['user_id'] : 0));
 
             $user = $this->userModel->getUserById($id);
 
@@ -30,12 +30,54 @@
         }
 
         public function login()
-        {
+        {            
             $data = [
-                'title' => 'Login'
+                'title' => 'Login',
+                'error_message' => ''
             ];
 
-            return $this->view('user.login', $data);
+            if (!isset($_POST['submit']))
+            {
+                return $this->view('user.login', $data);
+            }
+
+            $username = htmlspecialchars($_POST['username']);
+            $password = htmlspecialchars($_POST['password']);
+            $remember = isset($_POST['remember']) ? true : false; // handle later.
+
+            if (Func::isAnyEmptyValue([$username, $password, $remember]))
+            {
+                $data['error_message'] = MESSAGES['input_empty'];
+                return $this->view('user.login', $data);
+            }
+
+            if(!Func::isValidUserName($username))
+            { 
+                $data['error_message'] = MESSAGES['nametype_error'];
+                return $this->view('user.login', $data);
+            }
+
+            if(!Func::isValidPassword($password))
+            {
+                $data['error_message'] = MESSAGES['passwordtype_error'];
+                return $this->view('user.login', $data);
+            }
+
+            $user = $this->userModel->getUserByUsernameAndPassword($username, $password);
+
+            if ($user == null)
+            {
+                $data['error_message'] = MESSAGES['login_failed'];
+                return $this->view('user.login', $data);
+            }
+
+            $_SESSION["user"] = $user;
+            $_SESSION["is_logged"] = true;
+            $_SESSION["user_id"] = $user['id'];
+            $_SESSION["username"] = $user['username'];
+            $_SESSION["fullname"] = $user['fullname'];
+
+            return header('Location: ' . ROUTES['home']);
         }
 
         public function register()
