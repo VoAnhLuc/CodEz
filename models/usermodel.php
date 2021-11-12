@@ -21,7 +21,7 @@
         {
                 $this->db->createConnection();
                 $result = $this->db->executeQuery("SELECT * FROM `users` WHERE `username` = '$username' AND `password` = '$password'");
-                $user = mysqli_fetch_assoc($result);
+                $user = $this->db->getSingleResult($result);
                 $this->db->closeConnection($result);
                 if(!empty($user))
                 {

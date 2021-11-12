@@ -33,21 +33,21 @@
         {            
             $data = ['title' => 'Login'];
             $username = $password = "";
-            $usernameErr = $passwordErr = "";
+            $usernameError = $passwordError = "";
             if(isset($_POST['submit']))
             {
-                if(empty(trim($_POST["username"])))
+                if(empty($_POST["username"]))
                 {
-                    $usernameErr = "Hãy nhập tên đăng nhập.";
+                    $usernameError = "Hãy nhập tên đăng nhập.";
                 }
                 else
                 {
                     $username = Func::getInput($_POST['username']);
                 }
 
-                if(empty(trim($_POST["password"])))
+                if(empty($_POST["password"]))
                 {
-                    $passwordErr = "Hãy nhập mật khẩu.";
+                    $passwordError = "Hãy nhập mật khẩu.";
                 }
                 else
                 {
@@ -55,13 +55,11 @@
                     $password = md5(md5($password));
                 }
                 
-                if(empty($usernameErr) && empty($passwordErr))
+                if(empty($usernameError) && empty($passwordError))
                 {
                     $result = $this->userModel->getLogin($username, $password);
                     if($result != null)
-                    {
-                        session_start();
-                        
+                    {                        
                         $_SESSION["login"] = $result;
                         $_SESSION["loggedin"] = true;
                         $_SESSION["id"] = $result['id'];
