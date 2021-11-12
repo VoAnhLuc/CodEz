@@ -10,7 +10,6 @@
  
         public function getAllCarts()
         {
-            $_SESSION['user_id'] = 1; // change later
             $user_id = $_SESSION['user_id'];
 
             $this->db->createConnection();

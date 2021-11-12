@@ -206,6 +206,11 @@
             return $price . ' Đồng';
         }
 
+        public static function getDotPrice($price)
+        {
+            return number_format($price, 0, '.', '.');
+        }
+
         /*
             This function use for copy file from dictionary to other dictionary
         */

@@ -33,7 +33,7 @@
                                     <img id="anhsanpham" src="<?php echo $product['thumb'] ?>" alt="" width="100%">  
                                 </div>
                                 <div class="card-footer">
-                                    <button type="button" class="bi bi-share"> Share With :</button>
+                                    <button type="button" class="bi bi-share"> Chia sẻ :</button>
                                     <a class="bi bi-facebook me-2"
                                         href="https://www.facebook.com/sharer/sharer.php?u=<?php echo Func::getCurrentURL() ?>"
                                         target="_blank"> Facebook</a>
@@ -57,58 +57,41 @@
                         </div>
                         <div class="col-lg-4 col-md-12 col-sm-12 mt-3">
                             <div class="card cardright">
-                                <div class="alert alert-success">
-                                    <i>Prices : <?php echo $product['price'] ?> VND</i>
+                                <div class="alert alert-success text-center">
+                                    <i><?php echo Func::getDotPrice($product['price']) ?> VND</i>
                                 </div>
                                 <div class="card-footer rightfooter" >
-                                    <button class="btn btn-primary btn" name="addproducttocart" id="addproducttocart"><i class="bi bi-cart-check-fill"> Add To Carts</i></button>
+                                    <button class="btn btn-primary btn" name="addproducttocart" id="addproducttocart"><i class="bi bi-cart-check-fill"> Thêm vào giỏ hàng</i></button>
                                 </div>
                             </div>
                             <div class="card author mt-4">
                                 <div class="card-header">
-                                    Author Information
+                                    Thông tin người bán
                                 </div>
                                 <div class="card-body">
                                     <p><img src="<?php echo $product['avatar'] ?>" alt=""></p>
-                                    <p>Member Since 2021</p>
+                                    <p>Tham gia từ tháng <?php echo date('m, Y', $product['join_time']) ?></p>
                                     <p class="bi bi-person-circle"> <?php echo $product['fullname'] ?></p>
                                 </div>
                                 <div class="card-footer">
-                                    <button class="btn btn-primary"><a href="<?php echo ROUTES['user'] . '&id=' . $product['user_id'] ?>"><i class="bi bi-binoculars-fill"> View Profile</i></a></button>
+                                    <button class="btn btn-primary"><a href="<?php echo ROUTES['user'] . '&id=' . $product['user_id'] ?>"><i class="bi bi-binoculars-fill"> Xem hồ sơ</i></a></button>
                                 </div>
                             </div>
                             <div class="card danhgia mt-3">
                                 <div class="card-body">
                                     <div class="yeuthich text-center">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star"></i>
-                                        <i> ( 5 Ratings ) </i>
+                                        <i class="bi bi-star-fill color--star"></i>
+                                        <i class="bi bi-star-fill color--star"></i>
+                                        <i class="bi bi-star-fill color--star"></i>
+                                        <i class="bi bi-star-fill color--star"></i>
+                                        <i class="bi bi-star color--star"></i>
+                                        <i> ( 5 Đánh giá ) </i>
                                     </div>
-                                    <div class="yeuthich"><i class="bi bi-cart2"> Total Sales </i><i class="conso">5</i></div>
-                                    <div class="yeuthich"><i class="bi bi-heart"> Views </i><i class="conso"><?php echo $product['views'] ?></i>  </div>
-                                </div>
-                                <div class="card danhgia mt-3">
-                                    <div class="card-body">
-                                        <div class="yeuthich text-center">
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star"></i>
-                                            <i> ( 5 Ratings ) </i>
-                                        </div>
-                                        <div class="yeuthich"><i class="bi bi-cart2"> Total Sales </i><i class="conso">5</i></div>
-                                        <div class="yeuthich"><i class="bi bi-heart"> Favourites </i><i class="conso">4</i>  </div>
-                                        <div class="yeuthich"><i class="bi bi-heart"> Comments</i><i class="conso">3</i></div>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <div class="inf"><i class="bi bi-bookmarks"></i> Category: <?php echo $product['name'] ?></div>        
-                                    <div class="inf"><i class="bi bi-clock"></i> Released: <?php echo date('d/m/Y', $product['released']) ?></div>
-                                    <div class="inf"><i class="bi bi-clock-history"></i> Updated: <?php echo date('d/m/Y', $product['updated']) ?></div>          
+                                    <div class="yeuthich"><i class="bi bi-cart2"> Đã bán </i><i class="conso">5</i></div>
+                                    <div class="yeuthich"><i class="bi bi-heart"> Lượt xem </i><i class="conso"><?php echo $product['views'] ?></i></div>
+                                    <div class="yeuthich"><i class="bi bi-bookmarks"></i> Thư mục: <?php echo $product['name'] ?></div>        
+                                    <div class="yeuthich"><i class="bi bi-clock"></i> Đăng ngày: <?php echo date('d/m/Y', $product['released']) ?></div>
+                                    <div class="yeuthich"><i class="bi bi-clock-history"></i> Chỉnh sửa: <?php echo date('d/m/Y', $product['updated']) ?></div>      
                                 </div>
                             </div>
                         </div>
@@ -123,7 +106,7 @@
                             <div class="container mt-4  moreitem">
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12">
-                                        <h2>More Related Items</h4>
+                                        <h2>Sản Phẩm Liên Quan</h4>
                                     </div>
                                 </div>
                                 <div class="row mt-4">

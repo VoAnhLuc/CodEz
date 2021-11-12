@@ -24,20 +24,20 @@
                     <div class="col-md-6 col-sm-12 cart_order">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Order Summary</h4>
+                                <h4>Đơn hàng</h4>
                             </div>
                             <div class="card-body">
                                 <?php
-                                    foreach($products as $value) {
-                                    echo '<div class="orderedItem">
-                                            <a href="#">'.$value[0].'</a>
-                                                <i class="itemPrice">'.$value[1].''." ".'INR</i>
+                                    foreach($carts as $item) {
+                                    echo '<div class="row orderedItem">
+                                            <div class="col-9"><a href="' . ROUTES['product_detail'] . '&id=' . $item['product_id'] . '">'.$item['title'].'</a></div>
+                                            <div class="col-3"><i class="itemPrice">' . Func::getDotPrice($item['price']) . ' VND</i></div>
                                             </div><hr/>
                                             ';
-                                    $total = array_sum(array_column($products, 1));
+                                    $total = array_sum(array_column($carts, 'price'));
                                 }
                                     echo '<div class="orderedItem">
-                                        <h4>Total<i class="itemPrice">'.$total.''." ".'INR</i></h4>
+                                        <h4>Tổng tiền <i class="itemPrice">' . Func::getDotPrice($total) . ' VND</i></h4>
                                         </div>';
                                 ?>
                             </div>
@@ -46,7 +46,7 @@
                     <div class="col-md-6 col-sm-12 cart_order">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Select Payment Method</h4>
+                                <h4>Chọn phương thức thanh toán</h4>
                             </div>
                             <div class="card-body">
                                 <div class="orderedItem">
@@ -58,12 +58,12 @@
                                 </div><hr class="hrClass1"/>
                                 <div class="orderedItem">
                                     <p><input class="form-check-input" type="radio" name="typeOfPayment"> <i class="itemPrice"><img src="./images/wallet.png" alt="Wallet"></i>
-                                        Wallet
+                                        Ví tiền hệ thống
                                     </p><hr class="hrClass2"/>
                                 </div>
                                 
-                                <div class="btn btn-danger buttonBack"><a href="index.php?controller=payment&action=cart"  style="color:white"><h6>Back</h6></a></div>  
-                                <div class="btn btn-success buttonConfirm"><h6>Confirm Order</h6></div>                                  
+                                <div class="btn btn-danger buttonBack"><a href="<?php echo ROUTES['payment'] ?>"  style="color:white">Quay lại</a></div>  
+                                <div class="btn btn-success buttonConfirm">Thanh toán</div>                                  
                             </div>
                         </div>
                     </div>

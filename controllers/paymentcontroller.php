@@ -16,7 +16,10 @@
 
         public function cart()
         {
-            $_SESSION['user_id'] = 1;
+            if (!Func::isLogged())
+            {
+                return $this->view('404');
+            }
 
             $carts = $this->paymentModel->getAllCarts();
 
@@ -30,53 +33,46 @@
 
         public function checkout()
         {
-            $products = [
-                "whatapp" => ["Android Whats Web v2.0 – Whatsapp all tools App",1999],
-                "emall" =>["EMall - Flutter Shopping Full App",1999],
-                "vpn"=>[ "WILL VPN App - VPN App With Admin Panel | Secure VPN &amp; Fast VPN | Refer &amp; Earn | Reward Lucky Wheel",
-                1999]
-            ];
+            if (!Func::isLogged())
+            {
+                return $this->view('404');
+            }
+
+            $carts = $this->paymentModel->getAllCarts();
 
             $data = [
-                'title' => 'Checkout',
-                'products' => $products
+                'title' => 'Thanh toán',
+                'carts' => $carts
             ];
             
             return $this->view('payment.checkout', $data);
         }
 
-        public function add(){
-       
-            $_SESSION['user_id'] = 1;
+        public function add()
+        {
+            if (!Func::isLogged())
+            {
+                return $this->view('404');
+            }
 
             $id_product = (isset($_GET['id']) ? intval($_GET['id']) : 0);
 
             $product_have = $this->paymentModel->getCartByProductId($id_product);
 
-            if (isset($_POST['addproducttocart'])) {
-                if(empty($product_have)) {
-                    $this->paymentModel->addProductIntoCart($id_product);
-                    header('Location: ' . ROUTES['payment_cart'] . '');       
-                }
-                else{
-                    header('Location: ' . ROUTES['payment_cart'] . '');    
-                }
-            }
-            else{
-                header('Location: ' . ROUTES['payment_cart'] . ''); 
+            if (isset($_POST['addproducttocart']) && empty($product_have))
+            {
+                $this->paymentModel->addProductIntoCart($id_product);
             }
 
-            $data = [
-                'title' => 'Giỏ Hàng'
-                
-            ];
-            
-            return $this->view('payment.cart', $data);
+            return header('Location: ' . ROUTES['payment_cart'] . '');  
         }
 
-        public function delete(){
-
-            $_SESSION['user_id'] = 1;
+        public function delete()
+        {
+            if (!Func::isLogged())
+            {
+                return $this->view('404');
+            }
 
             $id = (isset($_GET['id']) ? intval($_GET['id']) : 0);
 
@@ -87,11 +83,17 @@
             }
 
             $this->paymentModel->removeProductFromCart($id);
+            
             header('Location: ' . ROUTES['payment_cart'] . '');  
         }     
                 
         public function history()
         {
+            if (!Func::isLogged())
+            {
+                return $this->view('404');
+            }
+            
             $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 
             $pageResult = $this->paymentModel->getAllPaidCarts($page);
@@ -114,7 +116,10 @@
 
         public function rating()
         {
-            $_SESSION['user_id'] = 1; // change later
+            if (!Func::isLogged())
+            {
+                return $this->view('404');
+            }
 
             $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
             $rating = isset($_GET['rating']) ? intval($_GET['rating']) : 0;

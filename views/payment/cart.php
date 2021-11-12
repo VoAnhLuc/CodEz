@@ -32,9 +32,9 @@
                         $total_money += $item['price'];
                         echo '
                             <div class="row">
-                                <div class="col-md-12 col-sm-12 information">
-                                    <div class=" col-md-3 col-sm-6 v_middle">
-                                        <div class="product_description">
+                                <div class="information">
+                                    <div class="col-md-3 col-sm-6 v_middle">
+                                        <div class="product_description d-flex align-items-center">
                                             <a href="' . ROUTES['product_detail'] . '&id=' . $item['product_id'] . '">
                                                 <img src="' . $item['thumb'] . '" alt="Image" class="cart-thumb" style="width : 100px ; height : 100px;">
                                             </a>
@@ -49,7 +49,7 @@
                                         <div class="col-md-4 col-sm-4"></div>
                                         <div class="item_price1 col-md-4 col-sm-4">
                                             <div class="item_price">
-                                                <p>' . Func::getShortPrice($item['price']) . ' VND</p>  
+                                                <p>' . Func::getDotPrice($item['price']) . ' VND</p>  
                                             </div>
                                         </div>
                                         <div class="col-md-4 col-sm-2"></div>
@@ -85,13 +85,13 @@
                 <div class="col-lg-6 col-md-6 col-sm-0"></div>
                 <div class="col-lg-6 col-md-6 col-sm-12 thanhtoan">
                     <div class="cart-subtotal">
-                        <p><span>Tổng phụ giỏ hàng:</span><?php echo Func::getShortPrice($total_money) ?></p>
+                        <p><span>Tổng phụ giỏ hàng:</span><?php echo Func::getDotPrice($total_money) ?> VND</p>
                    </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-0"></div>
                 <div class="col-lg-6 col-md-6 col-sm-12 thanhtoan">
                     <div class="cart-subtotal">
-                        <p><span>Tổng Tiền:</span><?php echo  Func::getShortPrice($total_money)  ?></p>
+                        <p><span>Tổng Tiền:</span><?php echo  Func::getDotPrice($total_money)  ?> VND</p>
                    </div>
                    <div class="cart-subtotalspecial">
                     <button type="submit" class="btn btn-success"><a style="color:white"  href="index.php?controller=payment&action=checkout">Tiến Hành Thanh Toán</a></button>
