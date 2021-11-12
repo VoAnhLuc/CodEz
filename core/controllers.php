@@ -26,7 +26,8 @@
                 'index',
                 'login',
                 'register',
-                'edit'
+                'edit',
+                'logout'
             ]
         ],
 

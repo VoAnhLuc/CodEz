@@ -46,7 +46,10 @@
         {
             foreach($arr as $value)
             {
-                return empty($value) && gettype($value) == 'string';
+                if (empty($value) && gettype($value) == 'string')
+                {
+                    return true;
+                }
             }
             return false;
         }
@@ -190,17 +193,17 @@
         {
             if ($price >= 1000000000)
             {
-                return $price/1000000000 . 'T';
+                return ceil($price/1000000000) . ' T';
             }
             if ($price >= 1000000)
             {
-                return $price/1000000 . 'TR';
+                return ceil($price/1000000) . ' TR';
             }
             if ($price >= 1000)
             {
-                return $price/1000 . 'K';
+                return ceil($price/1000) . ' K';
             }
-            return $price;
+            return $price . ' Đồng';
         }
 
         /*
@@ -212,5 +215,25 @@
             $fileName = str_replace('.', '/', $to) . '/' . $user_id . '_' . time() . $fileType[mime_content_type($from)];
             copy($from, $fileName);
             return $fileName;
+        }
+
+        public static function isValidWebsite($url)
+        {
+            return filter_var($url, FILTER_VALIDATE_URL) !== FALSE;
+        }
+
+        public static function isContain($key, $value)
+        {
+            return strpos($value, $key) !== FALSE;
+        }
+
+        public static function isLogged()
+        {
+            return isset($_SESSION['is_logged']) && $_SESSION['is_logged'];
+        }
+
+        public static function isCurrentUserVendor()
+        {
+            return isset($_SESSION['is_logged']) && $_SESSION['is_vendor'];
         }
     }

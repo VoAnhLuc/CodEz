@@ -17,6 +17,16 @@
             return $user;
         }
 
+        public function getUserByUsernameAndPassword($username, $password)
+        {
+            $this->db->createConnection();
+            $result = $this->db->executeQuery("SELECT * FROM `users` WHERE `username` = '$username'
+                                                        AND `password` = '" . md5(md5($password)) . "'");
+            $user = $this->db->getSingleResult($result);
+            $this->db->closeConnection($result);
+            return $user;
+        }    
+
         public function updateUser($userchange){
             $this->db->createConnection();
 
@@ -63,8 +73,8 @@
         public function addUser($username, $password, $fullname, $email)
         {
             $this->db->createConnection();
-            $this->db->executeNonQuery("INSERT INTO `users` (`role_id`, `username`, `password`, `fullname`, `email`, `join_time`)
-                                                VALUES ('1', '$username', '$password', '$fullname', '$email', '" . time() . "')");
+            $this->db->executeNonQuery("INSERT INTO `users` (`role_id`, `username`, `password`, `is_vendor`, `fullname`, `email`, `join_time`)
+                                                VALUES ('1', '$username', '$password', '1', '$fullname', '$email', '" . time() . "')");
             $user_id = $this->db->getInsertId();
             $this->db->closeConnection();
             return $user_id;

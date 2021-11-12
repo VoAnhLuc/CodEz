@@ -1,3 +1,9 @@
+<?php
+    if(isset($_SESSION['is_logged']) && $_SESSION['is_logged'])
+    {
+        header('location: ' . ROUTES['home']);
+    }
+?>
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -6,13 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $title ?></title>
-    <link rel="stylesheet" href="./lib/css/reset.css">
-    <link rel="stylesheet" href="./lib/css/style.css">
-    <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
-        integrity="sha384-tKLJeE1ALTUwtXlaGjJYM3sejfssWdAaWR2s97axw4xkiAdMzQjtOjgcyw0Y50KU" crossorigin="anonymous">
-    <link rel="stylesheet" href="./lib/css/responsive.css">
-    <link rel="stylesheet" href="./lib/css/common.css">
+    <?php include './common/css.php'; ?>
 </head>
 
 <body>
@@ -31,6 +31,12 @@
                             <div class="login__title">
                                 <h3>Chào mừng quay trở lại!</h3>
                                 <p>Bạn có thể đăng nhập bằng Tên tài khoản của mình.</p>
+                                <?php
+                                    if (!empty($error_message))
+                                    {
+                                        echo '<h4 class="color--instagram">' . $error_message . '</h4>';
+                                    }
+                                ?>
                             </div>
                             <div class="login__body">
                                 <div class="login__group">
@@ -39,14 +45,14 @@
                                 </div>
                                 <div class="login__group">
                                     <label for="password" class="mb-2">Mật khẩu</label>
-                                    <input id="password" type="text" class="form-control " name="password" placeholder="Nhập mật khẩu" required autocomplete="password">
+                                    <input id="password" type="password" class="form-control " name="password" placeholder="Nhập mật khẩu" required autocomplete="password">
                                 </div>
                                 <div class="login__group">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember">
                                     <label for="remember" class="label_text">Nhớ đăng nhập</label>
                                 </div>
                                 <div class="login__group">
-                                    <button class="btn btn-sm btn__theme">Đăng nhập</button>
+                                    <button type="submit" name="submit" class="btn btn-sm btn__theme">Đăng nhập</button>
                                 </div>
                                 <div class="login__assist">
                                     <p><a href="./forgot.php">Quên mật khẩu?</a></p>

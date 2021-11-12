@@ -6,13 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $title; ?></title>
-    <link rel="stylesheet" href="./lib/css/reset.css">
-    <link rel="stylesheet" href="./lib/css/style.css">
-    <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
-        integrity="sha384-tKLJeE1ALTUwtXlaGjJYM3sejfssWdAaWR2s97axw4xkiAdMzQjtOjgcyw0Y50KU" crossorigin="anonymous">
-    <link rel="stylesheet" href="./lib/css/responsive.css">
-    <link rel="stylesheet" href="./lib/css/common.css">
+    <?php include './common/css.php'; ?>
 </head>
 
 <body>
@@ -25,7 +19,7 @@
             <section class="profile-settings">
                 <div class="container">
                     <div class="row">
-                        <form  method="post" action="<?php echo ROUTES['user_edit'].'&id='.$id; ?>" enctype="multipart/form-data">
+                        <form  method="post" action="<?php echo ROUTES['user_edit'] ?>" enctype="multipart/form-data">
                             <div class="d-lg-flex">
                                 <div class="col-lg-6 p-2">
                                     <div class="profile-settings__title">Thông tin cá nhân</div>
@@ -54,7 +48,7 @@
                                         </div>
                                         <div class="profile-settings__group">
                                             <p>Sinh nhật</p>
-                                            <input class="form-control textbox-n" value="<?php echo $user['dob'] ?>" name="birthday" type="text" onfocus="(this.type='date')" id="date">
+                                            <input class="form-control textbox-n" value="<?php echo $user['dob'] ?>" name="birthday" type="text" onfocus="(this.type='date')" id="date" max="<?php echo date('Y-m-d'); ?>">
                                         </div>
                                         <div class="profile-settings__group">
                                             <p>Website</p>
