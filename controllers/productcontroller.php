@@ -8,7 +8,7 @@
             $this->loadModel('productmodel');
             $this->productModel = new ProductModel;
 
-            $this->loadModel('categoryModel');
+            $this->loadModel('categorymodel');
             $this->categoryModel = new CategoryModel;
         }
 
