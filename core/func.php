@@ -241,4 +241,21 @@
         {
             return isset($_SESSION['is_logged']) && $_SESSION['is_vendor'];
         }
+
+        public static function displayStars($rating)
+        {
+            $stars = '';
+
+            for($i = 1; $i <= floor($rating); $i++)
+            {
+                $stars .= '<i class="bi bi-star-fill color--star"></i>';
+            }
+
+            for ($i = 1; $i <= 5-floor($rating); $i++)
+            {
+                $stars .= '<i class="bi bi-star color--star"></i>';
+            }
+
+            return $stars;
+        }
     }
