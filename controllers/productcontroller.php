@@ -183,3 +183,4 @@
             return $this->view('product.create', $data);
         }
     }
+?>

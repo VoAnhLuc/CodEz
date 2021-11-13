@@ -38,6 +38,8 @@
                 'index',
                 'cart',
                 'checkout',
+                'add',
+                'delete',
                 'history',
                 'rating'
             ]

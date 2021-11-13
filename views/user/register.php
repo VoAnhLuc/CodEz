@@ -1,3 +1,10 @@
+<?php
+    if(isset($_SESSION['is_logged']) && $_SESSION['is_logged'])
+    {
+        header('location: ' . ROUTES['home']);
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="vi">
 

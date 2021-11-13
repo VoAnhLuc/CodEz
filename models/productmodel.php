@@ -11,7 +11,7 @@
         public function getProductById($id)
         {
             $this->db->createConnection();
-            $result = $this->db->executeQuery("SELECT `products`.*, `users`.`fullname`, `users`.`avatar`, `categories`.`name` FROM `products`
+            $result = $this->db->executeQuery("SELECT `products`.*, `users`.`fullname`, `users`.`avatar`, `users`.`join_time`, `categories`.`name` FROM `products`
                                                 INNER JOIN `users` ON `products`.`user_id` = `users`.`id`
                                                 INNER JOIN `categories` ON `products`.`category_id` = `categories`.`id`
                                                 WHERE `products`.`id` = '$id'");

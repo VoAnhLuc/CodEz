@@ -30,10 +30,16 @@
                             else
                             {
                                 echo '
-                                    <a href="' . ROUTES['user'] . '">
+                                    <a href="#" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
                                         <span class="text--bold color--white me-3">' . $_SESSION['fullname'] . '</span>
                                     </a>
-                                    <a href="' . ROUTES['user_logout'] . '"><i class="bi bi-box-arrow-right color--green"></i></a>    
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownUser">
+                                        <li><a class="dropdown-item color--instagram" href="#"><i class="bi bi-wallet2"></i> ' . Func::getDotPrice($_SESSION['user']['money']) . ' VND</a></li>
+                                        <li><a class="dropdown-item" href="' . ROUTES['user'] . '">Thông tin cá nhân</a></li>
+                                        <li><a class="dropdown-item" href="' . ROUTES['user_edit'] . '">Chỉnh sửa thông tin</a></li>
+                                        <li><a class="dropdown-item" href="' . ROUTES['payment_history'] . '">Lịch sử mua hàng</a></li>
+                                    </ul>
+                                    <a href="' . ROUTES['user_logout'] . '"><i class="bi bi-box-arrow-right color--green"></i></a>
                                 ';
                             }
                         ?>
