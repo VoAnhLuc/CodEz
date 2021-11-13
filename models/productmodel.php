@@ -11,9 +11,12 @@
         public function getProductById($id)
         {
             $this->db->createConnection();
-            $result = $this->db->executeQuery("SELECT `products`.*, `users`.`fullname`, `users`.`avatar`, `users`.`join_time`, `categories`.`name` FROM `products`
+            $result = $this->db->executeQuery("SELECT `products`.*, `users`.`fullname`, `users`.`avatar`, `users`.`join_time`, `categories`.`name`,
+                                                        COUNT(`carts`.`id`) AS bought, SUM(`carts`.`rate`) AS rating
+                                                FROM `products`
                                                 INNER JOIN `users` ON `products`.`user_id` = `users`.`id`
                                                 INNER JOIN `categories` ON `products`.`category_id` = `categories`.`id`
+                                                LEFT JOIN `carts` ON `products`.`id` = `carts`.`product_id` AND `carts`.`paid_time` >= `carts`.`add_time`
                                                 WHERE `products`.`id` = '$id'");
             $product = $this->db->getSingleResult($result);
             $this->db->closeConnection($result);
@@ -46,11 +49,14 @@
         public function getAllProducts($orderby = "`id` DESC", $limit = 8, $where = "`products`.`id` != 0")
         {
             $this->db->createConnection();
-            $result = $this->db->executeQuery("SELECT `products`.*, `users`.`fullname`, `users`.`avatar`, `categories`.`name`
-                                                FROM `products`
+            $result = $this->db->executeQuery("SELECT `products`.*, `users`.`fullname`, `users`.`avatar`, `categories`.`name`,
+                                                        COUNT(`carts`.`id`) AS bought, SUM(`carts`.`rate`) AS rating
+                                                FROM `products` 
                                                 INNER JOIN `users` ON `products`.`user_id` = `users`.`id`
                                                 INNER JOIN `categories` ON `products`.`category_id` = `categories`.`id`
+                                                LEFT JOIN `carts` ON `products`.`id` = `carts`.`product_id` AND `carts`.`paid_time` >= `carts`.`add_time`
                                                 WHERE $where
+                                                GROUP BY `products`.`id`
                                                 ORDER BY $orderby
                                                 LIMIT $limit");
             $products = $this->db->getArrayResult($result);

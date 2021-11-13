@@ -27,7 +27,7 @@
 }
 
 .color--star {
-    color: #ffd900;
+    color: #ffd900 !important;
 }
 
 .color--star a {

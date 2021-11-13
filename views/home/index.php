@@ -69,14 +69,10 @@
                                                 <a href="' . ROUTES['product_detail'] . '&id=' . $item['id'] . '">' . substr($item['title'], 0, 29) . '</a>
                                             </div>
                                             <div class="d-flex justify-content-between">
-                                                <ul class="item__star">
-                                                    <li><i class="bi bi-star-fill"></i></li>
-                                                    <li><i class="bi bi-star-fill"></i></li>
-                                                    <li><i class="bi bi-star-fill"></i></li>
-                                                    <li><i class="bi bi-star-fill"></i></li>
-                                                    <li><i class="bi bi-star"></i></li>
-                                                </ul>
-                                                <span class="item__cart"><i class="bi bi-bag-check"></i> 5</span>
+                                                <span class="item__star">
+                                                    ' . Func::displayStars($item['rating'] != 0 ? $item['rating']/$item['bought'] : 5) . '
+                                                </span>
+                                                <span class="item__cart"><i class="bi bi-bag-check"></i> ' . $item['bought'] . '</span>
                                             </div>
                                         </div>
                                         
@@ -122,14 +118,10 @@
                                                 <a href="' . ROUTES['product_detail'] . '&id=' . $item['id'] . '">' . substr($item['title'], 0, 29) . '</a>
                                             </div>
                                             <div class="d-flex justify-content-between">
-                                                <ul class="item__star">
-                                                    <li><i class="bi bi-star-fill"></i></li>
-                                                    <li><i class="bi bi-star-fill"></i></li>
-                                                    <li><i class="bi bi-star-fill"></i></li>
-                                                    <li><i class="bi bi-star-fill"></i></li>
-                                                    <li><i class="bi bi-star"></i></li>
-                                                </ul>
-                                                <span class="item__cart"><i class="bi bi-bag-check"></i> 5</span>
+                                                <span class="item__star">
+                                                    ' . Func::displayStars($item['rating'] != 0 ? $item['rating']/$item['bought'] : 5) . '
+                                                </span>
+                                                <span class="item__cart"><i class="bi bi-bag-check"></i> ' . $item['bought'] . '</span>
                                             </div>
                                         </div>
                                         
