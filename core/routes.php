@@ -24,7 +24,8 @@
         'product' => 'index.php?controller=product',
         'product_create' => 'index.php?controller=product&action=create',
         'product_edit' => 'index.php?controller=product&action=edit',
-        'product_detail' => 'index.php?controller=product&action=detail'
+        'product_detail' => 'index.php?controller=product&action=detail',
+        'product_delete' => 'index.php?controller=product&action=delete'
         
         
     ];

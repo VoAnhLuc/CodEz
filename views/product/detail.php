@@ -31,20 +31,29 @@
                                 <div class="card-img">
                                     <img id="anhsanpham" src="<?php echo $product['thumb'] ?>" alt="" width="100%">  
                                 </div>
-                                <div class="card-footer">
-                                    <button type="button" class="bi bi-share"> Chia sẻ :</button>
-                                    <a class="bi bi-facebook me-2"
-                                        href="https://www.facebook.com/sharer/sharer.php?u=<?php echo Func::getCurrentURL() ?>"
-                                        target="_blank"> Facebook</a>
-                                    <a class="bi bi-linkedin me-2"
-                                        href="https://www.linkedin.com/sharing/share-offsite/?url=<?php echo Func::getCurrentURL() ?>"
-                                        target="_blank"> Linkedin</a>
-                                    <a class="bi bi-reddit me-2"
-                                        href="http://www.reddit.com/submit?url=<?php echo Func::getCurrentURL() ?>"
-                                        target="_blank"> Reddit</a>
-                                    <a class="bi bi-twitter"
-                                        href="https://twitter.com/intent/tweet?url=<?php echo Func::getCurrentURL() ?>"
-                                        target="_blank"> Twitter</a>
+                                <div class="card-footer d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <button type="button" class="bi bi-share"> Chia sẻ :</button>
+                                        <a class="bi bi-facebook me-2"
+                                            href="https://www.facebook.com/sharer/sharer.php?u=<?php echo Func::getCurrentURL() ?>"
+                                            target="_blank"> Facebook</a>
+                                        <a class="bi bi-linkedin me-2"
+                                            href="https://www.linkedin.com/sharing/share-offsite/?url=<?php echo Func::getCurrentURL() ?>"
+                                            target="_blank"> Linkedin</a>
+                                        <a class="bi bi-reddit me-2"
+                                            href="http://www.reddit.com/submit?url=<?php echo Func::getCurrentURL() ?>"
+                                            target="_blank"> Reddit</a>
+                                        <a class="bi bi-twitter"
+                                            href="https://twitter.com/intent/tweet?url=<?php echo Func::getCurrentURL() ?>"
+                                            target="_blank"> Twitter</a>
+                                    </div>
+                                    
+                                    <?php if (Func::isLogged() && $_SESSION['user_id'] == $product['user_id']) { ?>
+                                    <div>
+                                        <a href="<?php echo ROUTES['product_edit'] . '&id=' . $product['id'] ?>" class="btn btn-warning">Chỉnh sửa</a>
+                                        <a href="<?php echo ROUTES['product_delete'] . '&id=' . $product['id'] ?>" class="btn btn-danger">Xóa</a>
+                                    </div>
+                                    <?php } ?>
                                 </div>
                             </div>  
                             <div class="card cardcontent mt-4">    
@@ -98,11 +107,10 @@
                 </section>
                 <section class="breadcrumb-area" >
                 <!-- phan2 -->
-                <div class="container-fluid mt-4">
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 abcd">
-                            <div class="container mt-4">
-                                <div class="row">
+                    <div class="container-fluid mt-4">
+                        <div class="related_items">
+                            <div class="container">
+                                <div class="row mb-3">
                                     <div class="text-center">
                                         <h2>Sản Phẩm Liên Quan</h4>
                                     </div>
@@ -112,33 +120,33 @@
                                         foreach($related_products as $item)
                                         {
                                             echo '
-                                            <div class="col-lg-3 col-md-4 col-sm-6">
-                                                <div class="item__item">
-                                                    <div class="item__thumb">
-                                                        <a href="' . ROUTES['product_detail'] . '&id=' . $item['id'] . '"><img src="' . $item['thumb'] . '" class="item__thumbnail"></a>
-                                                    </div>
-                                                    <div class="item__info">
-                                                        <div class="item__title">
-                                                            <a href="' . ROUTES['product_detail'] . '&id=' . $item['id'] . '">' . substr($item['title'], 0, 29) . '</a>
+                                                <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
+                                                    <div class="item__item">
+                                                        <div class="item__thumb">
+                                                            <a href="' . ROUTES['product_detail'] . '&id=' . $item['id'] . '"><img src="' . $item['thumb'] . '" class="item__thumbnail"></a>
                                                         </div>
-                                                        <div class="d-flex justify-content-between">
-                                                            <span class="item__star">
-                                                                ' . Func::displayStars($item['rating'] != 0 ? $item['rating']/$item['bought'] : 5) . '
-                                                            </span>
-                                                            <span class="item__cart"><i class="bi bi-bag-check"></i> ' . $item['bought'] . '</span>
+                                                        <div class="item__info">
+                                                            <div class="item__title">
+                                                                <a href="' . ROUTES['product_detail'] . '&id=' . $item['id'] . '">' . $item['title'] . '</a>
+                                                            </div>
+                                                            <div class="d-flex justify-content-between">
+                                                                <span class="item__star">
+                                                                    ' . Func::displayStars($item['rating'] != 0 ? $item['rating']/$item['bought'] : 5) . '
+                                                                </span>
+                                                                <span class="item__cart"><i class="bi bi-bag-check"></i> ' . $item['bought'] . '</span>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    
-                                                    <div class="item__more d-flex justify-content-between">
-                                                        <div class="item__price">' . Func::getShortPrice($item['price']) . '</div>
-                                                        <div class="item__category">
-                                                            <a href="' . ROUTES['product'] . '&category=' . $item['category_id'] . '">
-                                                                <i class="bi bi-bookmarks"></i> ' . $item['name'] . '
-                                                            </a>
+                                                        
+                                                        <div class="item__more d-flex justify-content-between">
+                                                            <div class="item__price">' . Func::getShortPrice($item['price']) . '</div>
+                                                            <div class="item__category">
+                                                                <a href="' . ROUTES['product'] . '&category=' . $item['category_id'] . '">
+                                                                    <i class="bi bi-bookmarks"></i> ' . $item['name'] . '
+                                                                </a>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
                                             ';
                                         }
                                     ?>
@@ -146,8 +154,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
         </div>
     </main>
 

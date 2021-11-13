@@ -22,7 +22,7 @@
 
             $data = [
                 'id' => $id,
-                'title' => 'User Profile',
+                'title' => 'Thông tin cá nhân',
                 'user' => $user
             ];
             
@@ -260,7 +260,7 @@
 
         public function logout()
         {
-            session_destroy();
+            session_unset();
             return header('Location: ' . ROUTES['home']);
         }
     }

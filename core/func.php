@@ -105,8 +105,6 @@
                 self::removeFile($outputName);
             }
 
-            $_SESSION['user_id'] = 1; // change later.
-
             $outputName = str_replace('.', '/', $dir) . '/' . $_SESSION['user_id'] . '_' . time() . $upload_file_type[$_FILES[$inputName]['type']];
 
             move_uploaded_file($_FILES[$inputName]['tmp_name'], $outputName);
@@ -193,15 +191,15 @@
         {
             if ($price >= 1000000000)
             {
-                return ceil($price/1000000000) . ' T';
+                return floor($price/1000000000) . ' T';
             }
             if ($price >= 1000000)
             {
-                return ceil($price/1000000) . ' TR';
+                return floor($price/1000000) . ' TR';
             }
             if ($price >= 1000)
             {
-                return ceil($price/1000) . ' K';
+                return floor($price/1000) . ' K';
             }
             return $price . ' Đồng';
         }

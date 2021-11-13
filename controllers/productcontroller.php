@@ -156,7 +156,9 @@
                 $data['product']['price'] = intval($_POST['price']);
                 $data['product']['is_support'] = isset($_POST['is_support']);
 
-                if (Func::isAnyEmptyValue($data['product']))
+                if (Func::isAnyEmptyValue([$data['product']['category_id'], $data['product']['title'],
+                                            $data['product']['content'], $data['product']['description'],
+                                            $data['product']['price']]))
                 {
                     $data['error'] = MESSAGES['input_empty'];
                     return $this->view('product.create', $data);

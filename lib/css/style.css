@@ -198,11 +198,15 @@ a {
   margin: 0;
 }
 
+.popular {
+  padding-bottom: 3rem;
+}
+
 .item__item {
+  height: 100%;
   background: #fff;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgb(108 111 115 / 10%);
-  margin-bottom: 30px;
 }
 
 .item__thumbnail {
@@ -225,7 +229,7 @@ a {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: normal;
-  -webkit-line-clamp: 1;
+  -webkit-line-clamp: 2;
 }
 
 .item__user {
@@ -243,8 +247,7 @@ a {
 
 .item__star {
   display: flex;
-  padding: 0;
-  margin-bottom: 1 rem;
+  padding-bottom: 1rem;
   color: #ffd900;
 }
 
@@ -748,6 +751,13 @@ main {
 .card-body a:hover {
   color: #01724f;
 }
+
+.gioithieusp img {
+  object-fit: cover;
+  width: 100% !important;
+  height: 300px !important;
+}
+
 .cardcontent .gioithieusp {
   text-align: left;
   padding-bottom: 40px;
@@ -806,8 +816,10 @@ main {
 .moreitem .row {
   text-align: center;
 }
-.abcd {
+.related_items {
   background-color: #f6f7fb;
+  padding-top: 1rem;
+  padding-bottom: 3rem;
 }
 .moreitem {
   padding-bottom: 50px;

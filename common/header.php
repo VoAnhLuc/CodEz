@@ -19,11 +19,11 @@
                             if (!isset($_SESSION['is_logged']) || !$_SESSION['is_logged'])
                             {
                                 echo '
-                                    <span class="d-none d-sm-block header__btn btn btn-secondary">
-                                        <a href="' .ROUTES['user_register'] .'">Đăng ký</a>
+                                    <span class="d-none d-sm-block header__btn">
+                                        <a class="btn btn-secondary" href="' .ROUTES['user_register'] .'">Đăng ký</a>
                                     </span>                
-                                    <span class="header__btn btn btn-secondary">
-                                        <a href="' . ROUTES['user_login'] . '">Đăng nhập</a>
+                                    <span class="header__btn">
+                                        <a class="btn btn-secondary" href="' . ROUTES['user_login'] . '">Đăng nhập</a>
                                     </span>
                                 ';
                             }
@@ -35,9 +35,11 @@
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownUser">
                                         <li><a class="dropdown-item color--instagram" href="#"><i class="bi bi-wallet2"></i> ' . Func::getDotPrice($_SESSION['user']['money']) . ' VND</a></li>
+                                        <li><a class="dropdown-item" href="' . ROUTES['payment'] . '">Giỏ hàng</a></li>
                                         <li><a class="dropdown-item" href="' . ROUTES['user'] . '">Thông tin cá nhân</a></li>
-                                        <li><a class="dropdown-item" href="' . ROUTES['user_edit'] . '">Chỉnh sửa thông tin</a></li>
                                         <li><a class="dropdown-item" href="' . ROUTES['payment_history'] . '">Lịch sử mua hàng</a></li>
+                                        <li><a class="dropdown-item" href="' . ROUTES['user_edit'] . '">Chỉnh sửa thông tin</a></li>
+                                        ' . (Func::isCurrentUserVendor() ? '<li><a class="dropdown-item" href="' . ROUTES['product_create'] . '">Đăng bán sản phẩm</a></li>' : '') . '
                                     </ul>
                                     <a href="' . ROUTES['user_logout'] . '"><i class="bi bi-box-arrow-right color--green"></i></a>
                                 ';

@@ -19,11 +19,10 @@
                 <div class="row">
                     <div class="info__hero m-auto">
                         <div class="info__title">
-                            Easy Way To Sell Digital Goods
+                            Khó Khăn Trong Việc Code? Hãy Mua Nó!
                         </div>
                         <div class="info__description">
-                            Buy premium scripts, app templates, themes and plugins and create amazing websites &
-                            apps.
+                            CodEz cung cấp dịch vu mua và bán mã nguồn, hoàn toàn miễn phí để sử dụng.
                         </div>
                         <div class="info__searchbox col-8 mt-4 d-md-flex">
                             <div class="col-md-6">
@@ -56,17 +55,21 @@
                     </div>
 
                     <?php
+                        if (count($newest_products) == 0)
+                        {
+                            echo '<div class="alert alert-light">Chưa có sản phẩm nào được đăng bán.</div>';
+                        }
                         foreach ($newest_products as $item)
                         {
                             echo '
-                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
                                     <div class="item__item">
                                         <div class="item__thumb">
                                             <a href="' . ROUTES['product_detail'] . '&id=' . $item['id'] . '"><img src="' . $item['thumb'] . '" class="item__thumbnail"></a>
                                         </div>
                                         <div class="item__info">
                                             <div class="item__title">
-                                                <a href="' . ROUTES['product_detail'] . '&id=' . $item['id'] . '">' . substr($item['title'], 0, 29) . '</a>
+                                                <a href="' . ROUTES['product_detail'] . '&id=' . $item['id'] . '">' . $item['title'] . '</a>
                                             </div>
                                             <div class="d-flex justify-content-between">
                                                 <span class="item__star">
@@ -90,7 +93,7 @@
                         }
                     ?>
 
-                    <div class="col-12 text-center mb-3 <?php echo count($newest_products) > 8 ? '' : 'd-none' ?>">
+                    <div class="col-12 text-center mb-3 <?php echo count($newest_products) == 8 ? '' : 'd-none' ?>">
                         <div class="btn btn-sm btn__theme p-2"><a style="color: white" href="<?php echo ROUTES['product'] ?>">Xem thêm sản phẩm mới</a></div>
                     </div>
                 </div>
@@ -105,17 +108,21 @@
                     </div>
 
                     <?php
+                        if (count($newest_products) == 0)
+                        {
+                            echo '<div class="alert alert-light">Chưa có sản phẩm nào được đăng bán.</div>';
+                        }
                         foreach ($popular_products as $item)
                         {
                             echo '
-                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
                                     <div class="item__item">
                                         <div class="item__thumb">
                                             <a href="' . ROUTES['product_detail'] . '&id=' . $item['id'] . '"><img src="' . $item['thumb'] . '" class="item__thumbnail"></a>
                                         </div>
                                         <div class="item__info">
                                             <div class="item__title">
-                                                <a href="' . ROUTES['product_detail'] . '&id=' . $item['id'] . '">' . substr($item['title'], 0, 29) . '</a>
+                                                <a href="' . ROUTES['product_detail'] . '&id=' . $item['id'] . '">' . $item['title'] . '</a>
                                             </div>
                                             <div class="d-flex justify-content-between">
                                                 <span class="item__star">
@@ -139,7 +146,7 @@
                         }
                     ?>
 
-                    <div class="col-12 text-center mb-3 <?php echo count($newest_products) > 8 ? '' : 'd-none' ?>">
+                    <div class="col-12 text-center mb-3 <?php echo count($newest_products) == 8 ? '' : 'd-none' ?>">
                         <div class="btn btn-sm btn__theme p-2"><a style="color: white" href="<?php echo ROUTES['product'] ?>">Xem thêm sản phẩm phổ biến</a></div>
                     </div>
                 </div>
