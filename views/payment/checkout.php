@@ -51,19 +51,20 @@
                             <div class="card-body">
                                 <div class="orderedItem">
                                     <p>
-                                        <input class="form-check-input" type="radio" name="typeOfPayment"> 
+                                        <input class="form-check-input" type="radio" name="typeOfPayment" value="paypal" disabled> 
                                         <i class="itemPrice"><img src="./images/paypal.png" alt="Paypal"></i>
                                         Paypal
                                     </p>
                                 </div><hr class="hrClass1"/>
                                 <div class="orderedItem">
-                                    <p><input class="form-check-input" type="radio" name="typeOfPayment"> <i class="itemPrice"><img src="./images/wallet.png" alt="Wallet"></i>
+                                    <p><input class="form-check-input" type="radio" name="typeOfPayment" value="money" checked> <i class="itemPrice"><img src="./images/wallet.png" alt="Wallet"></i>
                                         Ví tiền hệ thống
                                     </p><hr class="hrClass2"/>
                                 </div>
-                                
-                                <div class="btn btn-danger buttonBack"><a href="<?php echo ROUTES['payment'] ?>"  style="color:white">Quay lại</a></div>  
-                                <div class="btn btn-success buttonConfirm">Thanh toán</div>                                  
+                                <form method="post">
+                                    <a class="btn btn-danger buttonBack" href="<?php echo ROUTES['payment'] ?>"  style="color:white">Quay lại</a>
+                                    <button type="submit" name="confirmOrder" class="btn btn-success buttonConfirm">Thanh toán</button>    
+                                </form>                              
                             </div>
                         </div>
                     </div>

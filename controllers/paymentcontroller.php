@@ -42,10 +42,35 @@
 
             $data = [
                 'title' => 'Thanh toán',
-                'carts' => $carts
+                'carts' => $carts,
+                'is_success' => 0
             ];
             
-            return $this->view('payment.checkout', $data);
+            if (!isset($_POST['confirmOrder']))
+            {
+                return $this->view('payment.checkout', $data);
+            }
+
+            $total_money = array_sum(array_column($carts, 'price'));
+            if ($_SESSION['user']['money'] >= $total_money)
+            {
+                foreach ($carts as $cart)
+                {
+                    $price = $cart['price'];
+                    $cart_id = $cart['id'];
+                    $link_code = Func::copyFileFromTo($cart['code'], 'files.payments', $_SESSION['user_id'], false);
+                    $this->paymentModel->updateItemPaid($cart_id, $link_code, $price);
+                }
+
+                $this->loadModel('userModel');
+                $userModel = new UserModel;
+                $userModel->updateUserByStringQuery($_SESSION['user_id'], "`money` = `money` -  $total_money");
+                $_SESSION['user']['money'] = $_SESSION['user']['money'] - $total_money;
+
+                $data['is_success'] = 1;
+            }
+
+            return $this->view('payment.confirm', $data);
         }
 
         public function add()
@@ -78,13 +103,13 @@
 
             $cart = $this->paymentModel->getCartById($id);
 
-            if ($cart == null || $cart['user_id'] != $_SESSION['user_id']) {
+            if ($cart == null) {
                return $this->view('404') ;
             }
 
             $this->paymentModel->removeProductFromCart($id);
             
-            header('Location: ' . ROUTES['payment_cart'] . '');  
+            return header('Location: ' . ROUTES['payment_cart'] . '');  
         }     
                 
         public function history()
@@ -126,7 +151,7 @@
 
             $cart = $this->paymentModel->getCartPaidById($id);
 
-            if ($cart == null || $cart['user_id'] != $_SESSION['user_id'] || !Func::isInRange($rating, 1, 5))
+            if ($cart == null || !Func::isInRange($rating, 1, 5))
             {
                 return $this->view('404');
             }

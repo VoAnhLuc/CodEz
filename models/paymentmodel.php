@@ -14,7 +14,7 @@
 
             $this->db->createConnection();
 
-            $result = $this->db->executeQuery("SELECT `carts`.*, `products`.`thumb`, `products`.`price`, `products`.`title`
+            $result = $this->db->executeQuery("SELECT `carts`.*, `products`.`thumb`, `products`.`price`, `products`.`title`, `products`.`code`
                                                 FROM `carts`
                                                 INNER JOIN `products` ON `carts`.`product_id` = `products`.`id`
                                                 WHERE `carts`.`user_id` = '$user_id' AND `carts`.`paid_time` < `carts`.`add_time`
@@ -30,7 +30,6 @@
 
         public function getAllPaidCarts($page = 1)
         {
-            $_SESSION['user_id'] = 1; //change later;
             $user_id = $_SESSION['user_id'];
 
             $this->db->createConnection();
@@ -58,31 +57,20 @@
 
         public function getAllPricesPaid()
         {
-            $_SESSION['user_id'] = 1; // change later
             $user_id = $_SESSION['user_id'];
 
-            /*
-                If it had value, just return it.
-                We dont want to query every page change time.
-            */
-            if (isset($_SESSION['totalPrices']))
-            {
-                return $_SESSION['totalPrices'];
-            }
-
             $this->db->createConnection();
-            $result = $this->db->executeQuery("SELECT SUM(`price`) AS 'sum' FROM `carts` WHERE `user_id` = '1' AND `paid_time` >= `add_time`;");
+            $result = $this->db->executeQuery("SELECT SUM(`price`) AS 'sum' FROM `carts` WHERE `user_id` = '$user_id' AND `paid_time` >= `add_time`");
             $total_price = $this->db->getSingleResult($result);
             $this->db->closeConnection($result);
 
-            $_SESSION['totalPrices'] = $total_price['sum'];
-            return $_SESSION['totalPrices'];
+            return (int)$total_price['sum'];
         }
 
         public function getCartById($id)
         {
             $this->db->createConnection();
-            $result = $this->db->executeQuery("SELECT `user_id` FROM `carts` WHERE `id` = '$id' AND `paid_time` < `add_time`");
+            $result = $this->db->executeQuery("SELECT * FROM `carts` WHERE `id` = '$id' AND `paid_time` < `add_time` AND `user_id` = '" . $_SESSION['user_id'] . "'");
             $cart = $this->db->getSingleResult($result);       
             $this->db->closeConnection($result);
             return $cart;
@@ -91,7 +79,7 @@
         public function getCartByProductId($product_id)
         {
             $this->db->createConnection();
-            $result = $this->db->executeQuery("SELECT * FROM `carts` WHERE `product_id` = '$product_id' AND `paid_time` < `add_time`");
+            $result = $this->db->executeQuery("SELECT * FROM `carts` WHERE `product_id` = '$product_id' AND `paid_time` < `add_time` AND `user_id` = '" . $_SESSION['user_id'] . "'");
             $cart = $this->db->getSingleResult($result);       
             $this->db->closeConnection($result);
             return $cart;
@@ -100,7 +88,7 @@
         public function getCartPaidById($id)
         {
             $this->db->createConnection();
-            $result = $this->db->executeQuery("SELECT `user_id` FROM `carts` WHERE `id` = '$id' AND `paid_time` >= `add_time`");
+            $result = $this->db->executeQuery("SELECT * FROM `carts` WHERE `id` = '$id' AND `paid_time` >= `add_time` AND `user_id` = '" . $_SESSION['user_id'] . "'");
             $cart = $this->db->getSingleResult($result);       
             $this->db->closeConnection($result);
             return $cart;
@@ -108,7 +96,6 @@
         
         public function addProductIntoCart($product_id)
         {
-            $_SESSION['user_id'] = 1; // change later
             $user_id = $_SESSION['user_id'];
 
             $this->db->createConnection();
@@ -131,6 +118,13 @@
         {
             $this->db->createConnection();
             $this->db->executeNonQuery("UPDATE `carts` SET `rate` = '$rating' WHERE `id` = '$id'");
+            $this->db->closeConnection();
+        }
+
+        public function updateItemPaid($cart_id, $link_code, $price)
+        {
+            $this->db->createConnection();
+            $this->db->executeNonQuery("UPDATE `carts` SET `paid_time` = '" . time() . "', `link_code` = '$link_code', `price` = '$price' WHERE `id` = '$cart_id'");
             $this->db->closeConnection();
         }
     }

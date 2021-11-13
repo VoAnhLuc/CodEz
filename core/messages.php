@@ -20,5 +20,11 @@
         'file_type_error' => 'Định dạng file không đúng! (.zip/.rar)',
         'image_type_error' => 'Định dạng hình ảnh không đúng! (.jpg/.jpeg/.png)',
         'file_size_exceed' => 'Dung lượng file quá lớn!',
-        'upload_file_success' => 'Upload file thành công!'
+        'upload_file_success' => 'Upload file thành công!',
+
+        /* payment */
+        'payment_success' => 'Thanh toán thành công',
+        'payment_success_message' => 'Hóa đơn của bạn đã được thanh toán thành công. Vui lòng đánh giá mức độ hài lòng của sản phẩm sau khi sử dụng. Chúc bạn có những trải nghiệm tuyệt vời trên hệ thống.',
+        'payment_failed' => 'Thanh toán thất bại',
+        'payment_failed_message' => 'Không thể thanh toán hóa đơn mua hàng do bạn không đủ tiền để chi trả. Vui lòng nạp thêm hoặc chọn phương thức thanh toán khác.',
     ];
