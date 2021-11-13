@@ -181,10 +181,9 @@
             return preg_match('/^[a-f0-9]{32}$/', $md5);
         }
 
-        public static function getCurrentURL(){
+        public static function getCurrentURL($have_request = true){
             return  (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ?
-                    "https" : "http") . "://" . $_SERVER['HTTP_HOST'] . 
-                    $_SERVER['REQUEST_URI'];
+                    "https" : "http") . "://" . $_SERVER['HTTP_HOST'] . ($have_request ? $_SERVER['REQUEST_URI'] : '');
         }
 
         public static function getShortPrice($price)
