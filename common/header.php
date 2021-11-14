@@ -10,9 +10,9 @@
                 <div class="col-lg-9 col-md-9 col-6 m-auto">
                     <div class="header__info">
                         <ul class="d-none d-lg-flex header__list">
-                            <li><a href="#">Start Selling</a></li>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">Help</a></li>
+                            <li><a href="#">Trở thành người bán</a></li>
+                            <li><a href="#">Liên hệ</a></li>
+                            <li><a href="#">Trợ giúp</a></li>
                             <li><a href="<?php echo ROUTES['payment_cart'] ?>"><i class="bi bi-cart2"></i></a></li>
                         </ul>
                         <?php

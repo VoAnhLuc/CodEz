@@ -6,11 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $title ?></title>
-    <?php include './common/css.php'; ?>
+    <meta name="description" content="<?php echo $product['description'] ?>">
+    <meta itemprop="name" content="<?php echo $product['title'] ?>">
+    <meta itemprop="description" content="<?php echo $product['description'] ?>">
+    <meta itemprop="image" content="<?php echo Func::getCurrentURL(false) . '/' . $product['thumb'] ?>">
     <meta property="og:title" content="<?php echo $product['title'] ?>"/>
-    <meta property="og:image" content="<?php echo $product['thumb'] ?>"/>
+    <meta property="og:image" content="<?php echo Func::getCurrentURL(false) . '/' . $product['thumb'] ?>"/>
     <meta property="og:description" content="<?php echo $product['description'] ?>"/>
     <meta property="og:url" content="<?php echo Func::getCurrentURL() ?>" />
+    <?php include './common/css.php'; ?>
 </head>
 
 <body>
