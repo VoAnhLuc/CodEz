@@ -22,8 +22,8 @@
         <section class="sect3">
         <div class="container container1">
             <div class="row totalInfo">
-                <div class="col-md-3 d-none d-md-block special"><h4>Sản Phẩm</h4></div>
-                <div class="col-md-5 d-none d-md-block special"><h4>Đơn Giá</h4></div>
+                <div class="col-md-4 d-none d-md-block special"><h4>Sản Phẩm</h4></div>
+                <div class="col-md-4 d-none d-md-block special"><h4>Đơn Giá</h4></div>
                 <div class="col-md-4 d-none d-md-block special"><h4>Xóa</h4></div>
             </div>
             <?php
@@ -33,10 +33,10 @@
                         echo '
                             <div class="row">
                                 <div class="information">
-                                    <div class="col-md-3 col-sm-6 v_middle">
+                                    <div class="col-md-4 col-8 v_middle">
                                         <div class="product_description d-flex align-items-center">
                                             <a href="' . ROUTES['product_detail'] . '&id=' . $item['product_id'] . '">
-                                                <img src="' . $item['thumb'] . '" alt="Image" class="cart-thumb" style="width : 100px ; height : 100px;">
+                                                <img src="' . $item['thumb'] . '" alt="Image" class="item__thumbnail" style="width : 100px ; height : 100px;">
                                             </a>
                                             <div class="short_desc">
                                                 <a href="' . ROUTES['product_detail'] . '&id=' . $item['product_id'] . '">
@@ -45,16 +45,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-5 col-sm-3 v_middle d-flex">
-                                        <div class="col-md-4 col-sm-4"></div>
-                                        <div class="item_price1 col-md-4 col-sm-4">
-                                            <div class="item_price">
-                                                <p>' . Func::getDotPrice($item['price']) . ' VND</p>  
-                                            </div>
+                                    <div class="col-md-4 col-3 v_middle d-flex justify-content-center">
+                                        <div class="item_price p-2">
+                                            <p>' . Func::getDotPrice($item['price']) . ' VND</p>  
                                         </div>
-                                        <div class="col-md-4 col-sm-2"></div>
                                     </div>
-                                    <div class="col-md-4 col-sm-1 v_middle">
+                                    <div class="col-md-4 col-1 v_middle">
                                             <div class="item_action">                          
                                                 <a href="' . ROUTES['payment_delete'] . '&id=' . $item['id'] . '">
                                                 <p class="bi bi-trash"></p>

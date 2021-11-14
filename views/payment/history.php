@@ -69,7 +69,7 @@
                             </div>
                             <div class="content__body">
                                 <div class="content__item">
-                                    <p><i class="bi bi-piggy-bank color--instagram"></i> Tổng tiền đã tiêu: <b class="color--instagram"><?php echo $totalPrices ?> VNĐ</b></p>
+                                    <p><i class="bi bi-piggy-bank color--instagram"></i> Tổng tiền đã tiêu: <b class="color--instagram"><?php echo Func::getDotPrice($totalPrices) ?> VNĐ</b></p>
                                     <p><i class="bi bi-file-earmark-code color--green"></i> Tổng sản phẩm đã mua: <b class="color--green"><?php echo $pageInfo->getTotalItems() ?> sản phẩm</b></p>
                                 </div>
                             </div>

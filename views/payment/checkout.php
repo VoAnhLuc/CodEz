@@ -34,8 +34,8 @@
                                             <div class="col-3"><i class="itemPrice">' . Func::getDotPrice($item['price']) . ' VND</i></div>
                                             </div><hr/>
                                             ';
-                                    $total = array_sum(array_column($carts, 'price'));
-                                }
+                                    }
+                                    $total = count($carts) > 0 ? array_sum(array_column($carts, 'price')) : 0;
                                     echo '<div class="orderedItem">
                                         <h4>Tổng tiền <i class="itemPrice">' . Func::getDotPrice($total) . ' VND</i></h4>
                                         </div>';

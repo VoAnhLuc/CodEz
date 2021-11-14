@@ -2,11 +2,15 @@
     class PaymentController extends BaseController
     {
         private $paymentModel;
+        private $userModel;
         
         public function __construct()
         {
             $this->loadModel('paymentmodel');
             $this->paymentModel = new PaymentModel;
+
+            $this->loadModel('usermodel');
+            $this->userModel = new UserModel;
         }
 
         public function index()
@@ -62,9 +66,7 @@
                     $this->paymentModel->updateItemPaid($cart_id, $link_code, $price);
                 }
 
-                $this->loadModel('userModel');
-                $userModel = new UserModel;
-                $userModel->updateUserByStringQuery($_SESSION['user_id'], "`money` = `money` -  $total_money");
+                $this->userModel->updateUserByStringQuery($_SESSION['user_id'], "`money` = `money` -  $total_money");
                 $_SESSION['user']['money'] = $_SESSION['user']['money'] - $total_money;
 
                 $data['is_success'] = 1;
