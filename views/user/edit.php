@@ -19,7 +19,7 @@
             <section class="profile-settings">
                 <div class="container">
                     <div class="row">
-                        <form  method="post" action="<?php echo ROUTES['user_edit'].'&id='.$id; ?>" enctype="multipart/form-data">
+                        <form  method="post" action="<?php echo ROUTES['user_edit'] ?>" enctype="multipart/form-data">
                             <div class="d-lg-flex">
                                 <div class="col-lg-6 p-2">
                                     <div class="profile-settings__title">Thông tin cá nhân</div>

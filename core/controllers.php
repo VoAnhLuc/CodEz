@@ -26,7 +26,8 @@
                 'index',
                 'login',
                 'register',
-                'edit'
+                'edit',
+                'logout'
             ]
         ],
 
@@ -37,6 +38,8 @@
                 'index',
                 'cart',
                 'checkout',
+                'add',
+                'delete',
                 'history',
                 'rating'
             ]

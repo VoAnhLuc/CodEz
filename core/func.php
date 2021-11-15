@@ -105,8 +105,6 @@
                 self::removeFile($outputName);
             }
 
-            $_SESSION['user_id'] = 1; // change later.
-
             $outputName = str_replace('.', '/', $dir) . '/' . $_SESSION['user_id'] . '_' . time() . $upload_file_type[$_FILES[$inputName]['type']];
 
             move_uploaded_file($_FILES[$inputName]['tmp_name'], $outputName);
@@ -183,27 +181,31 @@
             return preg_match('/^[a-f0-9]{32}$/', $md5);
         }
 
-        public static function getCurrentURL(){
+        public static function getCurrentURL($have_request = true){
             return  (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ?
-                    "https" : "http") . "://" . $_SERVER['HTTP_HOST'] . 
-                    $_SERVER['REQUEST_URI'];
+                    "https" : "http") . "://" . $_SERVER['HTTP_HOST'] . ($have_request ? $_SERVER['REQUEST_URI'] : '');
         }
 
         public static function getShortPrice($price)
         {
             if ($price >= 1000000000)
             {
-                return $price/1000000000 . 'T';
+                return floor($price/1000000000) . ' T';
             }
             if ($price >= 1000000)
             {
-                return $price/1000000 . 'TR';
+                return floor($price/1000000) . ' TR';
             }
             if ($price >= 1000)
             {
-                return $price/1000 . 'K';
+                return floor($price/1000) . ' K';
             }
-            return $price;
+            return $price . ' Đồng';
+        }
+
+        public static function getDotPrice($price)
+        {
+            return number_format($price, 0, '.', '.');
         }
 
         /*
@@ -225,5 +227,32 @@
         public static function isContain($key, $value)
         {
             return strpos($value, $key) !== FALSE;
+        }
+
+        public static function isLogged()
+        {
+            return isset($_SESSION['is_logged']) && $_SESSION['is_logged'];
+        }
+
+        public static function isCurrentUserVendor()
+        {
+            return isset($_SESSION['is_logged']) && $_SESSION['is_vendor'];
+        }
+
+        public static function displayStars($rating)
+        {
+            $stars = '';
+
+            for($i = 1; $i <= floor($rating); $i++)
+            {
+                $stars .= '<i class="bi bi-star-fill color--star"></i>';
+            }
+
+            for ($i = 1; $i <= 5-floor($rating); $i++)
+            {
+                $stars .= '<i class="bi bi-star color--star"></i>';
+            }
+
+            return $stars;
         }
     }

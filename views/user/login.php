@@ -1,3 +1,9 @@
+<?php
+    if(isset($_SESSION['is_logged']) && $_SESSION['is_logged'])
+    {
+        header('location: ' . ROUTES['home']);
+    }
+?>
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -25,6 +31,12 @@
                             <div class="login__title">
                                 <h3>Chào mừng quay trở lại!</h3>
                                 <p>Bạn có thể đăng nhập bằng Tên tài khoản của mình.</p>
+                                <?php
+                                    if (!empty($error_message))
+                                    {
+                                        echo '<h4 class="color--instagram">' . $error_message . '</h4>';
+                                    }
+                                ?>
                             </div>
                             <div class="login__body">
                                 <div class="login__group">
@@ -33,14 +45,14 @@
                                 </div>
                                 <div class="login__group">
                                     <label for="password" class="mb-2">Mật khẩu</label>
-                                    <input id="password" type="text" class="form-control " name="password" placeholder="Nhập mật khẩu" required autocomplete="password">
+                                    <input id="password" type="password" class="form-control " name="password" placeholder="Nhập mật khẩu" required autocomplete="password">
                                 </div>
                                 <div class="login__group">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember">
                                     <label for="remember" class="label_text">Nhớ đăng nhập</label>
                                 </div>
                                 <div class="login__group">
-                                    <button class="btn btn-sm btn__theme">Đăng nhập</button>
+                                    <button type="submit" name="submit" class="btn btn-sm btn__theme">Đăng nhập</button>
                                 </div>
                                 <div class="login__assist">
                                     <p><a href="./forgot.php">Quên mật khẩu?</a></p>

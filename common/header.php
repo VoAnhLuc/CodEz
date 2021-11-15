@@ -10,17 +10,41 @@
                 <div class="col-lg-9 col-md-9 col-6 m-auto">
                     <div class="header__info">
                         <ul class="d-none d-lg-flex header__list">
-                            <li><a href="">Start Selling</a></li>
-                            <li><a href="">Contact</a></li>
-                            <li><a href="">Help</a></li>
+                            <li><a href="#">Trở thành người bán</a></li>
+                            <li><a href="#">Liên hệ</a></li>
+                            <li><a href="#">Trợ giúp</a></li>
                             <li><a href="<?php echo ROUTES['payment_cart'] ?>"><i class="bi bi-cart2"></i></a></li>
                         </ul>
-                        <span class="d-none d-sm-block header__btn btn btn-secondary">
-                            <a href="<?php echo ROUTES['user_register'] ?>">Đăng ký</a>
-                        </span>
-                        <span class="header__btn btn btn-secondary">
-                            <a href="<?php echo ROUTES['user_login'] ?>">Đăng nhập</a>
-                        </span>
+                        <?php
+                            if (!isset($_SESSION['is_logged']) || !$_SESSION['is_logged'])
+                            {
+                                echo '
+                                    <span class="d-none d-sm-block header__btn">
+                                        <a class="btn btn-secondary" href="' .ROUTES['user_register'] .'">Đăng ký</a>
+                                    </span>                
+                                    <span class="header__btn">
+                                        <a class="btn btn-secondary" href="' . ROUTES['user_login'] . '">Đăng nhập</a>
+                                    </span>
+                                ';
+                            }
+                            else
+                            {
+                                echo '
+                                    <a href="#" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span class="text--bold color--white me-3">' . $_SESSION['fullname'] . '</span>
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownUser">
+                                        <li><a class="dropdown-item color--instagram" href="#"><i class="bi bi-wallet2"></i> ' . Func::getDotPrice($_SESSION['user']['money']) . ' VND</a></li>
+                                        <li><a class="dropdown-item" href="' . ROUTES['payment'] . '">Giỏ hàng</a></li>
+                                        <li><a class="dropdown-item" href="' . ROUTES['user'] . '">Thông tin cá nhân</a></li>
+                                        <li><a class="dropdown-item" href="' . ROUTES['payment_history'] . '">Lịch sử mua hàng</a></li>
+                                        <li><a class="dropdown-item" href="' . ROUTES['user_edit'] . '">Chỉnh sửa thông tin</a></li>
+                                        ' . (Func::isCurrentUserVendor() ? '<li><a class="dropdown-item" href="' . ROUTES['product_create'] . '">Đăng bán sản phẩm</a></li>' : '') . '
+                                    </ul>
+                                    <a href="' . ROUTES['user_logout'] . '"><i class="bi bi-box-arrow-right color--green"></i></a>
+                                ';
+                            }
+                        ?>
                     </div>
                 </div>
             </div>

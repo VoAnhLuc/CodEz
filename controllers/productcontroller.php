@@ -8,7 +8,7 @@
             $this->loadModel('productmodel');
             $this->productModel = new ProductModel;
 
-            $this->loadModel('categoryModel');
+            $this->loadModel('categorymodel');
             $this->categoryModel = new CategoryModel;
         }
 
@@ -34,7 +34,7 @@
 
             $this->productModel->increaseProductView($id);
 
-            $related_products = $this->productModel->getAllProducts("RAND()", 3, "`products`.`category_id` = '" . $product['category_id'] . "'");
+            $related_products = $this->productModel->getAllProducts("RAND()", 4, "`products`.`category_id` = '" . $product['category_id'] . "'");
 
             $data = [
                 'id' => $id,
@@ -48,6 +48,11 @@
 
         public function create()
         {
+            if (!Func::isLogged() || !Func::isCurrentUserVendor())
+            {
+                return $this->view('404');
+            }
+
             $categories = $this->categoryModel->getAllCategories();
 
             $data = [
@@ -57,7 +62,7 @@
                 'categories' => $categories,
                 'product' => [
                     'category_id' => 0,
-                    'user_id' => 1,
+                    'user_id' => $_SESSION['user_id'],
                     'title' => '',
                     'content' => '',
                     'description' => '',
@@ -77,13 +82,6 @@
                 $data['product']['price'] = intval($_POST['price']);
                 $data['product']['is_support'] = isset($_POST['is_support']);
 
-
-                if (Func::isAnyEmptyValue($data['product']))
-                {
-                    $data['error'] = MESSAGES['input_empty'];
-                    return $this->view('product.create', $data);
-                }
-
                 if (!in_array($data['product']['category_id'], array_column($categories, 'id')))
                 {
                     $data['error'] = MESSAGES['category_not_found'];
@@ -102,6 +100,12 @@
                     Func::removeFile($data['product']['thumb']);
                     return $this->view('product.create', $data);
                 }
+                
+                if (Func::isAnyEmptyValue($data['product']))
+                {
+                    $data['error'] = MESSAGES['input_empty'];
+                    return $this->view('product.create', $data);
+                }
 
                 $product_id = $this->productModel->addProduct($data['product']);
                 if (!$product_id)
@@ -111,7 +115,7 @@
                     return $this->view('404');
                 }
                 
-                header('Location: ' . ROUTES['product_detail'] . '&id=' . $product_id. '');
+                return header('Location: ' . ROUTES['product_detail'] . '&id=' . $product_id. '');
             }
 
             return $this->view('product.create', $data);
@@ -119,7 +123,10 @@
 
         public function edit()
         {
-            $_SESSION['user_id'] = 1; // change later
+            if (!Func::isLogged() || !Func::isCurrentUserVendor())
+            {
+                return $this->view('404');
+            }
 
             $product_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
@@ -149,7 +156,9 @@
                 $data['product']['price'] = intval($_POST['price']);
                 $data['product']['is_support'] = isset($_POST['is_support']);
 
-                if (Func::isAnyEmptyValue($data['product']))
+                if (Func::isAnyEmptyValue([$data['product']['category_id'], $data['product']['title'],
+                                            $data['product']['content'], $data['product']['description'],
+                                            $data['product']['price']]))
                 {
                     $data['error'] = MESSAGES['input_empty'];
                     return $this->view('product.create', $data);
@@ -170,9 +179,10 @@
                     return $this->view('404');
                 }
                 
-                header('Location: ' . ROUTES['product_detail'] . '&id=' . $product_id. '');
+                return header('Location: ' . ROUTES['product_detail'] . '&id=' . $product_id. '');
             }
 
             return $this->view('product.create', $data);
         }
     }
+?>

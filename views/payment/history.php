@@ -35,8 +35,8 @@
                                                     <i class="bi bi-award color--green"></i>
                                                     <a href="' . ROUTES['product_detail'] . '&id=' . $item['product_id'] . '">' . $item['title'] . '</a>
                                                 </div>
-                                                <div class="col-3 d-none d-lg-block m-auto color--instagram">
-                                                    <i class="bi bi-cash"></i> ' . $item['price'] . '
+                                                <div class="col-3 d-none d-lg-block text-center m-auto color--instagram">
+                                                    <i class="bi bi-cash"></i> ' . Func::getDotPrice($item['price']) . ' VND
                                                 </div>
                                                 <div class="col-auto color--star m-auto cursor--pointer">';
                                               
@@ -69,7 +69,7 @@
                             </div>
                             <div class="content__body">
                                 <div class="content__item">
-                                    <p><i class="bi bi-piggy-bank color--instagram"></i> Tổng tiền đã tiêu: <b class="color--instagram"><?php echo $totalPrices ?> VNĐ</b></p>
+                                    <p><i class="bi bi-piggy-bank color--instagram"></i> Tổng tiền đã tiêu: <b class="color--instagram"><?php echo Func::getDotPrice($totalPrices) ?> VNĐ</b></p>
                                     <p><i class="bi bi-file-earmark-code color--green"></i> Tổng sản phẩm đã mua: <b class="color--green"><?php echo $pageInfo->getTotalItems() ?> sản phẩm</b></p>
                                 </div>
                             </div>
