@@ -101,40 +101,36 @@
                     <div class="col-lg-10 d-flex flex-wrap">
                         <div class="row">
                             <?php
-                                for($i=1;$i<9;$i++) {
+                                foreach($products as $item) {
                                     echo '
-                                        <div class="col-md-4 col-sm-6">
-                                            <div class="item__item">
-                                                <div class="item__thumb">
-                                                    <a href="index.php?controller=product&action=detail"><img src="./images/items/item-' . $i . '.jpg" class="item__thumbnail"></a>
+                                    <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
+                                        <div class="item__item">
+                                            <div class="item__thumb">
+                                                <a href="' . ROUTES['product_detail'] . '&id=' . $item['id'] . '"><img src="' . $item['thumb'] . '" class="item__thumbnail"></a>
+                                            </div>
+                                            <div class="item__info">
+                                                <div class="item__title">
+                                                    <a href="' . ROUTES['product_detail'] . '&id=' . $item['id'] . '">' . $item['title'] . '</a>
                                                 </div>
-                                                <div class="item__info">
-                                                    <div class="item__title">
-                                                        <a href="detail.php">Full Source Code Forum PHP...</a>
-                                                    </div>
-                                                    <div class="item__user">
-                                                            <img src="./images/user-1.png" class="item__author">
-                                                            <a href="">NoNotMe</a>
-                                                    </div>
-                                                    <div class="d-flex justify-content-between">
-                                                        <ul class="item__star">
-                                                            <li><i class="bi bi-star-fill"></i></li>
-                                                            <li><i class="bi bi-star-fill"></i></li>
-                                                            <li><i class="bi bi-star-fill"></i></li>
-                                                            <li><i class="bi bi-star-fill"></i></li>
-                                                            <li><i class="bi bi-star"></i></li>
-                                                        </ul>
-                                                        <span class="item__cart"><i class="bi bi-cart2"></i> 5</span>
-                                                    </div>
+                                                <div class="d-flex justify-content-between">
+                                                    <span class="item__star">
+                                                        ' . Func::displayStars($item['rating'] != 0 ? $item['rating']/$item['bought'] : 5) . '
+                                                    </span>
+                                                    <span class="item__cart"><i class="bi bi-bag-check"></i> ' . $item['bought'] . '</span>
                                                 </div>
-                                                
-                                                <div class="item__more d-flex justify-content-between">
-                                                    <div class="item__price">120 USD</div>
-                                                    <div class="item__category"><i class="bi bi-bookmarks"></i> PHP</div>
+                                            </div>
+                                            
+                                            <div class="item__more d-flex justify-content-between">
+                                                <div class="item__price">' . Func::getShortPrice($item['price']) . '</div>
+                                                <div class="item__category">
+                                                    <a href="' . ROUTES['product'] . '&category=' . $item['category_id'] . '">
+                                                        <i class="bi bi-bookmarks"></i> ' . $item['name'] . '
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
-                                        ';
+                                    </div>
+                                    ';
                                 }
                             ?>
                             <nav class="mt-4" aria-label="Page navigation sample">

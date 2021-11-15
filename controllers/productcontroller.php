@@ -14,8 +14,11 @@
 
         public function index()
         {
+            $newest_products = $this->productModel->getAllProducts();
+
             $data = [
-                'title' => 'Tìm kiếm sản phẩm'
+                'title' => 'Tìm kiếm sản phẩm', 
+                'products' => $newest_products
             ];
             
             return $this->view('product.index', $data);

@@ -63,7 +63,7 @@
                         foreach ($newest_products as $item)
                         {
                             echo '
-                                <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
+                                <div class="col-lg-4 col-md-4 col-sm-6 mb-3">
                                     <div class="item__item">
                                         <div class="item__thumb">
                                             <a href="' . ROUTES['product_detail'] . '&id=' . $item['id'] . '"><img src="' . $item['thumb'] . '" class="item__thumbnail"></a>
