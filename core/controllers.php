@@ -43,5 +43,17 @@
                 'history',
                 'rating'
             ]
+        ],
+
+        'panel' => [
+            'fileName' => 'panelcontroller.php',
+            'className' => 'PanelController',
+            'action' => [
+                'index',
+                'account',
+                'category',
+                'statistic',
+                'transaction'
+            ]
         ]
     ];
