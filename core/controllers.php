@@ -15,7 +15,8 @@
                 'index',
                 'detail',
                 'create',
-                'edit'
+                'edit',
+                'delete'
             ]
         ],
 

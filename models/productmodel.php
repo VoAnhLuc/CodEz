@@ -89,4 +89,11 @@
             $this->db->executeNonQuery("UPDATE `products` SET `views` = `views` + 1 WHERE `id` = '$product_id'");
             $this->db->closeConnection();
         }
+
+        public function removeProductById($product_id)
+        {
+            $this->db->createConnection();
+            $this->db->executeNonQuery("DELETE FROM `products` WHERE `id` = '$product_id'");
+            $this->db->closeConnection();
+        }
     }

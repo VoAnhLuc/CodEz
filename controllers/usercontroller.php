@@ -240,7 +240,7 @@
                     'cover' => $cover
                 ]; 
                 
-                if (Func::isValidMd5($password))
+                if (Func::isValidMd5($password) || !Func::isValidPassword($password) || $password !== $repassword)
                 {
                     $this->userModel->updateUserNoPass($user_changed);      
                     return header('Location: ' . ROUTES['user']); 

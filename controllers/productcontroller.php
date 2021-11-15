@@ -82,7 +82,7 @@
                 $data['product']['title'] = htmlspecialchars($_POST['title']);
                 $data['product']['content'] = htmlspecialchars($_POST['content']);
                 $data['product']['description'] = htmlspecialchars($_POST['description']);
-                $data['product']['price'] = intval($_POST['price']);
+                $data['product']['price'] = min(max(intval($_POST['price']), 0), PHP_INT_MAX);
                 $data['product']['is_support'] = isset($_POST['is_support']);
 
                 if (!in_array($data['product']['category_id'], array_column($categories, 'id')))
@@ -156,7 +156,7 @@
                 $data['product']['title'] = htmlspecialchars($_POST['title']);
                 $data['product']['content'] = htmlspecialchars($_POST['content']);
                 $data['product']['description'] = htmlspecialchars($_POST['description']);
-                $data['product']['price'] = intval($_POST['price']);
+                $data['product']['price'] = min(max(intval($_POST['price']), 0), PHP_INT_MAX);
                 $data['product']['is_support'] = isset($_POST['is_support']);
 
                 if (Func::isAnyEmptyValue([$data['product']['category_id'], $data['product']['title'],
@@ -186,6 +186,36 @@
             }
 
             return $this->view('product.create', $data);
+        }
+
+        public function delete()
+        {
+            if (!Func::isLogged() || !Func::isCurrentUserVendor())
+            {
+                return $this->view('404');
+            }
+
+            $product_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
+
+            $product = $this->productModel->getProductById($product_id);
+
+            if ($product == null || $product['user_id'] != $_SESSION['user_id'])
+            {
+                return $this->view('404');
+            }
+
+            if (!isset($_POST['confirmDelete']))
+            {
+                $data = [
+                    'title' => 'Xóa sản phẩm ' . $product['title'],
+                    'product' => $product
+                ];
+                return $this->view('product.delete', $data);
+            }
+
+            $this->productModel->removeProductById($product_id);
+
+            return header('Location: ' . ROUTES['home']);
         }
     }
 ?>
