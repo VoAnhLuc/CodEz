@@ -40,6 +40,7 @@
                                         <li><a class="dropdown-item" href="' . ROUTES['payment_history'] . '">Lịch sử mua hàng</a></li>
                                         <li><a class="dropdown-item" href="' . ROUTES['user_edit'] . '">Chỉnh sửa thông tin</a></li>
                                         ' . (Func::isCurrentUserVendor() ? '<li><a class="dropdown-item" href="' . ROUTES['product_create'] . '">Đăng bán sản phẩm</a></li>' : '') . '
+                                        ' . (Func::isRoleAdmin() ? '<li><a class="dropdown-item color--red" href="' . ROUTES['panel'] . '">Admin Panel</a></li>' : '') . '
                                     </ul>
                                     <a href="' . ROUTES['user_logout'] . '"><i class="bi bi-box-arrow-right color--green"></i></a>
                                 ';
@@ -83,8 +84,8 @@
                                 <a class="nav-link" href="#">Python</a>
                             </li>
                         </ul>
-                        <form class="d-flex ">
-                            <input class="form-control me-2" type="text" placeholder="Nhập từ khóa" aria-label="Search">
+                        <form class="d-flex" method="post" action="<?php echo ROUTES['product'] ?>">
+                            <input name="q" class="form-control me-2" type="text" placeholder="Nhập từ khóa" aria-label="Search">
                             <button class="btn btn-sm btn__theme" type="submit">Tìm</button>
                         </form>
                     </div>

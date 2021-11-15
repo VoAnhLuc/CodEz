@@ -1,11 +1,25 @@
 <?php
     class PanelController extends BaseController
     {
+        private $productModel;
+        private $categoryModel;
+        public function __construct()
+        {
+            $this->loadModel('productmodel');
+            $this->productModel = new ProductModel;
+
+            $this->loadModel('categorymodel');
+            $this->categoryModel = new CategoryModel;
+        }
+
         public function index()
         {
+            $newest_products = $this->productModel->getAllProducts();
+
             $data = [
                 'title' => 'Quản lý sản phẩm',
-                'active' => 1
+                'active' => 1,
+                'products' => $newest_products
             ];
 
             return $this->view('panel.index', $data);

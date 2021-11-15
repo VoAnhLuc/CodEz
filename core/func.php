@@ -239,6 +239,11 @@
             return isset($_SESSION['is_logged']) && $_SESSION['is_vendor'];
         }
 
+        public static function isRoleAdmin()
+        {
+            return isset($_SESSION['is_logged']) && $_SESSION['user']['role_name'] == 'admin';
+        }
+
         public static function displayStars($rating)
         {
             $stars = '';

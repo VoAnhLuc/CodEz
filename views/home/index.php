@@ -25,24 +25,26 @@
                         <div class="info__description">
                             CodEz cung cấp dịch vu mua và bán mã nguồn, hoàn toàn miễn phí để sử dụng.
                         </div>
-                        <div class="info__searchbox col-8 mt-4 d-md-flex">
-                            <div class="col-md-6">
-                                <input type="text" placeholder="Search your products..">
+                        <form method="post" action="<?php echo ROUTES['product'] ?>">
+                            <div class="info__searchbox col-8 mt-4 d-md-flex">
+                                <div class="col-md-6">
+                                    <input type="text" placeholder="Tìm kiếm sản phẩm...">
+                                </div>
+                                <div class="col-md-4">
+                                    <select>
+                                        <?php
+                                            foreach ($categories as $category)
+                                            {
+                                                echo '<option value="' . $category['id'] . '">' . $category['name'] . '</option>';
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <input class="info__button" type="submit" value="Tìm ngay">
+                                </div>
                             </div>
-                            <div class="col-md-4">
-                                <select>
-                                    <?php
-                                        foreach ($categories as $category)
-                                        {
-                                            echo '<option value="' . $category['id'] . '">' . $category['name'] . '</option>';
-                                        }
-                                    ?>
-                                </select>
-                            </div>
-                            <div class="col-md-2">
-                                <input class="info__button" type="submit" value="Search Now">
-                            </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
