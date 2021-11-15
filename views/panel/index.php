@@ -5,136 +5,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CodeZ.Shop - Coding is hard? Just buy it.</title>
-    <link rel="stylesheet" href="/lib/css/reset.css">
-    <link rel="stylesheet" href="/lib/css/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
-        integrity="sha384-tKLJeE1ALTUwtXlaGjJYM3sejfssWdAaWR2s97axw4xkiAdMzQjtOjgcyw0Y50KU" crossorigin="anonymous">
-    <link rel="stylesheet" href="/lib/css/responsive.css">
-    <link rel="stylesheet" href="/lib/css/common.css">
+    <title><?php echo $title ?></title>
+    <?php include './common/css.php'; ?>
 </head>
 
 <body>
 
-    <header>
-        <section class="header__top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 col-md-3 col-6 m-auto">
-                        <div class="header__logo">
-                            <a href="."><img width="150" src="./images/logo.png"></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-9 col-md-9 col-6 m-auto">
-                        <div class="header__info">
-                            <ul class="d-none d-lg-flex header__list">
-                                <li><a href="">Start Selling</a></li>
-                                <li><a href="">Contact</a></li>
-                                <li><a href="">Help</a></li>
-                                <li><a href="index.php?controller=payment&action=cart"><i class="bi bi-cart2"></i></a>
-                                </li>
-                            </ul>
-                            <span class="d-none d-sm-block header__btn btn btn-secondary">
-                                <a href="index.php?controller=user&action=register">Đăng ký</a>
-                            </span>
-                            <span class="header__btn btn btn-secondary">
-                                <a href="index.php?controller=user&action=login">Đăng nhập</a>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="header__navbar">
-            <div class="container">
-                <div class="row">
-                    <nav class="navbar navbar-expand-md navbar-light">
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href=".">Trang chủ</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">PHP</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">C#</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">HTML/CSS</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Javascript</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Java</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Python</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </nav>
-                </div>
-            </div>
-        </section>
-    </header>
+    <?php include './common/header.php'; ?>
 
     <main>
         <section class="panel">
             <div class="container-fluid d-lg-flex p-0">
-                <div class="col-12 col-lg-2 left-panel">
-                    <div class="left-panel__info">
-                        <div class="left-panel__user">
-                            <img src="/images/defaults/avatar.png" class="left-panel__avatar">
-                            <a href="index.html">No The Goodman</a>
-                        </div>
-                    </div>
-                    <div class="left-panel__item left-panel__item--active">
-                        <a href="index.html">
-                            <i class="bi bi-file-earmark-text me-2"></i>
-                            Quản lý sản phẩm
-                        </a>
-                    </div>
-                    <div class="left-panel__item">
-                        <a href="account.html">
-                            <i class="bi bi-people me-2"></i>
-                            Quản lý tài khoản
-                        </a>
-                    </div>
-                    <div class="left-panel__item">
-                        <a href="category.html">
-                            <i class="bi bi-bookmarks me-2"></i>
-                            Quản lý thư mục
-                        </a>
-                    </div>
-                    <div class="left-panel__item">
-                        <a href="transaction.html">
-                            <i class="bi bi-bank me-2"></i>
-                            Quản lý giao dịch
-                        </a>
-                    </div>
-                    <div class="left-panel__item">
-                        <a href="statistic.html">
-                            <i class="bi bi-bar-chart me-2"></i>
-                            Báo cáo thống kê
-                        </a>
-                    </div>
-                    <hr>
-                    <div class="left-panel__item">
-                        <a href="index.html">
-                            <i class="bi bi-box-arrow-left me-2"></i>
-                            Đăng xuất
-                        </a>
-                    </div>
-                </div>
+
+                <?php include 'leftpanel.php' ?>
+                
                 <div class="col-12 col-lg-10 right-panel">
                     <div class="col-12 right-panel__form">
                         <form method="GET">
@@ -374,72 +258,8 @@
         </section>
     </main>
 
-    <footer>
-        <section class="footer__info">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-3 footer__follow">
-                        <h5><b>Theo dõi</b> bọn tớ</h5>
-                        <p>
-                            <a href=""><i class="bi bi-facebook"></i></a>
-                            <a href=""><i class="bi bi-instagram"></i></a>
-                            <a href=""><i class="bi bi-twitter"></i></a>
-                        </p>
-                    </div>
-                    <div class="col-sm-3">
-                        <h5 class="footer__title"><b>Popular</b> categories</h5>
-                        <ul class="footer__list">
-                            <li><a href="">PHP</a></li>
-                            <li><a href="">HTML/CSS</a></li>
-                            <li><a href="">Javascript</a></li>
-                            <li><a href="">C#</a></li>
-                            <li><a href="">Java</a></li>
-                            <li><a href="">Python</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-sm-3">
-                        <h5 class="footer__title"><b>More</b> info</h5>
-                        <ul class="footer__list">
-                            <li><a href="">About Codez</a></li>
-                            <li><a href="">Sell your work</a></li>
-                            <li><a href="">Affiliate program</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-sm-3">
-                        <h5 class="footer__title"><b>Help</b> & support</h5>
-                        <ul class="footer__list">
-                            <li><a href="">Help Center</a></li>
-                            <li><a href="">Forum</a></li>
-                            <li><a href="">Blog</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="footer__copyright">
-            <div class="container">
-                <div class="row text-center justify-content-between">
-                    <div class="col-sm-12 col-md-auto">© 2021 <a href=""><b>CodEz</b></a>. All rights reserved.</div>
+    <?php include './common/footer.php'; ?>
 
-                    <div class="col-md-auto d-none d-lg-block">
-                        <ul class="footer__privacy">
-                            <li><a href="">Contact</a></li>
-                            <li><a href="">Terms &amp; conditions</a></li>
-                            <li><a href="">Member terms</a></li>
-                            <li><a href="">Privacy policy</a></li>
-                            <li><a href="">Refund policy</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
-        crossorigin="anonymous"></script>
-    <script type="text/javascript" src="lib/ckeditor/ckeditor.js"></script>
-    <script type="text/javascript" src="lib/js/ratingstar.js"></script>
 </body>
 
 </html>

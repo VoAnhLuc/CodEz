@@ -21,6 +21,13 @@
         'product' => 'index.php?controller=product',
         'product_create' => 'index.php?controller=product&action=create',
         'product_edit' => 'index.php?controller=product&action=edit',
-        'product_detail' => 'index.php?controller=product&action=detail'
+        'product_detail' => 'index.php?controller=product&action=detail',
+        
+        /* Product */
+        'panel' => 'index.php?controller=panel',
+        'panel_account' => 'index.php?controller=panel&action=account',
+        'panel_category' => 'index.php?controller=panel&action=category',
+        'panel_statistic' => 'index.php?controller=panel&action=statistic',
+        'panel_transaction' => 'index.php?controller=panel&action=transaction'
         
     ];
