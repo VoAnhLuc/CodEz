@@ -73,15 +73,9 @@
                                     <i><?php echo Func::getDotPrice($product['price']) ?> VND</i>
                                 </div>
                                 <div class="card-footer rightfooter" >
-                                    <?php if (Func::isLogged()) { ?>
-                                    <form action="<?php echo ROUTES['payment_add'].'&id='.$product['id'] ?>" method="post" >
-                                        <button class="btn btn-primary btn" name="addproducttocart" id="addproducttocart">
-                                            <i class="bi bi-cart-check-fill"> Thêm vào giỏ hàng</i>
-                                        </button>
-                                    </form>
-                                    <?php } else { ?>
-                                    <a class="btn btn__theme" href="<?php echo ROUTES['user_login'] ?>">Đăng nhập để mua hàng</a>
-                                    <?php } ?>
+                                    <a href="<?php echo ROUTES['payment_add'].'&id='.$product['id'] ?>" class="btn btn__theme">
+                                        <i class="bi bi-cart-check-fill"> Thêm vào giỏ hàng</i>
+                                    </a>
                                 </div>
                             </div>
                             <div class="card author mt-4">
