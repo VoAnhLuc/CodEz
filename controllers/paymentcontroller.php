@@ -24,7 +24,14 @@
 
         public function cart()
         {
-            $carts = Func::isLogged() ? $this->paymentModel->getAllCarts() : $_SESSION['tmp_cart'];
+            if (Func::isLogged())
+            {
+                $carts = $this->paymentModel->getAllCarts();
+            }
+            else
+            {
+                $carts = isset($_SESSION['tmp_cart']) ? $_SESSION['tmp_cart'] : array();
+            }
 
             $data = [
                 'title' => 'Giỏ hàng',
