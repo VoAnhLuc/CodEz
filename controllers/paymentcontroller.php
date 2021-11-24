@@ -104,11 +104,16 @@
                 $_SESSION['tmp_cart'] = array();
             }
             
-            if (!in_array($product, $_SESSION['tmp_cart']))
+            foreach ($_SESSION['tmp_cart'] as $item)
             {
-                $product['product_id'] = $product['id'];
-                array_push($_SESSION['tmp_cart'], $product);
+                if ($item['id'] == $product['id'])
+                {
+                    return;
+                }
             }
+
+            $product['product_id'] = $product['id'];
+            array_push($_SESSION['tmp_cart'], $product);
         }
 
         public function addToCart($product_id)
