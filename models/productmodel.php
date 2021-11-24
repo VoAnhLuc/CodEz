@@ -96,4 +96,13 @@
             $this->db->executeNonQuery("DELETE FROM `products` WHERE `id` = '$product_id'");
             $this->db->closeConnection();
         }
+
+        public function isExistProduct($product_id)
+        {
+            $this->db->createConnection();
+            $result = $this->db->executeQuery("SELECT COUNT(*) AS 'count' FROM `products` WHERE `id` = '$product_id'");
+            $is_exit = $this->db->getSingleResult($result)['count'];
+            $this->db->closeConnection($result);
+            return $is_exit != 0;
+        }
     }

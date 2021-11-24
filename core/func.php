@@ -34,6 +34,20 @@
                                                     ");
             }
 
+            /* Get total products in cart */
+            if (self::isLogged())
+            {
+                $result = $db->executeQuery("SELECT COUNT(*) AS 'total_cart'
+                                            FROM `carts`
+                                            WHERE `user_id` = '" . $_SESSION['user_id'] . "'
+                                                AND `add_time` > `paid_time`");
+                $_SESSION['total_cart'] = $db->getSingleResult($result)['total_cart'];
+            }
+            else
+            {
+                $_SESSION['total_cart'] = isset($_SESSION['tmp_cart']) ? count($_SESSION['tmp_cart']) : 0;
+            }
+
             $db->closeConnection($result);
         }
 

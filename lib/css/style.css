@@ -30,6 +30,8 @@ a {
 .header__info {
   float: right;
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .header__list {
@@ -37,11 +39,13 @@ a {
   margin: auto;
 }
 
-.header__list a {
+.header__list a,
+.header__cart a {
   color: #999;
 }
 
-.header__list a:hover {
+.header__list a:hover,
+.header__cart a:hover {
   color: white;
 }
 
@@ -50,7 +54,7 @@ a {
 }
 
 .header__btn {
-  margin-left: 0.5rem;
+  margin-left: 1rem;
 }
 
 .header__btn a,
@@ -60,6 +64,29 @@ a {
 
 .header__navbar {
   background-color: white;
+}
+
+.header__cart {
+  font-size: 20px;
+  margin-right: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.header__cart-number {
+  font-size: 16px;
+  position: relative;
+  border-radius: 2.75rem;
+  min-width: 0.6875rem;
+  line-height: 0px;
+  padding: 10px 5px;
+  text-align: center;
+  height: 1rem;
+  color: #ffffff;
+  background-color: #09291a;
+  left: -10px;
+  top: -9px;
+  cursor: default;
 }
 
 .info {
@@ -1132,7 +1159,8 @@ main {
   color: #fff;
 }
 
-.left-panel__item:hover, .left-panel__item--active {
+.left-panel__item:hover,
+.left-panel__item--active {
   background-color: #104b4d;
 }
 
