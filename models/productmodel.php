@@ -126,9 +126,9 @@
                                                 GROUP BY `products`.`id`
                                                 ORDER BY $orderby
                                                 LIMIT $start, $perPage");
-            $carts = $this->db->getArrayResult($result);       
+            $products = $this->db->getArrayResult($result);       
 
-            $pageResult = new Pagination($page, $totalItems, $totalPages, $carts);
+            $pageResult = new Pagination($page, $totalItems, $totalPages, $products);
 
             $this->db->closeConnection($result);
 
