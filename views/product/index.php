@@ -22,11 +22,11 @@
                         <div class="filter-bar filter--bar2 jplist-panel">
                             <div class="pull-left">
                                 <div class="filter__option">
-                                    <form class="d-flex">
-                                        <input class="form-control me-2" type="text" placeholder="Press something..."
+                                <form class="d-flex" method="post">
+                                        <input name="productname" class="form-control me-2" type="text" placeholder="Press something..."
                                             aria-label="Search">
-                                        <button class="btn btn-sm btn__theme" type="submit">Find</button>
-                                    </form>
+                                        <button name="productsubmit" class="btn btn-sm btn__theme" type="submit">Find</button>
+                                </form>
                                 </div>
                             </div>
                             <div class="pull-right">

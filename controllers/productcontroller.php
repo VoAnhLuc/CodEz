@@ -14,13 +14,24 @@
 
         public function index()
         {
-            $newest_products = $this->productModel->getAllProducts();
-
             $data = [
                 'title' => 'Tìm kiếm sản phẩm', 
-                'products' => $newest_products
+                'products' => array(),
             ];
-            
+            if(isset($_POST['productsubmit']))
+            {
+                $productname = Func::getInput($_POST['productname']);
+                $product = $this->productModel->getProductByProductname($productname);
+               /*  echo $product ? 'true' : 'false'; */
+                if(empty($product))
+                {
+                    $message = MESSAGES['empty_product'];
+                    $data['productsearch'] = $message;  
+                    return $this->view('product.index', $data);     
+                }
+                $data['productsearch'] = $product;
+               /*  return $this->view('product.index', $data); */
+            }
             return $this->view('product.index', $data);
         }
 

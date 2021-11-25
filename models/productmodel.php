@@ -105,4 +105,17 @@
             $this->db->closeConnection($result);
             return $is_exit != 0;
         }
+        
+        public function getProductByProductname($productname)
+        {
+            $this->db->createConnection();
+            $result = $this->db->executeQuery("SELECT `products`.*, `users`.`fullname`, `users`.`avatar`, `categories`.`name`
+                                                FROM `products`
+                                               INNER JOIN `users` ON `products`.`user_id` = `users`.`id`
+                                               INNER JOIN `categories` ON `products`.`category_id` = `categories`.`id`    
+                                                WHERE `title` like '%$productname%'");
+            $product = $this->db->getArrayResult($result);
+            $this->db->closeConnection($result);
+            return $product;
+        }
     }
