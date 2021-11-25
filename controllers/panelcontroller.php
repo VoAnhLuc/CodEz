@@ -22,10 +22,15 @@
             $keyword = isset($_POST['q']) ? htmlspecialchars($_POST['q']) : '';
             $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 
-            $page = $_SESSION['last_keyword'] !== $keyword ? 1 : $page;
+            $page = isset($_SESSION['last_keyword']) && $_SESSION['last_keyword'] !== $keyword ? 1 : $page;
             $_SESSION['last_keyword'] = $keyword;
 
             $pagedResults = $this->productModel->getAllProductsByKeyword($keyword, $page);
+
+            if (!Func::isInRange($page, 1, $pagedResults->getTotalPages()))
+            {
+                return $this->view('404');
+            }
 
             $data = [
                 'title' => 'Quản lý sản phẩm',
