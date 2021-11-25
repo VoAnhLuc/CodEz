@@ -33,7 +33,7 @@
                             else
                             {
                                 echo '
-                                    <span id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false" class="text--bold color--white me-3">' . $_SESSION['fullname'] . '</span>
+                                    <span id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false" class="text--bold color--white cursor--pointer me-3">' . $_SESSION['fullname'] . '</span>
                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownUser">
                                         <li><a class="dropdown-item color--instagram" href="#"><i class="bi bi-wallet2"></i> ' . Func::getDotPrice($_SESSION['user']['money']) . ' VND</a></li>
                                         <li><a class="dropdown-item" href="' . ROUTES['payment'] . '">Giỏ hàng</a></li>

@@ -61,8 +61,8 @@
                                                 <a href="' . ROUTES['product_detail'] . '&id=' . $item['id'] . '">' . $item['title'] . '</a>
                                             </div>
                                             <div class="item__user">
-                                                <img src="/images/defaults/cover.jpg" class="item__author">
-                                                <a href="">NoNotMe</a>
+                                                <img src="' . $item['avatar'] . '" class="item__author">
+                                                <a href="' . ROUTES['user'] . '&id=' . $item['user_id'] . '">' . $item['fullname'] . '</a>
                                             </div>
                                             <div class="d-flex justify-content-between">
                                                 <span class="item__star">
