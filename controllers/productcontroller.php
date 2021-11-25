@@ -126,7 +126,7 @@
 
         public function edit()
         {
-            if (!Func::isLogged() || !Func::isCurrentUserVendor())
+            if (!Func::isRoleAdmin() || !Func::isCurrentUserVendor())
             {
                 return $this->view('404');
             }
@@ -135,7 +135,7 @@
 
             $product = $this->productModel->getProductById($product_id);
 
-            if ($product == null || $product['user_id'] != $_SESSION['user_id'])
+            if ($product == null || ($product['user_id'] != $_SESSION['user_id'] && !Func::isRoleAdmin()))
             {
                 return $this->view('404');
             }
@@ -190,7 +190,7 @@
 
         public function delete()
         {
-            if (!Func::isLogged() || !Func::isCurrentUserVendor())
+            if (!Func::isRoleAdmin() || !Func::isCurrentUserVendor())
             {
                 return $this->view('404');
             }
@@ -199,7 +199,7 @@
 
             $product = $this->productModel->getProductById($product_id);
 
-            if ($product == null || $product['user_id'] != $_SESSION['user_id'])
+            if ($product == null || ($product['user_id'] != $_SESSION['user_id'] && !Func::isRoleAdmin()))
             {
                 return $this->view('404');
             }

@@ -45,6 +45,13 @@
                                 echo '
                                 <div class="col-lg-3 col-md-4 col-12 p-3 pt-0">
                                     <div class="item__item">
+                                        <div class="panel__icon-product dropstart">
+                                            <i class="bi bi-three-dots" id="dropdownProduct' . $item['id'] . '" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownProduct' . $item['id'] . '">
+                                                <li><a href="' . ROUTES['product_edit'] . '&id=' . $item['id'] . '" class="dropdown-item" type="button">Sửa sản phẩm</a></li>
+                                                <li><a href="' . ROUTES['product_delete'] . '&id=' . $item['id'] . '" class="dropdown-item" type="button">Xóa sản phẩm</a></li>
+                                            </ul>
+                                        </div>
                                         <div class="item__thumb">
                                             <a href="' . ROUTES['product_detail'] . '&id=' . $item['id'] . '"><img src="' . $item['thumb'] . '" class="item__thumbnail"></a>
                                         </div>
