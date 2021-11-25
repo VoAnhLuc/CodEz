@@ -14,6 +14,11 @@
 
         public function index()
         {
+            if (!Func::isRoleAdmin())
+            {
+                return $this->view('404');
+            }
+
             $newest_products = $this->productModel->getAllProducts();
 
             $data = [
