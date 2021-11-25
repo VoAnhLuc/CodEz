@@ -34,12 +34,13 @@
 
             $this->db->createConnection();
 
-            $result = $this->db->executeQuery("SELECT `id` FROM `carts` WHERE `user_id` = '$user_id' AND `paid_time` >= `add_time`");
-            $perPage = 10;
-            $totalItems = $this->db->getNumRows($result);
-            $totalPages = max(ceil($totalItems / $perPage), 1);
+            $result = $this->db->executeQuery("SELECT COUNT(*) AS 'total_carts' FROM `carts` WHERE `user_id` = '$user_id' AND `paid_time` >= `add_time`");
 
+            $perPage = 10;
+            $totalItems = $this->db->getSingleResult($result)['total_carts'];
+            $totalPages = max(ceil($totalItems / $perPage), 1);
             $start = ($page - 1) * $perPage;
+            
             $result = $this->db->executeQuery("SELECT `carts`.*, `products`.`title`
                                                 FROM `carts`
                                                 INNER JOIN `products` ON `carts`.`product_id` = `products`.`id`
