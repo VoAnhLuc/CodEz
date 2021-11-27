@@ -56,5 +56,17 @@
                 'statistic',
                 'transaction'
             ]
+        ],
+
+        'category' => [
+            'fileName' => 'categorycontroller.php',
+            'className' => 'CategoryController',
+            'action' => [
+                'delete',
+                'fix',
+                'create'
+                
+            ]
         ]
+    
     ];

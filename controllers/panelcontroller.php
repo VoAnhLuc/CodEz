@@ -37,13 +37,23 @@
 
         public function category()
         {
+            if (!Func::isLogged())
+            {
+                return $this->view('404');
+            }
+
+            $category = $this->categoryModel->getAllCategories();
+
             $data = [
                 'title' => 'Quản lý thư mục',
-                'active' => 3
+                'active' => 3,
+                'category'=>$category
             ];
 
             return $this->view('panel.category', $data);
         }
+
+
 
         public function transaction()
         {

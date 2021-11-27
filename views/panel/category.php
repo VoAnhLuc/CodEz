@@ -18,13 +18,14 @@
             <div class="container-fluid d-lg-flex p-0">
 
                 <?php include 'leftpanel.php' ?>
-
+                <?php
+                echo '
                 <div class="col-12 col-lg-10 right-panel">
                     <div class="col-12 right-panel__form">
                         <form method="GET">
                             <div class="right-panel__search">
                                 <div class="col-12 col-lg-6">
-                                    <a href="" class="btn btn__theme">Thêm mới</a>
+                                    <a href="' .ROUTES['category_create']. '" class="btn btn__theme">Thêm mới</a>
                                 </div>
                                 <div class="col-12 col-lg-6 my-search-box">
                                     <input type="text" class="my-search-box__input" name="q"
@@ -40,8 +41,8 @@
                                 </div>
                             </div>
                         </form>
-                    </div>
-
+                    </div>'
+                    ?>
                     <div class="right-panel__item">
                         <table class="table table-striped bg--white">
                             <thead>
@@ -52,89 +53,23 @@
                                     <th scope="col">Hành động</th>
                                 </tr>
                             </thead>
+                            <?php
+                            foreach ($category as $key) {
+                            echo '
                             <tbody>
                                 <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
+                                    <th scope="row">'.$key['id'].'</th>
+                                    <td>'.$key['name'].'</td>
+                                    <td>'.$key['description'].'</td>
                                     <td>
-                                        <a href="">Sửa</a> -
-                                        <a href="">Xóa</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>
-                                        <a href="">Sửa</a> -
-                                        <a href="">Xóa</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>
-                                        <a href="">Sửa</a> -
-                                        <a href="">Xóa</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>
-                                        <a href="">Sửa</a> -
-                                        <a href="">Xóa</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>
-                                        <a href="">Sửa</a> -
-                                        <a href="">Xóa</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>
-                                        <a href="">Sửa</a> -
-                                        <a href="">Xóa</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>
-                                        <a href="">Sửa</a> -
-                                        <a href="">Xóa</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>
-                                        <a href="">Sửa</a> -
-                                        <a href="">Xóa</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>
-                                        <a href="">Sửa</a> -
-                                        <a href="">Xóa</a>
+                                        <a href="' . ROUTES['category_fix'] . '&id=' . $key['id'] . '">Sửa</a> -
+                                        <a href="' . ROUTES['category_delete'] . '&id=' . $key['id'] .'">Xóa</a>
                                     </td>
                                 </tr>
                             </tbody>
+                            ';
+                            }
+                            ?>
                         </table>
                     </div>
 
@@ -146,8 +81,8 @@
                                         <span aria-hidden="true">&laquo;</span>
                                     </a>
                                 </li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
                                 <li class="page-item"><a class="page-link" href="#">3</a></li>
                                 <li class="page-item">
                                     <a class="page-link" href="#" aria-label="Next">
