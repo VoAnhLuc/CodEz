@@ -82,8 +82,8 @@
             } 
 
             if (isset($_POST['confirmCreateCategory'])) {
-                $name = $_POST['category_name'];
-                $des = $_POST['category_des'];
+                $name = htmlspecialchars($_POST['category_name']);
+                $des = htmlspecialchars($_POST['category_des']);
 
                 $category_add =[
                     'name'=> $name,
@@ -96,8 +96,7 @@
 
                 $data=[
                     'title' => 'Tạo danh mục'
-                ];
-                
+                ];            
     
                 $this->view('category.create',$data);
                

@@ -53,8 +53,6 @@
             return $this->view('panel.category', $data);
         }
 
-
-
         public function transaction()
         {
             $data = [
