@@ -12,7 +12,7 @@
 <body>
 
     <?php include './common/header.php'; ?>
-
+    
     <main>
         <?php include './common/breadcrumb.php'; ?>
         <section class="filter-area">
@@ -23,9 +23,9 @@
                             <div class="pull-left">
                                 <div class="filter__option">
                                 <form class="d-flex" method="post">
-                                        <input name="productname" class="form-control me-2" type="text" placeholder="Press something..."
+                                        <input name="productname" class="form-control me-2" type="text" placeholder="Nhập Tên Sản Phẩm"
                                             aria-label="Search">
-                                        <button name="productsubmit" class="btn btn-sm btn__theme" type="submit">Find</button>
+                                        <button name="productsubmit" class="btn btn-sm btn__theme" type="submit">Tìm Kiếm</button>
                                 </form>
                                 </div>
                             </div>
@@ -33,8 +33,8 @@
                                 <div class="filter__option filter--select">
                                     <div class="select-wrap">
                                         <select class="form-control">
-                                            <option>Price : Low to High</option>
-                                            <option>Price : High to low</option>
+                                            <option name="IPrice">Giá : Thấp đến Cao</option>
+                                            <option name="DPrice">Giá : Cao đến thấp</option>
                                         </select>
                                         <span class="lnr lnr-chevron-down"></span>
                                     </div>
@@ -42,9 +42,9 @@
                                 <div class="filter__option filter--select">
                                     <div class="select-wrap">
                                         <select class="form-control">
-                                            <option>Popular Items</option>
-                                            <option>New Items</option>
-                                            <option>Free Items</option>
+                                            <option>Phổ Biến</option>
+                                            <option>Mới Nhất</option>
+                                            <option>Miễn Phí</option>
                                         </select>
                                         <span class="lnr lnr-chevron-down"></span>
                                     </div>
@@ -64,7 +64,7 @@
                                 <a class="card-title" href="#collapse1" role="button" data-toggle="collapse"
                                     aria-expanded="true" aria-controls="collapse1">
                                     <h4>
-                                        Item Type
+                                        Phân Loại
                                         <span class="lnr lnr-chevron-down"></span>
                                     </h4>
                                 </a>
@@ -74,22 +74,28 @@
                                             data-control-action="filter" data-control-name="button-text-filter-group-1">
                                             <ul class="card-content">
                                                 <li>
-                                                    <a href="#">PHP</a>
+                                                    <a href="index.php?controller=product&action=index&category_id=1">HTML/CSS</a>
                                                 </li>
                                                 <li>
-                                                    <a href="#">C#</a>
+                                                    <a href="index.php?controller=product&action=index&category_id=2">Javascript</a>
                                                 </li>
                                                 <li>
-                                                    <a href="#">HTML/CSS</a>
+                                                    <a href="index.php?controller=product&action=index&category_id=3">C#/.NET</a>
                                                 </li>
                                                 <li>
-                                                    <a href="#">Javascript</a>
+                                                    <a href="index.php?controller=product&action=index&category_id=4">Java</a>
                                                 </li>
                                                 <li>
-                                                    <a href="#">Java</a>
+                                                    <a href="index.php?controller=product&action=index&category_id=5">C/C++</a>
                                                 </li>
                                                 <li>
-                                                    <a href="#">Python</a>
+                                                    <a href="index.php?controller=product&action=index&category_id=6">Python</a>
+                                                </li>
+                                                <li>
+                                                    <a href="index.php?controller=product&action=index&category_id=7">PHP & MySQL</a>
+                                                </li>
+                                                <li>
+                                                    <a href="index.php?controller=product&action=index&category_id=8">The Others</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -101,7 +107,8 @@
                     <div class="col-lg-10 d-flex flex-wrap">
                         <div class="row">
                             <?php
-                                foreach($products as $item) {
+                                echo (isset($notfound) ? '<i style="color:red;"> *' .$notfound. '</i>' : '');
+                                foreach($productsearch->getItems() as $item) {
                                     echo '
                                     <div class="col-lg-4 col-md-4 col-sm-6 mb-3">
                                         <div class="item__item">
@@ -133,15 +140,11 @@
                                     ';
                                 }
                             ?>
-                            <nav class="mt-4" aria-label="Page navigation sample">
-                                <ul class="pagination" style="justify-content:end">
-                                    <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
-                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                                </ul>
-                            </nav>
+                            <div>
+                                <?php 
+                                    echo $productsearch->displayPager(ROUTES['product']);
+                                ?>
+                            </div>
                         </div>
                     </div>
                 </div>

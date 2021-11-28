@@ -13,26 +13,78 @@
         }
 
         public function index()
-        {
-            $data = [
-                'title' => 'Tìm kiếm sản phẩm', 
-                'products' => array(),
-            ];
+        {  
+    /* Check if has already submitted */
             if(isset($_POST['productsubmit']))
             {
+                $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
                 $productname = Func::getInput($_POST['productname']);
-                $product = $this->productModel->getProductByProductname($productname);
-               /*  echo $product ? 'true' : 'false'; */
-                if(empty($product))
+                $product = $this->productModel->getAllProductByName($productname,$page);
+
+                if(empty($product->getItems()))
                 {
-                    $message = MESSAGES['empty_product'];
-                    $data['productsearch'] = $message;  
-                    return $this->view('product.index', $data);     
+                    $data = [
+                        'title' => 'Tìm kiếm sản phẩm', 
+                        'productsearch' => $product,
+                        'notfound' => MESSAGES['empty_product'],
+                    ];     
+                    return $this->view('product.index', $data);
                 }
-                $data['productsearch'] = $product;
-               /*  return $this->view('product.index', $data); */
+               
+                if (!Func::isInRange($page, 1, $product->getTotalPages()))
+                {
+                    return $this->view('404');
+                }
+                $data = [
+                    'title' => 'Tìm kiếm sản phẩm', 
+                    'productsearch' => $product,
+                ];
+                return $this->view('product.index', $data);
             }
-            return $this->view('product.index', $data);
+    /* Check if has not submitted  yet */      
+            if(!isset($_POST['productsubmit']))
+            {
+                if(isset($_GET['category_id']))
+                {
+                    $where = '`categories`.`id`';
+                    $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
+                    $category_id =  Func::getInput($_GET['category_id']);
+                    $product = $this->productModel->getAllProductByName($category_id,$page,$where);
+    
+                    if(empty($product->getItems()))
+                    {
+                        $data = [
+                            'title' => 'Tìm kiếm sản phẩm', 
+                            'productsearch' => $product,
+                            'notfound' => MESSAGES['empty_product'],
+                        ];     
+                        return $this->view('product.index', $data);
+                    }
+    
+                    if (!Func::isInRange($page, 1, $product->getTotalPages()))
+                    {
+                        return $this->view('404');
+                    }
+                    $data = [
+                        'title' => 'Tìm kiếm sản phẩm', 
+                        'productsearch' => $product,
+                    ];
+                    return $this->view('product.index', $data);
+                }
+                $productname = '';
+                $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
+                $product = $this->productModel->getAllProductByName($productname,$page);
+
+                if (!Func::isInRange($page, 1, $product->getTotalPages()))
+                {
+                    return $this->view('404');
+                }
+                $data = [
+                    'title' => 'Tìm kiếm sản phẩm', 
+                    'productsearch' => $product,
+                ];
+                return $this->view('product.index', $data);
+            }
         }
 
         public function detail()
@@ -137,7 +189,7 @@
 
         public function edit()
         {
-            if (!Func::isLogged() || !Func::isCurrentUserVendor())
+            if (!Func::isRoleAdmin() || !Func::isCurrentUserVendor())
             {
                 return $this->view('404');
             }
@@ -146,7 +198,7 @@
 
             $product = $this->productModel->getProductById($product_id);
 
-            if ($product == null || $product['user_id'] != $_SESSION['user_id'])
+            if ($product == null || ($product['user_id'] != $_SESSION['user_id'] && !Func::isRoleAdmin()))
             {
                 return $this->view('404');
             }
@@ -201,7 +253,7 @@
 
         public function delete()
         {
-            if (!Func::isLogged() || !Func::isCurrentUserVendor())
+            if (!Func::isRoleAdmin() || !Func::isCurrentUserVendor())
             {
                 return $this->view('404');
             }
@@ -210,7 +262,7 @@
 
             $product = $this->productModel->getProductById($product_id);
 
-            if ($product == null || $product['user_id'] != $_SESSION['user_id'])
+            if ($product == null || ($product['user_id'] != $_SESSION['user_id'] && !Func::isRoleAdmin()))
             {
                 return $this->view('404');
             }

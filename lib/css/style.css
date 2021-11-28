@@ -1150,7 +1150,7 @@ main {
 }
 
 .left-panel__item {
-  padding: 1rem 3rem;
+  padding: 1rem 1.5rem;
   font-size: 18px;
 }
 
@@ -1258,4 +1258,12 @@ main {
 .right-panel__pager {
   display: flex;
   justify-content: center;
+}
+
+.panel__icon-product {
+  color: #011c26;
+  font-size: 25px;
+  text-align: right;
+  margin-right: 1rem;
+  cursor: pointer;
 }
