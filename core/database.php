@@ -41,16 +41,23 @@
         public function getArrayResult($result)
         {
             $items = array();
+
+            if (empty($result))
+            {
+                return $items;
+            }
+
             while ($item = mysqli_fetch_assoc($result))
             {
                 array_push($items, $item);
             }
+            
             return $items;
         }
 
         public function getSingleResult($result)
         {
-            return mysqli_fetch_assoc($result);
+            return empty($result) ? null : mysqli_fetch_assoc($result);
         }
 
         public function getNumRows($result)
