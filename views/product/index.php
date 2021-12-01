@@ -17,42 +17,27 @@
         <?php include './common/breadcrumb.php'; ?>
         <section class="filter-area">
             <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="filter-bar filter--bar2 jplist-panel">
-                            <div class="pull-left">
-                                <div class="filter__option">
-                                <form class="d-flex" method="post">
-                                        <input name="productname" class="form-control me-2" type="text" placeholder="Nhập Tên Sản Phẩm"
-                                            aria-label="Search">
-                                        <button name="productsubmit" class="btn btn-sm btn__theme" type="submit">Tìm Kiếm</button>
-                                </form>
-                                </div>
-                            </div>
-                            <div class="pull-right">
-                                <div class="filter__option filter--select">
-                                    <div class="select-wrap">
-                                        <select class="form-control">
-                                            <option name="IPrice">Giá : Thấp đến Cao</option>
-                                            <option name="DPrice">Giá : Cao đến thấp</option>
-                                        </select>
-                                        <span class="lnr lnr-chevron-down"></span>
-                                    </div>
-                                </div>
-                                <div class="filter__option filter--select">
-                                    <div class="select-wrap">
-                                        <select class="form-control">
-                                            <option>Phổ Biến</option>
-                                            <option>Mới Nhất</option>
-                                            <option>Miễn Phí</option>
-                                        </select>
-                                        <span class="lnr lnr-chevron-down"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <form class="row justify-content-between" method="GET">
+                    <input type="hidden" name="controller" value="product"/>
+                    <input type="hidden" name="category" value="<?php echo $params['category'] ?>"/>
+                    <div class="col-12 col-md-6 d-flex p-3">
+                        <input style="width: 50%" class="form-control me-3" type="text" name="keyword"
+                            value="<?php echo $params['keyword'] ?>"    
+                            placeholder="Tìm kiếm theo tên..."/>
+                        <button class="btn btn__theme" type="submit">Tìm kiếm</button>
                     </div>
-                </div>
+                    <div class="col-12 col-md-4 d-flex p-3">
+                        <select class="form-select me-3" name="order_price">
+                            <option value="1" <?php echo $params['order_price'] == 1 ? "selected" : "" ?>>Giá tăng dần</option>
+                            <option value="2" <?php echo $params['order_price'] == 2 ? "selected" : "" ?>>Giá giảm dần</option>
+                        </select>
+                        <select class="form-select" name="order_type">
+                            <option value="0" <?php echo $params['order_type'] == 0 ? "selected" : "" ?>>Mới nhất</option>
+                            <option value="1" <?php echo $params['order_type'] == 1 ? "selected" : "" ?>>Phổ biến nhất</option>
+                            <option value="2" <?php echo $params['order_type'] == 2 ? "selected" : "" ?>>Miễn phí</option>
+                        </select>
+                    </div>
+                </form>
             </div>
         </section>
         <section class="products section--padding2">
@@ -61,54 +46,26 @@
                     <div class="col-lg-2">
                         <aside class="sidebar product--sidebar">
                             <div class="sidebar-card card--category">
-                                <a class="card-title" href="#collapse1" role="button" data-toggle="collapse"
-                                    aria-expanded="true" aria-controls="collapse1">
-                                    <h4>
-                                        Phân Loại
-                                        <span class="lnr lnr-chevron-down"></span>
-                                    </h4>
-                                </a>
-                                <div class="collapsible-content collapse show" id="collapse1">
-                                    <div class="jplist-panel">
-                                        <div class="jplist-group" data-control-type="button-text-filter-group"
-                                            data-control-action="filter" data-control-name="button-text-filter-group-1">
-                                            <ul class="card-content">
-                                                <li>
-                                                    <a href="index.php?controller=product&action=index&category_id=1">HTML/CSS</a>
-                                                </li>
-                                                <li>
-                                                    <a href="index.php?controller=product&action=index&category_id=2">Javascript</a>
-                                                </li>
-                                                <li>
-                                                    <a href="index.php?controller=product&action=index&category_id=3">C#/.NET</a>
-                                                </li>
-                                                <li>
-                                                    <a href="index.php?controller=product&action=index&category_id=4">Java</a>
-                                                </li>
-                                                <li>
-                                                    <a href="index.php?controller=product&action=index&category_id=5">C/C++</a>
-                                                </li>
-                                                <li>
-                                                    <a href="index.php?controller=product&action=index&category_id=6">Python</a>
-                                                </li>
-                                                <li>
-                                                    <a href="index.php?controller=product&action=index&category_id=7">PHP & MySQL</a>
-                                                </li>
-                                                <li>
-                                                    <a href="index.php?controller=product&action=index&category_id=8">The Others</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                                <div class="card-title">
+                                    <h4>Phân Loại</h4>
+                                </div>
+                                <div class="collapsible-content">
+                                    <ul class="card-content">
+                                        <?php
+                                            foreach ($categories as $cat) 
+                                            {
+                                                echo '<li><a href="' . ROUTES['product'] . '&category=' . $cat['id'] . '">' . $cat['name'] . '</a></li>';
+                                            }
+                                        ?>
+                                    </ul>
                                 </div>
                             </div>
                         </aside>
                     </div>
                     <div class="col-lg-10 d-flex flex-wrap">
-                        <div class="row">
+                        <div class="row" style="width: 100%;">
                             <?php
-                                echo (isset($notfound) ? '<i style="color:red;"> *' .$notfound. '</i>' : '');
-                                foreach($productsearch->getItems() as $item) {
+                                foreach($products->getItems() as $item) {
                                     echo '
                                     <div class="col-lg-4 col-md-4 col-sm-6 mb-3">
                                         <div class="item__item">
@@ -139,16 +96,21 @@
                                     </div>
                                     ';
                                 }
+
+                                if ($products->getTotalItems() == 0)
+                                {
+                                    echo '<div class="p-4 text-center color--instagram"><h3>Chưa có sản phẩm nào.</h3></div>';
+                                }
                             ?>
                             <div>
                                 <?php 
-                                    echo $productsearch->displayPager(ROUTES['product']);
+                                    echo $products->displayPager(ROUTES['product'] . $params['url']);
                                 ?>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>>
+            </div>
         </section>    
     </main>
 

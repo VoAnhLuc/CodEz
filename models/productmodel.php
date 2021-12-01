@@ -106,11 +106,38 @@
             return $is_exit != 0;
         }
 
-        public function getAllProductsByKeyword($keyword = '', $page = 1, $orderby = '`products`.`released` DESC', $perPage = 9)
+        public function getAllProductsByKeyword($category, $keyword, $order_price, $order_type, $page = 1, $perPage = 12)
         {
+            $where = "`products`.`title` LIKE '%$keyword%'";
+            $where .= $category != 0 ? " AND `products`.`category_id` = '$category'" : "";
+            
+            $orderby = '';
+            switch ($order_price)
+            {
+                case 1:
+                    $orderby .= "`products`.`price`";
+                    break;
+                case 2:
+                    $orderby .= "`products`.`price` DESC";
+                    break;
+            }
+            switch ($order_type)
+            {
+                case 1:
+                    $orderby .= ", `products`.`views` DESC";
+                    break;
+                case 2:
+                    $where .= " AND `products`.`price` = '0'";
+                    break;
+                case 3:
+                    $orderby .= ", `products`.`released` DESC";
+                    break;
+            }
+            $orderby = empty($orderby) ? "`products`.`released` DESC" : $orderby;
+
             $this->db->createConnection();
 
-            $result = $this->db->executeQuery("SELECT COUNT(*) AS 'total_products' FROM `products` WHERE `title` LIKE '%$keyword%'");
+            $result = $this->db->executeQuery("SELECT COUNT(*) AS 'total_products' FROM `products` WHERE $where");
 
             $totalItems = $this->db->getSingleResult($result)['total_products'];
             $totalPages = max(ceil($totalItems / $perPage), 1);
@@ -122,7 +149,7 @@
                                                 INNER JOIN `users` ON `products`.`user_id` = `users`.`id`
                                                 INNER JOIN `categories` ON `products`.`category_id` = `categories`.`id`
                                                 LEFT JOIN `carts` ON `products`.`id` = `carts`.`product_id` AND `carts`.`paid_time` >= `carts`.`add_time`
-                                                WHERE `products`.`title` LIKE '%$keyword%'
+                                                WHERE $where
                                                 GROUP BY `products`.`id`
                                                 ORDER BY $orderby
                                                 LIMIT $start, $perPage");

@@ -86,8 +86,9 @@
                                 <a class="nav-link" href="#">Python</a>
                             </li>
                         </ul>
-                        <form class="d-flex" method="post" action="<?php echo ROUTES['product'] ?>">
-                            <input name="q" class="form-control me-2" type="text" placeholder="Nhập từ khóa" aria-label="Search">
+                        <form class="d-flex" method="GET" action="<?php echo ROUTES['product'] ?>">
+                            <input type="hidden" name="controller" value="product" />
+                            <input name="keyword" class="form-control me-2" type="text" placeholder="Nhập từ khóa" aria-label="Search">
                             <button class="btn btn-sm btn__theme" type="submit">Tìm</button>
                         </form>
                     </div>

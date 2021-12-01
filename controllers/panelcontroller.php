@@ -14,17 +14,25 @@
 
         public function index()
         {
-          /*   if (!Func::isRoleAdmin())
+            if (!Func::isRoleAdmin())
             {
                 return $this->view('404');
-            }  */
-            $keyword = isset($_POST['q']) ? htmlspecialchars($_POST['q']) : '';
+            }
+
             $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
+            
+            if (isset($_POST['q']))
+            {
+                $keyword = htmlspecialchars($_POST['q']);
+                $_SESSION['keyword'] = $keyword;
+                $page = 1;
+            }
+            else
+            {
+                $keyword = isset($_SESSION['keyword']) ? $_SESSION['keyword'] : '';
+            }
 
-            $page = isset($_SESSION['last_keyword']) && $_SESSION['last_keyword'] !== $keyword ? 1 : $page;
-            $_SESSION['last_keyword'] = $keyword;
-
-            $pagedResults = $this->productModel->getAllProductsByKeyword($keyword, $page);
+            $pagedResults = $this->productModel->getAllProductsByKeyword(0, $keyword, 0, 0, $page);
 
             if (!Func::isInRange($page, 1, $pagedResults->getTotalPages()))
             {
