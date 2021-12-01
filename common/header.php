@@ -68,22 +68,22 @@
                                 <a class="nav-link active" aria-current="page" href=".">Trang chủ</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">PHP</a>
+                                <a class="nav-link" href="<?php echo ROUTES['product'] ?>&category=7">PHP</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">C#</a>
+                                <a class="nav-link" href="<?php echo ROUTES['product'] ?>&category=3">C#</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">HTML/CSS</a>
+                                <a class="nav-link" href="<?php echo ROUTES['product'] ?>&category=1">HTML/CSS</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Javascript</a>
+                                <a class="nav-link" href="<?php echo ROUTES['product'] ?>&category=2">Javascript</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Java</a>
+                                <a class="nav-link" href="<?php echo ROUTES['product'] ?>&category=4">Java</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Python</a>
+                                <a class="nav-link" href="<?php echo ROUTES['product'] ?>&category=6">Python</a>
                             </li>
                         </ul>
                         <form class="d-flex" method="GET" action="<?php echo ROUTES['product'] ?>">
