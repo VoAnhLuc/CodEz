@@ -146,7 +146,7 @@
 
         public function edit()
         {
-            if (!Func::isRoleAdmin() || !Func::isCurrentUserVendor())
+            if (!Func::isRoleAdmin() && !Func::isCurrentUserVendor())
             {
                 return $this->view('404');
             }
@@ -210,7 +210,7 @@
 
         public function delete()
         {
-            if (!Func::isRoleAdmin() || !Func::isCurrentUserVendor())
+            if (!Func::isRoleAdmin() && !Func::isCurrentUserVendor())
             {
                 return $this->view('404');
             }
