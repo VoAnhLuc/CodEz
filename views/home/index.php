@@ -25,13 +25,14 @@
                         <div class="info__description">
                             CodEz cung cấp dịch vu mua và bán mã nguồn, hoàn toàn miễn phí để sử dụng.
                         </div>
-                        <form method="post" action="<?php echo ROUTES['product'] ?>">
+                        <form method="GET" action="<?php echo ROUTES['product'] ?>">
+                            <input type="hidden" name="controller" value="product" />
                             <div class="info__searchbox col-8 mt-4 d-md-flex">
                                 <div class="col-md-6">
-                                    <input type="text" placeholder="Tìm kiếm sản phẩm...">
+                                    <input type="text" name="keyword" placeholder="Tìm kiếm sản phẩm...">
                                 </div>
                                 <div class="col-md-4">
-                                    <select>
+                                    <select name="category">
                                         <?php
                                             foreach ($categories as $category)
                                             {
