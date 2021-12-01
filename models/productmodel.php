@@ -161,33 +161,4 @@
 
             return $pageResult;
         }
-
-        public function getAllProductByName($keyword = '', $page = 1,$where ='`products`.`title`' , $orderby = '`products`.`released` DESC', $perPage = 9)
-        {
-            $this->db->createConnection();
-
-            $result = $this->db->executeQuery("SELECT COUNT(*) AS 'total_products' FROM `products` WHERE `title` LIKE '%$keyword%'");
-
-            $totalItems = $this->db->getSingleResult($result)['total_products'];
-            $totalPages = max(ceil($totalItems / $perPage), 1);
-            $start = ($page - 1) * $perPage;
-            
-            $result = $this->db->executeQuery("SELECT `products`.*, `users`.`fullname`, `users`.`avatar`, `categories`.`name`,
-                                                        COUNT(`carts`.`id`) AS bought, SUM(`carts`.`rate`) AS rating
-                                                FROM `products` 
-                                                INNER JOIN `users` ON `products`.`user_id` = `users`.`id`
-                                                INNER JOIN `categories` ON `products`.`category_id` = `categories`.`id`
-                                                LEFT JOIN `carts` ON `products`.`id` = `carts`.`product_id` AND `carts`.`paid_time` >= `carts`.`add_time`
-                                                WHERE $where LIKE '%$keyword%'
-                                                GROUP BY `products`.`id`
-                                                ORDER BY $orderby
-                                                LIMIT $start, $perPage");
-            $products = $this->db->getArrayResult($result);       
-
-            $pageResult = new Pagination($page, $totalItems, $totalPages, $products);
-
-            $this->db->closeConnection($result);
-
-            return $pageResult;
-        }
     }
