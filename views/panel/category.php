@@ -18,19 +18,19 @@
             <div class="container-fluid d-lg-flex p-0">
 
                 <?php include 'leftpanel.php' ?>
-
                 <div class="col-12 col-lg-10 right-panel">
                     <div class="col-12 right-panel__form">
-                        <form method="GET">
+                        <form method="POST">
                             <div class="right-panel__search">
                                 <div class="col-12 col-lg-6">
-                                    <a href="" class="btn btn__theme">Thêm mới</a>
+                                    <a href="<?php echo ROUTES['category_create'] ?>" class="btn btn__theme">Thêm mới</a>
                                 </div>
                                 <div class="col-12 col-lg-6 my-search-box">
                                     <input type="text" class="my-search-box__input" name="q"
+                                        value="<?php echo $keyword ?>"
                                         placeholder="Tìm kiếm bằng từ khóa" />
                                     <div class="my-search-box__icon-wrapper">
-                                        <span class="clear-search-btn me-1">
+                                        <span onclick="clearSearchBox()" class="clear-search-btn me-1">
                                             <i class="bi bi-x-lg"></i>
                                         </span>
                                         <button class="search-btn d-flex align-items-center">
@@ -41,7 +41,6 @@
                             </div>
                         </form>
                     </div>
-
                     <div class="right-panel__item">
                         <table class="table table-striped bg--white">
                             <thead>
@@ -53,109 +52,28 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>
-                                        <a href="">Sửa</a> -
-                                        <a href="">Xóa</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>
-                                        <a href="">Sửa</a> -
-                                        <a href="">Xóa</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>
-                                        <a href="">Sửa</a> -
-                                        <a href="">Xóa</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>
-                                        <a href="">Sửa</a> -
-                                        <a href="">Xóa</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>
-                                        <a href="">Sửa</a> -
-                                        <a href="">Xóa</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>
-                                        <a href="">Sửa</a> -
-                                        <a href="">Xóa</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>
-                                        <a href="">Sửa</a> -
-                                        <a href="">Xóa</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>
-                                        <a href="">Sửa</a> -
-                                        <a href="">Xóa</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>
-                                        <a href="">Sửa</a> -
-                                        <a href="">Xóa</a>
-                                    </td>
-                                </tr>
+                            <?php
+                                foreach ($pagedResults->getItems() as $key)
+                                {
+                                    echo '
+                                        <tr>
+                                            <th scope="row">'.$key['id'].'</th>
+                                            <td>'.$key['name'].'</td>
+                                            <td>'.$key['description'].'</td>
+                                            <td>
+                                                <a href="' . ROUTES['category_fix'] . '&id=' . $key['id'] . '">Sửa</a> -
+                                                <a href="' . ROUTES['category_delete'] . '&id=' . $key['id'] .'">Xóa</a>
+                                            </td>
+                                        </tr>
+                                        ';
+                                }
+                            ?>
                             </tbody>
                         </table>
                     </div>
 
                     <div class="right-panel__pager">
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination">
-                                <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Previous">
-                                        <span aria-hidden="true">&laquo;</span>
-                                    </a>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Next">
-                                        <span aria-hidden="true">&raquo;</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
+                        <?php echo $pagedResults->displayPager(ROUTES['panel'] . '&action=category') ?>
                     </div>
                 </div>
             </div>

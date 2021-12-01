@@ -61,9 +61,36 @@
 
         public function category()
         {
+            if (!Func::isRoleAdmin())
+            {
+                return $this->view('404');
+            }
+
+            $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
+            
+            if (isset($_POST['q']))
+            {
+                $keyword = htmlspecialchars($_POST['q']);
+                $_SESSION['cat_keyword'] = $keyword;
+                $page = 1;
+            }
+            else
+            {
+                $keyword = isset($_SESSION['cat_keyword']) ? $_SESSION['cat_keyword'] : '';
+            }
+
+            $pagedResults = $this->categoryModel->getAllCategoriesWithPaged($keyword, $page);
+
+            if (!Func::isInRange($page, 1, $pagedResults->getTotalPages()))
+            {
+                return $this->view('404');
+            }
+
             $data = [
                 'title' => 'Quản lý thư mục',
-                'active' => 3
+                'active' => 3,
+                'keyword' => $keyword,
+                'pagedResults' => $pagedResults
             ];
 
             return $this->view('panel.category', $data);

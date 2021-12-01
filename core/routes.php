@@ -34,4 +34,10 @@
         'panel_statistic' => 'index.php?controller=panel&action=statistic',
         'panel_transaction' => 'index.php?controller=panel&action=transaction',
 
+        /* Category */
+        'category_delete' => 'index.php?controller=category&action=delete',
+        'category_fix' => 'index.php?controller=category&action=fix',
+        'category_create' => 'index.php?controller=category&action=create'
+        
+        
     ];
