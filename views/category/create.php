@@ -14,11 +14,11 @@
     <?php include './common/header.php'; ?>
 
     <main>
-        <section class="content">
+        <section class="content mt-5 mb-5">
             <div class="container">
                 <form method="post">
-                    <div>
-                        <h1 style="padding-top:20px;">Tạo mới danh mục</h1>
+                    <div class="p-5 bg--white">
+                        <h1>Tạo mới danh mục</h1>
                         <div class="content__item mt-4">
                             <label for="title" >Tên danh mục <i class="color--red">*</i></label>
                             <input type="text" name="category_name" id="title" class="form-control" required style="width : 400px;">
@@ -27,7 +27,7 @@
                             <label for="title">Mô tả <i class="color--red">*</i></label>
                             <input type="text" name="category_des" id="title" class="form-control" required style="width : 800px;">
                         </div>
-                            <a class="btn btn-light" href="<?php echo ROUTES['panel_category'] ?>">
+                            <a class="btn btn-warning" href="<?php echo ROUTES['panel_category'] ?>">
                                 Quay lại
                             </a>
                             <button class="btn btn-success" type="submit" name="confirmCreateCategory">Xác nhận</button>

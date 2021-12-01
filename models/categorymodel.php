@@ -58,7 +58,7 @@
             return $result;
         }
 
-        public function getAllCategoriesWithPaged($keyword, $page, $perPage = 3)
+        public function getAllCategoriesWithPaged($keyword, $page, $perPage = 10)
         {
             $this->db->createConnection();
 

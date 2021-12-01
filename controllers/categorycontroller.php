@@ -19,6 +19,11 @@
 
             $category = $this->categoryModel->getCategoryById($id);
 
+            if ($category == null)
+            {
+                return $this->view('404');
+            }
+
             if (!isset($_POST['confirmDeleteCategory']))
             {
                 $data = [
@@ -44,6 +49,11 @@
             $id = (isset($_GET['id']) ? intval($_GET['id']) : 0);
 
             $category = $this->categoryModel->getCategoryById($id);
+
+            if ($category == null)
+            {
+                return $this->view('404');
+            }
 
             if (!isset($_POST['confirmFixCategory'])) 
             {
@@ -98,7 +108,7 @@
                     'title' => 'Tạo danh mục'
                 ];            
     
-                $this->view('category.create',$data);
+                return $this->view('category.create',$data);
                
             }
 
