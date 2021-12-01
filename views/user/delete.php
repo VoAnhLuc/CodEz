@@ -18,10 +18,10 @@
             <div class="container">
                 <form method="post">
                     <div class="alert alert-danger mt-3">
-                        <h1>Xóa sản phẩm <?php echo $product['title'] ?></h1>
-                        <p>Bạn có chắc chắn muốn <span class="color--red">Xóa sản phẩm</span> này?</p>
+                        <h1>Xóa người dùng <?php echo $user['username'] . ' - ID: ' . $user['id'] ?></h1>
+                        <p>Bạn có chắc chắn muốn <span class="color--red">Xóa người dùng</span> này?</p>
                         <p>
-                            <a class="btn btn-light" href="<?php echo ROUTES['product_detail'] . '&id=' . $product['id'] ?>">
+                            <a class="btn btn-light" href="<?php echo ROUTES['panel_account'] ?>">
                                 Quay lại
                             </a>
                             <button class="btn btn-danger" type="submit" name="confirmDelete">Xác nhận</button>

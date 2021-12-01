@@ -28,7 +28,9 @@
                 'login',
                 'register',
                 'edit',
-                'logout'
+                'logout',
+                'approve',
+                'delete'
             ]
         ],
 

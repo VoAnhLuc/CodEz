@@ -285,5 +285,70 @@
             session_unset();
             return header('Location: ' . ROUTES['home']);
         }
+
+        public function approve()
+        {
+            if (!Func::isRoleAdmin())
+            {
+                return $this->view('404');
+            }
+
+            $user_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
+
+            $user = $this->userModel->getUserById($user_id);
+
+            if ($user == null)
+            {
+                return $this->view('404');
+            }
+
+            if (isset($_POST['submit']))
+            {
+                $is_approved = isset($_POST['approved']) ? 1 : 0;
+                $money = max(0, $_POST['money']);
+
+                $this->userModel->updateUserByStringQuery($user_id, "`is_vendor` = '$is_approved', `money` = '$money'");
+
+                return header('Location: ' . ROUTES['panel_account']);
+            }
+
+            $data = [
+                'title' => 'Cấp quyền cho người dùng',
+                'user' => $user
+            ];
+
+            return $this->view('user.approve', $data);
+        }
+
+        public function delete()
+        {
+            if (!Func::isRoleAdmin())
+            {
+                return $this->view('404');
+            }
+
+            $user_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
+
+            $user = $this->userModel->getUserById($user_id);
+
+            if ($user == null)
+            {
+                return $this->view('404');
+            }
+
+            if (isset($_POST['confirmDelete']))
+            {
+                $this->userModel->deleteUser($user_id);
+
+                return header('Location: ' . ROUTES['panel_account']);
+            }
+
+            $data = [
+                'title' => 'Xóa người dùng',
+                'user' => $user
+            ];
+
+            return $this->view('user.delete', $data);
+        }
     }
 ?>
