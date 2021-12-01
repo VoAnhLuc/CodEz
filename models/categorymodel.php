@@ -62,9 +62,9 @@
         {
             $this->db->createConnection();
 
-            $result = $this->db->executeQuery("SELECT COUNT(*) AS 'total_products' FROM `categories` WHERE `name` LIKE '%$keyword%'");
+            $result = $this->db->executeQuery("SELECT COUNT(*) AS 'total_categories' FROM `categories` WHERE `name` LIKE '%$keyword%'");
 
-            $totalItems = $this->db->getSingleResult($result)['total_products'];
+            $totalItems = $this->db->getSingleResult($result)['total_categories'];
             $totalPages = max(ceil($totalItems / $perPage), 1);
             $start = ($page - 1) * $perPage;
 
