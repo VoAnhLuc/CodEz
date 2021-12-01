@@ -13,8 +13,11 @@
                             <li><a href="#">Trở thành người bán</a></li>
                             <li><a href="#">Liên hệ</a></li>
                             <li><a href="#">Trợ giúp</a></li>
-                            <li><a href="<?php echo ROUTES['payment_cart'] ?>"><i class="bi bi-cart2"></i></a></li>
                         </ul>
+                        <span class="header__cart">
+                            <a href="<?php echo ROUTES['payment_cart'] ?>"><i class="bi bi-cart2"></i></a>
+                            <span class="header__cart-number"><?php echo $_SESSION['total_cart'] ?></span>
+                        </span>
                         <?php
                             if (!isset($_SESSION['is_logged']) || !$_SESSION['is_logged'])
                             {
@@ -30,19 +33,18 @@
                             else
                             {
                                 echo '
-                                    <a href="#" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <span class="text--bold color--white me-3">' . $_SESSION['fullname'] . '</span>
-                                    </a>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownUser">
+                                    <span id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false" class="text--bold color--white cursor--pointer me-3">' . $_SESSION['fullname'] . '</span>
+                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownUser">
                                         <li><a class="dropdown-item color--instagram" href="#"><i class="bi bi-wallet2"></i> ' . Func::getDotPrice($_SESSION['user']['money']) . ' VND</a></li>
                                         <li><a class="dropdown-item" href="' . ROUTES['payment'] . '">Giỏ hàng</a></li>
                                         <li><a class="dropdown-item" href="' . ROUTES['user'] . '">Thông tin cá nhân</a></li>
                                         <li><a class="dropdown-item" href="' . ROUTES['payment_history'] . '">Lịch sử mua hàng</a></li>
                                         <li><a class="dropdown-item" href="' . ROUTES['user_edit'] . '">Chỉnh sửa thông tin</a></li>
+                                        <li><hr class="dropdown-divider"></li>
                                         ' . (Func::isCurrentUserVendor() ? '<li><a class="dropdown-item" href="' . ROUTES['product_create'] . '">Đăng bán sản phẩm</a></li>' : '') . '
                                         ' . (Func::isRoleAdmin() ? '<li><a class="dropdown-item color--red" href="' . ROUTES['panel'] . '">Admin Panel</a></li>' : '') . '
+                                        <li><a class="dropdown-item" href="' . ROUTES['user_logout'] . '">Đăng xuất</a></li>
                                     </ul>
-                                    <a href="' . ROUTES['user_logout'] . '"><i class="bi bi-box-arrow-right color--green"></i></a>
                                 ';
                             }
                         ?>
@@ -84,8 +86,9 @@
                                 <a class="nav-link" href="#">Python</a>
                             </li>
                         </ul>
-                        <form class="d-flex" method="post" action="<?php echo ROUTES['product'] ?>">
-                            <input name="q" class="form-control me-2" type="text" placeholder="Nhập từ khóa" aria-label="Search">
+                        <form class="d-flex" method="GET" action="<?php echo ROUTES['product'] ?>">
+                            <input type="hidden" name="controller" value="product" />
+                            <input name="keyword" class="form-control me-2" type="text" placeholder="Nhập từ khóa" aria-label="Search">
                             <button class="btn btn-sm btn__theme" type="submit">Tìm</button>
                         </form>
                     </div>

@@ -34,12 +34,13 @@
 
             $this->db->createConnection();
 
-            $result = $this->db->executeQuery("SELECT `id` FROM `carts` WHERE `user_id` = '$user_id' AND `paid_time` >= `add_time`");
-            $perPage = 10;
-            $totalItems = $this->db->getNumRows($result);
-            $totalPages = max(ceil($totalItems / $perPage), 1);
+            $result = $this->db->executeQuery("SELECT COUNT(*) AS 'total_carts' FROM `carts` WHERE `user_id` = '$user_id' AND `paid_time` >= `add_time`");
 
+            $perPage = 10;
+            $totalItems = $this->db->getSingleResult($result)['total_carts'];
+            $totalPages = max(ceil($totalItems / $perPage), 1);
             $start = ($page - 1) * $perPage;
+            
             $result = $this->db->executeQuery("SELECT `carts`.*, `products`.`title`
                                                 FROM `carts`
                                                 INNER JOIN `products` ON `carts`.`product_id` = `products`.`id`
@@ -109,7 +110,7 @@
 
         public function removeProductFromCart($id){
             $this->db->createConnection();
-            $result = $this->db->executeNonQuery("DELETE FROM `carts` where `id` = '$id' ");
+            $result = $this->db->executeNonQuery("DELETE FROM `carts` where `id` = '$id'");
             $this->db->closeConnection();
             return $result;     
         }
@@ -126,5 +127,16 @@
             $this->db->createConnection();
             $this->db->executeNonQuery("UPDATE `carts` SET `paid_time` = '" . time() . "', `link_code` = '$link_code', `price` = '$price' WHERE `id` = '$cart_id'");
             $this->db->closeConnection();
+        }
+
+        public function isExistProductInCart($product_id)
+        {
+            $this->db->createConnection();
+            $result = $this->db->executeQuery("SELECT COUNT(*) AS 'count' FROM `carts`
+                                                WHERE `product_id` = '$product_id' AND `paid_time` < `add_time`
+                                                AND `user_id` = '" . $_SESSION['user_id'] . "'");
+            $is_exit = $this->db->getSingleResult($result)['count'];
+            $this->db->closeConnection($result);
+            return $is_exit != 0;
         }
     }

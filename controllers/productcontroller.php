@@ -13,14 +13,34 @@
         }
 
         public function index()
-        {
-            $newest_products = $this->productModel->getAllProducts();
+        {  
+            $category = isset($_GET['category']) ? intval($_GET['category']) : 0;
+            $keyword = isset($_GET['keyword']) ? htmlspecialchars($_GET['keyword']) : '';
+            $order_price = isset($_GET['order_price']) ? intval($_GET['order_price']) : 1;
+            $order_type = isset($_GET['order_type']) ? intval($_GET['order_type']) : 1;
+            $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
+
+            $categories = $this->categoryModel->getAllCategories();
+            $products = $this->productModel->getAllProductsByKeyword($category, $keyword, $order_price, $order_type, $page, 9);
+
+            if (!Func::isInRange($page, 1, $products->getTotalPages()))
+            {
+                return $this->view('404');
+            }
 
             $data = [
                 'title' => 'Tìm kiếm sản phẩm', 
-                'products' => $newest_products
+                'categories' => $categories,
+                'products' => $products,
+                'params' => [
+                    'url' => "&category=$category&keyword=$keyword&order_price=$order_price&order_type=$order_type",
+                    'category' => $category,
+                    'keyword' => $keyword,
+                    'order_price' => $order_price,
+                    'order_type' => $order_type
+                ]
             ];
-            
+
             return $this->view('product.index', $data);
         }
 
@@ -126,7 +146,7 @@
 
         public function edit()
         {
-            if (!Func::isLogged() || !Func::isCurrentUserVendor())
+            if (!Func::isRoleAdmin() || !Func::isCurrentUserVendor())
             {
                 return $this->view('404');
             }
@@ -135,7 +155,7 @@
 
             $product = $this->productModel->getProductById($product_id);
 
-            if ($product == null || $product['user_id'] != $_SESSION['user_id'])
+            if ($product == null || ($product['user_id'] != $_SESSION['user_id'] && !Func::isRoleAdmin()))
             {
                 return $this->view('404');
             }
@@ -190,7 +210,7 @@
 
         public function delete()
         {
-            if (!Func::isLogged() || !Func::isCurrentUserVendor())
+            if (!Func::isRoleAdmin() || !Func::isCurrentUserVendor())
             {
                 return $this->view('404');
             }
@@ -199,7 +219,7 @@
 
             $product = $this->productModel->getProductById($product_id);
 
-            if ($product == null || $product['user_id'] != $_SESSION['user_id'])
+            if ($product == null || ($product['user_id'] != $_SESSION['user_id'] && !Func::isRoleAdmin()))
             {
                 return $this->view('404');
             }

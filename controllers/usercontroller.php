@@ -78,7 +78,29 @@
             $_SESSION["fullname"] = $user['fullname'];
             $_SESSION["is_vendor"] = $user['is_vendor'];
 
+            // move products in tmp_cart to real carts.
+            $this->moveTmpCartToCarts();
+
             return header('Location: ' . ROUTES['home']);
+        }
+
+        public function moveTmpCartToCarts()
+        {
+            if (!isset($_SESSION['tmp_cart']))
+            {
+                return;
+            }
+
+            $this->loadModel('paymentmodel');
+            $paymentModel = new PaymentModel;
+
+            foreach ($_SESSION['tmp_cart'] as $item)
+            {
+                if (!$paymentModel->isExistProductInCart($item['id']))
+                {
+                    $paymentModel->addProductIntoCart($item['id']);
+                }
+            }
         }
 
         public function register()

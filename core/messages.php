@@ -22,6 +22,9 @@
         'file_size_exceed' => 'Dung lượng file quá lớn!',
         'upload_file_success' => 'Upload file thành công!',
 
+        /* product */
+        'empty_product' => 'Không tìm thấy sản phẩm yêu cầu',
+
         /* payment */
         'payment_success' => 'Thanh toán thành công',
         'payment_success_message' => 'Hóa đơn của bạn đã được thanh toán thành công. Vui lòng đánh giá mức độ hài lòng của sản phẩm sau khi sử dụng. Chúc bạn có những trải nghiệm tuyệt vời trên hệ thống.',

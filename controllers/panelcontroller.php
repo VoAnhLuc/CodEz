@@ -14,12 +14,36 @@
 
         public function index()
         {
-            $newest_products = $this->productModel->getAllProducts();
+            if (!Func::isRoleAdmin())
+            {
+                return $this->view('404');
+            }
+
+            $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
+            
+            if (isset($_POST['q']))
+            {
+                $keyword = htmlspecialchars($_POST['q']);
+                $_SESSION['keyword'] = $keyword;
+                $page = 1;
+            }
+            else
+            {
+                $keyword = isset($_SESSION['keyword']) ? $_SESSION['keyword'] : '';
+            }
+
+            $pagedResults = $this->productModel->getAllProductsByKeyword(0, $keyword, 0, 0, $page);
+
+            if (!Func::isInRange($page, 1, $pagedResults->getTotalPages()))
+            {
+                return $this->view('404');
+            }
 
             $data = [
                 'title' => 'Quản lý sản phẩm',
                 'active' => 1,
-                'products' => $newest_products
+                'keyword' => $keyword,
+                'pagedResults' => $pagedResults
             ];
 
             return $this->view('panel.index', $data);

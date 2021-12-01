@@ -28,38 +28,42 @@
             </div>
             <?php
                     $total_money = 0;
-                    foreach($carts as $item){
-                        $total_money += $item['price'];
-                        echo '
-                            <div class="row">
-                                <div class="information">
-                                    <div class="col-md-4 col-8 v_middle">
-                                        <div class="product_description d-flex align-items-center">
-                                            <a href="' . ROUTES['product_detail'] . '&id=' . $item['product_id'] . '">
-                                                <img src="' . $item['thumb'] . '" alt="Image" class="item__thumbnail" style="width : 100px ; height : 100px;">
-                                            </a>
-                                            <div class="short_desc">
+                    if ($carts != null)
+                    {
+                        foreach($carts as $key => $item){
+                            $total_money += $item['price'];
+                            $delete_id = Func::isLogged() ? $item['id'] : $key;
+                            echo '
+                                <div class="row">
+                                    <div class="information">
+                                        <div class="col-md-4 col-8 v_middle">
+                                            <div class="product_description d-flex align-items-center">
                                                 <a href="' . ROUTES['product_detail'] . '&id=' . $item['product_id'] . '">
-                                                    ' . $item['title'] . '
+                                                    <img src="' . $item['thumb'] . '" alt="Image" class="item__thumbnail" style="width : 100px ; height : 100px;">
                                                 </a>
+                                                <div class="short_desc">
+                                                    <a href="' . ROUTES['product_detail'] . '&id=' . $item['product_id'] . '">
+                                                        ' . $item['title'] . '
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-4 col-3 v_middle d-flex justify-content-center">
-                                        <div class="item_price p-2">
-                                            <p>' . Func::getDotPrice($item['price']) . ' VND</p>  
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-1 v_middle">
-                                            <div class="item_action">                          
-                                                <a href="' . ROUTES['payment_delete'] . '&id=' . $item['id'] . '">
-                                                <p class="bi bi-trash"></p>
-                                                </a>                                     
+                                        <div class="col-md-4 col-3 v_middle d-flex justify-content-center">
+                                            <div class="item_price p-2">
+                                                <p>' . Func::getDotPrice($item['price']) . ' VND</p>  
                                             </div>
+                                        </div>
+                                        <div class="col-md-4 col-1 v_middle">
+                                                <div class="item_action">                          
+                                                    <a href="' . ROUTES['payment_delete'] . '&id=' . $delete_id . '">
+                                                    <p class="bi bi-trash"></p>
+                                                    </a>                                     
+                                                </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            ';
+                                ';
+                        }
                     }
                 ?>
             <div class="row">
@@ -88,10 +92,14 @@
                 <div class="col-lg-6 col-md-6 col-sm-12 thanhtoan">
                     <div class="cart-subtotal">
                         <p><span>Tổng Tiền:</span><?php echo  Func::getDotPrice($total_money)  ?> VND</p>
-                   </div>
-                   <div class="cart-subtotalspecial">
-                    <button type="submit" class="btn btn-success"><a style="color:white"  href="index.php?controller=payment&action=checkout">Tiến Hành Thanh Toán</a></button>
-                   </div>
+                    </div>
+                    <div class="cart-subtotalspecial">
+                        <?php
+                            echo Func::isLogged()
+                                ? '<a class="btn btn-success" style="color:white"  href="' . ROUTES['payment_checkout'] . '">Tiến Hành Thanh Toán</a>'
+                                : '<a class="btn btn-danger" style="color:white"  href="' . ROUTES['user_login'] . '">Đăng nhập để thanh toán</a>'
+                        ?>
+                    </div>
                 </div>
             </div>
             

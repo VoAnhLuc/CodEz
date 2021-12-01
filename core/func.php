@@ -34,6 +34,20 @@
                                                     ");
             }
 
+            /* Get total products in cart */
+            if (self::isLogged())
+            {
+                $result = $db->executeQuery("SELECT COUNT(*) AS 'total_cart'
+                                            FROM `carts`
+                                            WHERE `user_id` = '" . $_SESSION['user_id'] . "'
+                                                AND `add_time` > `paid_time`");
+                $_SESSION['total_cart'] = $db->getSingleResult($result)['total_cart'];
+            }
+            else
+            {
+                $_SESSION['total_cart'] = isset($_SESSION['tmp_cart']) ? count($_SESSION['tmp_cart']) : 0;
+            }
+
             $db->closeConnection($result);
         }
 
@@ -105,7 +119,7 @@
                 self::removeFile($outputName);
             }
 
-            $outputName = str_replace('.', '/', $dir) . '/' . $_SESSION['user_id'] . '_' . time() . $upload_file_type[$_FILES[$inputName]['type']];
+            $outputName = str_replace('.', '/', $dir) . '/' . $_SESSION['user_id'] . '_' . rand(1000, 9999) . '_' . time() . $upload_file_type[$_FILES[$inputName]['type']];
 
             move_uploaded_file($_FILES[$inputName]['tmp_name'], $outputName);
 
@@ -214,7 +228,7 @@
         public static function copyFileFromTo($from, $to, $user_id, $is_image = true)
         {
             $fileType = $is_image ? self::UPLOAD_FILE_TYPES['image'] : self::UPLOAD_FILE_TYPES['file'];
-            $fileName = str_replace('.', '/', $to) . '/' . $user_id . '_' . time() . $fileType[mime_content_type($from)];
+            $fileName = str_replace('.', '/', $to) . '/' . $user_id . '_' . rand(1000, 9999) . '_' . time() . $fileType[mime_content_type($from)];
             copy($from, $fileName);
             return $fileName;
         }
