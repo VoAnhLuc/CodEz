@@ -23,7 +23,7 @@
             $result = $this->db->executeQuery("SELECT `users`.*, `roles`.`name` AS role_name 
                                                 FROM `users`
                                                 INNER JOIN `roles` ON `users`.`role_id` = `roles`.`id`
-                                                WHERE `username` = '$username' AND `password` = '" . md5(md5($password)) . "' AND `is_deleted` = '0'");
+                                                WHERE `users`.`username` = '$username' AND `users`.`password` = '" . md5(md5($password)) . "' AND `users`.`is_deleted` = '0'");
             $user = $this->db->getSingleResult($result);
             $this->db->closeConnection($result);
             return $user;
