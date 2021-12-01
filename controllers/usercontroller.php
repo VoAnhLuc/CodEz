@@ -319,5 +319,36 @@
 
             return $this->view('user.approve', $data);
         }
+
+        public function delete()
+        {
+            if (!Func::isRoleAdmin())
+            {
+                return $this->view('404');
+            }
+
+            $user_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
+
+            $user = $this->userModel->getUserById($user_id);
+
+            if ($user == null)
+            {
+                return $this->view('404');
+            }
+
+            if (isset($_POST['confirmDelete']))
+            {
+                $this->userModel->deleteUser($user_id);
+
+                return header('Location: ' . ROUTES['panel_account']);
+            }
+
+            $data = [
+                'title' => 'Xóa người dùng',
+                'user' => $user
+            ];
+
+            return $this->view('user.delete', $data);
+        }
     }
 ?>

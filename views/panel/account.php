@@ -62,8 +62,8 @@
                                                 <td>' . $item['fullname'] . '</td>
                                                 <td>' . $item['money'] . '</td>
                                                 <td>
-                                                    <a href="' . ROUTES['user_edit'] . '&id=' . $item['id'] . '">Sửa</a> -
-                                                    <a href="' . ROUTES['user_edit'] . '&id=' . $item['id'] . '">Xóa</a>
+                                                    <a href="' . ROUTES['user_approve'] . '&id=' . $item['id'] . '">Sửa</a> -
+                                                    <a href="' . ROUTES['user_delete'] . '&id=' . $item['id'] . '">Xóa</a>
                                                 </td>
                                             </tr>
                                         ';

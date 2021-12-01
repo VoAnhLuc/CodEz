@@ -17,7 +17,7 @@
                                                 INNER JOIN `users` ON `products`.`user_id` = `users`.`id`
                                                 INNER JOIN `categories` ON `products`.`category_id` = `categories`.`id`
                                                 LEFT JOIN `carts` ON `products`.`id` = `carts`.`product_id` AND `carts`.`paid_time` >= `carts`.`add_time`
-                                                WHERE `products`.`id` = '$id'");
+                                                WHERE `products`.`id` = '$id' AND `products`.`is_deleted` = '0'");
             $product = $this->db->getSingleResult($result);
             $this->db->closeConnection($result);
             return $product;
@@ -46,7 +46,7 @@
             return $product_id;
         }
 
-        public function getAllProducts($orderby = "`id` DESC", $limit = 8, $where = "`products`.`id` != 0")
+        public function getAllProducts($orderby = "`id` DESC", $limit = 8)
         {
             $this->db->createConnection();
             $result = $this->db->executeQuery("SELECT `products`.*, `users`.`fullname`, `users`.`avatar`, `categories`.`name`,
@@ -55,7 +55,7 @@
                                                 INNER JOIN `users` ON `products`.`user_id` = `users`.`id`
                                                 INNER JOIN `categories` ON `products`.`category_id` = `categories`.`id`
                                                 LEFT JOIN `carts` ON `products`.`id` = `carts`.`product_id` AND `carts`.`paid_time` >= `carts`.`add_time`
-                                                WHERE $where
+                                                WHERE `products`.`id` != 0 AND `products`.`is_deleted` = '0'
                                                 GROUP BY `products`.`id`
                                                 ORDER BY $orderby
                                                 LIMIT $limit");
@@ -93,14 +93,14 @@
         public function removeProductById($product_id)
         {
             $this->db->createConnection();
-            $this->db->executeNonQuery("DELETE FROM `products` WHERE `id` = '$product_id'");
+            $this->db->executeNonQuery("UPDATE `products` SET `is_deleted` = '1' WHERE `id` = '$product_id'");
             $this->db->closeConnection();
         }
 
         public function isExistProduct($product_id)
         {
             $this->db->createConnection();
-            $result = $this->db->executeQuery("SELECT COUNT(*) AS 'count' FROM `products` WHERE `id` = '$product_id'");
+            $result = $this->db->executeQuery("SELECT COUNT(*) AS 'count' FROM `products` WHERE `id` = '$product_id' AND `is_deleted` = '0'");
             $is_exit = $this->db->getSingleResult($result)['count'];
             $this->db->closeConnection($result);
             return $is_exit != 0;
@@ -108,7 +108,7 @@
 
         public function getAllProductsByKeyword($category, $keyword, $order_price, $order_type, $page = 1, $perPage = 12)
         {
-            $where = "`products`.`title` LIKE '%$keyword%'";
+            $where = "`products`.`title` LIKE '%$keyword%' AND `products`.`is_deleted` = '0'";
             $where .= $category != 0 ? " AND `products`.`category_id` = '$category'" : "";
             
             $orderby = '';

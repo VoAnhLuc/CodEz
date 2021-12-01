@@ -7,6 +7,8 @@
         /* User */
         'user' => 'index.php?controller=user',
         'user_edit' => 'index.php?controller=user&action=edit',
+        'user_approve' => 'index.php?controller=user&action=approve',
+        'user_delete' => 'index.php?controller=user&action=delete',
         'user_login' => 'index.php?controller=user&action=login',
         'user_register' => 'index.php?controller=user&action=register',
         'user_logout' => 'index.php?controller=user&action=logout',

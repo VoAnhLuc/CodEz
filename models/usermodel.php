@@ -11,7 +11,7 @@
         public function getUserById($id)
         {
             $this->db->createConnection();
-            $result = $this->db->executeQuery("SELECT * FROM `users` WHERE `id` = '$id'");
+            $result = $this->db->executeQuery("SELECT * FROM `users` WHERE `id` = '$id' AND `is_deleted` = '0'");
             $user = $this->db->getSingleResult($result);
             $this->db->closeConnection($result);
             return $user;
@@ -23,7 +23,7 @@
             $result = $this->db->executeQuery("SELECT `users`.*, `roles`.`name` AS role_name 
                                                 FROM `users`
                                                 INNER JOIN `roles` ON `users`.`role_id` = `roles`.`id`
-                                                WHERE `username` = '$username' AND `password` = '" . md5(md5($password)) . "'");
+                                                WHERE `username` = '$username' AND `password` = '" . md5(md5($password)) . "' AND `is_deleted` = '0'");
             $user = $this->db->getSingleResult($result);
             $this->db->closeConnection($result);
             return $user;
@@ -85,7 +85,7 @@
         public function getUserByUsername($username)
         {
             $this->db->createConnection();
-            $result = $this->db->executeQuery("SELECT * FROM `users` WHERE `username` = '$username' ");
+            $result = $this->db->executeQuery("SELECT * FROM `users` WHERE `username` = '$username' AND `is_deleted` = '0'");
             $user = $this->db->getSingleResult($result);
             $this->db->closeConnection($result);
             return $user;
@@ -94,7 +94,7 @@
         public function updateUserByStringQuery($user_id, $query)
         {
             $this->db->createConnection();
-            $this->db->executeNonQuery("UPDATE `users` SET $query WHERE `id` = '$user_id'");
+            $this->db->executeNonQuery("UPDATE `users` SET $query WHERE `id` = '$user_id' AND `is_deleted` = '0'");
             $this->db->closeConnection();
         }
 
@@ -103,14 +103,14 @@
             $this->db->createConnection();
 
             $result = $this->db->executeQuery("SELECT COUNT(*) AS 'total_accounts' FROM `users`
-                                                WHERE `fullname` LIKE '%$keyword%' OR `username` LIKE '%$keyword%'");
+                                                WHERE (`fullname` LIKE '%$keyword%' OR `username` LIKE '%$keyword%') AND `is_deleted` = '0'");
 
             $totalItems = $this->db->getSingleResult($result)['total_accounts'];
             $totalPages = max(ceil($totalItems / $perPage), 1);
             $start = ($page - 1) * $perPage;
 
             $result = $this->db->executeQuery("SELECT * FROM `users` 
-                                                WHERE `fullname` LIKE '%$keyword%' OR `username` LIKE '%$keyword%'
+                                                WHERE (`fullname` LIKE '%$keyword%' OR `username` LIKE '%$keyword%') AND `is_deleted` = '0'
                                                 ORDER BY `id` DESC
                                                 LIMIT $start, $perPage");
             $users = $this->db->getArrayResult($result);       
@@ -120,5 +120,12 @@
             $this->db->closeConnection($result);
 
             return $pageResult;
+        }
+
+        public function deleteUser($user_id)
+        {
+            $this->db->createConnection();
+            $this->db->executeNonQuery("UPDATE `users` SET `is_deleted` = '1' WHERE `id` = '$user_id'");
+            $this->db->closeConnection();
         }
     }
