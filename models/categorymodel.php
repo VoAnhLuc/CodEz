@@ -16,6 +16,7 @@
             $this->db->closeConnection($result);
             return $categories;
         }
+
         public function removeCategory($id)
         {
             $this->db->createConnection();
@@ -32,6 +33,7 @@
             $this->db->closeConnection($result);
             return $category;
         }
+
         public function fixCategory($category)
         {
             $this->db->createConnection();
@@ -43,6 +45,7 @@
             $this->db->closeConnection();
             return $result;
         }
+
         public function addCategory($category)
         {
             $this->db->createConnection();
@@ -53,5 +56,28 @@
                                         )");
             $this->db->closeConnection();
             return $result;
+        }
+
+        public function getAllCategoriesWithPaged($keyword, $page, $perPage = 3)
+        {
+            $this->db->createConnection();
+
+            $result = $this->db->executeQuery("SELECT COUNT(*) AS 'total_products' FROM `categories` WHERE `name` LIKE '%$keyword%'");
+
+            $totalItems = $this->db->getSingleResult($result)['total_products'];
+            $totalPages = max(ceil($totalItems / $perPage), 1);
+            $start = ($page - 1) * $perPage;
+
+            $result = $this->db->executeQuery("SELECT * FROM `categories` 
+                                                WHERE `name` LIKE '%$keyword%'
+                                                ORDER BY `id` DESC
+                                                LIMIT $start, $perPage");
+            $products = $this->db->getArrayResult($result);       
+
+            $pageResult = new Pagination($page, $totalItems, $totalPages, $products);
+
+            $this->db->closeConnection($result);
+
+            return $pageResult;
         }
     }
