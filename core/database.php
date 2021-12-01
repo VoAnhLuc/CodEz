@@ -62,6 +62,6 @@
 
         public function getNumRows($result)
         {
-            return mysqli_num_rows($result);
+            return empty($result) ? null : mysqli_num_rows($result);
         }
     }
