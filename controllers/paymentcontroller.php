@@ -66,10 +66,9 @@
             {
                 foreach ($carts as $cart)
                 {
-                    echo $price = $cart['price'];
-                    echo $cart_id = $cart['id'];
-                    echo $link_code = Func::copyFileFromTo($cart['code'], 'files.payments', $_SESSION['user_id'], false);
-                    echo $cart['code'];
+                    $price = $cart['price'];
+                    $cart_id = $cart['id'];
+                    $link_code = Func::copyFileFromTo($cart['code'], 'files.payments', $_SESSION['user_id'], false);
                     $this->paymentModel->updateItemPaid($cart_id, $link_code, $price);
                 }
 
