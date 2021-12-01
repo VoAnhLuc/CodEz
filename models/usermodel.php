@@ -98,7 +98,7 @@
             $this->db->closeConnection();
         }
 
-        public function getAllUsers($keyword, $page, $perPage)
+        public function getAllUsers($keyword, $page, $perPage = 10)
         {
             $this->db->createConnection();
 
@@ -109,13 +109,13 @@
             $totalPages = max(ceil($totalItems / $perPage), 1);
             $start = ($page - 1) * $perPage;
 
-            $result = $this->db->executeQuery("SELECT * FROM `user` 
+            $result = $this->db->executeQuery("SELECT * FROM `users` 
                                                 WHERE `fullname` LIKE '%$keyword%' OR `username` LIKE '%$keyword%'
                                                 ORDER BY `id` DESC
                                                 LIMIT $start, $perPage");
-            $products = $this->db->getArrayResult($result);       
+            $users = $this->db->getArrayResult($result);       
 
-            $pageResult = new Pagination($page, $totalItems, $totalPages, $products);
+            $pageResult = new Pagination($page, $totalItems, $totalPages, $users);
 
             $this->db->closeConnection($result);
 

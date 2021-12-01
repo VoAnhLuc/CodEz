@@ -60,3 +60,13 @@
 .text--bold {
     font-weight: 600;
 }
+
+.page-item.active .page-link {
+    background-color: #011c26 !important;
+    border-color: #042c1f !important;
+    color: #fff !important;
+}
+
+.page-link {
+    color: #042c1f !important;
+}

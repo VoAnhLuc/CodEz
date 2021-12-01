@@ -3,6 +3,8 @@
     {
         private $productModel;
         private $categoryModel;
+        private $userModel;
+
         public function __construct()
         {
             $this->loadModel('productmodel');
@@ -10,6 +12,9 @@
 
             $this->loadModel('categorymodel');
             $this->categoryModel = new CategoryModel;
+
+            $this->loadModel('usermodel');
+            $this->userModel = new UserModel;
         }
 
         public function index()
@@ -51,9 +56,36 @@
 
         public function account()
         {
+            if (!Func::isRoleAdmin())
+            {
+                return $this->view('404');
+            }
+
+            $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
+            
+            if (isset($_POST['q']))
+            {
+                $keyword = htmlspecialchars($_POST['q']);
+                $_SESSION['user_keyword'] = $keyword;
+                $page = 1;
+            }
+            else
+            {
+                $keyword = isset($_SESSION['user_keyword']) ? $_SESSION['user_keyword'] : '';
+            }
+
+            $pagedResults = $this->userModel->getAllUsers($keyword, $page);
+
+            if (!Func::isInRange($page, 1, $pagedResults->getTotalPages()))
+            {
+                return $this->view('404');
+            }
+
             $data = [
                 'title' => 'Quản lý tài khoản',
-                'active' => 2
+                'active' => 2,
+                'keyword' => $keyword,
+                'pagedResults' => $pagedResults
             ];
 
             return $this->view('panel.account', $data);
