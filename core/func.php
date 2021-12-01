@@ -8,47 +8,6 @@
         */
         public static function initDatabase()
         {
-            $db = new Database;
-            $db->createConnection();
-
-            /* Initialize Roles */
-            $result = $db->executeQuery("SELECT `id` FROM `roles`");
-            if (!mysqli_num_rows($result))
-            {
-                $db->executeNonQuery("INSERT INTO `roles` (`name`) VALUES ('user'), ('admin')");
-            }
-
-            /* Initialize Categories */
-            $result = $db->executeQuery("SELECT `id` FROM `categories`");
-            if (!mysqli_num_rows($result))
-            {
-                $db->executeNonQuery("INSERT INTO `categories` (`name`, `description`) VALUES
-                                                    ('HTML/Css', 'About HTML5 and Css...'),
-                                                    ('Javascript', 'About Javascript, Jquery, ReactJS...'),
-                                                    ('C#/.NET', 'About C# .NET, ASP.NET, F#, ML.NET...'),
-                                                    ('Java', 'About Java, Jsp, Servlet, Spring...'),
-                                                    ('C/C++', 'About C, C++...'),
-                                                    ('Python', 'About Python...'),
-                                                    ('PHP & MYSQL', 'About PHP, Lavarel Framework...'),
-                                                    ('The Others', 'The others languages...')
-                                                    ");
-            }
-
-            /* Get total products in cart */
-            if (self::isLogged())
-            {
-                $result = $db->executeQuery("SELECT COUNT(*) AS 'total_cart'
-                                            FROM `carts`
-                                            WHERE `user_id` = '" . $_SESSION['user_id'] . "'
-                                                AND `add_time` > `paid_time`");
-                $_SESSION['total_cart'] = $db->getSingleResult($result)['total_cart'];
-            }
-            else
-            {
-                $_SESSION['total_cart'] = isset($_SESSION['tmp_cart']) ? count($_SESSION['tmp_cart']) : 0;
-            }
-
-            $db->closeConnection($result);
         }
 
         /*  

@@ -16,7 +16,7 @@
                         </ul>
                         <span class="header__cart">
                             <a href="<?php echo ROUTES['payment_cart'] ?>"><i class="bi bi-cart2"></i></a>
-                            <span class="header__cart-number"><?php echo $_SESSION['total_cart'] ?></span>
+                            <span class="header__cart-number"><?php echo isset($_SESSION['total_cart']) ? $_SESSION['total_cart'] : 0 ?></span>
                         </span>
                         <?php
                             if (!isset($_SESSION['is_logged']) || !$_SESSION['is_logged'])

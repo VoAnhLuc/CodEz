@@ -139,4 +139,16 @@
             $this->db->closeConnection($result);
             return $is_exit != 0;
         }
+
+        public function getTotalCarts()
+        {
+            $this->db->createConnection();
+            $result = $this->db->executeQuery("SELECT COUNT(*) AS 'total_carts'
+                                                FROM `carts`
+                                                WHERE `user_id` = '" . $_SESSION['user_id'] . "'
+                                                    AND `add_time` > `paid_time`");
+            $total = $this->db->getSingleResult($result)['total_carts'];
+            $this->db->closeConnection($result);
+            return $total;
+        }
     }

@@ -2,11 +2,15 @@
     class UserController extends BaseController
     {
         private $userModel;
+        private $paymentModel;
 
         public function __construct()
         {
             $this->loadModel('usermodel');
             $this->userModel = new UserModel;
+
+            $this->loadModel('paymentmodel');
+            $this->paymentModel = new PaymentModel;
         }
 
         public function index()
@@ -80,6 +84,7 @@
 
             // move products in tmp_cart to real carts.
             $this->moveTmpCartToCarts();
+            $_SESSION['total_cart'] = $this->paymentModel->getTotalCarts();
 
             return header('Location: ' . ROUTES['home']);
         }
@@ -91,14 +96,11 @@
                 return;
             }
 
-            $this->loadModel('paymentmodel');
-            $paymentModel = new PaymentModel;
-
             foreach ($_SESSION['tmp_cart'] as $item)
             {
-                if (!$paymentModel->isExistProductInCart($item['id']))
+                if (!$this->paymentModel->isExistProductInCart($item['id']))
                 {
-                    $paymentModel->addProductIntoCart($item['id']);
+                    $this->paymentModel->addProductIntoCart($item['id']);
                 }
             }
         }

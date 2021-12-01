@@ -114,6 +114,8 @@
 
             $product['product_id'] = $product['id'];
             array_push($_SESSION['tmp_cart'], $product);
+
+            $_SESSION['total_cart'] = count($_SESSION['tmp_cart']);
         }
 
         public function addToCart($product_id)
@@ -123,6 +125,7 @@
             if (!$is_exit)
             {
                 $this->paymentModel->addProductIntoCart($product_id);
+                $_SESSION['total_cart'] = $this->paymentModel->getTotalCarts();
             }
         }
 
