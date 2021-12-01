@@ -72,9 +72,9 @@
                                                 WHERE `name` LIKE '%$keyword%'
                                                 ORDER BY `id` DESC
                                                 LIMIT $start, $perPage");
-            $products = $this->db->getArrayResult($result);       
+            $categories = $this->db->getArrayResult($result);       
 
-            $pageResult = new Pagination($page, $totalItems, $totalPages, $products);
+            $pageResult = new Pagination($page, $totalItems, $totalPages, $categories);
 
             $this->db->closeConnection($result);
 
