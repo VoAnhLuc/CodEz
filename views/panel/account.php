@@ -27,7 +27,7 @@
                                     <input type="text" class="my-search-box__input" name="q"
                                         placeholder="Tìm kiếm bằng từ khóa" />
                                     <div class="my-search-box__icon-wrapper">
-                                        <span class="clear-search-btn me-1">
+                                        <span onclick="clearSearchBox()" class="clear-search-btn me-1">
                                             <i class="bi bi-x-lg"></i>
                                         </span>
                                         <button class="search-btn d-flex align-items-center">

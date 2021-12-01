@@ -97,4 +97,28 @@
             $this->db->executeNonQuery("UPDATE `users` SET $query WHERE `id` = '$user_id'");
             $this->db->closeConnection();
         }
+
+        public function getAllUsers($keyword, $page, $perPage)
+        {
+            $this->db->createConnection();
+
+            $result = $this->db->executeQuery("SELECT COUNT(*) AS 'total_accounts' FROM `users`
+                                                WHERE `fullname` LIKE '%$keyword%' OR `username` LIKE '%$keyword%'");
+
+            $totalItems = $this->db->getSingleResult($result)['total_accounts'];
+            $totalPages = max(ceil($totalItems / $perPage), 1);
+            $start = ($page - 1) * $perPage;
+
+            $result = $this->db->executeQuery("SELECT * FROM `user` 
+                                                WHERE `fullname` LIKE '%$keyword%' OR `username` LIKE '%$keyword%'
+                                                ORDER BY `id` DESC
+                                                LIMIT $start, $perPage");
+            $products = $this->db->getArrayResult($result);       
+
+            $pageResult = new Pagination($page, $totalItems, $totalPages, $products);
+
+            $this->db->closeConnection($result);
+
+            return $pageResult;
+        }
     }
