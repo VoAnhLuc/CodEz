@@ -76,7 +76,7 @@
         {
             $this->db->createConnection();
             $this->db->executeNonQuery("INSERT INTO `users` (`role_id`, `username`, `password`, `is_vendor`, `fullname`, `email`, `join_time`)
-                                                VALUES ('1', '$username', '$password', '1', '$fullname', '$email', '" . time() . "')");
+                                                VALUES ('1', '$username', '$password', '0', '$fullname', '$email', '" . time() . "')");
             $user_id = $this->db->getInsertId();
             $this->db->closeConnection();
             return $user_id;

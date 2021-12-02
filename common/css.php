@@ -1,4 +1,4 @@
-<link rel="icon" href="<?php echo Func::getCurrentURL(false) ?>/favicon.ico" type="image/x-icon" />
+<link rel="icon" href="./favicon.ico" type="image/x-icon" />
 <link rel="stylesheet" href="./lib/css/reset.css">
 <link rel="stylesheet" href="./lib/css/style.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"

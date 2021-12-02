@@ -62,7 +62,7 @@
                             </div>
                         </aside>
                     </div>
-                    <div class="col-lg-10 d-flex flex-wrap">
+                    <div class="col-lg-10 d-flex justify-content-center flex-wrap">
                         <div class="row" style="width: 100%;">
                             <?php
                                 foreach($products->getItems() as $item) {
