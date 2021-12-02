@@ -3,6 +3,7 @@
     {
         private $userModel;
         private $paymentModel;
+        private $productModel;
 
         public function __construct()
         {
@@ -11,11 +12,15 @@
 
             $this->loadModel('paymentmodel');
             $this->paymentModel = new PaymentModel;
+
+            $this->loadModel('productmodel');
+            $this->productModel = new ProductModel;
         }
 
         public function index()
         {
             $id = (isset($_GET['id']) ? intval($_GET['id']) : (isset($_SESSION['is_logged']) ? $_SESSION['user_id'] : 0));
+            $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 
             $user = $this->userModel->getUserById($id);
 
@@ -24,10 +29,18 @@
                 return $this->view('404');
             }
 
+            $products = $this->productModel->getAllProductsByUserId($id, $page);
+
+            if (!Func::isInRange($page, 1, $products->getTotalPages()))
+            {
+                return $this->view('404');
+            }
+
             $data = [
                 'id' => $id,
                 'title' => 'Thông tin cá nhân',
-                'user' => $user
+                'user' => $user,
+                'products' => $products
             ];
             
             return $this->view('user.index', $data);

@@ -22,6 +22,10 @@
     font-size: 2rem;
 }
 
+.size--14px {
+    font-size: 14px;
+}
+
 .color--green {
     color: #01724f;
 }

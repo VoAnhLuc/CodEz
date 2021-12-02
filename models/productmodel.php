@@ -161,4 +161,27 @@
 
             return $pageResult;
         }
+
+        public function getAllProductsByUserId($user_id, $page, $perPage = 10)
+        {
+            $this->db->createConnection();
+
+            $result = $this->db->executeQuery("SELECT COUNT(*) AS 'total_products'
+                                                FROM `products` WHERE `user_id` = '$user_id'");
+
+            $totalItems = $this->db->getSingleResult($result)['total_products'];
+            $totalPages = max(ceil($totalItems / $perPage), 1);
+            $start = ($page - 1) * $perPage;
+            
+            $result = $this->db->executeQuery("SELECT `id`, `title`, `description`, `thumb` FROM `products`
+                                                WHERE `user_id` = '$user_id'
+                                                LIMIT $start, $perPage");
+            $products = $this->db->getArrayResult($result);       
+
+            $pageResult = new Pagination($page, $totalItems, $totalPages, $products);
+
+            $this->db->closeConnection($result);
+
+            return $pageResult;
+        }
     }

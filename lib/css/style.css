@@ -115,7 +115,6 @@ a {
 }
 
 .info__searchbox {
-  height: 55px;
   margin: 0 auto;
 }
 
@@ -348,6 +347,11 @@ a {
 
 .login__assist a {
   color: black;
+}
+
+.profile__banner {
+  height: 315px;
+  object-fit: cover;
 }
 
 .profile-settings {
@@ -1033,8 +1037,8 @@ main {
   background-color: #011c27;
 }
 .cardsociallink .headersociallink {
-  padding: 30px 30px;
-  font-size: 22px;
+  font-size: 24px;
+  padding: 20px 30px;
   background-color: white;
 }
 .cardsociallink .bodysociallink .iconprofile {
@@ -1266,4 +1270,14 @@ main {
   text-align: right;
   margin-right: 1rem;
   cursor: pointer;
+}
+
+.product__image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.pager ul {
+  list-style-type: none;
 }
