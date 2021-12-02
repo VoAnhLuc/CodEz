@@ -1,15 +1,6 @@
 <?php
     class Func
     {
-        /*
-            This method user for initialize `roles` data.
-            Everytime access the web, server will call to database to check if any data exist in `roles` table.
-            If there are not having yet, server will insert automatically.
-        */
-        public static function initDatabase()
-        {
-        }
-
         /*  
             This method use for check an array value. 
             If any value in array is empty, return true.
