@@ -50,6 +50,11 @@
 
             $carts = $this->paymentModel->getAllCarts();
 
+            if (count($carts) == 0)
+            {
+                return header('Location: ' . ROUTES['payment_cart']);
+            }
+
             $data = [
                 'title' => 'Thanh toán',
                 'carts' => $carts,
