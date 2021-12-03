@@ -146,6 +146,7 @@
             {
                 unset($_SESSION['tmp_cart'][$id]);
                 $_SESSION['tmp_cart'] = array_values($_SESSION['tmp_cart']);
+                $_SESSION['total_cart'] = count($_SESSION['tmp_cart']);
             }
 
             return header('Location: ' . ROUTES['payment_cart'] . '');  
