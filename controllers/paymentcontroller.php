@@ -74,6 +74,7 @@
 
                 $this->userModel->updateUserByStringQuery($_SESSION['user_id'], "`money` = `money` -  $total_money");
                 $_SESSION['user']['money'] = $_SESSION['user']['money'] - $total_money;
+                $_SESSION['total_cart'] = $this->paymentModel->getTotalCarts();
 
                 $data['is_success'] = 1;
             }
