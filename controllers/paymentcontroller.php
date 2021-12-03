@@ -141,6 +141,7 @@
                    return $this->view('404') ;
                 }
                 $this->paymentModel->removeProductFromCart($id);
+                $_SESSION['total_cart'] = $this->paymentModel->getTotalCarts();
             }
             else
             {
