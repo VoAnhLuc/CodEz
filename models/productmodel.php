@@ -148,7 +148,8 @@
                                                 FROM `products` 
                                                 INNER JOIN `users` ON `products`.`user_id` = `users`.`id`
                                                 INNER JOIN `categories` ON `products`.`category_id` = `categories`.`id`
-                                                LEFT JOIN `carts` ON `products`.`id` = `carts`.`product_id` AND `carts`.`paid_time` >= `carts`.`add_time`
+                                                LEFT JOIN `carts` ON `products`.`id` = `carts`.`product_id`
+                                                                    AND `carts`.`paid_time` >= `carts`.`add_time`
                                                 WHERE $where
                                                 GROUP BY `products`.`id`
                                                 ORDER BY $orderby
