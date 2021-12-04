@@ -49,8 +49,8 @@
             $id = (isset($_GET['id']) ? intval($_GET['id']) : 0);
 
             $product = $this->productModel->getProductById($id);
-
-            if ($product == null)
+           
+            if ($product['id'] == null)
             {
                 return $this->view('404');
             }
