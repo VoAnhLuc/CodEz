@@ -64,6 +64,24 @@
             return $products;
         }
 
+        public function getAllRelatedProducts($category_id, $limit = 4)
+        {
+            $this->db->createConnection();
+            $result = $this->db->executeQuery("SELECT `products`.*, `users`.`fullname`, `users`.`avatar`, `categories`.`name`,
+                                                        COUNT(`carts`.`id`) AS bought, SUM(`carts`.`rate`) AS rating
+                                                FROM `products` 
+                                                INNER JOIN `users` ON `products`.`user_id` = `users`.`id`
+                                                INNER JOIN `categories` ON `products`.`category_id` = `categories`.`id`
+                                                LEFT JOIN `carts` ON `products`.`id` = `carts`.`product_id` AND `carts`.`paid_time` >= `carts`.`add_time`
+                                                WHERE `products`.`id` != 0 AND `products`.`is_deleted` = '0' AND `products`.`category_id` = '$category_id'
+                                                GROUP BY `products`.`id`
+                                                ORDER BY RAND()
+                                                LIMIT $limit");
+            $products = $this->db->getArrayResult($result);
+            $this->db->closeConnection($result);
+            return $products;
+        }
+
         public function updateProduct($product)
         {
             $this->db->createConnection();

@@ -57,7 +57,7 @@
 
             $this->productModel->increaseProductView($id);
 
-            $related_products = $this->productModel->getAllProducts("RAND()", 4, "`products`.`category_id` = '" . $product['category_id'] . "'");
+            $related_products = $this->productModel->getAllRelatedProducts($product['category_id']);
 
             $data = [
                 'id' => $id,
